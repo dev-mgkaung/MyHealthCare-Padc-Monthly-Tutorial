@@ -11,8 +11,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/doctor" />
+            <option value="$PROJECT_DIR$/patient" />
             <option value="$PROJECT_DIR$/share" />
           </set>
         </option>
