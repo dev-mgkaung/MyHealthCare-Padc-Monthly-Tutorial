@@ -1,0 +1,167 @@
+{
+
+  "specialities" : [
+    {
+      "id" : "sp0001",
+      "name" : "ဦးနှောက်အာရုံကြောအထူးကု",
+      "general_questions" : {
+        "one_time_questions": [
+          {
+            "id" : "otq0001",
+            "gq_questions" : "One Time General Question 1?"
+          },
+          {
+            "id" : "otq0002",
+            "gq_questions" : "One Time General Question 2?"
+          }
+        ],
+        "always_questions": [
+          {
+            "id" : "alq0001",
+            "alq_questions" : "Always General Question 1?"
+          },
+          {
+            "id" : "alq0002",
+            "alq_questions" : "Always General Question 2?"
+          }
+        ]
+      },
+      "special_questions" : [
+        {
+          "id" : "sq0001",
+          "sq_question" : "Special Question 1 ?"
+        },
+        {
+          "id" : "sq0002",
+          "sq_question" : "Special Question 2 ?"
+        }
+      ],
+      "medicines" : [
+        {
+           "id" : "m0001",
+           "name" : "Medicine One",
+           "routine" : [
+             {
+               "id" : "rt0001",
+               "name" : "Morning",
+               "times" : 2
+             },
+             {
+               "id" : "rt0002",
+               "name" : "AfterNoon",
+               "times" : 3
+             },
+             {
+               "id" : "rt0003",
+               "name" : "Night",
+               "times" : 2
+             }
+           ],
+           "count" : 0,
+           "price" : 1000,
+           "total_times" : 2,
+           "start_date" : "11/23/2020",
+           "end_date" : "11/23/2020"
+        }
+      ]
+    }
+  ],
+  "general_question_template" : {
+    "dentist": [
+      {
+        "id" : "dt001",
+        "dq_one" : "One",
+        "dq_two" : "Two",
+        "dq_three" : "Three"
+      },
+      {
+        "id" : "dt002",
+        "dq_one" : "One",
+        "dq_two" : "Two",
+        "dq_three" : "Three"
+      }
+    ]
+  },
+  "doctors" : [
+    {
+      "id": "d0001",
+      "name" : "Dr. Mg Mg",
+      "photo" : "",
+      "age" : 55,
+      "degree" : "M.B.B.S",
+      "biography" : "ဦးနှောက်အာရုံကြောအထူးကု",
+      "address" : "Mahar Myaing Hospital"
+    }
+  ],
+  "patients" : [
+    {
+      "id" : "p0001",
+      "name": "Mg Aye",
+      "age" : 20,
+      "phone" : "0921222222",
+      "address" : "Yangon",
+      "gender" : "Male",
+      "dateOfBirth" : "1/2/1996"
+    }
+  ],
+  "consultation_request" : [
+    {
+      "cr_id" : "cr001",
+      "patient_id" : "p0001",
+      "speciality" : "dentist",
+      "date_time" : "Sample date time",
+      "case_summary" : "cr0001"
+    },
+    {
+      "cr_id" : "cr002",
+      "patient_id" : "p0002",
+      "speciality" : "dentist",
+      "date_time" : "Sample date time",
+      "case_summary" : "cr0002"
+    }
+  ],
+  "consultation_chat" : [
+    {
+      "cc_id" : "cc0001",
+      "patient_id" : "p0001",
+      "doctor_id" : "dr0001",
+      "chat_message" : [],
+      "case_summary" : [
+        {
+          "question" : "Q 1",
+          "answer" : "A 1"
+        },
+        {
+          "question" : "Q 2",
+          "answer" : "A 2"
+        }
+      ] ,
+      "prescription" : {
+        "ps_id" : "ps0001",
+        "total_price" : 2999,
+        "medicines" : [
+          {
+            "name" : "M 1",
+            "price" : 1000,
+            "count" : 2
+          },
+          {
+            "name" : "M 2",
+            "price" : 1000,
+            "count" : 3
+          }
+        ]
+      }
+    }
+  ],
+  "checkout" : [
+    {
+      "co_id" : "co0001",
+      "patient_id" : "p0001",
+      "ps_id" : "ps0001",
+      "doctor_id" : "d0001",
+      "delivery_address" : "My Address",
+      "delivery_routine" : "24 hours"
+    }
+  ]
+}
