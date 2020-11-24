@@ -27,4 +27,14 @@ object MyCareModelImpl : MyCareModel {
     ) {
         mFirebaseApi.getPatientList(onSuccess, onFaiure)
     }
+
+    override fun registerNewPatient(patientVO: PatientVO,onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        mFirebaseApi.addOrUpdatePatientData(patientVO,onSuccess,onFailure)
+    }
+
+    override fun registerNewDoctor(doctorVO: DoctorVO,onSuccess: () -> Unit, onFailure: (String) -> Unit){
+        mFirebaseApi.addOrUpdateDoctorData(doctorVO,onSuccess,onFailure)
+    }
+
+
 }

@@ -7,7 +7,8 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 @IgnoreExtraProperties
 class PatientVO(
     var pt_id: String?= "",
-    var name: String? = "",
+    var name: String = "",
+    var email: String = "",
     var photo: String? = "",
     var age: Int =0,
     var phone : String? = "",

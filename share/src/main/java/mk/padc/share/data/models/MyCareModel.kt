@@ -9,12 +9,14 @@ interface MyCareModel {
 
     var mFirebaseApi : FirebaseApi
 
-    //var mFirebaseRemoteConfigManager : FirebaseRemoteConfigManager
-
     fun uploadPhotoToFirebaseStorage(image : Bitmap, onSuccess: (photoUrl : String) -> Unit, onFailure: (String) -> Unit)
 
     fun getDoctors(onSuccess: (List<DoctorVO>) -> Unit, onFaiure: (String) -> Unit)
 
     fun getPatients(onSuccess: (List<PatientVO>) -> Unit, onFaiure: (String) -> Unit)
+
+    fun registerNewPatient(patientVO: PatientVO ,onSuccess: () -> Unit, onFailure: (String) -> Unit)
+
+    fun registerNewDoctor(doctorVO: DoctorVO,onSuccess: () -> Unit, onFailure: (String) -> Unit)
 
 }

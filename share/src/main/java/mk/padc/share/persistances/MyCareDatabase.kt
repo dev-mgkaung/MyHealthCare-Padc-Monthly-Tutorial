@@ -4,11 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.google.android.exoplayer2.database.ExoDatabaseProvider.DATABASE_NAME
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.persistances.daos.DoctorDao
 import mk.padc.share.persistances.daos.PatientDao
+import mk.padc.share.utils.DATABASE_NAME
 
 @Database(
     entities = [PatientVO::class, DoctorVO::class],
