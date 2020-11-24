@@ -38,30 +38,30 @@
       ],
       "medicines" : [
         {
-           "id" : "m0001",
-           "name" : "Medicine One",
-           "routine" : [
-             {
-               "id" : "rt0001",
-               "name" : "Morning",
-               "times" : 2
-             },
-             {
-               "id" : "rt0002",
-               "name" : "AfterNoon",
-               "times" : 3
-             },
-             {
-               "id" : "rt0003",
-               "name" : "Night",
-               "times" : 2
-             }
-           ],
-           "count" : 0,
-           "price" : 1000,
-           "total_times" : 2,
-           "start_date" : "11/23/2020",
-           "end_date" : "11/23/2020"
+          "id" : "m0001",
+          "name" : "Medicine One",
+          "routine" : [
+            {
+              "id" : "rt0001",
+              "name" : "Morning",
+              "times" : 2
+            },
+            {
+              "id" : "rt0002",
+              "name" : "AfterNoon",
+              "times" : 3
+            },
+            {
+              "id" : "rt0003",
+              "name" : "Night",
+              "times" : 2
+            }
+          ],
+          "count" : 0,
+          "price" : 1000,
+          "total_times" : 2,
+          "start_date" : "11/23/2020",
+          "end_date" : "11/23/2020"
         }
       ]
     }
