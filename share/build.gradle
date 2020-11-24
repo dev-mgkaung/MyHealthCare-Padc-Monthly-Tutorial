@@ -3,6 +3,7 @@ id 'com.android.library'
 id 'kotlin-android'
 id 'kotlin-android-extensions'
 id 'kotlin-kapt'
+id 'com.google.gms.google-services'
 }
 
 android {
@@ -28,24 +29,93 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation rootProject.ext.libraries.ktx
 
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // App dependencies
+    implementation rootProject.ext.libraries.appCompat
+    implementation rootProject.ext.libraries.constraintLayout
+    implementation rootProject.ext.libraries.material
+    implementation rootProject.ext.libraries.swiperefreshlayout
+    implementation rootProject.ext.libraries.youtube
+
+    //Mavigation component
+    implementation rootProject.ext.libraries.navigation_fragment
+    implementation rootProject.ext.libraries.navigation_ui
+    implementation rootProject.ext.libraries.navigation_fragment_ktx
+    implementation rootProject.ext.libraries.navigation_ui_ktx
+
 
     //Glide
     implementation rootProject.ext.libraries.glide
     annotationProcessor rootProject.ext.libraries.glideAnnotion
 
+    //GSON
+    implementation rootProject.ext.libraries.gson
+
+    //Retrofit
+    implementation rootProject.ext.libraries.retrofit
+    implementation rootProject.ext.libraries.retrofit_converter
+    implementation rootProject.ext.libraries.retrofit_adpter
+
+    //RxKotlin
+    implementation rootProject.ext.libraries.rxkotlin
+    implementation rootProject.ext.libraries.rxandroid
+
+    //OKHttp
+    implementation rootProject.ext.libraries.okhttp
+
+    // Architecture Components
+    // LiveData
+    implementation rootProject.ext.libraries.livedata
+    kapt rootProject.ext.libraries.livecycle_arch_compiler
+    implementation rootProject.ext.libraries.lifecycle_arch_extension
+    kapt rootProject.ext.libraries.lifecycle_compiler
+    implementation rootProject.ext.libraries.lifecycle_extensions
+    implementation rootProject.ext.libraries.lifecycle_viewModel
+
+    // Room Database
+    implementation rootProject.ext.libraries.room
+    kapt rootProject.ext.libraries.roomcompiler
+
+    //Exo Player
+    implementation rootProject.ext.libraries.exoplayer_core
+    implementation rootProject.ext.libraries.exoplayer_dash
+    implementation rootProject.ext.libraries.exoplayer_ui
+
+    //Testing
+    // Local Unit Tests
+    testImplementation rootProject.ext.libraries.junit
+    testImplementation rootProject.ext.libraries.junitktx
+    testImplementation rootProject.ext.libraries.corektx
+    testImplementation rootProject.ext.libraries.mockk
+    testImplementation rootProject.ext.libraries.mockito
+    testImplementation rootProject.ext.libraries.roboelectric
+
+    // Tests that require Android Device
+    androidTestImplementation rootProject.ext.libraries.junit
+    androidTestImplementation rootProject.ext.libraries.expressoCore
+    androidTestImplementation rootProject.ext.libraries.testRule
+    androidTestImplementation rootProject.ext.libraries.testRunner
+    androidTestImplementation rootProject.ext.libraries.testCore
+    androidTestImplementation rootProject.ext.libraries.testExtktx
+    androidTestImplementation rootProject.ext.libraries.expressoContrib
+    androidTestImplementation rootProject.ext.libraries.mockitoAndroid
+    androidTestImplementation rootProject.ext.libraries.testExt
+
+
     // Import the BoM for the Firebase platform
     implementation platform(rootProject.ext.libraries.firebaseBom)
     implementation rootProject.ext.libraries.firebaseAuthKtx
     implementation rootProject.ext.libraries.firebaseAnalytics
+    implementation rootProject.ext.libraries.firebaseDatabaseKtx
+    implementation rootProject.ext.libraries.firebaseFirestoreKtx
+    implementation rootProject.ext.libraries.firebaseConfigKtx
+    implementation rootProject.ext.libraries.firebaseStorageKtx
+    implementation rootProject.ext.libraries.firebaseInAppMessageKtx
+  //  implementation rootProject.ext.libraries.firebaseCrashlyticsKtx
+    implementation rootProject.ext.libraries.firebaseMessageKtx
+    implementation rootProject.ext.libraries.firebaseDeepLinkKtx
 
 }

@@ -4,6 +4,7 @@
     {
       "id" : "sp0001",
       "name" : "ဦးနှောက်အာရုံကြောအထူးကု",
+      "photo" : "",
       "general_questions" : {
         "one_time_questions": [
           {
@@ -40,6 +41,7 @@
         {
           "id" : "m0001",
           "name" : "Medicine One",
+          "photo" : "",
           "routine" : [
             {
               "id" : "rt0001",
@@ -97,6 +99,7 @@
     {
       "id" : "p0001",
       "name": "Mg Aye",
+      "photo" : "",
       "age" : 20,
       "phone" : "0921222222",
       "address" : "Yangon",
