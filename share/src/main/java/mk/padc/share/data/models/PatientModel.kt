@@ -1,4 +1,4 @@
-package mk.monthlytut.patient.data.model
+package mk.padc.share.data.models
 
 import mk.padc.share.data.vos.PatientVO
 

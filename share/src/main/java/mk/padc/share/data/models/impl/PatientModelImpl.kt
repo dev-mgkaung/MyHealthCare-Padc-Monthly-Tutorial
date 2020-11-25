@@ -1,10 +1,11 @@
-package mk.monthlytut.patient.data.model
+package mk.padc.share.data.models.impl
 
 import mk.padc.share.data.models.BaseModel
+import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.vos.PatientVO
 
 
-object PatientModelImpl : PatientModel , BaseModel() {
+object PatientModelImpl : PatientModel, BaseModel() {
 
     override fun saveNewPatientRecord(
         patientVO: PatientVO,

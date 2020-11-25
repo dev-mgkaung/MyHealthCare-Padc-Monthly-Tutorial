@@ -2,13 +2,13 @@ package mk.monthlytut.doctor.mvp.presenters.impl
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
-import mk.monthlytut.doctor.data.model.DoctorModel
-import mk.monthlytut.doctor.data.model.DoctorModelImpl
 import mk.monthlytut.doctor.mvp.presenters.RegisterPresenter
 import mk.monthlytut.patient.mvp.views.RegisterView
 import mk.padc.share.data.models.AuthenticationModel
+import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.MyCareModel
 import mk.padc.share.data.models.impl.AuthenticationModelImpl
+import mk.padc.share.data.models.impl.DoctorModelImpl
 import mk.padc.share.data.models.impl.MyCareModelImpl
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter

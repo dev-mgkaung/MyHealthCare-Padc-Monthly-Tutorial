@@ -1,9 +1,9 @@
-package mk.monthlytut.patient
+package mk.padc.share
 
 import android.app.Application
 import mk.podcast.com.persistances.MyCareDatabase
 
-class PatientApp  : Application()
+class MyCareApp  : Application()
 {
     override fun onCreate() {
         super.onCreate()
