@@ -1,0 +1,5 @@
+
+
+     eng_name   = Cardiology,
+     mm_name    = နှလုံး အထူးကု
+     photo      = https://png.pngtree.com/png-vector/20190728/ourlarge/pngtree-love-healthcare-hospital-heart-care-blue-dotted-line-line-ico-png-image_1621511.jpg

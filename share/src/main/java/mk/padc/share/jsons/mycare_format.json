@@ -1,86 +1,11 @@
 {
-
-  "specialities" : {
-    "Dental" : {
-      "id" : "sp0001",
-      "name" : "Dental",
-      "photo" : "",
-      "subCollection": {
-        "specialities/dentist/special_questions": [
-          {
-            "id": "sq0001",
-            "sq_question": "Special Question 1 ?"
-          },
-          {
-            "id": "sq0002",
-            "sq_question": "Special Question 2 ?"
-          }
-        ],
-
-        "specialities/dentist/general_questions": [
-          {
-            "id": "gq0001",
-            "gq_questions": "One Time General Question 1?",
-            "type" :"one-time"
-          },
-          {
-            "id": "gq0002",
-            "gq_questions": "One Time General Question 2?",
-            "type" :"one-time"
-          },
-          {
-            "id": "gq0003",
-            "alq_questions": "Always General Question 1?",
-            "type" :"always"
-          },
-          {
-            "id": "gq0004",
-            "alq_questions": "Always General Question 2?",
-            "type" :"always"
-          }
-        ],
-
-        "specialities/dentist/medicines": [
-          {
-            "id": "m0001",
-            "name": "Medicine One",
-            "photo": "",
-            "routine": [
-              {
-                "id": "rt0001",
-                "name": "Morning",
-                "times": 2
-              },
-              {
-                "id": "rt0002",
-                "name": "AfterNoon",
-                "times": 3
-              },
-              {
-                "id": "rt0003",
-                "name": "Night",
-                "times": 2
-              }
-            ],
-            "count": 0,
-            "price": 1000,
-            "total_times": 2,
-            "start_date": "11/23/2020",
-            "end_date": "11/23/2020"
-          }
-        ]
-
-      }
-    }
-  },
-
   "doctors" : [
     {
       "id": "d0001",
-      "name" : "Dr. Naing Shin Htet",
+      "name" : "Dr. Mg Mg",
       "photo" : "",
       "age" : 55,
-      "degree" : "M.B.B.S | M.Med.Sc",
+      "degree" : "M.B.B.S",
       "biography" : "ဦးနှောက်အာရုံကြောအထူးကု",
       "address" : "Mahar Myaing Hospital"
     }
@@ -187,5 +112,79 @@
       "dq_two" : "Two",
       "dq_three" : "Three"
     }
-  ]
+  ],
+
+  "specialities" : {
+    "dentist" : {
+      "id" : "sp0001",
+      "name" : "dentist",
+      "photo" : "",
+      "subCollection": {
+        "specialities/dentist/special_questions": [
+          {
+            "id": "sq0001",
+            "sq_question": "Special Question 1 ?"
+          },
+          {
+            "id": "sq0002",
+            "sq_question": "Special Question 2 ?"
+          }
+        ],
+
+        "specialities/dentist/general_questions": [
+          {
+            "id": "gq0001",
+            "gq_questions": "One Time General Question 1?",
+            "type" :"one-time"
+          },
+          {
+            "id": "gq0002",
+            "gq_questions": "One Time General Question 2?",
+            "type" :"one-time"
+          },
+          {
+            "id": "gq0003",
+            "alq_questions": "Always General Question 1?",
+            "type" :"always"
+          },
+          {
+            "id": "gq0004",
+            "alq_questions": "Always General Question 2?",
+            "type" :"always"
+          }
+        ],
+
+        "specialities/dentist/medicines": [
+          {
+            "id": "m0001",
+            "name": "Medicine One",
+            "photo": "",
+            "routine": [
+              {
+                "id": "rt0001",
+                "name": "Morning",
+                "times": 2
+              },
+              {
+                "id": "rt0002",
+                "name": "AfterNoon",
+                "times": 3
+              },
+              {
+                "id": "rt0003",
+                "name": "Night",
+                "times": 2
+              }
+            ],
+            "count": 0,
+            "price": 1000,
+            "total_times": 2,
+            "start_date": "11/23/2020",
+            "end_date": "11/23/2020"
+          }
+        ]
+
+      }
+    }
+  }
 }

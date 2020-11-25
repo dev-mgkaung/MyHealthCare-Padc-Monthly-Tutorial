@@ -1,0 +1,4 @@
+
+     eng_name   = Dental,
+     mm_name    ="သွားနှင့် ခံတွင်း
+     photo      = https://png.pngtree.com/png-vector/20190630/ourmid/pngtree-dental-logo-design-creative-dentist-logo-dental-clinic-creative-company-png-image_1523025.jpg
