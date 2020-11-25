@@ -1,4 +1,4 @@
-package mk.podcast.com.persistances
+package mk.padc.share.persistances
 
 import android.content.Context
 import androidx.room.Database

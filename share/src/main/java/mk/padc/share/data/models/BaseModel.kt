@@ -1,7 +1,7 @@
 package mk.padc.share.data.models
 
 import android.content.Context
-import mk.podcast.com.persistances.MyCareDatabase
+import mk.padc.share.persistances.MyCareDatabase
 
 abstract class BaseModel  {
 

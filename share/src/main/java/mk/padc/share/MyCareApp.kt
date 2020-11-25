@@ -1,7 +1,7 @@
 package mk.padc.share
 
 import android.app.Application
-import mk.podcast.com.persistances.MyCareDatabase
+import mk.padc.share.persistances.MyCareDatabase
 
 class MyCareApp  : Application()
 {
