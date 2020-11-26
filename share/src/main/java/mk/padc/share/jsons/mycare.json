@@ -73,7 +73,6 @@
       }
     }
   },
-
   "doctors" : [
     {
       "id": "d0001",
@@ -174,14 +173,20 @@
   ],
   "general_question_template" : [
     {
-      "id" : "dt001",
+      "id" : "gqt001",
       "type" : "dentist",
-      "dq_one" : "One",
-      "dq_two" : "Two",
-      "dq_three" : "Three"
+      "title" : "GQ Title",
+      "questions" : [
+        {
+          "question" : "A"
+        },
+        {
+          "question" : "B"
+        }
+      ]
     },
     {
-      "id" : "dt002",
+      "id" : "gqt002",
       "type" : "dentist",
       "dq_one" : "One",
       "dq_two" : "Two",
