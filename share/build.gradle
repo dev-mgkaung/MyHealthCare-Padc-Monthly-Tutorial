@@ -46,6 +46,10 @@ dependencies {
     //GSON
     implementation rootProject.ext.libraries.gson
 
+    //Retrofit
+    implementation rootProject.ext.libraries.retrofit
+    implementation rootProject.ext.libraries.retrofit_converter
+    implementation rootProject.ext.libraries.retrofit_adpter
 
     //OKHttp
     implementation rootProject.ext.libraries.okhttp
