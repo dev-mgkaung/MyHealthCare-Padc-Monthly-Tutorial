@@ -10,6 +10,6 @@ import mk.padc.share.utils.general_question_template
 class GeneralQuestionTemplateVO(
     @PrimaryKey
     var id: String= "",
-    var type: String = "",
-    var question:  String = ""
+    var type: String ?= "",
+    var question:  String ? = ""
 )

@@ -10,7 +10,7 @@ import mk.padc.share.utils.specialities
 class SpecialitiesVO(
     @PrimaryKey
     var id: String= "",
-    var name: String = "",
-    var photo: String = ""
+    var name: String ? = "",
+    var photo: String ?= ""
 )
 

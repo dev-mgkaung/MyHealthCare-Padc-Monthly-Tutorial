@@ -5,5 +5,5 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 class MedicineVO(
     var id: String= "",
     var name: String? = "",
-    var price : Int =0
+    var price : Int ?=0
 )

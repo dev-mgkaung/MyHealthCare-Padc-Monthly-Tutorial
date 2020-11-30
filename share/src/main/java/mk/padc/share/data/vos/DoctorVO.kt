@@ -11,11 +11,11 @@ class DoctorVO(
     @PrimaryKey
     var id: String= "",
     var device_id: String = "",
-    var name: String = "",
-    var email: String = "",
-    var phone: String = "",
+    var name: String ? = "",
+    var email: String ?= "",
+    var phone: String ?= "",
     var photo: String? = "",
-    var speciality: String = "",
+    var speciality: String ?= "",
     var degree : String? = "",
     var biography: String?= ""
 )

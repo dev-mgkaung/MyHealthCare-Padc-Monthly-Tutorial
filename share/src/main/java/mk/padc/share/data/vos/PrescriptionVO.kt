@@ -4,13 +4,9 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 class PrescriptionVO(
-    var ps_id: String= "",
-    var total_price: Int = 0,
-    var prescriptionMedicineVO: ArrayList<PrescriptionMedicineVO> = arrayListOf()
+    var id: String= "",
+    var count : Int =0,
+    var medicine : String = "",
+    var price : Int =0
 )
 
-class PrescriptionMedicineVO(
-    var name: String= "",
-    var price: Int = 0,
-    var count: Int = 0
-)
