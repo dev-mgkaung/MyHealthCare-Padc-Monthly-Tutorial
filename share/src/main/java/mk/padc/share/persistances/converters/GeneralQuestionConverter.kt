@@ -7,7 +7,7 @@ import mk.padc.share.data.vos.GeneralQuestionVO
 
 class GeneralQuestionConverter {
     @TypeConverter
-    fun toString(dataList: GeneralQuestionVO): String {
+    fun toString(dataList: ArrayList<GeneralQuestionVO>): String {
         return Gson().toJson(dataList)
     }
 

@@ -24,7 +24,8 @@ class CheckoutVO(
     var patientVO: PatientVO ?=null,
     var doctorVO: DoctorVO ?=null,
     var delivery_routine : DeliveryRoutineVO ?= null,
-    var prescription : ArrayList<PrescriptionVO> ?= arrayListOf()
+    var prescription : ArrayList<PrescriptionVO> = arrayListOf()
+
 )
 
 @IgnoreExtraProperties

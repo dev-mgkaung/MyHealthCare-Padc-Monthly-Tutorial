@@ -16,6 +16,6 @@ class ConsultationRequestVO(
     var id: String= "",
     var speciality : String ?= "",
     var date_time : String ?=null ,
-    var patient_info : PatientVO ?=null ,
+    var patient_info : PatientVO ?=null,
     var case_summary : ArrayList<GeneralQuestionVO> = arrayListOf()
 )
