@@ -7,8 +7,8 @@ const val patients = "patients"
 const val doctors ="doctors"
 const val specialities ="specialities"
 const val  general_question_template ="general_question_template"
-const val consulation_request ="consulation_request"
-const val consulation_chat = "consulation_chat"
+const val consultation_request ="consultation_request"
+const val consultation_chat = "consultation_chat"
 const val checkout = "checkout"
 
 // cloud firebase sub collection node name

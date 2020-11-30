@@ -5,13 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import mk.padc.share.data.vos.*
-import mk.padc.share.persistances.daos.DoctorDao
-import mk.padc.share.persistances.daos.PatientDao
+import mk.padc.share.persistances.daos.*
 import mk.padc.share.utils.DATABASE_NAME
 
 @Database(
     entities = [SpecialitiesVO::class,PatientVO::class, DoctorVO::class,
-        ConsulationRequestVO::class, ConsulationChatVO::class,GeneralQuestionVO::class,
+        ConsultationRequestVO::class, ConsultationChatVO::class,GeneralQuestionVO::class,
         CheckoutVO::class],
     version = 1,
     exportSchema = false
@@ -39,5 +38,10 @@ abstract class MyCareDatabase : RoomDatabase() {
 
     abstract fun doctorDao(): DoctorDao
     abstract fun patientDao(): PatientDao
+    abstract fun specialityDao(): SpecialityDao
+    abstract fun checkoutDao(): CheckoutDao
+    abstract fun consultationChatDao(): ConsultationChatDao
+    abstract fun consultationRequestDao(): ConsultationRequestDao
+    abstract fun generalQuestionTemplateDao(): GeneralQuestionTemplateDao
 
 }

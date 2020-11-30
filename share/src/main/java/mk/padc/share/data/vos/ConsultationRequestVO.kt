@@ -4,11 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.IgnoreExtraProperties
-import mk.padc.share.utils.consulation_request
+import mk.padc.share.utils.consultation_request
 
-@Entity(tableName = consulation_request)
+@Entity(tableName = consultation_request)
 @IgnoreExtraProperties
-class ConsulationRequestVO(
+class ConsultationRequestVO(
     @PrimaryKey
     var id: String= "",
     var speciality : String ?= "",

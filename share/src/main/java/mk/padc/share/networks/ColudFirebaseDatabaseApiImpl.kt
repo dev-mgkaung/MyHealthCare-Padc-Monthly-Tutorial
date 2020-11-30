@@ -108,7 +108,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
 
     override fun getBroadConsultationRequest(
-        onSuccess: (consulationRequest: List<ConsulationRequestVO>) -> Unit,
+        onSuccess: (consulationRequest: List<ConsultationRequestVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
         TODO("Not yet implemented")

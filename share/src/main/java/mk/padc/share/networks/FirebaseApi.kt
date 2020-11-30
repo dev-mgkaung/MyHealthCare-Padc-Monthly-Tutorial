@@ -28,7 +28,7 @@ interface FirebaseApi {
     )
 
     fun getBroadConsultationRequest(
-        onSuccess: (consulationRequest : List<ConsulationRequestVO>) -> Unit,
+        onSuccess: (consulationRequest : List<ConsultationRequestVO>) -> Unit,
         onFailure: (String) -> Unit
     )
 

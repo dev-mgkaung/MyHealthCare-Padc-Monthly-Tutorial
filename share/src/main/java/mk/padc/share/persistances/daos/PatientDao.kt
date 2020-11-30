@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.PatientVO
 
 
@@ -12,9 +13,18 @@ import mk.padc.share.data.vos.PatientVO
 interface PatientDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPatientData(podcasts: PatientVO)
+    fun insertNewPatient(patientVO: PatientVO)
 
-    @Query("select * from patient")
-    fun getAllPatientData(): LiveData<List<PatientVO>>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPatientList(patientList: List<PatientVO>)
+
+    @Query("select * from patients")
+    fun getAllPatientData(): LiveData<List<DoctorVO>>
+
+    @Query("select * from patients WHERE id = :id")
+    fun getAllPatientDataBy(id: String): LiveData<PatientVO>
+
+    @Query("DELETE FROM patients")
+    fun deleteAllPatientData()
 
 }
