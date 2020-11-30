@@ -17,16 +17,6 @@ object MyCareModelImpl : MyCareModel {
         mFirebaseApi.uploadPhotoToFirebaseStorage(image ,onSuccess,onFailure)
     }
 
-    override fun getDoctors(onSuccess: (List<DoctorVO>) -> Unit, onFaiure: (String) -> Unit) {
-        mFirebaseApi.getDoctorList(onSuccess, onFaiure)
-    }
-
-    override fun getPatients(
-        onSuccess: (List<PatientVO>) -> Unit,
-        onFaiure: (String) -> Unit
-    ) {
-        mFirebaseApi.getPatientList(onSuccess, onFaiure)
-    }
 
     override fun registerNewPatient(patientVO: PatientVO,onSuccess: () -> Unit, onFailure: (String) -> Unit) {
         mFirebaseApi.addOrUpdatePatientData(patientVO,onSuccess,onFailure)

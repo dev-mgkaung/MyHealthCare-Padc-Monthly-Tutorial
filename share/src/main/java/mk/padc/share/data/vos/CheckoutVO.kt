@@ -2,11 +2,20 @@ package mk.padc.share.data.vos
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.firebase.firestore.IgnoreExtraProperties
+import mk.padc.share.persistances.converters.DeliveryRoutineConverter
+import mk.padc.share.persistances.converters.DoctorConverter
+import mk.padc.share.persistances.converters.PatientConverter
+import mk.padc.share.persistances.converters.PrescriptionConverter
 import mk.padc.share.utils.checkout
 
-@Entity(tableName = checkout)
 @IgnoreExtraProperties
+@Entity(tableName = checkout)
+@TypeConverters(DeliveryRoutineConverter::class,
+    PatientConverter::class,
+    DoctorConverter::class,
+    PrescriptionConverter::class)
 class CheckoutVO(
     @PrimaryKey
     var id: String= "",
@@ -15,7 +24,7 @@ class CheckoutVO(
     var patientVO: PatientVO ?=null,
     var doctorVO: DoctorVO ?=null,
     var delivery_routine : DeliveryRoutineVO ?= null,
-    var prescriptionVO: ArrayList<PrescriptionVO> ?= arrayListOf()
+    var prescription : ArrayList<PrescriptionVO> ?= arrayListOf()
 )
 
 @IgnoreExtraProperties

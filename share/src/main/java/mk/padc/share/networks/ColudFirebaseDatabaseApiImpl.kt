@@ -85,25 +85,42 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onSuccess: (specialities: List<SpecialitiesVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
+
         db.collection(specialities)
-            .addSnapshotListener { value, error ->
-                error?.let {
-                    onFailure(it.message ?: "Please check connection")
-                } ?: run {
-                    val specialities: MutableList<SpecialitiesVO> = arrayListOf()
-
-                    val result = value?.documents ?: arrayListOf()
-
-                    for (document in result) {
-                        val hashmap = document.data
-                        hashmap?.put("id", document.id.toString())
-                        val Data = Gson().toJson(hashmap)
-                        val docsData = Gson().fromJson<SpecialitiesVO>(Data, SpecialitiesVO::class.java)
-                        specialities.add(docsData)
-                    }
-                    onSuccess(specialities)
+            .get()
+            .addOnSuccessListener { result ->
+                val specialities: MutableList<SpecialitiesVO> = arrayListOf()
+                for (document in result) {
+                    val hashmap = document.data
+                    hashmap?.put("id", document.id.toString())
+                    val Data = Gson().toJson(hashmap)
+                    val docsData = Gson().fromJson<SpecialitiesVO>(Data, SpecialitiesVO::class.java)
+                    specialities.add(docsData)
                 }
+                onSuccess(specialities)
             }
+
+//        db.collection(specialities)
+//            .addSnapshotListener { value, error ->
+//                error?.let {
+//                    onFailure(it.message ?: "Please check connection")
+//                } ?: run {
+//                    val specialities: MutableList<SpecialitiesVO> = arrayListOf()
+//
+//                    val result = value?.documents ?: arrayListOf()
+//
+//                    for (document in result) {
+//                        val hashmap = document.data
+//                        hashmap?.put("id", document.id.toString())
+//                        val Data = Gson().toJson(hashmap)
+//                        val docsData = Gson().fromJson<SpecialitiesVO>(Data, SpecialitiesVO::class.java)
+//                        specialities.add(docsData)
+//                    }
+//                    onSuccess(specialities)
+//                }
+//            }
+
+
     }
 
 
@@ -173,11 +190,12 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     }
 
     override fun getConsultationChat(
-        onSuccess: (List<ConsulationChatVO>) -> Unit,
+        onSuccess: (List<ConsultationChatVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
         TODO("Not yet implemented")
     }
+
 
     override fun getAllCheckMessage(
         documentId: String,

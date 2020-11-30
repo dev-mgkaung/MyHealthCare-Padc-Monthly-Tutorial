@@ -17,13 +17,13 @@ interface SpecialityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSpecialities(specialities: List<SpecialitiesVO>)
 
-    @Query("select * from general_question_template")
+    @Query("select * from specialities")
     fun getAllSpecialitiesData(): LiveData<List<SpecialitiesVO>>
 
-    @Query("select * from general_question_template WHERE id = :id")
+    @Query("select * from specialities WHERE id = :id")
     fun getAllSpecialitiesBy(id: String): LiveData<SpecialitiesVO>
 
-    @Query("DELETE FROM general_question_template")
+    @Query("DELETE FROM specialities")
     fun deleteSpecialities()
 
 

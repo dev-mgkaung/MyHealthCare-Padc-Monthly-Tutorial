@@ -19,7 +19,7 @@ interface PatientDao {
     fun insertPatientList(patientList: List<PatientVO>)
 
     @Query("select * from patients")
-    fun getAllPatientData(): LiveData<List<DoctorVO>>
+    fun getAllPatientData(): LiveData<List<PatientVO>>
 
     @Query("select * from patients WHERE id = :id")
     fun getAllPatientDataBy(id: String): LiveData<PatientVO>

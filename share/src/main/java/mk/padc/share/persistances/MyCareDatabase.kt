@@ -10,9 +10,9 @@ import mk.padc.share.utils.DATABASE_NAME
 
 @Database(
     entities = [SpecialitiesVO::class,PatientVO::class, DoctorVO::class,
-        ConsultationRequestVO::class, ConsultationChatVO::class,GeneralQuestionVO::class,
+        ConsultationRequestVO::class, ConsultationChatVO::class,GeneralQuestionTemplateVO::class,
         CheckoutVO::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class MyCareDatabase : RoomDatabase() {

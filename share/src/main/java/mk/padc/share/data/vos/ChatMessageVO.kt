@@ -1,13 +1,16 @@
 package mk.padc.share.data.vos
 
+import androidx.room.TypeConverters
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.IgnoreExtraProperties
+import mk.padc.share.persistances.converters.SendByConverter
 
 @IgnoreExtraProperties
+@TypeConverters(SendByConverter::class)
 class ChatMessageVO(
     var messageText: String= "",
     var messageImage: String ? = "",
-    var sendAt: Timestamp ? =null,
+    var sendAt: String ? =null,
     var sendBy: SendBy ? =null
 )
 
