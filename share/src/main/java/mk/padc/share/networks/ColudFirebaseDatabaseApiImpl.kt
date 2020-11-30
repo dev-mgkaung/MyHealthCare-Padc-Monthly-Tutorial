@@ -8,10 +8,10 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
-import mk.padc.share.data.vos.DoctorVO
-import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.data.vos.*
 import mk.padc.share.utils.doctors
 import mk.padc.share.utils.patients
+import mk.padc.share.utils.specialities
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -65,16 +65,32 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
-    override fun getDoctorList(
-        onSuccess: (podcast: List<DoctorVO>) -> Unit,
+    override fun registerNewDoctor(
+        doctorVO: DoctorVO,
+        onSuccess: (doctorList: List<DoctorVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        db.collection("doctors")
+        TODO("Not yet implemented")
+    }
+
+    override fun registerNewPatient(
+        patientVO: PatientVO,
+        onSuccess: (patientList: List<PatientVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getSpecialities(
+        onSuccess: (specialities: List<SpecialitiesVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection(specialities)
             .addSnapshotListener { value, error ->
                 error?.let {
                     onFailure(it.message ?: "Please check connection")
                 } ?: run {
-                    val doctorList: MutableList<DoctorVO> = arrayListOf()
+                    val specialities: MutableList<SpecialitiesVO> = arrayListOf()
 
                     val result = value?.documents ?: arrayListOf()
 
@@ -82,38 +98,125 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                         val hashmap = document.data
                         hashmap?.put("id", document.id.toString())
                         val Data = Gson().toJson(hashmap)
-                        val docsData = Gson().fromJson<DoctorVO>(Data, DoctorVO::class.java)
-                        doctorList.add(docsData)
+                        val docsData = Gson().fromJson<SpecialitiesVO>(Data, SpecialitiesVO::class.java)
+                        specialities.add(docsData)
                     }
-                    onSuccess(doctorList)
+                    onSuccess(specialities)
                 }
             }
-
     }
 
-    override fun getPatientList(
-        onSuccess: (patientList: List<PatientVO>) -> Unit,
+
+    override fun getBroadConsultationRequest(
+        onSuccess: (consulationRequest: List<ConsulationRequestVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        db.collection("patients")
-            .addSnapshotListener { value, error ->
-                error?.let {
-                    onFailure(it.message ?: "Please check connection")
-                } ?: run {
-                    val patientList: MutableList<PatientVO> = arrayListOf()
+        TODO("Not yet implemented")
+    }
 
-                    val result = value?.documents ?: arrayListOf()
+    override fun startConsultation(
+        onSuccess: (consulation: List<String>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
 
-                    for (document in result) {
-                        val hashmap = document.data
-                        hashmap?.put("id", document.id)
-                        val Data = Gson().toJson(hashmap)
-                        val docsData = Gson().fromJson<PatientVO>(Data, PatientVO::class.java)
-                        patientList.add(docsData)
-                    }
-                    onSuccess(patientList)
-                }
-            }
+    override fun finishConsultation(
+        onSuccess: (consulation: List<String>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun finishConsultation(onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        TODO("Not yet implemented")
+    }
+
+    override fun preScriptionMedicine(
+        onSuccess: (consulation: List<String>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun sendBroadCastConsultationRequest(
+        speciality: String,
+        questionAnswerVO: GeneralQuestionVO,
+        patientVO: PatientVO,
+        dateTime: String,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun sendDirectRequest(
+        questionAnswerVO: GeneralQuestionVO,
+        patientVO: PatientVO,
+        doctorVO: DoctorVO,
+        dateTime: String,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun checkoutMedicine(onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getRecentlyConsultatedDoctor(
+        onSuccess: (doctor: DoctorVO) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getConsultationChat(
+        onSuccess: (List<ConsulationChatVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getAllCheckMessage(
+        documentId: String,
+        onSuccess: (List<ChatMessageVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun sendMessage(
+        documentId: String,
+        messageVO: ChatMessageVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun acceptRequest(
+        doctor: DoctorVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun preScribeMedicine(
+        medicine: MedicineVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getGeneralQuestion(
+        onSuccess: (List<GeneralQuestionVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        TODO("Not yet implemented")
     }
 
 }
