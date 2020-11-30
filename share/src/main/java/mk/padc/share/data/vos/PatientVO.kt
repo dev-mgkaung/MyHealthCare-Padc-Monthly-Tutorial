@@ -3,18 +3,21 @@ package mk.padc.share.data.vos
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.IgnoreExtraProperties
+import mk.padc.share.utils.patients
 
-@Entity(tableName = "patient")
+@Entity(tableName = patients)
 @IgnoreExtraProperties
 class PatientVO(
     @PrimaryKey
-    var pt_id: String= "",
+    var id: String= "",
+    var device_id: String? = "",
     var name: String = "",
     var email: String = "",
     var photo: String? = "",
-    var age: Int =0,
-    var phone : String? = "",
-    var address: String? ="",
-    var gender: String?= "",
-    var dateOfBirth: String?= ""
+    var blood_type: String? = "",
+    var blood_pressure: String? = "",
+    var dateOfBirth: String?= "",
+    var weight: String? = "",
+    var height: String? = "",
+    var allergic_reactions: String? = ""
 )

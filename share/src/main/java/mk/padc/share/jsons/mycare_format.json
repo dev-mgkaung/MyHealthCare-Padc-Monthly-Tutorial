@@ -4,10 +4,14 @@
       "id": "d0001",
       "name" : "Dr. Mg Mg",
       "photo" : "",
-      "age" : 55,
+      "email" : "doctor@gmail.com",
+      "phone" : "093233232",
+      "device_id" : "2122",
       "degree" : "M.B.B.S",
-      "biography" : "ဦးနှောက်အာရုံကြောအထူးကု",
-      "address" : "Mahar Myaing Hospital"
+      "speciality" : "ဦးနှောက်အာရုံကြောအထူးကု",
+      "biography" : "EEEE",
+      "experience" : "1 years",
+      "address" : "Address"
     }
   ],
   "patients" : [
@@ -15,11 +19,46 @@
       "id" : "p0001",
       "name": "Mg Aye",
       "photo" : "",
-      "age" : 20,
-      "phone" : "0921222222",
+      "dateOfBirth" : "12/22/1922",
       "address" : "Yangon",
-      "gender" : "Male",
-      "dateOfBirth" : "1/2/1996"
+      "email" : "pateint@gmail.com",
+      "device_id" : "32434",
+      "blood_type" : "A",
+      "blood_pressure" : "12",
+      "height" : "5",
+      "weight" : "3",
+      "allergic_reactions" : "Paa",
+      "subCollection": {
+        "patients/0b9f8e00-3176-11eb-977a-57c697311f58/general_question": [
+           {
+            "question": [
+              {
+              "question": "qq",
+              "answer": "ans"
+               },
+              {
+              "answer": "qq",
+              "question": "ans"
+              }
+            ]
+          }
+        ],
+        "patients/0b9f8e00-3176-11eb-977a-57c697311f58/recently_doctor" : [
+         {
+            "address": "",
+            "degree": "",
+            "experience": "",
+            "phone": "0972837277",
+            "photo": "",
+            "biography": "",
+            "id": "d0001",
+            "spiciality": "dentists",
+            "name": "Dr.Mg Ice",
+            "email": "dcotor@gmail.com",
+          }
+        ]
+      }
+    }
     }
   ],
   "consultation_request" : [

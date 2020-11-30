@@ -3,22 +3,14 @@ package mk.padc.share.data.vos
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.IgnoreExtraProperties
+import mk.padc.share.utils.specialities
 
-
-
-@Entity(tableName = "specialites")
+@Entity(tableName = specialities)
 @IgnoreExtraProperties
 class SpecialitiesVO(
     @PrimaryKey
-    var sp_id: String= "",
+    var id: String= "",
     var name: String = "",
-    var photo: String = "",
-    var specialitiesCollectionVO: SpecialitiesCollectionVO
+    var photo: String = ""
 )
 
-@IgnoreExtraProperties
-class SpecialitiesCollectionVO(
-    var specialitiesVO: ArrayList<SpecialitiesVO> = arrayListOf(),
-    var generalQuestionVO: ArrayList<GeneralQuestionVO>  = arrayListOf(),
-    var medicineVO: ArrayList<MedicineVO> = arrayListOf()
-)

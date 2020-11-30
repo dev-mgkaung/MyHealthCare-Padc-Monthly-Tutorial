@@ -2,7 +2,17 @@ package mk.padc.share.utils
 
 const val DATABASE_NAME="MyCare.DB"
 
-// cloud firebase node name
+// cloud firebase  Root node name
 const val patients = "patients"
 const val doctors ="doctors"
+const val specialities ="specialities"
+const val  general_question_template ="general_question_template"
+const val consulation_request ="consulation_request"
+const val consulation_chat = "consulation_chat"
+const val checkout = "checkout"
 
+// cloud firebase sub collection node name
+const val special_questions= "special_questions"
+const val medicine = "medicines"
+const val recent_doctors ="recent_doctors"
+const val general_questions = "general_questions"
