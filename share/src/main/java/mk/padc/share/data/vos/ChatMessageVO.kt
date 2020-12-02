@@ -8,6 +8,7 @@ import mk.padc.share.persistances.converters.SendByConverter
 @IgnoreExtraProperties
 @TypeConverters(SendByConverter::class)
 class ChatMessageVO(
+    var id : String ="",
     var messageText: String= "",
     var messageImage: String ? = "",
     var sendAt: String ? =null,

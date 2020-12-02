@@ -195,6 +195,39 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
        }
     }
 
+    override fun sendMessage(
+        consulationId: String,
+        messageVO: ChatMessageVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+
+        db.collection("$consultation_chat/$consulationId/$chat_message")
+            .document(messageVO.id)
+            .set(messageVO)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
+    }
+
+    override fun preScribeMedicine(
+        consulationId: String,
+        prescriptionVO: PrescriptionVO,
+        routineVO: RoutineVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        val id = UUID.randomUUID().toString()
+        val prescriptionVOMap = hashMapOf(
+            "medicine_name" to prescriptionVO.medicine,
+            "id" to id,
+            "routine" to routineVO)
+
+        db.collection("$consultation_chat/$consulationId/$prescription")
+            .document(id)
+            .set(prescriptionVOMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
+    }
 
     override fun finishConsultation(
         onSuccess: (consulation: List<String>) -> Unit,
@@ -206,15 +239,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     override fun finishConsultation(onSuccess: () -> Unit, onFailure: (String) -> Unit) {
         TODO("Not yet implemented")
     }
-
-    override fun preScriptionMedicine(
-        onSuccess: (consulation: List<String>) -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        TODO("Not yet implemented")
-    }
-
-
 
     override fun sendDirectRequest(
         questionAnswerVO: QuestionAnswerVO,
@@ -252,11 +276,35 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     }
 
 
+
     override fun getConsultationChat(
+        patientId: String,
         onSuccess: (List<ConsultationChatVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        TODO("Not yet implemented")
+        db.collection("$consultation_chat")
+            .whereEqualTo(patient_id,patientId)
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.message ?: "Please check connection")
+                } ?: run {
+                    val list: MutableList<ConsultationChatVO> = arrayListOf()
+
+                    val result = value?.documents ?: arrayListOf()
+
+                    for (document in result) {
+                        val hashmap = document.data
+                        hashmap?.put("id", document.id.toString())
+                        val Data = Gson().toJson(hashmap)
+                        val docsData = Gson().fromJson<ConsultationChatVO>(Data, ConsultationChatVO::class.java)
+                        list.add(docsData)
+                    }
+                    onSuccess(list)
+                }
+            }
+
+        // get chat Message
+        // get prescription
     }
 
 
@@ -268,14 +316,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         TODO("Not yet implemented")
     }
 
-    override fun sendMessage(
-        documentId: String,
-        messageVO: ChatMessageVO,
-        onSuccess: () -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        TODO("Not yet implemented")
-    }
+
 
     override fun acceptRequest(
         doctor: DoctorVO,
@@ -285,13 +326,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         TODO("Not yet implemented")
     }
 
-    override fun preScribeMedicine(
-        medicine: MedicineVO,
-        onSuccess: () -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        TODO("Not yet implemented")
-    }
+
 
     override fun getGeneralQuestion(
         onSuccess: (List<QuestionAnswerVO>) -> Unit,

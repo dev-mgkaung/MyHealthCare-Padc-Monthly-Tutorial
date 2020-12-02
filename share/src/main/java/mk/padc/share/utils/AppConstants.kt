@@ -23,3 +23,4 @@ const val prescription = "prescription"
 // type name
 const val oneTime ="oneTime"
 const val always = "always"
+const val patient_id= "patient_id"

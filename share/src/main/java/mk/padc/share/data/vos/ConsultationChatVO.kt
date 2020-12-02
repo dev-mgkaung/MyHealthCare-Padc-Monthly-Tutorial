@@ -15,6 +15,7 @@ import mk.padc.share.utils.consultation_chat
 class ConsultationChatVO(
     @PrimaryKey
     var id: String= "",
+    var patient_id : String,
     var patient_info : PatientVO ? =null ,
     var doctor_info : DoctorVO ? = null,
     var case_summary : ArrayList<QuestionAnswerVO>? = arrayListOf()
