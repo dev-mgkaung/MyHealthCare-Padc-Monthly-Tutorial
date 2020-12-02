@@ -17,5 +17,5 @@ class ConsultationChatVO(
     var id: String= "",
     var patient_info : PatientVO ? =null ,
     var doctor_info : DoctorVO ? = null,
-    var case_summary : ArrayList<GeneralQuestionVO>? = arrayListOf()
+    var case_summary : ArrayList<QuestionAnswerVO>? = arrayListOf()
 )

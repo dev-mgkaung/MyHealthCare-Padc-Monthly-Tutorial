@@ -9,9 +9,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import mk.padc.share.data.vos.*
-import mk.padc.share.utils.doctors
-import mk.padc.share.utils.patients
-import mk.padc.share.utils.specialities
+import mk.padc.share.utils.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -100,26 +98,54 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 onSuccess(specialities)
             }
 
-//        db.collection(specialities)
-//            .addSnapshotListener { value, error ->
-//                error?.let {
-//                    onFailure(it.message ?: "Please check connection")
-//                } ?: run {
-//                    val specialities: MutableList<SpecialitiesVO> = arrayListOf()
-//
-//                    val result = value?.documents ?: arrayListOf()
-//
-//                    for (document in result) {
-//                        val hashmap = document.data
-//                        hashmap?.put("id", document.id.toString())
-//                        val Data = Gson().toJson(hashmap)
-//                        val docsData = Gson().fromJson<SpecialitiesVO>(Data, SpecialitiesVO::class.java)
-//                        specialities.add(docsData)
-//                    }
-//                    onSuccess(specialities)
-//                }
-//            }
+    }
 
+    override fun getSpecialQuestionsBySpeciality(
+        speciality: String,
+        onSuccess: (specialQuestionList: List<SpecialQuestionVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+            db.collection("$specialities/$speciality/$special_questions")
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.message ?: "Please check connection")
+                } ?: run {
+                    val specialQuestionList: MutableList<SpecialQuestionVO> = arrayListOf()
+
+                    val result = value?.documents ?: arrayListOf()
+
+                    for (document in result) {
+                        val hashmap = document.data
+                        hashmap?.put("id", document.id.toString())
+                        val Data = Gson().toJson(hashmap)
+                        val docsData = Gson().fromJson<SpecialQuestionVO>(Data, SpecialQuestionVO::class.java)
+                        specialQuestionList.add(docsData)
+                    }
+                    onSuccess(specialQuestionList)
+                }
+            }
+    }
+
+    override fun sendBroadCastConsultationRequest(
+        speciality: String,
+        questionAnswerList: List<QuestionAnswerVO>,
+        patientVO: PatientVO,
+        dateTime: String,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        val id = UUID.randomUUID().toString()
+        val consultationRequestMap = hashMapOf(
+            "case_summary" to questionAnswerList,
+            "id" to id,
+            "patient_info" to patientVO,
+            "speciality" to speciality)
+
+        db.collection(consultation_request)
+            .document(id)
+            .set(consultationRequestMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
 
     }
 
@@ -132,11 +158,43 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     }
 
     override fun startConsultation(
-        onSuccess: (consulation: List<String>) -> Unit,
+        dateTime: String,
+        questionAnswerList: List<QuestionAnswerVO>,
+        patientVO: PatientVO,
+        doctorVO: DoctorVO,
+        onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        TODO("Not yet implemented")
+        val id = UUID.randomUUID().toString()
+
+        val consultationChatMap = hashMapOf(
+            "case_summary" to questionAnswerList,
+            "id" to id,
+            "patient_info" to patientVO,
+            "doctor_info" to doctorVO)
+
+        db.collection(consultation_chat)
+            .document(id)
+            .set(consultationChatMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
+
+
+        db.collection("$patients/${patientVO.id}/$recent_doctors")
+            .document(doctorVO.id)
+            .set(doctorVO)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
+
+       for(item in questionAnswerList) {
+           db.collection("$patients/${patientVO.id}/$general_questions")
+               .document(item.id)
+               .set(item)
+               .addOnSuccessListener { Log.d("Success", "Successfully ") }
+               .addOnFailureListener { Log.d("Failure", "Failed") }
+       }
     }
+
 
     override fun finishConsultation(
         onSuccess: (consulation: List<String>) -> Unit,
@@ -156,19 +214,10 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         TODO("Not yet implemented")
     }
 
-    override fun sendBroadCastConsultationRequest(
-        speciality: String,
-        questionAnswerVO: GeneralQuestionVO,
-        patientVO: PatientVO,
-        dateTime: String,
-        onSuccess: () -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        TODO("Not yet implemented")
-    }
+
 
     override fun sendDirectRequest(
-        questionAnswerVO: GeneralQuestionVO,
+        questionAnswerVO: QuestionAnswerVO,
         patientVO: PatientVO,
         doctorVO: DoctorVO,
         dateTime: String,
@@ -183,11 +232,25 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     }
 
     override fun getRecentlyConsultatedDoctor(
-        onSuccess: (doctor: DoctorVO) -> Unit,
+        patientId: String,
+        onSuccess: (doctorList: List<DoctorVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        TODO("Not yet implemented")
+        db.collection("$patients/$patientId/$recent_doctors")
+            .get()
+            .addOnSuccessListener { result ->
+                val doctorList: MutableList<DoctorVO> = arrayListOf()
+                for (document in result) {
+                    val hashmap = document.data
+                    hashmap?.put("id", document.id.toString())
+                    val Data = Gson().toJson(hashmap)
+                    val docsData = Gson().fromJson<DoctorVO>(Data, DoctorVO::class.java)
+                    doctorList.add(docsData)
+                }
+                onSuccess(doctorList)
+            }
     }
+
 
     override fun getConsultationChat(
         onSuccess: (List<ConsultationChatVO>) -> Unit,
@@ -231,7 +294,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     }
 
     override fun getGeneralQuestion(
-        onSuccess: (List<GeneralQuestionVO>) -> Unit,
+        onSuccess: (List<QuestionAnswerVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
         TODO("Not yet implemented")

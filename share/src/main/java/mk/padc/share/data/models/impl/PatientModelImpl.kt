@@ -1,9 +1,12 @@
 package mk.padc.share.data.models.impl
 
+import androidx.lifecycle.LiveData
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.MyCareModelImpl.mFirebaseApi
 import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.data.vos.QuestionAnswerVO
+import mk.padc.share.data.vos.SpecialQuestionVO
 import mk.padc.share.data.vos.SpecialitiesVO
 import mk.padc.share.networks.ColudFirebaseDatabaseApiImpl
 import mk.padc.share.networks.FirebaseApi
@@ -26,11 +29,42 @@ object PatientModelImpl : PatientModel, BaseModel() {
 
     }
 
-    override fun getSpecialitiesFromDB(
-        onSuccess: (List<SpecialitiesVO>) -> Unit,
+    override fun getSpecialitiesFromDB(): LiveData<List<SpecialitiesVO>> {
+          return mTheDB.specialityDao().getAllSpecialitiesData()
+    }
+
+    override fun getSpecialQuestionBySpeciality(
+        speciality: String,
+        onSuccess: (List<SpecialQuestionVO>) -> Unit,
         onError: (String) -> Unit
     ) {
-          mTheDB.specialityDao().getAllSpecialitiesData()
+        mFirebaseApi.getSpecialQuestionsBySpeciality(speciality,
+            onSuccess = {
+            mTheDB.specialQuestionDao().deleteSpecialQuestions()
+            mTheDB.specialQuestionDao().insertSpecialQuestions(it)
+        }, onFailure =
+        { onError(it) })
+    }
+
+    override fun getSpecialQuestionBySpecialityFromDB() : LiveData<List<SpecialQuestionVO>> {
+        return mTheDB.specialQuestionDao().getAllSpecialQuestionsData()
+    }
+
+    override fun sendBroadCastConsultationRequest(
+        speciality: String,
+        questionAnswerList: List<QuestionAnswerVO>,
+        patientVO: PatientVO,
+        dateTime: String,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mFirebaseApi.sendBroadCastConsultationRequest(speciality,
+            questionAnswerList,
+            patientVO,
+            dateTime,
+            onSuccess = {
+                // send Notification
+            }, onFailure = { onFailure(it) })
     }
 
     override fun saveNewPatientRecord(

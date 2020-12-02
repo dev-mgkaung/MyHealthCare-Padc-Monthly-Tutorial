@@ -27,6 +27,20 @@ interface FirebaseApi {
         onFailure: (String) -> Unit
     )
 
+    
+    fun getSpecialQuestionsBySpeciality(
+        speciality : String,
+        onSuccess: (specialQuestionList : List<SpecialQuestionVO>) -> Unit,
+        onFailure: (String) -> Unit
+    )
+
+    fun sendBroadCastConsultationRequest(
+        speciality:String,
+        questionAnswerList: List<QuestionAnswerVO>,
+        patientVO: PatientVO,
+        dateTime : String,
+        onSuccess: () -> Unit, onFailure: (String) -> Unit)
+
     fun getBroadConsultationRequest(
         onSuccess: (consulationRequest : List<ConsultationRequestVO>) -> Unit,
         onFailure: (String) -> Unit
@@ -34,9 +48,14 @@ interface FirebaseApi {
 
 
     fun startConsultation(
-        onSuccess: (consulation : List<String>) -> Unit,
+        dateTime: String,
+        questionAnswerList: List<QuestionAnswerVO>,
+        patientVO: PatientVO,
+        doctorVO: DoctorVO,
+        onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     )
+
 
     fun finishConsultation(
         onSuccess: (consulation : List<String>) -> Unit,
@@ -49,15 +68,8 @@ interface FirebaseApi {
     )
 
 
-    fun sendBroadCastConsultationRequest(
-        speciality:String,
-        questionAnswerVO: GeneralQuestionVO,
-        patientVO: PatientVO,
-        dateTime : String,
-        onSuccess: () -> Unit, onFailure: (String) -> Unit)
-
     fun sendDirectRequest(
-        questionAnswerVO: GeneralQuestionVO,
+        questionAnswerVO: QuestionAnswerVO,
         patientVO: PatientVO,
         doctorVO: DoctorVO,
         dateTime: String,
@@ -66,7 +78,7 @@ interface FirebaseApi {
 
     fun checkoutMedicine(onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
-    fun getRecentlyConsultatedDoctor(onSuccess: (doctor:DoctorVO) -> Unit,onFailure: (String) -> Unit)
+    fun getRecentlyConsultatedDoctor(patientId : String, onSuccess: (doctorList : List<DoctorVO>) -> Unit,onFailure: (String) -> Unit)
 
     fun getConsultationChat(onSuccess: (List<ConsultationChatVO>) -> Unit,onFailure: (String) -> Unit)
 
@@ -83,6 +95,6 @@ interface FirebaseApi {
 
     fun preScribeMedicine(medicine:MedicineVO,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
-    fun getGeneralQuestion(onSuccess: (List<GeneralQuestionVO>) -> Unit,onFailure: (String) -> Unit)
+    fun getGeneralQuestion(onSuccess: (List<QuestionAnswerVO>) -> Unit, onFailure: (String) -> Unit)
 
 }

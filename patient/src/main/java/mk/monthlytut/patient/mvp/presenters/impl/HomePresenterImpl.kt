@@ -2,7 +2,7 @@ package mk.monthlytut.patient.mvp.presenters.impl
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
-import io.reactivex.Observer
+import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.presenters.HomePresenter
 import mk.monthlytut.patient.mvp.views.HomeView
 import mk.padc.share.data.models.PatientModel
@@ -28,10 +28,9 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
         patientModel.getSpecialities(onSuccess = {}, onError = {})
 
-//        patientModel.getSpecialitiesFromDB(onError = {})
-//            .observe(owner, Observer {
-//                mView?.displaySpecialityList(it)
-//            })
-
+        patientModel.getSpecialitiesFromDB()
+            .observe(owner, Observer {
+                mView?.displaySpecialityList(it)
+            })
     }
 }

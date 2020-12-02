@@ -15,6 +15,11 @@ const val checkout = "checkout"
 const val special_questions= "special_questions"
 const val medicine = "medicines"
 const val recent_doctors ="recent_doctors"
-const val general_questions = "general_questions"
+const val general_questions ="general_questions"
+const val question_answer = "question_answer"
 const val chat_message = "chat_message"
 const val prescription = "prescription"
+
+// type name
+const val oneTime ="oneTime"
+const val always = "always"
