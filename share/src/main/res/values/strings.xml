@@ -4,6 +4,8 @@
     <string name="speciality">အမျိုးအစား</string>
     <string name="consultation">ချိန်းဆိုမှုများ</string>
     <string name="account">အကောင့်</string>
+    <string name="sure">သေချာပါသည်</string>
+    <string name="cancel">မလုပ်တော့ပါ</string>
     <string name="consultation_confirm">ဆွေးနွေးမှုအတည်ပြုချက်</string>
     <string name="consultation_request_message">ဆိုင်ရာ ဆရာဝန် နှင့် တိုင်ပင်ဆွေးနွေးရန်  Consultation Request ပြုလုပ်မှာသေချာပါသလား?</string>
     <string name="recent_consultation">မကြာသေးခင်ကဆွေးနွေးမှုများ</string>
