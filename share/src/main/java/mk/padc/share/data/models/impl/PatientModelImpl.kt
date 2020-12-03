@@ -78,7 +78,7 @@ object PatientModelImpl : PatientModel, BaseModel() {
             patientVO,
             dateTime,
             onSuccess = {
-                // send Notification
+
             }, onFailure = { onFailure(it) })
     }
 
