@@ -79,4 +79,6 @@
     <string name="degree">ရရှိထားသောဘွဲ့များ</string>
     <string name="biography">ကိုယ်ရေးရာဇဝင်</string>
     <string name="question">မေးခွန်းများ</string>
+    <string name="checkout">ငွေပေးချေမှုအတည်ပြုပြီးနောက်နေ့တစ်ရက်မှစပြီး ဆေးများကိုလိုက်လန်ပို့ဆောင်ပေးမည်</string>
+    <string name="address_title">လိပ်စာ</string>
 </resources>
