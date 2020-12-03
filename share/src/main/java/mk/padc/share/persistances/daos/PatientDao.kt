@@ -27,4 +27,6 @@ interface PatientDao {
     @Query("DELETE FROM patients")
     fun deleteAllPatientData()
 
+    @Query("DELETE FROM patients WHERE id = :id")
+    fun deletePatientById(id: String)
 }

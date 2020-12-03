@@ -1,9 +1,9 @@
 package mk.padc.share.data.models.impl
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.PatientModel
-import mk.padc.share.data.models.impl.MyCareModelImpl.mFirebaseApi
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.data.vos.SpecialQuestionVO
@@ -16,6 +16,22 @@ object PatientModelImpl : PatientModel, BaseModel() {
 
     override var mFirebaseApi: FirebaseApi = ColudFirebaseDatabaseApiImpl
 
+    override fun uploadPhotoToFirebaseStorage(image: Bitmap, onSuccess: (photoUrl : String) -> Unit, onFailure: (String) -> Unit) {
+        mFirebaseApi.uploadPhotoToFirebaseStorage(image ,onSuccess,onFailure)
+    }
+
+    override fun registerNewPatient(
+        patientVO: PatientVO,
+        onSuccess: (patientVO: PatientVO) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+
+        mFirebaseApi.registerNewPatient(
+            patientVO,
+            onSuccess = {},
+            onFailure = { onFailure(it) })
+    }
+
     override fun getSpecialities(
         onSuccess: (List<SpecialitiesVO>) -> Unit,
         onError: (String) -> Unit
@@ -24,8 +40,7 @@ object PatientModelImpl : PatientModel, BaseModel() {
         mFirebaseApi.getSpecialities(onSuccess = {
             mTheDB.specialityDao().deleteSpecialities()
             mTheDB.specialityDao().insertSpecialities(it)
-        }, onFailure =
-        { onError(it) })
+        }, onFailure = { onError(it) })
 
     }
 
@@ -66,15 +81,5 @@ object PatientModelImpl : PatientModel, BaseModel() {
                 // send Notification
             }, onFailure = { onFailure(it) })
     }
-
-    override fun saveNewPatientRecord(
-        patientVO: PatientVO,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit
-    ) {
-        mTheDB.patientDao().insertNewPatient(patientVO)
-    }
-
-
 
 }

@@ -8,17 +8,13 @@ interface FirebaseApi {
 
     fun uploadPhotoToFirebaseStorage(image : Bitmap, onSuccess: (photoUrl : String) -> Unit, onFailure: (String) -> Unit)
 
-    fun addOrUpdatePatientData(patientVO: PatientVO,onSuccess: () -> Unit, onFailure: (String) -> Unit)
-
-    fun addOrUpdateDoctorData(doctorVO: DoctorVO,onSuccess: () -> Unit, onFailure: (String) -> Unit)
-
     fun registerNewDoctor(doctorVO: DoctorVO,
-        onSuccess: (doctorList: List<DoctorVO>) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     )
 
     fun registerNewPatient(patientVO: PatientVO,
-        onSuccess: (patientList: List<PatientVO>) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     )
 

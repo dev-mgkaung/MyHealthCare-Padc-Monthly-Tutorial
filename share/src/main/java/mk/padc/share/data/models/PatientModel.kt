@@ -1,5 +1,6 @@
 package mk.padc.share.data.models
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
@@ -11,11 +12,9 @@ interface PatientModel
 {
     var mFirebaseApi : FirebaseApi
 
-    fun saveNewPatientRecord(
-        patientVO: PatientVO,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit
-    )
+    fun uploadPhotoToFirebaseStorage(image : Bitmap, onSuccess: (photoUrl : String) -> Unit, onFailure: (String) -> Unit)
+
+    fun registerNewPatient(patientVO: PatientVO ,onSuccess: (patientVO: PatientVO) -> Unit, onFailure: (String) -> Unit)
 
     fun getSpecialities(
         onSuccess: (List<SpecialitiesVO>) -> Unit,

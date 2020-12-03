@@ -1,5 +1,6 @@
 package mk.padc.share.data.models.impl
 
+import android.graphics.Bitmap
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.vos.DoctorVO
@@ -11,12 +12,24 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
 
     override var mFirebaseApi: FirebaseApi = ColudFirebaseDatabaseApiImpl
 
-    override fun saveNewDoctorRecord(
+    override fun uploadPhotoToFirebaseStorage(
+        image: Bitmap,
+        onSuccess: (photoUrl: String) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+       mFirebaseApi.uploadPhotoToFirebaseStorage(image ,onSuccess,onFailure)
+      }
+
+    override fun registerNewDoctor(
         doctorVO: DoctorVO,
         onSuccess: () -> Unit,
-        onError: (String) -> Unit
+        onFailure: (String) -> Unit
     ) {
-
+        PatientModelImpl.mFirebaseApi.registerNewDoctor(
+            doctorVO,
+            onSuccess = {},
+            onFailure = { onFailure(it) })
     }
+
 
 }

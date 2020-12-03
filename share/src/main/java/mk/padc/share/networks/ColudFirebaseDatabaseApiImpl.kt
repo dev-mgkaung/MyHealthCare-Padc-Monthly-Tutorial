@@ -37,7 +37,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             Log.d(ContentValues.TAG, "User profile updated.")
         }
 
-
         val urlTask = uploadTask.continueWithTask {
             return@continueWithTask imageRef.downloadUrl
         }.addOnCompleteListener { task ->
@@ -46,37 +45,29 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         }
     }
 
-    override fun addOrUpdatePatientData(patientVO: PatientVO,onSuccess: () -> Unit, onFailure: (String) -> Unit) {
-        db.collection(patients)
-            .document(patientVO?.email.toString())
-            .set(patientVO)
-            .addOnSuccessListener { Log.d("Success", "Successfully") }
-            .addOnFailureListener { Log.d("Failure", "Failed ") }
-
-    }
-
-    override fun addOrUpdateDoctorData(doctorVO: DoctorVO,onSuccess: () -> Unit, onFailure: (String) -> Unit) {
-        db.collection(doctors)
-            .document(doctorVO?.email.toString())
-            .set(doctorVO)
-            .addOnSuccessListener { Log.d("Success", "Successfully") }
-            .addOnFailureListener { Log.d("Failure", "Failed") }
-    }
 
     override fun registerNewDoctor(
         doctorVO: DoctorVO,
-        onSuccess: (doctorList: List<DoctorVO>) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        TODO("Not yet implemented")
+        db.collection(doctors)
+                .document(doctorVO.id)
+                .set(doctorVO)
+                .addOnSuccessListener { Log.d("Success", "Successfully") }
+                .addOnFailureListener { Log.d("Failure", "Failed ") }
     }
 
     override fun registerNewPatient(
         patientVO: PatientVO,
-        onSuccess: (patientList: List<PatientVO>) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        TODO("Not yet implemented")
+        db.collection(patients)
+                .document(patientVO.id)
+                .set(patientVO)
+                .addOnSuccessListener { Log.d("Success", "Successfully") }
+                .addOnFailureListener { Log.d("Failure", "Failed ") }
     }
 
     override fun getSpecialities(

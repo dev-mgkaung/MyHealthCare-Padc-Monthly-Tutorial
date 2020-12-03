@@ -4,8 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.IgnoreExtraProperties
 import mk.padc.share.utils.general_questions
+import mk.padc.share.utils.question_answer
 
-@Entity(tableName = general_questions)
+@Entity(tableName = question_answer)
 @IgnoreExtraProperties
 class QuestionAnswerVO(
     @PrimaryKey
