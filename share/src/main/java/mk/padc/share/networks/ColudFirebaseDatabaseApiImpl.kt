@@ -74,7 +74,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onSuccess: (specialities: List<SpecialitiesVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        Log.d("data=","fff")
+
         db.collection(specialities)
             .get()
             .addOnSuccessListener { result ->
@@ -86,7 +86,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                     val docsData = Gson().fromJson<SpecialitiesVO>(Data, SpecialitiesVO::class.java)
                     list.add(docsData)
                 }
-                Log.d("data=",list.size.toString())
                 onSuccess(list)
             }
 
