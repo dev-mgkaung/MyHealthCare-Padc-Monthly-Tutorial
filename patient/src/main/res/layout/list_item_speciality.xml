@@ -22,15 +22,14 @@
             android:scaleType="fitXY"
             android:layout_margin="5dp"
             android:padding="@dimen/margin_card_medium"/>
-        <TextView
+        <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textStyle="bold"
             android:maxLines="2"
             android:text="Dental Specialist"
             android:id="@+id/txt_specialityname"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_heading_2x"/>
+            android:textSize="@dimen/text_small"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

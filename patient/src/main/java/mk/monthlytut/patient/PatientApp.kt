@@ -1,12 +1,13 @@
 package mk.monthlytut.patient
 
 import android.app.Application
-import mk.padc.share.persistances.MyCareDatabase
+import mk.padc.share.data.models.impl.PatientModelImpl
+
 
 class PatientApp  : Application()
 {
     override fun onCreate() {
         super.onCreate()
-        MyCareDatabase.getDBInstance(applicationContext)
+        PatientModelImpl.initDatabase(applicationContext)
     }
 }

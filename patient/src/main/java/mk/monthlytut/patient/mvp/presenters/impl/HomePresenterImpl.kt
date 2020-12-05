@@ -16,11 +16,11 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     private val patientModel : PatientModel = PatientModelImpl
 
     override fun onTapSpeciality(context: Context, specialitiesVO: SpecialitiesVO) {
-        TODO("Not yet implemented")
+
     }
 
     override fun navigateToNextScreen() {
-        TODO("Not yet implemented")
+
     }
 
 
@@ -34,7 +34,5 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
             })
     }
 
-    override fun onTap() {
-        TODO("Not yet implemented")
-    }
+    override fun onTap() {}
 }

@@ -61,26 +61,24 @@ class HomeFragment : BaseFragment() , HomeView {
     private fun setUpRecyclerView()
     {
 
-     rc_recent_doctor.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+      rc_recent_doctor.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+      mRecentDoctorAdapter = RecentDoctorAdapter (mPresenter)
+      rc_recent_doctor.adapter = mRecentDoctorAdapter
 
-     mRecentDoctorAdapter = RecentDoctorAdapter (mPresenter)
-     rc_recent_doctor.adapter = mRecentDoctorAdapter
-
-     rc_speciality.layoutManager = GridLayoutManager(activity ,2)
+      rc_speciality.layoutManager = GridLayoutManager(activity ,2)
       mSpecialityAdapter = SpecialityAdapter(mPresenter  )
-     rc_speciality.adapter = mSpecialityAdapter
+      rc_speciality.adapter = mSpecialityAdapter
 
     }
     override fun displayConsultationRequest(consultationRequestVO: ConsultationRequestVO) {
-
     }
 
     override fun displayRecentDoctorList(list: List<DoctorVO>) {
-
+        mRecentDoctorAdapter.setNewData(list.toMutableList())
     }
 
     override fun displaySpecialityList(list: List<SpecialitiesVO>) {
-
+        mSpecialityAdapter.setNewData(list.toMutableList())
     }
 
 }

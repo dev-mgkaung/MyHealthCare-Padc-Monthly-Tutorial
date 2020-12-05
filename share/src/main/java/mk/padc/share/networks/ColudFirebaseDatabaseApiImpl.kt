@@ -74,19 +74,20 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onSuccess: (specialities: List<SpecialitiesVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-
+        Log.d("data=","fff")
         db.collection(specialities)
             .get()
             .addOnSuccessListener { result ->
-                val specialities: MutableList<SpecialitiesVO> = arrayListOf()
+                val list: MutableList<SpecialitiesVO> = arrayListOf()
                 for (document in result) {
                     val hashmap = document.data
                     hashmap?.put("id", document.id.toString())
                     val Data = Gson().toJson(hashmap)
                     val docsData = Gson().fromJson<SpecialitiesVO>(Data, SpecialitiesVO::class.java)
-                    specialities.add(docsData)
+                    list.add(docsData)
                 }
-                onSuccess(specialities)
+                Log.d("data=",list.size.toString())
+                onSuccess(list)
             }
 
     }

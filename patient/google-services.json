@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:831300482793:android:73445c2eea01238baea278",
+        "android_client_info": {
+          "package_name": "mk.monthlytut.doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831300482793-t070nse97pferouosl784lrg9npi9pif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mk.monthlytut.doctor",
+            "certificate_hash": "7c948b9cc80e9304f9622b7e2b7ab9071d6bcc95"
+          }
+        },
+        {
+          "client_id": "831300482793-v3out0e7v7jjoro1fu6ggunf56j45tsp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE0oTlSueBDEutqrXp6PhePbMg4hNYNEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831300482793-v3out0e7v7jjoro1fu6ggunf56j45tsp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:831300482793:android:fe9dc125628a8e53aea278",
         "android_client_info": {
           "package_name": "mk.monthlytut.patient"
