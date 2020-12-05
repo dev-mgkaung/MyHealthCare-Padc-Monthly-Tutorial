@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import mk.monthlytut.patient.R
+import mk.padc.share.activities.BaseFragment
 
 
-class ConsultationFragment : Fragment() {
+class ConsultationFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

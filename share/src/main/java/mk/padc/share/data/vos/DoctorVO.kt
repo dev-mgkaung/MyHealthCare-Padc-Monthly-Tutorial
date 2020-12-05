@@ -16,6 +16,7 @@ class DoctorVO(
     var phone: String ?= "",
     var photo: String? = "",
     var speciality: String ?= "",
+    var specialityname : String ?= "",
     var degree : String? = "",
     var biography: String?= ""
 )

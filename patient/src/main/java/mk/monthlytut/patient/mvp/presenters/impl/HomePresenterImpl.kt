@@ -33,4 +33,8 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 mView?.displaySpecialityList(it)
             })
     }
+
+    override fun onTap() {
+        TODO("Not yet implemented")
+    }
 }
