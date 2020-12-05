@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mk.monthlytut.patient.views.ConsultationRequestViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="@dimen/card_cornor_radius"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/card_evaluation"
+    android:layout_margin="@dimen/margin_small"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/margin_small"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+       <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue_A700"
+        android:layout_margin="@dimen/margin_card_medium"
+        android:textSize="@dimen/text_regular_1x"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:text="@string/consultation_message"/>
+        <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/margin_small"
+            android:textSize="@dimen/text_regular"
+            android:text="@string/consultation_request_message"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:layout_margin="@dimen/margin_small"
+                android:src="@drawable/ic_launcher"
+                android:id="@+id/img_userprofile"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_margin="@dimen/margin_small"
+                    android:id="@+id/txt_doctorname"
+                    android:textSize="@dimen/text_regular_1x"
+                    android:text="Dr . Mg Mg Win"/>
+                  <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_margin="@dimen/margin_small"
+                    android:id="@+id/txt_specialityname"
+                    android:textSize="@dimen/text_regular_1x"
+                    android:text="အရေပြားနှင့် အလှပရေးရာ"/>
+            </LinearLayout>
+        </LinearLayout>
+        <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/margin_small"
+            android:textSize="@dimen/text_regular"
+            android:text="@string/dummy_text_consulation_request"/>
+
+        <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:textColor="@color/blue_A700"
+            android:layout_margin="@dimen/margin_card_medium"
+            android:textSize="@dimen/text_regular_1x"
+            android:text="@string/start_consultation"/>
+    </LinearLayout>
+
+</mk.monthlytut.patient.views.ConsultationRequestViewPod>

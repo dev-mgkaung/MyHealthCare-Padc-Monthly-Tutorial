@@ -238,7 +238,8 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             }
     }
 
-    override fun finishConsultation(consulationChatId: String, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+    override fun finishConsultation(consulationChatId: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)
+    {
 
         //update consultation status
 

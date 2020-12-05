@@ -31,6 +31,7 @@ ext {
     navigationVersion = "2.3.0"
     exoplayerVersion="2.11.5"
     firebaseBomVersion= "25.12.0"
+    mmDetectVersion = "1.02"
 
     libraries = [
             ktx                     : "androidx.core:core-ktx:$ktxVersion",
@@ -88,6 +89,7 @@ ext {
             firebaseMessageKtx      : "com.google.firebase:firebase-messaging-ktx",
             firebaseCrashlyticsKtx  : "com.google.firebase:firebase-crashlytics",
             firebaseDeepLinkKtx     : "com.google.firebase:firebase-dynamic-links-ktx",
+            mmdetect                : "com.github.mgkaung692018:myanmar_font_detect:$mmDetectVersion"
 
     ]
 }

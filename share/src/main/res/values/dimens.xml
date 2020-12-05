@@ -1,6 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-
+    <dimen name="card_evaluation">6dp</dimen>
+    <dimen name="card_cornor_radius">5dp</dimen>
     <!-- Generic with ratio -->
     <dimen name="margin_small">4dp</dimen>
     <dimen name="margin_card_medium">6dp</dimen>
@@ -24,7 +25,8 @@
     <dimen name="text_smaller">10sp</dimen>
     <dimen name="text_small">12sp</dimen>
     <dimen name="text_regular">14sp</dimen>
-    <dimen name="text_regular_2x">16sp</dimen>
+    <dimen name="text_regular_1x">16sp</dimen>
+    <dimen name="text_regular_2x">18sp</dimen>
     <dimen name="text_regular_3x">20sp</dimen>
     <dimen name="text_heading_1x">24sp</dimen>
     <dimen name="text_heading_2x">32sp</dimen>

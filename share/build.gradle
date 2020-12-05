@@ -45,11 +45,14 @@ dependencies {
 
     //GSON
     implementation rootProject.ext.libraries.gson
+    //MM Detect
+    implementation rootProject.ext.libraries.mmdetect
 
     //Retrofit
     implementation rootProject.ext.libraries.retrofit
     implementation rootProject.ext.libraries.retrofit_converter
     implementation rootProject.ext.libraries.retrofit_adpter
+
 
     //OKHttp
     implementation rootProject.ext.libraries.okhttp

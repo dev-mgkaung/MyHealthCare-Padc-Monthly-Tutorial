@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:elevation="@dimen/margin_card_medium"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    app:cardCornerRadius="@dimen/card_cornor_radius"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/card_evaluation"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/img_doctor_profile"
+            android:src="@drawable/ic_launcher"
+            android:scaleType="fitXY"
+            android:padding="@dimen/margin_card_medium"/>
+        <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_margin="@dimen/margin_small"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:id="@+id/txt_doctorname"
+            android:textSize="@dimen/text_small"
+            android:text="Dr . Mg Mg Win"/>
+        <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_margin="@dimen/margin_small"
+            android:textSize="@dimen/text_small"
+            android:maxLines="2"
+            android:id="@+id/txt_specialityname"
+            android:ellipsize="end"
+            android:text="အရေပြားနှင့် အလှပရေးရာ"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
