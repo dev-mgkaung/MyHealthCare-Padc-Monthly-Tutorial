@@ -7,8 +7,8 @@ class RoutineVO(
     var id: String= "",
     var amount: String? = "",
     var days: String ?="",
-    var note: String? = "",
+    var comment: String? = "",
     var repeat: String ?="",
     var quantity: String? = "",
-    var time: String ?="",
+    var times: String ?="",
 )

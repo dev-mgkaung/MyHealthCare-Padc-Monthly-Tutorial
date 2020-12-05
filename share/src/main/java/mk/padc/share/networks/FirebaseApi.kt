@@ -38,7 +38,8 @@ interface FirebaseApi {
         onSuccess: () -> Unit, onFailure: (String) -> Unit)
 
     fun getBroadConsultationRequest(
-        onSuccess: (consulationRequest : List<ConsultationRequestVO>) -> Unit,
+        consulation_request_id : String,
+        onSuccess: (consulationRequest : ConsultationRequestVO) -> Unit,
         onFailure: (String) -> Unit
     )
 
@@ -52,13 +53,6 @@ interface FirebaseApi {
         onFailure: (String) -> Unit
     )
 
-
-    fun finishConsultation(
-        onSuccess: (consulation : List<String>) -> Unit,
-        onFailure: (String) -> Unit
-    )
-
-
     fun sendDirectRequest(
         questionAnswerVO: QuestionAnswerVO,
         patientVO: PatientVO,
@@ -67,13 +61,18 @@ interface FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit)
 
-    fun checkoutMedicine(onSuccess: () -> Unit,onFailure: (String) -> Unit)
+    fun checkoutMedicine(prescriptionList : List<PrescriptionVO>,deliveryAddressVO: DeliveryAddressVO,
+                         doctorVO: DoctorVO, patientVO: PatientVO , total_price : Int,
+                         onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
     fun getRecentlyConsultatedDoctor(patientId : String, onSuccess: (doctorList : List<DoctorVO>) -> Unit,onFailure: (String) -> Unit)
 
     fun getConsultationChat( patientId: String , onSuccess: (List<ConsultationChatVO>) -> Unit,onFailure: (String) -> Unit)
 
-    fun getAllCheckMessage(documentId: String,onSuccess: (List<ChatMessageVO>) -> Unit,onFailure: (String) -> Unit)
+    fun getAllChatMessage(consulationId: String ,onSuccess: (List<ChatMessageVO>) -> Unit,onFailure: (String) -> Unit)
+
+    fun getPrescription(consulationId: String ,onSuccess: (List<PrescriptionVO>) -> Unit,onFailure: (String) -> Unit)
+
 
     fun sendMessage(consulationChatId: String, messageVO: ChatMessageVO,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
@@ -82,10 +81,11 @@ interface FirebaseApi {
                       onSuccess: () -> Unit,
                       onFailure: (String) -> Unit)
 
-    fun finishConsultation(onSuccess: () -> Unit,onFailure: (String) -> Unit)
+    fun finishConsultation(consulationChatId: String, onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
-    fun preScribeMedicine(consulationId : String, prescriptionVO: PrescriptionVO , routineVO: RoutineVO,onSuccess: () -> Unit,onFailure: (String) -> Unit)
+    fun preScribeMedicine(consulationId : String, prescriptionVO: PrescriptionVO ,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
-    fun getGeneralQuestion(onSuccess: (List<QuestionAnswerVO>) -> Unit, onFailure: (String) -> Unit)
+    fun getGeneralQuestion(onSuccess: (List<GeneralQuestionTemplateVO>) -> Unit, onFailure: (String) -> Unit)
 
+    fun getAllMedicine(speciality: String ,onSuccess: (List<MedicineVO>) -> Unit, onFailure: (String) -> Unit)
 }

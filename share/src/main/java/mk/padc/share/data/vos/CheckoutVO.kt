@@ -4,10 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.firebase.firestore.IgnoreExtraProperties
-import mk.padc.share.persistances.converters.DeliveryRoutineConverter
-import mk.padc.share.persistances.converters.DoctorConverter
-import mk.padc.share.persistances.converters.PatientConverter
-import mk.padc.share.persistances.converters.PrescriptionConverter
+import mk.padc.share.persistances.converters.*
 import mk.padc.share.utils.checkout
 
 @IgnoreExtraProperties
@@ -15,11 +12,13 @@ import mk.padc.share.utils.checkout
 @TypeConverters(DeliveryRoutineConverter::class,
     PatientConverter::class,
     DoctorConverter::class,
-    PrescriptionConverter::class)
+    PrescriptionConverter::class,
+    DeliveryAddressConverter::class)
+
 class CheckoutVO(
     @PrimaryKey
     var id: String= "",
-    var delivery_address: String ?= "",
+    var delivery_address: DeliveryAddressVO ?= null,
     var total_price : Int? =0,
     var patientVO: PatientVO ?=null,
     var doctorVO: DoctorVO ?=null,
@@ -32,4 +31,11 @@ class CheckoutVO(
 class DeliveryRoutineVO(
     var id: String= "",
     var delivery_date : String ?= ""
+)
+
+@IgnoreExtraProperties
+class DeliveryAddressVO(
+    var state: String= "",
+    var township : String ?= "",
+    var ful_address : String ?= "",
 )

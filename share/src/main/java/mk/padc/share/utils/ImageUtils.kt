@@ -15,7 +15,7 @@ class ImageUtils{
         Glide.with(context)
             .asBitmap()
             .load(filePath ?: imageUrl)
-            .placeholder(R.drawable.profile_thumb)
+           // .placeholder(R.drawable.profile_thumb)
             .apply(RequestOptions().circleCrop())
             .into(imageView)
     }
@@ -24,7 +24,7 @@ class ImageUtils{
     {
         Glide.with(imageView.context)
                 .load( imageUrl)
-                .placeholder(R.drawable.thumbnail)
+               // .placeholder(R.drawable.thumbnail)
                 .into(imageView)
     }
 }
