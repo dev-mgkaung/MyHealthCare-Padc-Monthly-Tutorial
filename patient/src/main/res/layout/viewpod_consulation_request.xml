@@ -40,7 +40,7 @@
                 android:layout_height="80dp"
                 android:scaleType="fitXY"
                 android:layout_margin="@dimen/margin_small"
-                android:src="@drawable/ic_launcher"
+                android:src="@drawable/doctor_thumbnail"
                 android:id="@+id/img_userprofile"/>
             <LinearLayout
                 android:layout_width="match_parent"

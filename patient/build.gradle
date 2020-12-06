@@ -80,6 +80,8 @@ dependencies {
 
     //OKHttp
     implementation rootProject.ext.libraries.okhttp
+    implementation rootProject.ext.libraries.stepperIndicator
+
 
     // Architecture Components
     // LiveData

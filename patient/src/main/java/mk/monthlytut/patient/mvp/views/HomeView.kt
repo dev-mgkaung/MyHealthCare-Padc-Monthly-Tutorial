@@ -10,4 +10,5 @@ interface HomeView : BaseView {
     fun displayConsultationRequest(consultationRequestVO: ConsultationRequestVO)
     fun displayRecentDoctorList (list : List<RecentDoctorVO>)
     fun displaySpecialityList(list: List<SpecialitiesVO>)
+    fun nextPageToCaseSummary (specialitiesVO: SpecialitiesVO)
 }

@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import mk.monthlytut.patient.R
+import mk.padc.share.activities.BaseActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     companion object {
         //MainActivity call from other screen

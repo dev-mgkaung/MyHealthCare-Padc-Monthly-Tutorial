@@ -19,6 +19,10 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     }
 
+    override fun onTapSpeciality(specialitiesVO: SpecialitiesVO) {
+        mView?.nextPageToCaseSummary(specialitiesVO)
+    }
+
     override fun navigateToNextScreen() {
 
     }
@@ -41,5 +45,9 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
             })
     }
 
-    override fun onTap() {}
+    override fun onTap() {
+
+    }
+
+
 }

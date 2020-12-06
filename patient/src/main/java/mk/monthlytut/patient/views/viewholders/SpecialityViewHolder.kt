@@ -12,13 +12,18 @@ import mk.padc.share.views.viewholders.BaseViewHolder
 class SpecialityViewHolder(itemView: View, private val mDelegate: SpecialityViewItemActionDelegate) :
     BaseViewHolder<SpecialitiesVO>(itemView) {
 
+
     override fun bindData(data: SpecialitiesVO) {
+
         data?.let {
             itemView.txt_specialityname.text =data.name
             data?.photo?.let{
                 ImageUtils().showImage(itemView.img_speciality,it,  R.drawable.speciality_thumbnail)
             }
+        }
 
+        itemView.card_speciality.setOnClickListener{
+            mDelegate.onTapSpeciality(data)
         }
     }
 }

@@ -32,6 +32,7 @@ ext {
     exoplayerVersion="2.11.5"
     firebaseBomVersion= "25.12.0"
     mmDetectVersion = "1.02"
+    stepperIndicatorVersion = "1.0.7"
 
     libraries = [
             ktx                     : "androidx.core:core-ktx:$ktxVersion",
@@ -89,7 +90,7 @@ ext {
             firebaseMessageKtx      : "com.google.firebase:firebase-messaging-ktx",
             firebaseCrashlyticsKtx  : "com.google.firebase:firebase-crashlytics",
             firebaseDeepLinkKtx     : "com.google.firebase:firebase-dynamic-links-ktx",
-            mmdetect                : "com.github.mgkaung692018:myanmar_font_detect:$mmDetectVersion"
-
+            mmdetect                : "com.github.mgkaung692018:myanmar_font_detect:$mmDetectVersion",
+            stepperIndicator        :  "com.github.badoualy:stepper-indicator:$stepperIndicatorVersion"
     ]
 }

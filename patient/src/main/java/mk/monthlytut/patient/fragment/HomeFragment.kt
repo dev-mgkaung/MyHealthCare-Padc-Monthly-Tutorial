@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
 import mk.monthlytut.patient.R
+import mk.monthlytut.patient.activities.CaseSummaryActivity
 import mk.monthlytut.patient.adapters.RecentDoctorAdapter
 import mk.monthlytut.patient.adapters.SpecialityAdapter
 import mk.monthlytut.patient.mvp.presenters.HomePresenter
@@ -80,6 +81,10 @@ class HomeFragment : BaseFragment() , HomeView {
 
     override fun displaySpecialityList(list: List<SpecialitiesVO>) {
         mSpecialityAdapter.setNewData(list.toMutableList())
+    }
+
+    override fun nextPageToCaseSummary(specialitiesVO: SpecialitiesVO) {
+        startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, specialitiesVO.id)})
     }
 
 }
