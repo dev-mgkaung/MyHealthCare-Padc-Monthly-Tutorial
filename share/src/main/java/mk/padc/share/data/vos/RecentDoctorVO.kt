@@ -2,13 +2,16 @@ package mk.padc.share.data.vos
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.firebase.firestore.IgnoreExtraProperties
-import mk.padc.share.utils.doctors
+import mk.padc.share.persistances.converters.DoctorConverter
+import mk.padc.share.utils.recent_doctors
 
-@Entity(tableName = doctors)
 @IgnoreExtraProperties
-class DoctorVO(
+@Entity(tableName = recent_doctors)
+class RecentDoctorVO(
     @PrimaryKey
+    var rd_id: String= "",
     var id: String= "",
     var device_id: String ?= "",
     var name: String ? = "",

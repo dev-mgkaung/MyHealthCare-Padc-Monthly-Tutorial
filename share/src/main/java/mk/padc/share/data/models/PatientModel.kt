@@ -2,10 +2,7 @@ package mk.padc.share.data.models
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
-import mk.padc.share.data.vos.PatientVO
-import mk.padc.share.data.vos.QuestionAnswerVO
-import mk.padc.share.data.vos.SpecialQuestionVO
-import mk.padc.share.data.vos.SpecialitiesVO
+import mk.padc.share.data.vos.*
 import mk.padc.share.networks.FirebaseApi
 
 interface PatientModel
@@ -22,6 +19,14 @@ interface PatientModel
     )
 
     fun getSpecialitiesFromDB(): LiveData<List<SpecialitiesVO>>
+
+    fun getRecentDoctors(
+        patientId : String,
+        onSuccess: (List<RecentDoctorVO>) -> Unit,
+        onError: (String) -> Unit
+    )
+
+    fun getRecentDoctorsFromDB(): LiveData<List<RecentDoctorVO>>
 
     fun getSpecialQuestionBySpeciality(
         speciality : String,

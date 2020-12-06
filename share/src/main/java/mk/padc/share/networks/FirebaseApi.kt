@@ -65,7 +65,7 @@ interface FirebaseApi {
                          doctorVO: DoctorVO, patientVO: PatientVO , total_price : Int,
                          onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
-    fun getRecentlyConsultatedDoctor(patientId : String, onSuccess: (doctorList : List<DoctorVO>) -> Unit,onFailure: (String) -> Unit)
+    fun getRecentlyConsultatedDoctor(patientId : String, onSuccess: (doctorList : List<RecentDoctorVO>) -> Unit,onFailure: (String) -> Unit)
 
     fun getConsultationChat( patientId: String , onSuccess: (List<ConsultationChatVO>) -> Unit,onFailure: (String) -> Unit)
 

@@ -4,10 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.PatientModel
-import mk.padc.share.data.vos.PatientVO
-import mk.padc.share.data.vos.QuestionAnswerVO
-import mk.padc.share.data.vos.SpecialQuestionVO
-import mk.padc.share.data.vos.SpecialitiesVO
+import mk.padc.share.data.vos.*
 import mk.padc.share.networks.ColudFirebaseDatabaseApiImpl
 import mk.padc.share.networks.FirebaseApi
 
@@ -46,6 +43,20 @@ object PatientModelImpl : PatientModel, BaseModel() {
 
     override fun getSpecialitiesFromDB(): LiveData<List<SpecialitiesVO>> {
           return mTheDB.specialityDao().getAllSpecialitiesData()
+    }
+
+    override fun getRecentDoctors(   patientId : String, onSuccess: (List<RecentDoctorVO>) -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getRecentlyConsultatedDoctor(
+            patientId,
+            onSuccess = {
+            mTheDB.recentDoctorDao().deleteAllRecentDoctorData()
+            mTheDB.recentDoctorDao().insertRecentDoctorList(it)
+        }, onFailure = { onError(it) })
+
+    }
+
+    override fun getRecentDoctorsFromDB(): LiveData<List<RecentDoctorVO>> {
+        return mTheDB.recentDoctorDao().getAllRecentDoctorData()
     }
 
     override fun getSpecialQuestionBySpeciality(

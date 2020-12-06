@@ -9,7 +9,7 @@ import mk.padc.share.persistances.daos.*
 import mk.padc.share.utils.DATABASE_NAME
 
 @Database(
-    entities = [SpecialitiesVO::class,PatientVO::class, DoctorVO::class,
+    entities = [SpecialitiesVO::class,PatientVO::class, DoctorVO::class,RecentDoctorVO::class,
         ConsultationRequestVO::class, ConsultationChatVO::class,GeneralQuestionTemplateVO::class,
         CheckoutVO::class , SpecialQuestionVO::class, QuestionAnswerVO::class],
     version = 2,
@@ -45,4 +45,5 @@ abstract class MyCareDatabase : RoomDatabase() {
     abstract fun generalQuestionTemplateDao(): GeneralQuestionTemplateDao
     abstract fun specialQuestionDao (): SpecialQuestionDao
     abstract fun questionAnswerDao (): QuestionAnswerDao
+    abstract  fun recentDoctorDao () : RecentDoctorDao
 }

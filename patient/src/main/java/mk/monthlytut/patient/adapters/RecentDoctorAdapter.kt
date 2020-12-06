@@ -7,9 +7,10 @@ import mk.monthlytut.patient.delegates.RecentDoctorViewItemActionDelegate
 import mk.monthlytut.patient.views.viewholders.RecentDoctorViewHolder
 import mk.padc.share.adapters.BaseRecyclerAdapter
 import mk.padc.share.data.vos.DoctorVO
+import mk.padc.share.data.vos.RecentDoctorVO
 
 class RecentDoctorAdapter(private val mDelegate: RecentDoctorViewItemActionDelegate) :
-    BaseRecyclerAdapter<RecentDoctorViewHolder, DoctorVO>() {
+    BaseRecyclerAdapter<RecentDoctorViewHolder, RecentDoctorVO>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentDoctorViewHolder {
 

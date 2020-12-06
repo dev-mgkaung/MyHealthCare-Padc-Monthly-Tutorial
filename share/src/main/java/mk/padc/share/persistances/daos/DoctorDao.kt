@@ -19,8 +19,8 @@ interface DoctorDao {
     @Query("select * from doctors")
     fun getAllDoctorData(): LiveData<List<DoctorVO>>
 
-//    @Query("select * from doctors WHERE id = :id")
-//    fun getAllDoctorDataBy(id: String): LiveData<DoctorVO>
+    @Query("select * from doctors WHERE id = :id")
+    fun getAllDoctorDataBy(id: String): LiveData<DoctorVO>
 
     @Query("DELETE FROM doctors")
     fun deleteAllDoctorData()

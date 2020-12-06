@@ -16,6 +16,7 @@ import mk.monthlytut.patient.mvp.views.HomeView
 import mk.padc.share.activities.BaseFragment
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
+import mk.padc.share.data.vos.RecentDoctorVO
 import mk.padc.share.data.vos.SpecialitiesVO
 
 
@@ -73,7 +74,7 @@ class HomeFragment : BaseFragment() , HomeView {
     override fun displayConsultationRequest(consultationRequestVO: ConsultationRequestVO) {
     }
 
-    override fun displayRecentDoctorList(list: List<DoctorVO>) {
+    override fun displayRecentDoctorList(list: List<RecentDoctorVO>) {
         mRecentDoctorAdapter.setNewData(list.toMutableList())
     }
 

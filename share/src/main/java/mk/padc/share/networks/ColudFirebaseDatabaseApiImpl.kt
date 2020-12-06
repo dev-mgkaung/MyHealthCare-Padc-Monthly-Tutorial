@@ -288,21 +288,21 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
     override fun getRecentlyConsultatedDoctor(
         patientId: String,
-        onSuccess: (doctorList: List<DoctorVO>) -> Unit,
+        onSuccess: (doctorList: List<RecentDoctorVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
         db.collection("$patients/$patientId/$recent_doctors")
             .get()
             .addOnSuccessListener { result ->
-                val doctorList: MutableList<DoctorVO> = arrayListOf()
+                val list: MutableList<RecentDoctorVO> = arrayListOf()
                 for (document in result) {
                     val hashmap = document.data
                     hashmap?.put("id", document.id.toString())
                     val Data = Gson().toJson(hashmap)
-                    val docsData = Gson().fromJson<DoctorVO>(Data, DoctorVO::class.java)
-                    doctorList.add(docsData)
+                    val docsData = Gson().fromJson<RecentDoctorVO>(Data, RecentDoctorVO::class.java)
+                    list.add(docsData)
                 }
-                onSuccess(doctorList)
+                onSuccess(list)
             }
     }
 

@@ -32,6 +32,13 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
             .observe(owner, Observer {
                 mView?.displaySpecialityList(it)
             })
+
+        patientModel.getRecentDoctors("a1f93420-3007-11eb-ae84-dda1e0ee4767" , onSuccess = {}, onError = {})
+
+        patientModel.getRecentDoctorsFromDB()
+            .observe(owner, Observer {
+                mView?.displayRecentDoctorList(it)
+            })
     }
 
     override fun onTap() {}
