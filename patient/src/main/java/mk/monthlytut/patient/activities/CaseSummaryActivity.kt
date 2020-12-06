@@ -39,7 +39,9 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
             onBackPressed()
         }
 
-        pager?.adapter = PagerAdapter(supportFragmentManager,this)
+        val speciality = intent.getStringExtra(PARM_SPECIALITYID)
+
+        pager?.adapter = PagerAdapter(supportFragmentManager,speciality.toString(),this)
 
         stepper_indicator.setViewPager(pager)
 
@@ -55,10 +57,7 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
 
     override fun onGeneralQuestionCallBack() {
         pager?.setCurrentItem(1, true)
-        Toast.makeText(this,"General",Toast.LENGTH_LONG).show()
     }
 
-    override fun onSpecitalQuestionCallBack() {
-        Toast.makeText(this,"Special",Toast.LENGTH_LONG).show()
-    }
+    override fun onSpecitalQuestionCallBack() {}
 }

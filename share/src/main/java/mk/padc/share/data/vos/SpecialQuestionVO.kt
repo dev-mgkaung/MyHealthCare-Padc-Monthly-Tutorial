@@ -11,5 +11,5 @@ import mk.padc.share.utils.special_questions
 class SpecialQuestionVO(
     @PrimaryKey
     var id: String= "",
-    var question: String ?= ""
+    var sq_questions: String ?= ""
 )

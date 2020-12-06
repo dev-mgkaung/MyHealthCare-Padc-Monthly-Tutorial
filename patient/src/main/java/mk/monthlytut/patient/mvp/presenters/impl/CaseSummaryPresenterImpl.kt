@@ -15,13 +15,16 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
 
     private val patientModel : PatientModel = PatientModelImpl
 
-    override fun onTapContinue(context: Context, speciality: String, owner: LifecycleOwner) {
+    override fun onUiReadyWithParam(context: Context, speciality: String, owner: LifecycleOwner) {
+
+        patientModel.getSpecialQuestionBySpeciality(speciality, onSuccess = {} , onError = {})
 
         patientModel.getSpecialQuestionBySpecialityFromDB()
             .observe(owner, Observer {
                 mView?.displaySpecialQuestions(it)
             })
     }
+
 
     override fun onTapSendBroadCast(
         context: Context,
@@ -42,4 +45,8 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
+
+    override fun onTap() {
+        TODO("Not yet implemented")
+    }
 }

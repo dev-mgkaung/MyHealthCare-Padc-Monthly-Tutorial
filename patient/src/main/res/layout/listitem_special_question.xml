@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:elevation="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+    <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:maxLines="3"
+        android:id="@+id/txt_special_questions"
+        android:layout_margin="10dp"
+        android:text="My Questions ?"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_btn_grey"
+        android:padding="10dp"
+        android:maxLines="1"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:id="@+id/ed_answer"
+        android:layout_margin="10dp"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
