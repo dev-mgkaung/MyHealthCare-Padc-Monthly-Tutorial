@@ -32,21 +32,13 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
         specialQuestionVO: SpecialQuestionVO,
         patientVO: PatientVO
     ) {
-        TODO("Not yet implemented")
-    }
-
-    override fun navigateToNextScreen() {
 
     }
 
+    override fun navigateToNextScreen() {}
 
-   fun onUiReady(context: Context,speciality: String, owner: LifecycleOwner) {
-     patientModel.getSpecialQuestionBySpeciality(speciality, onSuccess = {}, onError = {})
-    }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 
-    override fun onTap() {
-        TODO("Not yet implemented")
-    }
+    override fun onTap() {}
 }
