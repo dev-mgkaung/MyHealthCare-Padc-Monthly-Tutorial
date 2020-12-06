@@ -25,4 +25,7 @@
 
     <style name="Theme.MyCare.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Toolbar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">13sp</item>
+    </style>
 </resources>

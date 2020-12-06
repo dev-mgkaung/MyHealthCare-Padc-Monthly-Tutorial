@@ -12,6 +12,7 @@
      app:titleTextColor="@color/black"
      app:title="@string/patient_info"
      android:elevation="4dp"
+     app:titleTextAppearance="@style/Toolbar.TitleText"
      app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
      android:theme ="?attr/actionBarTheme"
      android:layout_height="?actionBarSize"
