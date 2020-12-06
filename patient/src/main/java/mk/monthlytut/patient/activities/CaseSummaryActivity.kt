@@ -9,12 +9,17 @@ import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.PagerAdapter
 import mk.monthlytut.patient.delegates.CaseSummaryCallBackListener
 import mk.padc.share.activities.BaseActivity
+import mk.padc.share.utils.sharePreferencePatient
+import mk.padc.share.utils.sharePreferencePatientEmail
 
 
 class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
 
+
+
     companion object {
         const val PARM_SPECIALITYID = "SPECIALITY ID"
+        const val PARM_EMAIL = "EMAIL ID"
         fun newIntent(
             context: Context,
             specialityID: String
@@ -41,7 +46,13 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
 
         val speciality = intent.getStringExtra(PARM_SPECIALITYID)
 
-        pager?.adapter = PagerAdapter(supportFragmentManager,speciality.toString(),this)
+        val sharedPreferences = getSharedPreferences(sharePreferencePatient, Context.MODE_PRIVATE)
+        val email = sharedPreferences.getString(sharePreferencePatientEmail, "")
+
+        pager?.adapter = email?.let {
+            PagerAdapter(supportFragmentManager,
+                it.toString(), speciality.toString(),this)
+        }
 
         stepper_indicator.setViewPager(pager)
 

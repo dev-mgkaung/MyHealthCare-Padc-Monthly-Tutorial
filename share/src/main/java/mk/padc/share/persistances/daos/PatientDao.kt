@@ -21,8 +21,8 @@ interface PatientDao {
     @Query("select * from patients")
     fun getAllPatientData(): LiveData<List<PatientVO>>
 
-    @Query("select * from patients WHERE id = :id")
-    fun getAllPatientDataBy(id: String): LiveData<PatientVO>
+    @Query("select * from patients WHERE email = :email")
+    fun getAllPatientDataByEmail(email: String): LiveData<PatientVO>
 
     @Query("DELETE FROM patients")
     fun deleteAllPatientData()

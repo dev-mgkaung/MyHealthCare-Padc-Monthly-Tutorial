@@ -2,6 +2,7 @@ package mk.monthlytut.patient.mvp.presenters.impl
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.presenters.LoginPresenter
 import mk.monthlytut.patient.mvp.views.LoginView
 import mk.padc.share.data.models.AuthenticationModel
@@ -19,14 +20,17 @@ class LoginPresenterImpl : LoginPresenter, AbstractBasePresenter<LoginView>() {
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 
-    override fun onTapLogin(context: Context,email: String, password: String) {
+    override fun onTapLogin(context: Context,email: String, password: String,  owner: LifecycleOwner) {
 
         if(email.isEmpty() || password.isEmpty()){
             mView.showError("Please enter all the fields")
         } else {
             mAuthenticatioModel.login(email, password, onSuccess = {
                 mModel.getPatientByEmail(email,onSuccess = {}, onError = {})
-                mView.navigateToHomeScreen()
+                mModel.getPatientByEmailFromDB(email)
+                    .observe(owner, Observer { patient ->
+                            mView.navigateToHomeScreen(patient) })
+
             }, onFailure = {
                 mView.showError(it)
             })

@@ -14,7 +14,7 @@ interface PatientModel
     fun registerNewPatient(patientVO: PatientVO ,onSuccess: (patientVO: PatientVO) -> Unit, onFailure: (String) -> Unit)
 
     fun getPatientByEmail( patientId: String,
-                        onSuccess: (PatientVO) -> Unit,
+                        onSuccess: () -> Unit,
                         onError: (String) -> Unit)
 
     fun getSpecialities(
@@ -39,6 +39,8 @@ interface PatientModel
     )
 
     fun getSpecialQuestionBySpecialityFromDB() : LiveData<List<SpecialQuestionVO>>
+
+    fun getPatientByEmailFromDB(email: String) : LiveData<PatientVO>
 
     fun sendBroadCastConsultationRequest(
         speciality: String,

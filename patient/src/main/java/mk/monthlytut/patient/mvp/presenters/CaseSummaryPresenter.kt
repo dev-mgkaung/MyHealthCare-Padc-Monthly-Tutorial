@@ -10,7 +10,8 @@ import mk.padc.share.mvp.presenters.BasePresenter
 
 
 interface CaseSummaryPresenter : BasePresenter<CaseSummaryView> , SpecialQuestionDelegate {
-    fun onUiReadyWithParam(context: Context,speciality: String, owner: LifecycleOwner)
+    fun onUiReadyforSpecialQuestion(context: Context,speciality: String, owner: LifecycleOwner)
+    fun onUiReadyforGeneralQuestion(context: Context,email: String, owner: LifecycleOwner)
     fun onTapSendBroadCast(context: Context,speciality: String,  specialQuestionVO: SpecialQuestionVO,patientVO: PatientVO)
     fun navigateToNextScreen()
 }

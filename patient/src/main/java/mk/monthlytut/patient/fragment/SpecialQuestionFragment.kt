@@ -75,11 +75,15 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     private fun setUpPresenter() {
         activity?.let{
             mPresenter = getPresenter<CaseSummaryPresenterImpl, CaseSummaryView>()
-            mPresenter.onUiReadyWithParam(it, speciality.toString(),this)
+            mPresenter.onUiReadyforSpecialQuestion(it, speciality.toString(),this)
         }
     }
 
     override fun displaySpecialQuestions(list: List<SpecialQuestionVO>) {
         adapter.setNewData(list.toMutableList())
     }
+
+    override fun displayOnceGeneralQuestion() {}
+
+    override fun displayAlwaysGeneralQuestion() {}
 }

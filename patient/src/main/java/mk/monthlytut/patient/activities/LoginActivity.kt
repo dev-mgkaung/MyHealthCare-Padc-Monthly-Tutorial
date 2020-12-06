@@ -9,6 +9,10 @@ import mk.monthlytut.patient.mvp.presenters.LoginPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.LoginPresenterImpl
 import mk.monthlytut.patient.mvp.views.LoginView
 import mk.padc.share.activities.BaseActivity
+import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.utils.sharePreferencePatient
+import mk.padc.share.utils.sharePreferencePatientDeviceID
+import mk.padc.share.utils.sharePreferencePatientEmail
 
 class LoginActivity : BaseActivity() , LoginView {
 
@@ -30,7 +34,7 @@ class LoginActivity : BaseActivity() , LoginView {
 
     private fun setUpActionListeners() {
         btnLogin.setOnClickListener {
-            mPresenter.onTapLogin(this,ed_email.text.toString(), ed_password.text.toString())
+            mPresenter.onTapLogin(this,ed_email.text.toString(), ed_password.text.toString(),this)
         }
 
         btnRegister.setOnClickListener {
@@ -43,7 +47,17 @@ class LoginActivity : BaseActivity() , LoginView {
         mPresenter.onUiReady(this,this)
     }
 
-    override fun navigateToHomeScreen() {
+    override fun navigateToHomeScreen(patientVO: PatientVO) {
+
+        val sharedPreferences = getSharedPreferences(sharePreferencePatient, Context.MODE_PRIVATE)
+
+        sharedPreferences.edit().apply {
+            putString(sharePreferencePatientEmail, patientVO.email)
+            putString(sharePreferencePatient, patientVO.id)
+            putString(sharePreferencePatientDeviceID, patientVO.device_id)
+
+        }.apply()
+
         startActivity(HomeActivity.newIntent(this))
         this.finish()
     }

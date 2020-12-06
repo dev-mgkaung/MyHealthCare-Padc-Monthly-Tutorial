@@ -31,7 +31,7 @@ object PatientModelImpl : PatientModel, BaseModel() {
 
     override fun getPatientByEmail(
         email: String,
-        onSuccess: (PatientVO) -> Unit,
+        onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
         mFirebaseApi.getPatient(email,
@@ -87,6 +87,10 @@ object PatientModelImpl : PatientModel, BaseModel() {
 
     override fun getSpecialQuestionBySpecialityFromDB() : LiveData<List<SpecialQuestionVO>> {
         return mTheDB.specialQuestionDao().getAllSpecialQuestionsData()
+    }
+
+    override fun getPatientByEmailFromDB(email : String): LiveData<PatientVO> {
+        return mTheDB.patientDao().getAllPatientDataByEmail(email)
     }
 
     override fun sendBroadCastConsultationRequest(

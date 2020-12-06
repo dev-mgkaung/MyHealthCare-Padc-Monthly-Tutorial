@@ -14,7 +14,7 @@ class PatientVO(
     var name: String = "",
     var email: String = "",
     var photo: String? = "",
-    var blood_type: String? = "",
+    var blood_type: String  = "",
     var blood_pressure: String? = "",
     var dateOfBirth: String?= "",
     var weight: String? = "",

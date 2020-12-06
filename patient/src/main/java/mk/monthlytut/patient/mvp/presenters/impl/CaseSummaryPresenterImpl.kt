@@ -15,8 +15,11 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
 
     private val patientModel : PatientModel = PatientModelImpl
 
-    override fun onUiReadyWithParam(context: Context, speciality: String, owner: LifecycleOwner) {
-
+    override fun onUiReadyforSpecialQuestion(
+        context: Context,
+        speciality: String,
+        owner: LifecycleOwner
+    ) {
         patientModel.getSpecialQuestionBySpeciality(speciality, onSuccess = {} , onError = {})
 
         patientModel.getSpecialQuestionBySpecialityFromDB()
@@ -25,6 +28,22 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
             })
     }
 
+    override fun onUiReadyforGeneralQuestion(
+        context: Context,
+        email: String,
+        owner: LifecycleOwner
+    ) {
+       patientModel.getPatientByEmailFromDB(email)
+           .observe(owner, Observer { patient ->
+               if(patient.blood_type.isBlank())
+               {
+                   mView?.displayOnceGeneralQuestion()
+               } else
+               {
+                   mView?.displayAlwaysGeneralQuestion()
+               }
+           })
+    }
 
     override fun onTapSendBroadCast(
         context: Context,

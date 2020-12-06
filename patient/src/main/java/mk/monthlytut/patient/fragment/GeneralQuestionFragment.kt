@@ -7,18 +7,28 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_general_question.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.delegates.CaseSummaryCallBackListener
+import mk.monthlytut.patient.mvp.presenters.CaseSummaryPresenter
+import mk.monthlytut.patient.mvp.presenters.impl.CaseSummaryPresenterImpl
+import mk.monthlytut.patient.mvp.views.CaseSummaryView
 import mk.padc.share.activities.BaseFragment
+import mk.padc.share.data.vos.SpecialQuestionVO
 
-class GeneralQuestionFragment : BaseFragment() {
+private const val ARG_PARAM = "email"
+class GeneralQuestionFragment : BaseFragment(), CaseSummaryView {
 
-   lateinit var listener : CaseSummaryCallBackListener
+    lateinit var listener : CaseSummaryCallBackListener
+
+    private lateinit var mPresenter: CaseSummaryPresenter
+
+    private var email: String? = null
 
     companion object {
 
         @JvmStatic
-        fun newInstance(listener : CaseSummaryCallBackListener) =
+        fun newInstance(email: String , listener : CaseSummaryCallBackListener) =
             GeneralQuestionFragment().apply {
                this.listener =listener
+                this.email=email
             }
     }
 
@@ -31,8 +41,12 @@ class GeneralQuestionFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_general_question, container, false)
-    }
+        var view= inflater.inflate(R.layout.fragment_general_question, container, false)
+        arguments?.let {
+            email = it.getString(ARG_PARAM)
+        }
+        return view
+   }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,5 +61,21 @@ class GeneralQuestionFragment : BaseFragment() {
     }
 
     private fun setUpPresenter() {
+        activity?.let{
+            mPresenter = getPresenter<CaseSummaryPresenterImpl, CaseSummaryView>()
+            mPresenter.onUiReadyforGeneralQuestion(it, email.toString(),this)
+        }
+    }
+
+    override fun displaySpecialQuestions(list: List<SpecialQuestionVO>) {}
+
+    override fun displayOnceGeneralQuestion() {
+        card_userinfo.visibility = View.GONE
+        ly_onetime_fil.visibility= View.VISIBLE
+    }
+
+    override fun displayAlwaysGeneralQuestion() {
+        card_userinfo.visibility = View.VISIBLE
+        ly_onetime_fil.visibility =View.GONE
     }
 }

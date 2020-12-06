@@ -6,4 +6,6 @@ import mk.padc.share.mvp.views.BaseView
 
 interface CaseSummaryView : BaseView {
     fun displaySpecialQuestions(list: List<SpecialQuestionVO>)
+    fun displayOnceGeneralQuestion()
+    fun displayAlwaysGeneralQuestion()
 }
