@@ -28,17 +28,19 @@
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:text="@string/consultation_confirm"/>
     <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:textColor="@color/black"
+        android:textColor="@color/blue_A400"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="14sp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:id="@+id/consultation_request_name_id"
         android:text="@string/consultation_request_message"/>
 
     <LinearLayout
@@ -69,7 +71,7 @@
             android:background="@drawable/rounded_corner_btn_blue"
             android:gravity="center"
             android:padding="15dp"
-            android:text="@string/cancel"
+            android:text="@string/sure"
             android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
