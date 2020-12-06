@@ -13,10 +13,15 @@ interface FirebaseApi {
         onFailure: (String) -> Unit
     )
 
+
     fun registerNewPatient(patientVO: PatientVO,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     )
+
+    fun getPatient(patientId : String ,
+                   onSuccess: (patientVO: PatientVO) -> Unit,
+                   onFailure: (String) -> Unit)
 
     fun getSpecialities (
         onSuccess: (specialities : List<SpecialitiesVO>) -> Unit,

@@ -23,7 +23,7 @@ class SplashActivity : BaseActivity() {
         //3 seconds splash time
         Handler().postDelayed({
             //start main activity
-            startActivity(HomeActivity.newIntent(this))
+            startActivity(LoginActivity.newIntent(this))
             //finish this activity
             finish()
         },2000)

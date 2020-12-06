@@ -3,6 +3,8 @@
     package="mk.monthlytut.patient">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".PatientApp"
@@ -30,6 +32,11 @@
         </activity>
 
         <activity android:name=".activities.CaseSummaryActivity" android:parentActivityName=".activities.HomeActivity" />
+
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.LoginActivity" />
+
+
     </application>
 
 </manifest>

@@ -29,6 +29,19 @@ object PatientModelImpl : PatientModel, BaseModel() {
             onFailure = { onFailure(it) })
     }
 
+    override fun getPatientByEmail(
+        email: String,
+        onSuccess: (PatientVO) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mFirebaseApi.getPatient(email,
+            onSuccess = {
+            mTheDB.patientDao().deleteAllPatientData()
+            mTheDB.patientDao().insertNewPatient(it)
+        }, onFailure = { onError(it) })
+    }
+
+
     override fun getSpecialities(
         onSuccess: (List<SpecialitiesVO>) -> Unit,
         onError: (String) -> Unit

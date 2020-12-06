@@ -13,6 +13,10 @@ interface PatientModel
 
     fun registerNewPatient(patientVO: PatientVO ,onSuccess: (patientVO: PatientVO) -> Unit, onFailure: (String) -> Unit)
 
+    fun getPatientByEmail( patientId: String,
+                        onSuccess: (PatientVO) -> Unit,
+                        onError: (String) -> Unit)
+
     fun getSpecialities(
         onSuccess: (List<SpecialitiesVO>) -> Unit,
         onError: (String) -> Unit
