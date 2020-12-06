@@ -1,11 +1,16 @@
 package mk.monthlytut.patient.fragment
 
+import android.app.Activity
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.android.synthetic.main.case_summary_confrim_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.activities.CaseSummaryActivity
@@ -84,7 +89,24 @@ class HomeFragment : BaseFragment() , HomeView {
     }
 
     override fun nextPageToCaseSummary(specialitiesVO: SpecialitiesVO) {
-        startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, specialitiesVO.id)})
-    }
+        val view = layoutInflater.inflate(R.layout.case_summary_confrim_dialog, null)
+        val dialog = context?.let { Dialog(it) }
+
+        dialog?.apply {
+             setCancelable(false)
+             setContentView(view)
+             window?.setBackgroundDrawableResource(android.R.color.transparent)
+         }
+
+            view.cancel_btn.setOnClickListener {
+                dialog?.dismiss()
+            }
+
+            view.confirm_btn.setOnClickListener {
+                startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, specialitiesVO.id)})
+                dialog?.dismiss()
+            }
+            dialog?.show()
+        }
 
 }
