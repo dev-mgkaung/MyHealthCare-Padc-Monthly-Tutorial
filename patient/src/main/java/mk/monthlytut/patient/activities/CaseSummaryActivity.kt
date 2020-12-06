@@ -3,13 +3,15 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_case_summary.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.PagerAdapter
+import mk.monthlytut.patient.delegates.CaseSummaryCallBackListener
 import mk.padc.share.activities.BaseActivity
 
 
-class CaseSummaryActivity : BaseActivity()  {
+class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
 
     companion object {
         const val PARM_SPECIALITYID = "SPECIALITY ID"
@@ -30,19 +32,33 @@ class CaseSummaryActivity : BaseActivity()  {
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
+            setHomeButtonEnabled(true)
         }
 
-        pager?.adapter = PagerAdapter(supportFragmentManager)
+        tb_casesummary.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
+        pager?.adapter = PagerAdapter(supportFragmentManager,this)
 
         stepper_indicator.setViewPager(pager)
 
-
-//
-//        stepper_indicator.addOnStepClickListener {
-//                step -> pager?.setCurrentItem(step, true) }
+        stepper_indicator.addOnStepClickListener {
+                step -> pager?.setCurrentItem(step, true) }
 
     }
 
+    @Override
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
 
+    override fun onGeneralQuestionCallBack() {
+        pager?.setCurrentItem(1, true)
+        Toast.makeText(this,"General",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onSpecitalQuestionCallBack() {
+        Toast.makeText(this,"Special",Toast.LENGTH_LONG).show()
+    }
 }

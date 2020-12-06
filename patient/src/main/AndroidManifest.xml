@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.CaseSummaryActivity" />
+        <activity android:name=".activities.CaseSummaryActivity" android:parentActivityName=".activities.HomeActivity" />
     </application>
 
 </manifest>

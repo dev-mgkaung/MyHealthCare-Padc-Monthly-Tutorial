@@ -12,21 +12,28 @@
      app:titleTextColor="@color/black"
      app:title="@string/patient_info"
      android:elevation="4dp"
+     app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
      android:theme ="?attr/actionBarTheme"
      android:layout_height="?actionBarSize"
      android:id="@+id/tb_casesummary"/>
-    <com.badoualy.stepperindicator.StepperIndicator
-        android:id="@+id/stepper_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:stpi_indicatorColor="@color/blue_500"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        app:stpi_labels="@array/stepLabels"/>
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
+            <com.badoualy.stepperindicator.StepperIndicator
+                android:id="@+id/stepper_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:stpi_indicatorColor="@color/blue_500"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                app:stpi_labels="@array/stepLabels"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
 </LinearLayout>

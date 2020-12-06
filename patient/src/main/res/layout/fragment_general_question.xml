@@ -1,12 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout android:orientation="vertical"
     android:layout_gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:text="General Question"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_name"
+                android:textSize="@dimen/text_regular_1x"
+                android:textColor="@color/blue_500"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner_btn_white"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:id="@+id/ed_name"
+                    android:layout_margin="5dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_height"
+                android:textSize="@dimen/text_regular_1x"
+                android:textColor="@color/blue_500"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_btn_white"
+                android:padding="10dp"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:id="@+id/ed_height"
+                android:layout_margin="5dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_blood_pressure"
+                android:textSize="@dimen/text_regular_1x"
+                android:textColor="@color/blue_500"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_btn_white"
+                android:padding="10dp"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:id="@+id/ed_bloodpressure"
+                android:layout_margin="5dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_blood_type"
+                android:textSize="@dimen/text_regular_1x"
+                android:textColor="@color/blue_500"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_btn_white"
+                android:padding="10dp"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:id="@+id/ed_bloodtype"
+                android:layout_margin="5dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_weight"
+                android:textSize="@dimen/text_regular_1x"
+                android:textColor="@color/blue_500"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_btn_white"
+                android:padding="10dp"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:id="@+id/ed_weight"
+                android:layout_margin="5dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/patient_reactionalert"
+                android:textSize="@dimen/text_regular_1x"
+                android:textColor="@color/blue_500"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_btn_white"
+                android:hint="@string/patient_reaction_alert_hint"
+                android:padding="10dp"
+                android:maxLines="4"
+                android:lines="5"
+                android:scrollbars="none"
+                android:maxLength="2000"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:id="@+id/ed_comment"
+                android:layout_margin="5dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="3dp"
+                android:textColor="@color/white"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                android:background="@drawable/rounded_corner_btn_blue"
+                android:id="@+id/btn_next"
+                android:text="@string/continue_btn"/>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
