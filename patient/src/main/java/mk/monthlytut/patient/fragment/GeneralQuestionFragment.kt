@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_general_question.*
@@ -25,6 +26,10 @@ class GeneralQuestionFragment : BaseFragment(), CaseSummaryView {
     private lateinit var mPresenter: CaseSummaryPresenter
 
     private var email: String? = null
+    private var year: String? = null
+    private var month: String? = null
+    private var day: String? = null
+    private var bloodType: String? = null
 
     companion object {
 
@@ -56,19 +61,48 @@ class GeneralQuestionFragment : BaseFragment(), CaseSummaryView {
         super.onViewCreated(view, savedInstanceState)
         setUpPresenter()
         setUpActionListener()
+        setUpItemSelectedListener()
     }
 
+    private fun setUpItemSelectedListener()
+    {
+        year_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
+                year = parent.getItemAtPosition(position).toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>){}
+        }
+        month_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
+                month = parent.getItemAtPosition(position).toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>){}
+        }
+        day_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
+                day = parent.getItemAtPosition(position).toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>){}
+        }
+        bloodtype_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
+                bloodType = parent.getItemAtPosition(position).toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>){}
+        }
+    }
     private fun setUpActionListener() {
         btn_next.setOnClickListener {
             val height=  ed_height.text.toString()
             val comment = ed_comment.text.toString()
             val weight = ed_weight.text.toString()
             val blood_pressure = ed_bloodpressure.text.toString()
+
             if(height.length > 0 && comment.length >0 && weight.length>0 && blood_pressure.length>0) {
 
-                SessionManager.patient_dateOfBirth =""
+                SessionManager.patient_dateOfBirth = "$day/$month/$year"
                 SessionManager.patient_height = height
-                SessionManager.patient_bloodType = ""
+                SessionManager.patient_bloodType = bloodType
                 SessionManager.patient_comment = comment
                 SessionManager.patient_weight = weight
                 SessionManager.patient_bloodPressure = blood_pressure

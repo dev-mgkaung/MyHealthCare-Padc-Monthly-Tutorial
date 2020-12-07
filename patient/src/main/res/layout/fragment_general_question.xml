@@ -47,6 +47,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
                             android:padding="5dp"
+                            android:spinnerMode="dialog"
                             android:entries="@array/days"
                             android:id="@+id/day_spinner"/>
                         </androidx.cardview.widget.CardView>
@@ -63,6 +64,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_margin="5dp"
                                 android:padding="5dp"
+                                android:spinnerMode="dialog"
                                 android:entries="@array/months"
                                 android:id="@+id/month_spinner"/>
                         </androidx.cardview.widget.CardView>
@@ -79,6 +81,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_margin="5dp"
                                 android:padding="5dp"
+                                android:spinnerMode="dialog"
                                 android:entries="@array/years"
                                 android:id="@+id/year_spinner"/>
                         </androidx.cardview.widget.CardView>
