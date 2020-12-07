@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_special_question.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.SpecialQuestionAdapter
@@ -14,6 +13,7 @@ import mk.monthlytut.patient.mvp.presenters.CaseSummaryPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.CaseSummaryPresenterImpl
 import mk.monthlytut.patient.mvp.views.CaseSummaryView
 import mk.padc.share.activities.BaseFragment
+import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.data.vos.SpecialQuestionVO
 
 private const val ARG_PARAM = "speciality"
