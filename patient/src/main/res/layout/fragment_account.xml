@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:text="User Name"
+        android:text="@string/username"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginLeft="15dp"
@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:text="Email"
+        android:text="@string/email"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginLeft="15dp"
@@ -121,6 +121,6 @@
         android:textColor="@color/white"
         android:id="@+id/btnLogout"
         android:background="@drawable/rounded_corner_btn_blue"
-        android:text="Log Out"
+        android:text="@string/logout"
         android:layout_height="wrap_content"/>
 </LinearLayout>

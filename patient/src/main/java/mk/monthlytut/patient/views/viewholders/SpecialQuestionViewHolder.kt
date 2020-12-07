@@ -14,7 +14,7 @@ class SpecialQuestionViewHolder(itemView: View, private val mDelegate: SpecialQu
       //  questionAnswerList[adapterPosition].question = data.sq_questions
 
             data?.let {
-            itemView.txt_special_questions.text =data.sq_questions
+            itemView.txt_special_questions.text = "(${adapterPosition+1}) ${data.sq_questions}"
              }
 
 //        itemView.ed_answer.addTextChangedListener(object : TextWatcher {

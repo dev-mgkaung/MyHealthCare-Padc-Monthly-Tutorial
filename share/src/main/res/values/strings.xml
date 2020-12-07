@@ -5,6 +5,7 @@
     <string name="consultation">ချိန်းဆိုမှုများ</string>
     <string name="account">အေကာင့် </string>
     <string name="sure">သေချာပါသည်</string>
+    <string name="answer_hint">ဖြေဆိုပါ</string>
     <string name="cancel">မလုပ်တော့ပါ</string>
     <string name="consultation_confirm">ဆွေးနွေးမှုအတည်ပြုချက်</string>
     <string name="consultation_request_message">ဆိုင်ရာ ဆရာဝန် နှင့် တိုင်ပင်ဆွေးနွေးရန်  Consultation Request ပြုလုပ်မှာသေချာပါသလား?</string>
@@ -79,6 +80,9 @@
     <string name="degree">ရရှိထားသောဘွဲ့များ</string>
     <string name="biography">ကိုယ်ရေးရာဇဝင်</string>
     <string name="question">မေးခွန်းများ</string>
+    <string name="logout">အကောင့် ထွက် မည်</string>
+    <string name="email">အီးမေးလ်</string>
+    <string name="username">အမည်</string>
     <string name="checkout">ငွေပေးချေမှုအတည်ပြုပြီးနောက်နေ့တစ်ရက်မှစပြီး ဆေးများကိုလိုက်လန်ပို့ဆောင်ပေးမည်</string>
     <string name="address_title">လိပ်စာ</string>
     <string name="dummy_text_consulation_request">ပါမောကွ  ကြီးသည် UK မှ ဂုဏ်ထူးဆောင် မဟာ ပါရ၈ူဘွဲ့ကို ရရှိထားပြီး ယခုအချိန်တွင် စစ်တွေ မြို့နယ် ဆေး ရုံ ကြီးမှာ တာဝန်ယူကုသပေးနေပါသည်</string>
