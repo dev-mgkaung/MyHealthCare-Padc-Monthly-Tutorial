@@ -19,5 +19,5 @@ class PatientVO(
     var dateOfBirth: String?= "",
     var weight: String? = "",
     var height: String? = "",
-    var allergic_reactions: String? = ""
+    var comment: String? = ""
 )

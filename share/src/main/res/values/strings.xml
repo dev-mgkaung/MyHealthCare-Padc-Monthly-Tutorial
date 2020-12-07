@@ -82,6 +82,8 @@
     <string name="question">မေးခွန်းများ</string>
     <string name="logout">အကောင့် ထွက် မည်</string>
     <string name="email">အီးမေးလ်</string>
+    <string name="know">နားလည်ပီ</string>
+    <string name="general_form">သင့်အချက်အလက် အားလုံး ပြည့်စုံအောင် ဖြည့်စွက်ပေးရန် လိုနေပါသေး သည်</string>
     <string name="username">အမည်</string>
     <string name="checkout">ငွေပေးချေမှုအတည်ပြုပြီးနောက်နေ့တစ်ရက်မှစပြီး ဆေးများကိုလိုက်လန်ပို့ဆောင်ပေးမည်</string>
     <string name="address_title">လိပ်စာ</string>

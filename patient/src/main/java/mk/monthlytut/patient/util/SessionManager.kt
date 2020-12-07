@@ -60,4 +60,53 @@ object SessionManager {
         set(value) = preferences.edit {
             it.putString(sharePreferencePatientDeviceID, value)
         }
+
+    var patient_dateOfBirth: String?
+
+        get() = preferences.getString(sharePreferencePatientDateOfBirth, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientDateOfBirth, value)
+        }
+
+    var patient_height: String?
+
+        get() = preferences.getString(sharePreferencePatientHeight, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientHeight, value)
+        }
+
+    var patient_bloodType: String?
+
+        get() = preferences.getString(sharePreferencePatientBloodType, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientBloodType, value)
+        }
+
+    var patient_comment : String?
+
+        get() = preferences.getString(sharePreferencePatientComment, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientComment, value)
+        }
+
+    var patient_weight : String?
+
+        get() = preferences.getString(sharePreferencePatientBodyWeight, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientBodyWeight, value)
+        }
+
+    var patient_bloodPressure : String?
+
+        get() = preferences.getString(sharePreferencePatientBloodPressure, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientBloodPressure, value)
+        }
+
 }

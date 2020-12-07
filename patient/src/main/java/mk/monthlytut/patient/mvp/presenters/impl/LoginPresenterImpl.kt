@@ -9,7 +9,6 @@ import mk.padc.share.data.models.AuthenticationModel
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.AuthenticationModelImpl
 import mk.padc.share.data.models.impl.PatientModelImpl
-import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
 
