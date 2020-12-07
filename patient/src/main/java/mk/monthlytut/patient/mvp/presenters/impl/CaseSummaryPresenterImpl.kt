@@ -60,4 +60,5 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 
     override fun onTap() {}
+
 }

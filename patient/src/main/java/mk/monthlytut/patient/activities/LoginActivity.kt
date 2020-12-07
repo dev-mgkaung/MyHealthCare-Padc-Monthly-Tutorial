@@ -8,11 +8,9 @@ import mk.monthlytut.patient.R
 import mk.monthlytut.patient.mvp.presenters.LoginPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.LoginPresenterImpl
 import mk.monthlytut.patient.mvp.views.LoginView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.PatientVO
-import mk.padc.share.utils.sharePreferencePatient
-import mk.padc.share.utils.sharePreferencePatientDeviceID
-import mk.padc.share.utils.sharePreferencePatientEmail
 
 class LoginActivity : BaseActivity() , LoginView {
 
@@ -49,14 +47,11 @@ class LoginActivity : BaseActivity() , LoginView {
 
     override fun navigateToHomeScreen(patientVO: PatientVO) {
 
-        val sharedPreferences = getSharedPreferences(sharePreferencePatient, Context.MODE_PRIVATE)
-
-        sharedPreferences.edit().apply {
-            putString(sharePreferencePatientEmail, patientVO.email)
-            putString(sharePreferencePatient, patientVO.id)
-            putString(sharePreferencePatientDeviceID, patientVO.device_id)
-
-        }.apply()
+        SessionManager.login_status =true
+        SessionManager.patient_name = patientVO.name
+        SessionManager.patient_id = patientVO.id
+        SessionManager.patient_device_id = patientVO.device_id
+        SessionManager.patient_email = patientVO.email
 
         startActivity(HomeActivity.newIntent(this))
         this.finish()

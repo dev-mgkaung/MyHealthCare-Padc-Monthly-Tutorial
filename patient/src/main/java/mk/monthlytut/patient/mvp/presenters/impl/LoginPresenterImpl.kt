@@ -9,6 +9,7 @@ import mk.padc.share.data.models.AuthenticationModel
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.AuthenticationModelImpl
 import mk.padc.share.data.models.impl.PatientModelImpl
+import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
 
@@ -29,7 +30,9 @@ class LoginPresenterImpl : LoginPresenter, AbstractBasePresenter<LoginView>() {
                 mModel.getPatientByEmail(email,onSuccess = {}, onError = {})
                 mModel.getPatientByEmailFromDB(email)
                     .observe(owner, Observer { patient ->
-                            mView.navigateToHomeScreen(patient) })
+                        patient?.let {
+                            mView?.navigateToHomeScreen(patient) }
+                    })
 
             }, onFailure = {
                 mView.showError(it)
@@ -40,4 +43,6 @@ class LoginPresenterImpl : LoginPresenter, AbstractBasePresenter<LoginView>() {
     override fun onTapRegister() {
         mView.navigateToRegisterScreen()
     }
+
+
 }

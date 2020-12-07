@@ -8,13 +8,13 @@ import kotlinx.android.synthetic.main.activity_case_summary.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.PagerAdapter
 import mk.monthlytut.patient.delegates.CaseSummaryCallBackListener
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.utils.sharePreferencePatient
 import mk.padc.share.utils.sharePreferencePatientEmail
 
 
 class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
-
 
 
     companion object {
@@ -46,14 +46,8 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
 
         val speciality = intent.getStringExtra(PARM_SPECIALITYID)
 
-        val sharedPreferences = getSharedPreferences(sharePreferencePatient, Context.MODE_PRIVATE)
-        val email = sharedPreferences.getString(sharePreferencePatientEmail, "")
 
-        pager?.adapter = email?.let {
-            PagerAdapter(supportFragmentManager,
-                it.toString(), speciality.toString(),this)
-        }
-
+        pager?.adapter =    PagerAdapter(supportFragmentManager, SessionManager.patient_email.toString(), speciality.toString(),this)
         stepper_indicator.setViewPager(pager)
 
         stepper_indicator.addOnStepClickListener {

@@ -28,6 +28,8 @@ const val patient_id= "patient_id"
 
 //Share Perfenence
 const val sharePreferencePatient  = "patient"
+const val sharePreferenceLoginStatus  = "login"
+const val sharePreferencePatientName  = "name"
 const val sharePreferencePatientEmail  = "email"
 const val sharePreferencePatientID  = "id"
 const val sharePreferencePatientDeviceID  = "device_id"

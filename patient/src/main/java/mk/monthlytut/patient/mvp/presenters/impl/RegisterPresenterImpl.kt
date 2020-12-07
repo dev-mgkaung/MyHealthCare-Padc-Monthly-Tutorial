@@ -33,11 +33,8 @@ class RegisterPresenterImpl : RegisterPresenter, AbstractBasePresenter<RegisterV
             )
 
             mAuthenticationModel.register(username,  email, password, onSuccess = {
-
-                patientModel.registerNewPatient(patientVO,  onSuccess = {
-                    mView.navigateToToLoginScreen()
-                },onFailure = {} )
-
+                mView.navigateToToLoginScreen()
+                patientModel.registerNewPatient(patientVO,  onSuccess = {},onFailure = {} )
             }, onFailure = {
                 mView.showError(it)
             })
