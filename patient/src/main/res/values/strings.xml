@@ -4,4 +4,10 @@
         <item>အထွေထွေမေးခွန်းများ</item>
         <item>ရောဂါဆိုင်ရာမေးခွန်းများ</item>
     </string-array>
+
+    <string-array name="bloodType">
+        <item>A သွေး</item>
+        <item>B သွေး</item>
+        <item>O သွေး</item>
+    </string-array>
 </resources>

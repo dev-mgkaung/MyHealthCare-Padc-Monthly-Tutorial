@@ -1,7 +1,5 @@
 package mk.monthlytut.patient.adapters
 
-
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import mk.monthlytut.patient.R

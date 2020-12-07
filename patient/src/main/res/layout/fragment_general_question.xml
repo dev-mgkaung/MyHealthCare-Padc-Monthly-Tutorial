@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/white"
+    android:background="@color/grey_100"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -52,7 +52,8 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardElevation="2dp"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_margin="10dp"
                     app:cardBackgroundColor="@color/white">
 
@@ -79,19 +80,37 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardElevation="2dp"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_margin="10dp"
                     app:cardBackgroundColor="@color/white">
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <RelativeLayout
+                        android:gravity="center"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_corner_btn_white"
                         android:padding="10dp"
                         android:maxLines="1"
+                        android:hint="0"
+                        android:inputType="number"
                         android:textSize="13sp"
                         android:textColor="@color/black"
                         android:id="@+id/ed_height"
                         android:layout_margin="5dp"/>
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/ft"
+                            android:gravity="center"
+                            android:layout_margin="5dp"
+                            android:textSize="20dp"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
@@ -105,19 +124,17 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardElevation="2dp"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_margin="10dp"
                     app:cardBackgroundColor="@color/white">
-                    <androidx.appcompat.widget.AppCompatEditText
+
+                    <Spinner
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_corner_btn_white"
-                        android:padding="10dp"
-                        android:maxLines="1"
-                        android:textSize="13sp"
-                        android:textColor="@color/black"
-                        android:id="@+id/ed_bloodtype"
-                        android:layout_margin="5dp"/>
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:entries="@array/bloodType"
+                        android:id="@+id/bloodtype_spinner"/>
                 </androidx.cardview.widget.CardView>
 
                 <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
@@ -131,7 +148,8 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardElevation="2dp"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_margin="10dp"
                     app:cardBackgroundColor="@color/white">
                     <androidx.appcompat.widget.AppCompatEditText
@@ -164,20 +182,37 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="2dp"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="10dp"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/white">
-
-                <androidx.appcompat.widget.AppCompatEditText
+                <RelativeLayout
+                    android:gravity="center"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corner_btn_white"
                     android:padding="10dp"
                     android:maxLines="1"
                     android:textSize="13sp"
+                    android:hint="0"
+                    android:inputType="number"
                     android:textColor="@color/black"
                     android:id="@+id/ed_weight"
                     android:layout_margin="5dp"/>
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/lb"
+                        android:gravity="center"
+                        android:layout_margin="5dp"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
@@ -191,19 +226,39 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="2dp"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="10dp"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/white">
-                <androidx.appcompat.widget.AppCompatEditText
+                <RelativeLayout
+                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_corner_btn_white"
-                    android:padding="10dp"
-                    android:maxLines="1"
-                    android:textSize="13sp"
-                    android:textColor="@color/black"
-                    android:id="@+id/ed_bloodpressure"
-                    android:layout_margin="5dp"/>
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_corner_btn_white"
+                        android:padding="10dp"
+                        android:maxLines="1"
+                        android:textSize="13sp"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:id="@+id/ed_bloodpressure"
+                        android:layout_margin="5dp"/>
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/mmhg"
+                        android:gravity="center"
+                        android:layout_margin="5dp"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
             </androidx.cardview.widget.CardView>
 
             <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
