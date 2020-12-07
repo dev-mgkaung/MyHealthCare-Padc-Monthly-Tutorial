@@ -14,28 +14,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="2dp"
-                android:layout_margin="10dp"
-                android:visibility="gone"
-                android:id="@+id/card_userinfo"
-                app:cardBackgroundColor="@color/white">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/patient_height"
-                        android:textSize="13sp"
-                        android:id="@+id/patient_info"
-                        android:textColor="@color/blue_500"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,29 +24,66 @@
                     android:layout_width="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/patient_name"
+                    android:text="@string/patient_dateOfbirth"
                     android:textSize="13sp"
                     android:textColor="@color/blue_500"
                     android:textStyle="bold"/>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="3dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white">
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_corner_btn_white"
-                        android:padding="10dp"
-                        android:maxLines="1"
-                        android:textSize="13sp"
-                        android:textColor="@color/black"
-                        android:id="@+id/ed_name"
-                        android:layout_margin="5dp"/>
-                </androidx.cardview.widget.CardView>
+                        android:layout_height="56dp"
+                        android:weightSum="3"
+                        android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            app:cardElevation="3dp"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardBackgroundColor="@color/white">
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:entries="@array/days"
+                            android:id="@+id/day_spinner"/>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            app:cardElevation="3dp"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardBackgroundColor="@color/white">
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:padding="5dp"
+                                android:entries="@array/months"
+                                android:id="@+id/month_spinner"/>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_width="0dp"
+                            app:cardElevation="3dp"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardBackgroundColor="@color/white">
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:padding="5dp"
+                                android:entries="@array/years"
+                                android:id="@+id/year_spinner"/>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
 
                 <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
                     android:layout_width="match_parent"
@@ -171,6 +187,16 @@
 
             </LinearLayout>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="3dp"
+                android:visibility="gone"
+                android:id="@+id/card_userinfo"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white">
+            </androidx.cardview.widget.CardView>
             <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
                 android:layout_width="match_parent"
                 android:layout_marginLeft="10dp"
