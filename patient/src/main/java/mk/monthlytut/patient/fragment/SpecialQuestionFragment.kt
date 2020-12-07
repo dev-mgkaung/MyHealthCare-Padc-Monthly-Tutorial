@@ -1,6 +1,7 @@
 package mk.monthlytut.patient.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,8 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     private lateinit var mPresenter: CaseSummaryPresenter
 
     private lateinit var adapter: SpecialQuestionAdapter
+
+    private  var questionAnswerList : ArrayList<QuestionAnswerVO> = arrayListOf()
 
     private var speciality: String? = null
 
@@ -68,6 +71,10 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
 
     private fun setUpActionListener() {
         btn_confirm.setOnClickListener {
+            for(item in questionAnswerList)
+            {
+                Log.d("data=",item.answer.toString())
+            }
             listener.onSpecitalQuestionCallBack()
         }
     }
@@ -80,10 +87,20 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     }
 
     override fun displaySpecialQuestions(list: List<SpecialQuestionVO>) {
-        adapter.setNewData(list.toMutableList())
+            adapter.setNewData(list.toMutableList())
+            questionAnswerList.clear()
+            for(item in list)
+            {
+            questionAnswerList.add(QuestionAnswerVO(item.id,item.sq_questions,""))
+            }
+            adapter.setQuestionAnswerList(questionAnswerList)
     }
 
     override fun displayOnceGeneralQuestion() {}
 
     override fun displayAlwaysGeneralQuestion() {}
+
+    override fun replaceQuestionAnswerList(position: Int, questionanswervo : QuestionAnswerVO) {
+        questionAnswerList.set(position,questionanswervo)
+    }
 }

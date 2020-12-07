@@ -1,5 +1,7 @@
 package mk.monthlytut.patient.delegates
 
+import mk.padc.share.data.vos.QuestionAnswerVO
+
 interface SpecialQuestionDelegate {
-    fun onTap()
+    fun onAnswerChange(position: Int, questionanswervo : QuestionAnswerVO)
 }
