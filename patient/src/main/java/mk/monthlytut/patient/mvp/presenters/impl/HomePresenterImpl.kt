@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.presenters.HomePresenter
 import mk.monthlytut.patient.mvp.views.HomeView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
 import mk.padc.share.data.vos.PatientVO
@@ -38,7 +39,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 mView?.displaySpecialityList(it)
             })
 
-        patientModel.getRecentDoctors("a1f93420-3007-11eb-ae84-dda1e0ee4767" , onSuccess = {}, onError = {})
+        patientModel.getRecentDoctors(SessionManager.patient_id.toString() , onSuccess = {}, onError = {})
 
         patientModel.getRecentDoctorsFromDB()
             .observe(owner, Observer {

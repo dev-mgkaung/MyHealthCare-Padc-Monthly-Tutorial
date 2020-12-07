@@ -83,7 +83,12 @@ class HomeFragment : BaseFragment() , HomeView {
     }
 
     override fun displayRecentDoctorList(list: List<RecentDoctorVO>) {
-        mRecentDoctorAdapter.setNewData(list.toMutableList())
+        if(list.size > 0) {
+            ly_recentdoctor.visibility =View.VISIBLE
+            mRecentDoctorAdapter.setNewData(list.toMutableList())
+        }else{
+            ly_recentdoctor.visibility =View.GONE
+        }
     }
 
     override fun displaySpecialityList(list: List<SpecialitiesVO>) {
