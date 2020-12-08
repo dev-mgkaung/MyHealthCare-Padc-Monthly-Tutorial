@@ -109,4 +109,11 @@ object SessionManager {
             it.putString(sharePreferencePatientBloodPressure, value)
         }
 
+    var patient_photo : String?
+
+        get() = preferences.getString(sharePreferencePatientPhoto, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientPhoto, value)
+        }
 }

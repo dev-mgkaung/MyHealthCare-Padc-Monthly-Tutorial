@@ -2,6 +2,7 @@ package mk.monthlytut.patient.fragment
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -118,21 +119,32 @@ class GeneralQuestionFragment : BaseFragment(), CaseSummaryView {
 
     private fun setUpActionListener() {
         btn_next.setOnClickListener {
+
+            if(SessionManager.patient_bloodType.toString().isNotEmpty())
+            {
+                ed_height.text = Editable.Factory.getInstance().newEditable( SessionManager.patient_height)
+                ed_comment.text = Editable.Factory.getInstance().newEditable( SessionManager.patient_comment)
+             }
+
             val height = ed_height.text.toString()
             val comment = ed_comment.text.toString()
             val weight = ed_weight.text.toString()
             val blood_pressure = ed_bloodpressure.text.toString()
 
-            if (height.length > 0 && comment.length > 0 && weight.length > 0 && blood_pressure.length > 0) {
 
-                SessionManager.patient_dateOfBirth = "$day/$month/$year"
+            if (height.isNotEmpty() && comment.isNotEmpty() && weight.isNotEmpty() && blood_pressure.isNotEmpty()) {
+
+                if(SessionManager.patient_bloodType.toString().isNotEmpty()) {
+                    SessionManager.patient_dateOfBirth = "$day/$month/$year"
+                    SessionManager.patient_bloodType = bloodType
+                }
+
                 SessionManager.patient_height = height
-                SessionManager.patient_bloodType = bloodType
                 SessionManager.patient_comment = comment
                 SessionManager.patient_weight = weight
                 SessionManager.patient_bloodPressure = blood_pressure
-
                 listener.onGeneralQuestionCallBack()
+
             } else {
                 val snackBar = Snackbar.make(
                     it, resources.getString(R.string.general_form),
@@ -165,6 +177,9 @@ class GeneralQuestionFragment : BaseFragment(), CaseSummaryView {
 
     override fun displayAlwaysGeneralQuestion() {
         card_userinfo.visibility = View.VISIBLE
+
+        userinfotext.text = resources.getString(R.string.patient_name) + "  :  " + SessionManager.patient_name +"\n" + resources.getString(R.string.patient_dateOfbirth) + "  :  " + SessionManager.patient_dateOfBirth +"\n" + resources.getString(R.string.patient_height) + "  :  " + SessionManager.patient_height +"\n"+ resources.getString(R.string.patient_blood_type) + "  :  " + SessionManager.patient_bloodType +"\n"+ resources.getString(R.string.patient_reactionalert) + "  :  " + SessionManager.patient_comment
+
         ly_onetime_fil.visibility = View.GONE
     }
 

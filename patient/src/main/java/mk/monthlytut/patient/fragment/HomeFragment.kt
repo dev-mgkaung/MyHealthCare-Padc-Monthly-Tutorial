@@ -1,18 +1,14 @@
 package mk.monthlytut.patient.fragment
 
-import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.android.synthetic.main.case_summary_confrim_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.speciality_confrim_dialog.view.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.activities.CaseSummaryActivity
 import mk.monthlytut.patient.adapters.RecentDoctorAdapter
@@ -22,7 +18,6 @@ import mk.monthlytut.patient.mvp.presenters.impl.HomePresenterImpl
 import mk.monthlytut.patient.mvp.views.HomeView
 import mk.padc.share.activities.BaseFragment
 import mk.padc.share.data.vos.ConsultationRequestVO
-import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.RecentDoctorVO
 import mk.padc.share.data.vos.SpecialitiesVO
 import mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
@@ -96,7 +91,7 @@ class HomeFragment : BaseFragment() , HomeView {
     }
 
     override fun nextPageToCaseSummary(specialitiesVO: SpecialitiesVO) {
-        val view = layoutInflater.inflate(R.layout.case_summary_confrim_dialog, null)
+        val view = layoutInflater.inflate(R.layout.speciality_confrim_dialog, null)
         val dialog = context?.let { Dialog(it) }
         val name = view?.findViewById<MMTextView>(R.id.consultation_request_name_id)
         name?.text = specialitiesVO?.name + resources.getString(R.string.consultation_request_message)

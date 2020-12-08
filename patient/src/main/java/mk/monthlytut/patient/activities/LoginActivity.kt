@@ -52,6 +52,7 @@ class LoginActivity : BaseActivity() , LoginView {
         SessionManager.patient_id = patientVO.id
         SessionManager.patient_device_id = patientVO.device_id
         SessionManager.patient_email = patientVO.email
+        SessionManager.patient_photo = patientVO.photo.toString()
         SessionManager.patient_dateOfBirth =patientVO.dateOfBirth
         SessionManager.patient_height = patientVO.height
         SessionManager.patient_bloodType = patientVO.blood_type

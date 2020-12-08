@@ -3,15 +3,12 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_case_summary.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.PagerAdapter
 import mk.monthlytut.patient.delegates.CaseSummaryCallBackListener
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
-import mk.padc.share.utils.sharePreferencePatient
-import mk.padc.share.utils.sharePreferencePatientEmail
 
 
 class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
@@ -50,8 +47,8 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
         pager?.adapter =    PagerAdapter(supportFragmentManager, SessionManager.patient_email.toString(), speciality.toString(),this)
         stepper_indicator.setViewPager(pager)
 
-        stepper_indicator.addOnStepClickListener {
-                step -> pager?.setCurrentItem(step, true) }
+//        stepper_indicator.addOnStepClickListener {
+//                step -> pager?.setCurrentItem(step, true) }
 
     }
 

@@ -1,11 +1,14 @@
 package mk.monthlytut.patient.fragment
 
+import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.android.synthetic.main.case_summary_confirm_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_special_question.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.SpecialQuestionAdapter
@@ -13,9 +16,12 @@ import mk.monthlytut.patient.delegates.CaseSummaryCallBackListener
 import mk.monthlytut.patient.mvp.presenters.CaseSummaryPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.CaseSummaryPresenterImpl
 import mk.monthlytut.patient.mvp.views.CaseSummaryView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseFragment
+import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.data.vos.SpecialQuestionVO
+import mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
 
 private const val ARG_PARAM = "speciality"
 class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
@@ -70,13 +76,24 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     }
 
     private fun setUpActionListener() {
+
         btn_confirm.setOnClickListener {
-            for(item in questionAnswerList)
-            {
-                Log.d("data=",item.answer.toString())
-            }
+
             listener.onSpecitalQuestionCallBack()
-        }
+            var patientVO = PatientVO(id= SessionManager.patient_id.toString(),
+                device_id = SessionManager.patient_device_id,
+                name = SessionManager.patient_name.toString(),
+                email = SessionManager.patient_email.toString(),
+                photo = SessionManager.patient_photo,
+                dateOfBirth = SessionManager.patient_dateOfBirth,
+                blood_type = SessionManager.patient_bloodType.toString(),
+                blood_pressure = SessionManager.patient_bloodPressure,
+                weight = SessionManager.patient_weight,
+                height = SessionManager.patient_height,
+                comment = SessionManager.patient_comment
+            )
+            showCaseSummaryConfirmDialog(patientVO)
+         }
     }
 
     private fun setUpPresenter() {
@@ -102,5 +119,40 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
 
     override fun replaceQuestionAnswerList(position: Int, questionanswervo : QuestionAnswerVO) {
         questionAnswerList.set(position,questionanswervo)
+    }
+
+    private  fun showCaseSummaryConfirmDialog(patientVO: PatientVO)
+    {
+        val view = layoutInflater.inflate(R.layout.case_summary_confirm_dialog, null)
+        val dialog = context?.let { Dialog(it) }
+        val pdateofBirth = view?.findViewById<TextView>(R.id.pdateofBirth)
+        val pname = view?.findViewById<TextView>(R.id.pname)
+        val pheight = view?.findViewById<TextView>(R.id.pheight)
+        val pbloodtype = view?.findViewById<TextView>(R.id.pbloodtype)
+        val pweight = view?.findViewById<TextView>(R.id.pweight)
+        val pbloodpressure = view?.findViewById<TextView>(R.id.pbloodpressure)
+        val pcomment = view?.findViewById<TextView>(R.id.pcomment)
+
+        pname?.text = patientVO.name
+        pdateofBirth?.text = patientVO.dateOfBirth
+        pheight?.text = patientVO.height + "ft"
+        pbloodtype?.text  =patientVO.blood_type
+        pweight?.text  =patientVO.weight + " lb"
+        pbloodpressure?.text  =patientVO.blood_pressure + " mmHg"
+        pcomment?.text  =patientVO.comment
+
+        dialog?.apply {
+            setCancelable(false)
+            setContentView(view)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+
+        view.cs_btn_confirm.setOnClickListener {
+            activity?.let { it -> mPresenter.onTapSendBroadCast(it,speciality.toString(),questionAnswerList,patientVO) }
+            dialog?.dismiss()
+            activity?.finish()
+        }
+        dialog?.show()
     }
 }

@@ -161,6 +161,11 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnSuccessListener { Log.d("Success", "Successfully ") }
             .addOnFailureListener { Log.d("Failure", "Failed") }
 
+        db.collection(patients)
+            .document(patientVO.id)
+            .set(patientVO)
+            .addOnSuccessListener { Log.d("Success", "Successfully") }
+            .addOnFailureListener { Log.d("Failure", "Failed ") }
     }
 
 

@@ -30,7 +30,7 @@ class SplashActivity : BaseActivity() {
                 startActivity(HomeActivity.newIntent(this))
             }
             finish()
-        },2000)
+        },1800)
 
     }
 }

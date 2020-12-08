@@ -11,6 +11,7 @@ import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.data.vos.SpecialQuestionVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
+import mk.padc.share.utils.DateUtils
 
 class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<CaseSummaryView>() {
 
@@ -49,11 +50,17 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
     override fun onTapSendBroadCast(
         context: Context,
         speciality: String,
-        specialQuestionVO: SpecialQuestionVO,
+        questionAnswerList: List<QuestionAnswerVO>,
         patientVO: PatientVO
     ) {
 
-    }
+       speciality?.let{
+           patientModel.sendBroadCastConsultationRequest(speciality,questionAnswerList,patientVO,DateUtils().getCurrentDate(),
+           onSuccess = {} , onFailure = {})
+       }
+      }
+
+
 
     override fun navigateToNextScreen() {}
 
@@ -61,7 +68,7 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 
     override fun onAnswerChange(position: Int, questionAnswerVO: QuestionAnswerVO) {
-     mView?.replaceQuestionAnswerList(position,questionAnswerVO)
+        mView?.replaceQuestionAnswerList(position,questionAnswerVO)
     }
 
 
