@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.case_summary_confirm_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_special_question.*
 import mk.monthlytut.patient.R
+import mk.monthlytut.patient.adapters.QuestionAnswerAdapter
 import mk.monthlytut.patient.adapters.SpecialQuestionAdapter
 import mk.monthlytut.patient.delegates.CaseSummaryCallBackListener
 import mk.monthlytut.patient.mvp.presenters.CaseSummaryPresenter
@@ -31,6 +33,7 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     private lateinit var mPresenter: CaseSummaryPresenter
 
     private lateinit var adapter: SpecialQuestionAdapter
+    private lateinit var questionAnswerAdapter: QuestionAnswerAdapter
 
     private  var questionAnswerList : ArrayList<QuestionAnswerVO> = arrayListOf()
 
@@ -73,6 +76,8 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
         rc_specialquestion.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         adapter = SpecialQuestionAdapter(mPresenter)
         rc_specialquestion.adapter = adapter
+
+
     }
 
     private fun setUpActionListener() {
@@ -132,6 +137,7 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
         val pweight = view?.findViewById<TextView>(R.id.pweight)
         val pbloodpressure = view?.findViewById<TextView>(R.id.pbloodpressure)
         val pcomment = view?.findViewById<TextView>(R.id.pcomment)
+        val rc_question_answer = view?.findViewById<RecyclerView>(R.id.rc_question_answer)
 
         pname?.text = patientVO.name
         pdateofBirth?.text = patientVO.dateOfBirth
@@ -141,6 +147,14 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
         pbloodpressure?.text  =patientVO.blood_pressure + " mmHg"
         pcomment?.text  =patientVO.comment
 
+        rc_question_answer?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter)
+        rc_question_answer?.adapter = questionAnswerAdapter
+
+        rc_question_answer?.setHasFixedSize(false)
+        questionAnswerAdapter.setNewData(questionAnswerList)
+
+        rc_specialquestion.adapter = adapter
         dialog?.apply {
             setCancelable(false)
             setContentView(view)
@@ -149,7 +163,7 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
 
 
         view.cs_btn_confirm.setOnClickListener {
-            activity?.let { it -> mPresenter.onTapSendBroadCast(it,speciality.toString(),questionAnswerList,patientVO) }
+           // activity?.let { it -> mPresenter.onTapSendBroadCast(it,speciality.toString(),questionAnswerList,patientVO) }
             dialog?.dismiss()
             activity?.finish()
         }

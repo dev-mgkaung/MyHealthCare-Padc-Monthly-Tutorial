@@ -15,9 +15,9 @@
         <androidx.core.widget.NestedScrollView
             android:layout_marginTop="10dp"
             android:layout_width="400dp"
-            android:layout_height="match_parent">
+            android:fillViewport="true"
+            android:layout_height="700dp">
             <LinearLayout
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -223,8 +223,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     android:layout_margin="5dp"
-                    android:id="@+id/pquestion"/>
+                    android:id="@+id/rc_question_answer"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
         <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
