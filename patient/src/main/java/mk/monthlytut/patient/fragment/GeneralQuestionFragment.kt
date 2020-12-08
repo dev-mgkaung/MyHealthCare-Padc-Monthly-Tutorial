@@ -134,7 +134,7 @@ class GeneralQuestionFragment : BaseFragment(), CaseSummaryView {
 
             if (height.isNotEmpty() && comment.isNotEmpty() && weight.isNotEmpty() && blood_pressure.isNotEmpty()) {
 
-                if(SessionManager.patient_bloodType.toString().isNotEmpty()) {
+                if(SessionManager.patient_bloodType.toString().isEmpty()) {
                     SessionManager.patient_dateOfBirth = "$day/$month/$year"
                     SessionManager.patient_bloodType = bloodType
                 }

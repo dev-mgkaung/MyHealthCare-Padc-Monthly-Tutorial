@@ -163,7 +163,7 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
 
 
         view.cs_btn_confirm.setOnClickListener {
-           // activity?.let { it -> mPresenter.onTapSendBroadCast(it,speciality.toString(),questionAnswerList,patientVO) }
+            activity?.let { it -> mPresenter.onTapSendBroadCast(it,speciality.toString(),questionAnswerList,patientVO) }
             dialog?.dismiss()
             activity?.finish()
         }
