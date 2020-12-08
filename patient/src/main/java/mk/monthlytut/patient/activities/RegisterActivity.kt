@@ -39,6 +39,9 @@ class RegisterActivity : BaseActivity() , RegisterView {
             token =it.token
         }
 
+        back.setOnClickListener{
+            onBackPressed()
+        }
 
         btnRegister.setOnClickListener {
             mPresenter.onTapRegister(this,

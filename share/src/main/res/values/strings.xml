@@ -92,7 +92,7 @@
     <string name="do_yout_have_accoumt">အကောင့် မရှိသေးဘူးလား ?</string>
     <string name="create_new_account">အကောင့်အသစ်ပြုလုပ်ပါ</string>
     <string name="email_form">အီးမေးလ် လိပ်စာ</string>
-    <string name="email_hint">လူကြီးမင်း၏ အီးမေးလ် လိပ်စာ ရိုက်ထည့်ပါ</string>
+    <string name="email_hint">အီးမေးလ် လိပ်စာ ရိုက်ထည့်ပါ</string>
     <string name="password">စကားဝှက်</string>
     <string name="password_hint">စကားဝှက် ရိုက်ထည့်ပါ</string>
     <string name="register_form">အကောင့် အသစ်ပြုလုပ်ရန်</string>

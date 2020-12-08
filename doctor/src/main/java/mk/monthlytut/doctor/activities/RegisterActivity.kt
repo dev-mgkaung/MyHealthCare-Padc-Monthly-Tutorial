@@ -47,6 +47,10 @@ class RegisterActivity : BaseActivity() , RegisterView {
                 token
             )
         }
+
+        back.setOnClickListener{
+            onBackPressed()
+        }
     }
 
     private fun setUpPresenter() {

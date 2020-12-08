@@ -61,7 +61,6 @@ class LoginActivity : BaseActivity() , LoginView {
 
     override fun navigateToRegisterScreen() {
         startActivity(RegisterActivity.newIntent(this))
-        this.finish()
     }
 
 }
