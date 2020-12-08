@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Create your \n account"
+            android:text="@string/password_hint"
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/blue_A400" />
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner_btn_white"
-            android:hint="User Name"
+            android:hint="@string/username"
             android:padding="10dp"
             android:id="@+id/etUserName"
             android:layout_margin="10dp"/>

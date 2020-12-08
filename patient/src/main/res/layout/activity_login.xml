@@ -7,34 +7,56 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
+        <ImageView
             android:layout_margin="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:padding="8dp"
-            android:text="Log in your \n account"
+            android:layout_gravity="center"
             android:textSize="25sp"
+            android:src="@drawable/ic_launcher"
             android:textStyle="bold"
             android:textColor="@color/blue_A400" />
 
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/email_form"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner_btn_white"
-            android:hint="Email"
-            android:padding="10dp"
+            android:hint="@string/email_hint"
+            android:padding="12dp"
+            android:textSize="12sp"
             android:id="@+id/ed_email"
             android:layout_margin="10dp"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/password"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner_btn_white"
-            android:hint="Password"
-            android:padding="10dp"
+            android:hint="@string/password_hint"
+            android:padding="12dp"
+            android:textSize="12sp"
             android:id="@+id/ed_password"
             android:layout_margin="10dp"/>
         <androidx.appcompat.widget.AppCompatButton
@@ -44,35 +66,32 @@
             android:textColor="@color/white"
             android:id="@+id/btnLogin"
             android:background="@drawable/rounded_corner_btn_blue"
-            android:text="Login"
+            android:text="@string/login"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_alignParentBottom="true"
-    android:gravity="center">
-    <TextView
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:textAlignment="center"
-        android:text="Dont have an account ?"
-        android:textSize="18sp"
-        android:textColor="@color/black" />
-    <TextView
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:layout_marginLeft="8dp"
-        android:textAlignment="center"
-        android:text="SignUp"
-        android:textSize="18sp"
-        android:id="@+id/btnRegister"
-        android:textColor="@color/blue_A400" />
-</LinearLayout>
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/do_yout_have_accoumt"
+            android:textSize="13sp"
+            android:textColor="@color/black" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textAlignment="center"
+            android:text="@string/create_new_account"
+            android:textSize="13sp"
+            android:id="@+id/btnRegister"
+            android:textColor="@color/blue_A400" />
+    </LinearLayout>
 
 </RelativeLayout>
