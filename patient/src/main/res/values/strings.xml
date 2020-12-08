@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">The Care - Patient </string>
+    <string name="app_name">MyCare </string>
     <string-array name="stepLabels">
         <item>အထွေထွေမေးခွန်းများ</item>
         <item>ရောဂါဆိုင်ရာမေးခွန်းများ</item>

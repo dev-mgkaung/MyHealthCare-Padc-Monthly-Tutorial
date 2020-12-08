@@ -1,6 +1,7 @@
 package mk.padc.share.data.models.impl
 
 import android.graphics.Bitmap
+import androidx.lifecycle.LiveData
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.vos.DoctorVO
@@ -25,10 +26,27 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        PatientModelImpl.mFirebaseApi.registerNewDoctor(
+
+        mFirebaseApi.registerNewDoctor(
             doctorVO,
             onSuccess = {},
             onFailure = { onFailure(it) })
+    }
+
+    override fun getDoctorByEmail(
+        email: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mFirebaseApi.getDoctor(email,
+            onSuccess = {
+                mTheDB.doctorDao().deleteAllDoctorData()
+                mTheDB.doctorDao().insertNewDoctor(it)
+            }, onFailure = { onError(it) })
+    }
+
+    override fun getDoctorByEmailFromDB(email: String): LiveData<DoctorVO> {
+        return mTheDB.doctorDao().getAllDoctorDataByEmail(email)
     }
 
 

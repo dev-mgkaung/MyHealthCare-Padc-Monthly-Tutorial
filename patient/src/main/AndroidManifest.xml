@@ -31,10 +31,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.CaseSummaryActivity" android:parentActivityName=".activities.HomeActivity" />
-
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity" />
+
+        <activity android:name=".activities.CaseSummaryActivity" android:parentActivityName=".activities.HomeActivity" />
+
+
 
 
     </application>

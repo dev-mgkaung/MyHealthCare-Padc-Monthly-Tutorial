@@ -93,6 +93,33 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             }
     }
 
+    override fun getDoctor(
+        email: String,
+        onSuccess: (doctorVO: DoctorVO) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection(doctors)
+            .whereEqualTo("email", email)
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.message ?: "Please check connection")
+                } ?: run {
+                    val list: MutableList<DoctorVO> = arrayListOf()
+
+                    val result = value?.documents ?: arrayListOf()
+
+                    for (document in result) {
+                        val hashmap = document.data
+                        hashmap?.put("id", document.id.toString())
+                        val Data = Gson().toJson(hashmap)
+                        val docsData = Gson().fromJson<DoctorVO>(Data, DoctorVO::class.java)
+                        list.add(docsData)
+                    }
+                    onSuccess(list[0])
+                }
+            }
+    }
+
     override fun getSpecialities(
         onSuccess: (specialities: List<SpecialitiesVO>) -> Unit,
         onFailure: (String) -> Unit

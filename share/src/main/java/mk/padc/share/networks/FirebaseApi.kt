@@ -23,6 +23,10 @@ interface FirebaseApi {
                    onSuccess: (patientVO: PatientVO) -> Unit,
                    onFailure: (String) -> Unit)
 
+    fun getDoctor(doctorId : String ,
+                   onSuccess: (doctorVO: DoctorVO) -> Unit,
+                   onFailure: (String) -> Unit)
+
     fun getSpecialities (
         onSuccess: (specialities : List<SpecialitiesVO>) -> Unit,
         onFailure: (String) -> Unit

@@ -22,9 +22,9 @@ object SessionManager {
     }
 
     var login_status: Boolean
-        // custom getter to get a preference of a desired type, with a predefined default value
+
         get() = preferences.getBoolean(sharePreferenceLoginStatus, false)
-        // custom setter to save a preference back to preferences file
+
         set(value) = preferences.edit {
             it.putBoolean(sharePreferenceLoginStatus, value)
         }

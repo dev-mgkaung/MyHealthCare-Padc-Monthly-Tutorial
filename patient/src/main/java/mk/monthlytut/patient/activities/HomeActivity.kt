@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import mk.monthlytut.patient.R
@@ -13,7 +12,6 @@ import mk.padc.share.activities.BaseActivity
 class HomeActivity : BaseActivity() {
 
     companion object {
-        //MainActivity call from other screen
         fun newIntent(context: Context) = Intent(context, HomeActivity::class.java)
     }
 

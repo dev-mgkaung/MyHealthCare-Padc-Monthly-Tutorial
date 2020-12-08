@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import mk.padc.share.data.vos.DoctorVO
+import mk.padc.share.data.vos.PatientVO
 
 @Dao
 interface DoctorDao {
@@ -19,8 +20,8 @@ interface DoctorDao {
     @Query("select * from doctors")
     fun getAllDoctorData(): LiveData<List<DoctorVO>>
 
-    @Query("select * from doctors WHERE id = :id")
-    fun getAllDoctorDataBy(id: String): LiveData<DoctorVO>
+    @Query("select * from doctors WHERE email = :email")
+    fun getAllDoctorDataByEmail(email: String): LiveData<DoctorVO>
 
     @Query("DELETE FROM doctors")
     fun deleteAllDoctorData()
