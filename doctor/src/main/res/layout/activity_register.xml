@@ -31,6 +31,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white">
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -39,7 +47,15 @@
                     android:padding="10dp"
                     android:textSize="13sp"
                     android:id="@+id/etUserName"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="5dp"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white">
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,8 +65,16 @@
                     android:textSize="13sp"
                     android:inputType="textEmailAddress"
                     android:id="@+id/etEmail"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="5dp"/>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white">
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,8 +84,90 @@
                     android:id="@+id/etPassword"
                     android:textSize="13sp"
                     android:inputType="textPassword"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="5dp"/>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white">
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:entries="@array/speciality_name_list"
+                    android:id="@+id/specialname_spinner"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner_btn_white"
+                    android:hint="@string/phone"
+                    android:padding="10dp"
+                    android:id="@+id/ed_phone"
+                    android:textSize="13sp"
+                    android:inputType="phone"
+                    android:layout_margin="5dp"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/rounded_corner_btn_white"
+                    android:hint="@string/degree"
+                    android:padding="10dp"
+                    android:id="@+id/ed_degree"
+                    android:maxLines="3"
+                    android:lines="3"
+                    android:scrollbars="none"
+                    android:textSize="13sp"
+                    android:maxLength="2000"
+                    android:gravity="left"
+                    android:textColor="@color/black"
+                    android:inputType="text"
+                    android:layout_margin="5dp"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/rounded_corner_btn_white"
+                    android:hint="@string/biography"
+                    android:padding="10dp"
+                    android:id="@+id/ed_biography"
+                    android:textSize="13sp"
+                    android:maxLines="5"
+                    android:lines="5"
+                    android:scrollbars="none"
+                    android:maxLength="3000"
+                    android:gravity="left"
+                    android:textColor="@color/black"
+                    android:inputType="text"
+                    android:layout_margin="5dp"/>
+                </androidx.cardview.widget.CardView>
                 <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="match_parent"
                     android:padding="6dp"
@@ -71,34 +177,37 @@
                     android:id="@+id/btnRegister"
                     android:text="@string/register"
                     android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_marginTop="80dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:textAlignment="center"
+                        android:text="@string/already"
+                        android:textSize="13sp"
+                        android:textColor="@color/black" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:textAlignment="center"
+                        android:text="@string/login"
+                        android:textSize="13sp"
+                        android:textColor="@color/blue_A400" />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textAlignment="center"
-            android:text="@string/already"
-            android:textSize="13sp"
-            android:textColor="@color/black" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_marginLeft="8dp"
-            android:textAlignment="center"
-            android:text="@string/login"
-            android:textSize="13sp"
-            android:textColor="@color/blue_A400" />
-    </LinearLayout>
+
 
 </RelativeLayout>

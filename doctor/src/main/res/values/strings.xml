@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">MyCare</string>
+
+    <string-array name="speciality_name_list">
+        <item>နှလုံး အထူးကု </item>
+        <item>သွားနှင့် ခံတွင်း </item>
+        <item>အရေပြားနှင့် အလှပရေးရာ </item>
+        <item>နား ၊ နားခေါင်း ၊ လည်ချောင်း </item>
+        <item>အစာအိမ်နှင့် အူလမ်းကြောင်း</item>
+        <item>အသည်းအထူးကု</item>
+        <item>ဦးနှောက်နှင့် အာရုံကြော </item>
+        <item>သားဖွား ၊ မီးယပ် </item>
+        <item>အရိုးအကြော </item>
+        <item>ကလေးကျန်းမာရေး </item>
+        <item>ဓာတ်မှန် </item>
+        <item>ခွဲစိတ် </item>
+    </string-array>
+
+    <string-array name="speciality_type_list">
+        <item>cardiology</item>
+        <item>dentist</item>
+        <item>dermatology</item>
+        <item>ent</item>
+        <item>gastroenterology</item>
+        <item>hepatology</item>
+        <item>neurology</item>
+        <item>og</item>
+        <item>orthopedics</item>
+        <item>pediartics</item>
+        <item>radiology</item>
+        <item>surgery</item>
+    </string-array>
 </resources>
