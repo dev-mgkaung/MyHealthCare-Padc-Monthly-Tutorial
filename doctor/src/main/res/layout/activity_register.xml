@@ -129,19 +129,19 @@
                     app:cardBackgroundColor="@color/white">
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corner_btn_white"
                     android:hint="@string/degree"
                     android:padding="10dp"
+                    android:scrollbars="vertical"
                     android:id="@+id/ed_degree"
                     android:maxLines="3"
                     android:lines="3"
-                    android:scrollbars="none"
                     android:textSize="13sp"
                     android:maxLength="2000"
                     android:gravity="left"
                     android:textColor="@color/black"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:layout_margin="5dp"/>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -153,7 +153,7 @@
                     app:cardBackgroundColor="@color/white">
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corner_btn_white"
                     android:hint="@string/biography"
                     android:padding="10dp"
@@ -161,11 +161,11 @@
                     android:textSize="13sp"
                     android:maxLines="5"
                     android:lines="5"
-                    android:scrollbars="none"
+                    android:scrollbars="vertical"
                     android:maxLength="3000"
                     android:gravity="left"
                     android:textColor="@color/black"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:layout_margin="5dp"/>
                 </androidx.cardview.widget.CardView>
                 <androidx.appcompat.widget.AppCompatButton

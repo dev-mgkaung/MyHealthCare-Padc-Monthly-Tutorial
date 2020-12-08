@@ -16,18 +16,4 @@
         <item>ခွဲစိတ် </item>
     </string-array>
 
-    <string-array name="speciality_type_list">
-        <item>cardiology</item>
-        <item>dentist</item>
-        <item>dermatology</item>
-        <item>ent</item>
-        <item>gastroenterology</item>
-        <item>hepatology</item>
-        <item>neurology</item>
-        <item>og</item>
-        <item>orthopedics</item>
-        <item>pediartics</item>
-        <item>radiology</item>
-        <item>surgery</item>
-    </string-array>
 </resources>

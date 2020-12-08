@@ -1,9 +1,12 @@
 package mk.padc.share.activities
 
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
+import mk.padc.share.R
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 import mk.padc.share.mvp.views.BaseView
 
