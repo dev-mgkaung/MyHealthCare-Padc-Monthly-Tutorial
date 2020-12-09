@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.networks.FirebaseApi
 
 interface DoctorModel
@@ -30,4 +31,16 @@ interface DoctorModel
     fun getConsultationAcceptListFromDB(speciality: String) : LiveData<List<ConsultationRequestVO>>
 
     fun deleteConsultationRequestById(consulationId : String)  : LiveData<List<ConsultationRequestVO>>
+
+    fun startConsultation(
+            status: String,
+            postpone: String,
+            consulationId: String,
+            dateTime: String,
+            questionAnswerList: List<QuestionAnswerVO>,
+            patientVO: PatientVO,
+            doctorVO: DoctorVO,
+            onSuccess: () -> Unit,
+            onFailure: (String) -> Unit
+    )
 }

@@ -46,19 +46,22 @@ interface FirebaseApi {
         dateTime : String,
         onSuccess: () -> Unit, onFailure: (String) -> Unit)
 
-    fun getBroadcasetConsultationRequest(
+    fun getBroadcastConsultationRequest(
         consulation_request_id : String,
         onSuccess: (consulationRequest : ConsultationRequestVO) -> Unit,
         onFailure: (String) -> Unit
     )
 
-    fun getBroadcasetConsultationRequestBySpeciality(
+    fun getBroadcastConsultationRequestBySpeciality(
             speciality : String,
             onSuccess: (list : List<ConsultationRequestVO>) -> Unit,
             onFailure: (String) -> Unit
     )
 
     fun startConsultation(
+        status : String,
+        postpone : String,
+        consulationId: String,
         dateTime: String,
         questionAnswerList: List<QuestionAnswerVO>,
         patientVO: PatientVO,

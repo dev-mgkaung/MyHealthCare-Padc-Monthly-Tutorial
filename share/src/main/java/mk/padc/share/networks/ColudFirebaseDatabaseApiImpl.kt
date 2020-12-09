@@ -180,7 +180,9 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "case_summary" to questionAnswerList,
             "id" to id,
             "patient_info" to patientVO,
-            "speciality" to speciality)
+            "speciality" to speciality,
+            "doctor_id" to "",
+            "postpone" to  "")
 
         db.collection(consultation_request)
             .document(id)
@@ -197,6 +199,9 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
 
     override fun startConsultation(
+        status: String,
+        postpone : String,
+        consulationId: String,
         dateTime: String,
         questionAnswerList: List<QuestionAnswerVO>,
         patientVO: PatientVO,
@@ -233,6 +238,16 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                .addOnSuccessListener { Log.d("Success", "Successfully ") }
                .addOnFailureListener { Log.d("Failure", "Failed") }
        }
+
+        val consultationRequestMap = hashMapOf(
+                "status" to status,
+                "postone" to postpone
+            )
+        db.collection(consultation_request)
+                .document(consulationId)
+                .set(consultationRequestMap)
+                .addOnSuccessListener { Log.d("Success", "Successfully ") }
+                .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
     override fun sendMessage(
@@ -267,7 +282,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
-    override fun getBroadcasetConsultationRequest(
+    override fun getBroadcastConsultationRequest(
         consulation_request_id : String,
         onSuccess: (consulationRequest: ConsultationRequestVO) -> Unit,
         onFailure: (String) -> Unit
@@ -294,7 +309,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             }
     }
 
-    override fun getBroadcasetConsultationRequestBySpeciality(speciality: String, onSuccess: (list: List<ConsultationRequestVO>) -> Unit, onFailure: (String) -> Unit) {
+    override fun getBroadcastConsultationRequestBySpeciality(speciality: String, onSuccess: (list: List<ConsultationRequestVO>) -> Unit, onFailure: (String) -> Unit) {
         db.collection(consultation_request)
                 .whereEqualTo("speciality", speciality)
                 .addSnapshotListener { value, error ->
@@ -516,6 +531,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     ) {
         TODO("Not yet implemented")
     }
+
     override fun sendDirectRequest(
         questionAnswerVO: QuestionAnswerVO,
         patientVO: PatientVO,

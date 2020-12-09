@@ -14,10 +14,24 @@ class ConsultationRequestViewHolder(itemView: View, private val mDelegate: Consu
     override fun bindData(data: ConsultationRequestVO) {
 
         data?.let {
-          itemView.txt_patient_type.text = "New Patient"
+
             ImageUtils().showImage(itemView.img_patient,data.patient_info?.photo.toString(), R.drawable.user)
             itemView.txt_patient_name.text = data.patient_info?.name
             itemView.txt_patient_dateofbirth.text = data.patient_info?.dateOfBirth
+
+            if(data.patient_type_status.equals("new"))
+            {
+                itemView.txt_patient_type.text =  itemView.resources.getString(R.string.new_patient)
+                itemView.btnNext.visibility =View.GONE
+                itemView.btnPostpone.visibility = View.GONE
+                itemView.btnSkip.visibility = View.VISIBLE
+            }else
+            {
+                itemView.txt_patient_type.text =  itemView.resources.getString(R.string.consulated_patient)
+                itemView.btnNext.visibility =View.VISIBLE
+                itemView.btnPostpone.visibility = View.VISIBLE
+                itemView.btnSkip.visibility = View.GONE
+            }
         }
 
         itemView.btnAccept.setOnClickListener {

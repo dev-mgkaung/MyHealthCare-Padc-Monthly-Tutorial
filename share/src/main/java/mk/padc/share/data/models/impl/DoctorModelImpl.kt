@@ -6,6 +6,8 @@ import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
+import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.networks.ColudFirebaseDatabaseApiImpl
 import mk.padc.share.networks.FirebaseApi
 
@@ -51,7 +53,7 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
     }
 
     override fun getBrodcastConsultationRequests(speciality: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
-        mFirebaseApi.getBroadcasetConsultationRequestBySpeciality(speciality,
+        mFirebaseApi.getBroadcastConsultationRequestBySpeciality(speciality,
                 onSuccess = {
                     mTheDB.consultationRequestDao().deleteAllConsultationRequestData()
                     mTheDB.consultationRequestDao().insertConsultationRequestData(it)
@@ -69,6 +71,11 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
     override fun deleteConsultationRequestById(consulationId: String): LiveData<List<ConsultationRequestVO>> {
          mTheDB.consultationRequestDao().deleteAllConsultationRequestDataById(consulationId)
         return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality("dentist")
+    }
+
+    override fun startConsultation(status: String, postpone: String ,consulationId: String, dateTime: String, questionAnswerList: List<QuestionAnswerVO>, patientVO: PatientVO, doctorVO: DoctorVO, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        mFirebaseApi.startConsultation(status, postpone, consulationId, dateTime, questionAnswerList, patientVO, doctorVO,
+                onSuccess = {}, onFailure = { onFailure(it) })
     }
 
 
