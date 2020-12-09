@@ -15,7 +15,7 @@ class ImageUtils{
         Glide.with(imageView.context)
                 .load( imageUrl)
                 .placeholder(thumbnail)
-               .apply(RequestOptions().circleCrop())
+                .apply(RequestOptions().circleCrop())
                 .into(imageView)
     }
 

@@ -13,8 +13,8 @@
         android:layout_margin="10dp"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="8dp"
             android:scaleType="fitXY"
@@ -49,6 +49,8 @@
             android:textStyle="bold"
             android:text="@string/cosultation_request_history"
             android:textSize="14sp"
+            android:visibility="gone"
+            android:id="@+id/consultationlabel"
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/margin_medium_2"/>
         <androidx.recyclerview.widget.RecyclerView

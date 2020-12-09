@@ -3,6 +3,8 @@ package mk.monthlytut.doctor.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import mk.monthlytut.doctor.R
@@ -66,8 +68,9 @@ class MainActivity : BaseActivity() ,HomeView {
         consultationRequestAdapter.setNewData(list.toMutableList())
     }
 
-
     override fun displayConsultationAcceptList(list: List<ConsultationRequestVO>) {
+        consultationlabel.visibility = View.VISIBLE
         consultationAcceptAdapter.setNewData(list.toMutableList())
     }
+
 }

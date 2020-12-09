@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <RelativeLayout
-            android:layout_margin="8dp"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -38,7 +38,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:background="@color/grey_100"/>
         <LinearLayout
             android:layout_marginTop="10dp"
