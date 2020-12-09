@@ -2,9 +2,7 @@ package mk.padc.share.data.vos
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
 import com.google.firebase.firestore.IgnoreExtraProperties
-import mk.padc.share.persistances.converters.DoctorConverter
 import mk.padc.share.utils.recent_doctors
 
 @IgnoreExtraProperties

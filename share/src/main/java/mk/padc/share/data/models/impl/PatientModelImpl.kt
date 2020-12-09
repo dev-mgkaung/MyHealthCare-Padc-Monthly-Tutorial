@@ -110,12 +110,18 @@ object PatientModelImpl : PatientModel, BaseModel() {
             }, onFailure = { onFailure(it) })
     }
 
-    override fun getConsultationAccepts(onSuccess: (List<ConsultationRequestVO>) -> Unit, onError: (String) -> Unit) {
-
+    override fun getConsultationAccepts(patientId : String , onSuccess: (List<ConsultationRequestVO>) -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getBroadcastConsultationRequestByPatient(
+                patientId,
+                onSuccess = {
+                    mTheDB.consultationRequestDao().deleteAllConsultationRequestData()
+                    mTheDB.consultationRequestDao().insertConsultationRequestData(it)
+                }, onFailure =
+        { onError(it) })
     }
 
-    override fun getConsultationAcceptsFromDB(): LiveData<List<SpecialQuestionVO>> {
-        TODO("Not yet implemented")
+    override fun getConsultationAcceptsFromDB(): LiveData<List<ConsultationRequestVO>> {
+        return mTheDB.consultationRequestDao().getAllConsultationAcceptData("accept")
     }
 
 }

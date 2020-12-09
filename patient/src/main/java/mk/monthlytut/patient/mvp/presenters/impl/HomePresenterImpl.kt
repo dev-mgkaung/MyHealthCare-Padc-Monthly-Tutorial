@@ -45,10 +45,18 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
             .observe(owner, Observer {
                 mView?.displayRecentDoctorList(it)
             })
+
+        patientModel.getConsultationAccepts(SessionManager.patient_id.toString(), onSuccess = {}, onError = {})
+
+        patientModel.getConsultationAcceptsFromDB()
+                .observe(owner, Observer {
+                    mView?.displayConsultationRequest(it)
+                })
     }
 
     override fun onTap() {}
 
+    override fun onTapStarted(consultationChatId: String) {}
 
 
 }

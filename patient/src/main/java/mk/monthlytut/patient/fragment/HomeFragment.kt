@@ -28,7 +28,6 @@ class HomeFragment : BaseFragment() , HomeView {
 
     private lateinit var mPresenter: HomePresenter
 
-    // Adapters
     private lateinit var mRecentDoctorAdapter: RecentDoctorAdapter
     private lateinit var mSpecialityAdapter: SpecialityAdapter
     private lateinit var consultationAdapter : ConsultationAdapter

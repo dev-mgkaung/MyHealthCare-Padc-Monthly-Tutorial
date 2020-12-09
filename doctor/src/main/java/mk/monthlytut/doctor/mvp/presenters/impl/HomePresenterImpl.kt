@@ -71,19 +71,19 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapMedicalRecord(consultationRequestVO: ConsultationRequestVO) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onTapPrescription(consultationRequestVO: ConsultationRequestVO) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onTapSendMessage(consultationRequestVO: ConsultationRequestVO) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onTapDoctorComment(consultationRequestVO: ConsultationRequestVO) {
-        TODO("Not yet implemented")
+
     }
 
     private fun startConsulatationByDoctor(status: String, postPone: String, consultationRequestVO: ConsultationRequestVO) {
@@ -93,6 +93,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 name = SessionManager.doctor_name,
                 phone = SessionManager.doctor_phone,
                 degree = SessionManager.doctor_degree,
+                email = SessionManager.doctor_email,
                 biography = SessionManager.doctor_bigraphy,
                 photo = SessionManager.doctor_photo,
                 specialityname = SessionManager.doctor_specialityname,

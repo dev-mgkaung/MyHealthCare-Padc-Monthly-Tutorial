@@ -182,8 +182,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "patient_info" to patientVO,
             "speciality" to speciality,
             "doctor_id" to "",
-            "status" to "none",
-            "postpone" to  "")
+            "status" to "none")
 
         db.collection(consultation_request)
             .document(id)
@@ -245,9 +244,9 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 "status" to status,
                 "postone" to postpone,
                 "doctor_id" to doctorVO.id,
+                "patient_id" to patientVO.id,
                 "speciality" to doctorVO.speciality,
                 "patient_info" to patientVO,
-                "doctor_info" to doctorVO,
                 "case_summary" to questionAnswerList,
                 "consultation_id" to id
             )
@@ -317,6 +316,29 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             }
     }
 
+    override fun getBroadcastConsultationRequestByPatient(patient_id : String, onSuccess: (consulationRequest: List<ConsultationRequestVO>) -> Unit, onFailure: (String) -> Unit) {
+        db.collection(consultation_request)
+                .whereEqualTo("patient_id", patient_id)
+                .addSnapshotListener { value, error ->
+                    error?.let {
+                        onFailure(it.message ?: "Please check connection")
+                    } ?: run {
+                        val list: MutableList<ConsultationRequestVO> = arrayListOf()
+
+                        val result = value?.documents ?: arrayListOf()
+
+                        for (document in result) {
+                            val hashmap = document.data
+                            hashmap?.put("id", document.id.toString())
+                            val Data = Gson().toJson(hashmap)
+                            val docsData = Gson().fromJson<ConsultationRequestVO>(Data, ConsultationRequestVO::class.java)
+                            list.add(docsData)
+                        }
+                        onSuccess(list)
+                    }
+                }
+    }
+
     override fun getBroadcastConsultationRequestBySpeciality(speciality: String, onSuccess: (list: List<ConsultationRequestVO>) -> Unit, onFailure: (String) -> Unit) {
         db.collection(consultation_request)
                 .whereEqualTo("speciality", speciality)
@@ -345,17 +367,16 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
         //update consultation status
 
-        val consultationChatMap = hashMapOf(
-            "finish_consultation_status" to true,
-            "id" to consulationChatId)
-
-        db.collection("$consultation_chat")
-            .document(consulationChatId)
-            .set(consultationChatMap)
-            .addOnSuccessListener { Log.d("Success", "Successfully ") }
-            .addOnFailureListener { Log.d("Failure", "Failed") }
+//        val consultationChatMap = hashMapOf(
+//            "finish_consultation_status" to true,
+//            "id" to consulationChatId)
+//
+//        db.collection("$consultation_chat")
+//            .document(consulationChatId)
+//            .set(consultationChatMap)
+//            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+//            .addOnFailureListener { Log.d("Failure", "Failed") }
     }
-
 
 
     override fun checkoutMedicine(

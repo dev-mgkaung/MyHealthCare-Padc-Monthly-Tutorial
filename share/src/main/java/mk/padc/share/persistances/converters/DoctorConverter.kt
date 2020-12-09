@@ -7,8 +7,8 @@ import mk.padc.share.data.vos.DoctorVO
 
 class DoctorConverter {
     @TypeConverter
-    fun toString(dataList: DoctorVO): String {
-        return Gson().toJson(dataList)
+    fun toString(list: DoctorVO): String {
+        return Gson().toJson(list)
     }
 
     @TypeConverter

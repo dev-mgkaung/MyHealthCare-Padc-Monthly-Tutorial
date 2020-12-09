@@ -52,6 +52,12 @@ interface FirebaseApi {
         onFailure: (String) -> Unit
     )
 
+    fun getBroadcastConsultationRequestByPatient(
+            patientId :String,
+            onSuccess: (consulationRequest : List<ConsultationRequestVO>) -> Unit,
+            onFailure: (String) -> Unit
+    )
+
     fun getBroadcastConsultationRequestBySpeciality(
             speciality : String,
             onSuccess: (list : List<ConsultationRequestVO>) -> Unit,
