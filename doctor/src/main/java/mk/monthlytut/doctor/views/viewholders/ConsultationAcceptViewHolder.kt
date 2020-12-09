@@ -23,15 +23,15 @@ class ConsultationAcceptViewHolder(itemView: View, private val mDelegate: Consul
         }
 
         itemView.txt_consulated_history.setOnClickListener {
-            mDelegate.onTapMedicalRecord()
+            mDelegate.onTapMedicalRecord(data)
         }
 
         itemView.txt_prescription.setOnClickListener {
-            mDelegate.onTapPrescription()
+            mDelegate.onTapPrescription(data)
         }
 
         itemView.txt_comment.setOnClickListener {
-            mDelegate.onTapDoctorComment()
+            mDelegate.onTapDoctorComment(data)
         }
     }
 }

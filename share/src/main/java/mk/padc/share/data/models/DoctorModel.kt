@@ -28,4 +28,6 @@ interface DoctorModel
     fun getBrodcastConsultationRequestsFromDB(speciality: String) : LiveData<List<ConsultationRequestVO>>
 
     fun getConsultationAcceptListFromDB(speciality: String) : LiveData<List<ConsultationRequestVO>>
+
+    fun deleteConsultationRequestById(consulationId : String)  : LiveData<List<ConsultationRequestVO>>
 }

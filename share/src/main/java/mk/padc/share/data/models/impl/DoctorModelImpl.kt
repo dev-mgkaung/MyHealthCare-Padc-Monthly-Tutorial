@@ -66,5 +66,10 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality(speciality)
     }
 
+    override fun deleteConsultationRequestById(consulationId: String): LiveData<List<ConsultationRequestVO>> {
+         mTheDB.consultationRequestDao().deleteAllConsultationRequestDataById(consulationId)
+        return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality("dentist")
+    }
+
 
 }

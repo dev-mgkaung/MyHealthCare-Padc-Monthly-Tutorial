@@ -21,19 +21,19 @@ class ConsultationRequestViewHolder(itemView: View, private val mDelegate: Consu
         }
 
         itemView.btnAccept.setOnClickListener {
-            mDelegate.onTapAccept()
+            mDelegate.onTapAccept(data)
         }
 
         itemView.btnNext.setOnClickListener {
-            mDelegate.onTapNext()
+            mDelegate.onTapNext(data)
         }
 
         itemView.btnPostpone.setOnClickListener {
-            mDelegate.onTapPostpone()
+            mDelegate.onTapPostpone(data)
         }
 
         itemView.btnSkip.setOnClickListener {
-            mDelegate.onTapSkip()
+            mDelegate.onTapSkip(data)
         }
     }
 }

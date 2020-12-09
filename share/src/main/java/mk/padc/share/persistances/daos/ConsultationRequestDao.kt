@@ -29,4 +29,6 @@ interface ConsultationRequestDao {
     @Query("DELETE FROM consultation_request")
     fun deleteAllConsultationRequestData()
 
+    @Query("DELETE FROM consultation_request where id =  :id")
+    fun deleteAllConsultationRequestDataById(id : String)
 }
