@@ -242,7 +242,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
         val consultationRequestMap = hashMapOf(
                 "status" to status,
-                "postone" to postpone,
                 "doctor_id" to doctorVO.id,
                 "patient_id" to patientVO.id,
                 "speciality" to doctorVO.speciality,

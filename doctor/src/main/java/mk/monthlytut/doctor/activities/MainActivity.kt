@@ -34,7 +34,7 @@ class MainActivity : BaseActivity() ,HomeView {
         setContentView(R.layout.activity_main)
 
         drname.text= SessionManager.doctor_name
-        ImageUtils().showImage(img_doctor,SessionManager.doctor_photo.toString(),R.drawable.doctor)
+        ImageUtils().showImage(img_doctor,SessionManager.doctor_photo.toString(),R.drawable.doctor_thumbnail)
 
         setUpPresenter()
         setUpActionListeners()

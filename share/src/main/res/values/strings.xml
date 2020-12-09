@@ -1,4 +1,7 @@
 <resources>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
     <string name="app_name">The Care</string>
     <string name="speciality_label">ရောဂါအမျိုးအစားများ</string>
     <string name="speciality">အမျိုးအစား</string>

@@ -82,7 +82,7 @@ class HomeFragment : BaseFragment() , HomeView {
     }
 
     override fun displayRecentDoctorList(list: List<RecentDoctorVO>) {
-        if(list.size > 0) {
+        if(list.isNotEmpty()) {
             ly_recentdoctor.visibility =View.VISIBLE
             mRecentDoctorAdapter.setNewData(list.toMutableList())
         }else{

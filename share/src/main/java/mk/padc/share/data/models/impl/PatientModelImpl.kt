@@ -121,7 +121,7 @@ object PatientModelImpl : PatientModel, BaseModel() {
     }
 
     override fun getConsultationAcceptsFromDB(): LiveData<List<ConsultationRequestVO>> {
-        return mTheDB.consultationRequestDao().getAllConsultationAcceptData("accept")
+        return mTheDB.consultationRequestDao().getConsultationAcceptData("accept")
     }
 
 }
