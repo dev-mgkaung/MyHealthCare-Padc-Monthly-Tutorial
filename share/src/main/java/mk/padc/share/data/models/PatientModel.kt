@@ -49,4 +49,9 @@ interface PatientModel
         dateTime: String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit)
+    
+    
+    fun  getConsultationAccepts(
+            onSuccess: (List<ConsultationRequestVO>) -> Unit,
+             onError: (String) -> Unit)
 }

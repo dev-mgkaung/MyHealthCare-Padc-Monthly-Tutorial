@@ -21,6 +21,7 @@ class ConsultationRequestVO(
     var patient_type_status : String ?= "new",
     var status : String ? = "none",
     var postpone : String ? = "",
-    var doctor_id : String ? =""
+    var doctor_id : String ? ="",
+    var consultation_id : String ?= ""
 )
 

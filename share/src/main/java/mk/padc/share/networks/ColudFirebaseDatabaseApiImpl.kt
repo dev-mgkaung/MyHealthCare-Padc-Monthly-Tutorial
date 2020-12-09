@@ -248,7 +248,8 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 "speciality" to doctorVO.speciality,
                 "patient_info" to patientVO,
                 "doctor_info" to doctorVO,
-                "case_summary" to questionAnswerList
+                "case_summary" to questionAnswerList,
+                "consultation_id" to id
             )
         db.collection(consultation_request)
                 .document(consulationId)

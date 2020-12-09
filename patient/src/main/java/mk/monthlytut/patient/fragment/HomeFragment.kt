@@ -74,7 +74,8 @@ class HomeFragment : BaseFragment() , HomeView {
       rc_speciality.adapter = mSpecialityAdapter
 
     }
-    override fun displayConsultationRequest(consultationRequestVO: ConsultationRequestVO) {
+    override fun displayConsultationRequest(consultationRequestVO: List<ConsultationRequestVO>) {
+
     }
 
     override fun displayRecentDoctorList(list: List<RecentDoctorVO>) {

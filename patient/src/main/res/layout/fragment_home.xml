@@ -12,9 +12,13 @@
        android:layout_height="match_parent"
        android:orientation="vertical">
 
-       <include layout="@layout/viewpod_consulation_request"
-           android:id="@+id/vp_consulation_request"/>
-
+<!--       <include layout="@layout/viewpod_consulation_request"-->
+<!--           android:id="@+id/vp_consulation_request"/>-->
+           <androidx.recyclerview.widget.RecyclerView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="3dp"
+               android:id="@+id/rc_consulation"/>
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"

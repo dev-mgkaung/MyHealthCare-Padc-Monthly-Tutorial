@@ -7,7 +7,7 @@ import mk.padc.share.data.vos.SpecialitiesVO
 import mk.padc.share.mvp.views.BaseView
 
 interface HomeView : BaseView {
-    fun displayConsultationRequest(consultationRequestVO: ConsultationRequestVO)
+    fun displayConsultationRequest(consultationRequestVO: List<ConsultationRequestVO>)
     fun displayRecentDoctorList (list : List<RecentDoctorVO>)
     fun displaySpecialityList(list: List<SpecialitiesVO>)
     fun nextPageToCaseSummary (specialitiesVO: SpecialitiesVO)
