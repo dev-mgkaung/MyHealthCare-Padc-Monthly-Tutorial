@@ -23,8 +23,8 @@ interface ConsultationRequestDao {
     @Query("select * from consultation_request")
     fun getAllConsultationRequestData(): LiveData<List<ConsultationRequestVO>>
 
-    @Query("select * from consultation_request WHERE id = :id")
-    fun getAllConsultationRequestDataBy(id: String): LiveData<ConsultationRequestVO>
+    @Query("select * from consultation_request WHERE speciality = :speciality")
+    fun getAllConsultationRequestDataBySpeciality(speciality: String): LiveData<List<ConsultationRequestVO>>
 
     @Query("DELETE FROM consultation_request")
     fun deleteAllConsultationRequestData()

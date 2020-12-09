@@ -267,12 +267,13 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
-    override fun getBroadConsultationRequest(
+    override fun getBroadcasetConsultationRequest(
         consulation_request_id : String,
         onSuccess: (consulationRequest: ConsultationRequestVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        db.collection("$consultation_request/$consulation_request_id")
+        db.collection(consultation_request)
+            .whereEqualTo("id", consulation_request_id)
             .addSnapshotListener { value, error ->
                 error?.let {
                     onFailure(it.message ?: "Please check connection")
@@ -291,6 +292,29 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                     onSuccess(list[0])
                 }
             }
+    }
+
+    override fun getBroadcasetConsultationRequestBySpeciality(speciality: String, onSuccess: (list: List<ConsultationRequestVO>) -> Unit, onFailure: (String) -> Unit) {
+        db.collection(consultation_request)
+                .whereEqualTo("speciality", speciality)
+                .addSnapshotListener { value, error ->
+                    error?.let {
+                        onFailure(it.message ?: "Please check connection")
+                    } ?: run {
+                        val list: MutableList<ConsultationRequestVO> = arrayListOf()
+
+                        val result = value?.documents ?: arrayListOf()
+
+                        for (document in result) {
+                            val hashmap = document.data
+                            hashmap?.put("id", document.id.toString())
+                            val Data = Gson().toJson(hashmap)
+                            val docsData = Gson().fromJson<ConsultationRequestVO>(Data, ConsultationRequestVO::class.java)
+                            list.add(docsData)
+                        }
+                        onSuccess(list)
+                    }
+                }
     }
 
     override fun finishConsultation(consulationChatId: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)

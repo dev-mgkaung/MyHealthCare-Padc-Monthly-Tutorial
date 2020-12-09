@@ -2,6 +2,7 @@ package mk.padc.share.data.models
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
+import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.networks.FirebaseApi
@@ -19,4 +20,12 @@ interface DoctorModel
                            onError: (String) -> Unit)
 
     fun getDoctorByEmailFromDB(email: String) : LiveData<DoctorVO>
+
+    fun getBrodcastConsultationRequests(speciality: String ,
+                                        onSuccess: () -> Unit,
+                                        onError: (String) -> Unit)
+
+    fun getBrodcastConsultationRequestsFromDB(speciality: String) : LiveData<List<ConsultationRequestVO>>
+
+    fun getConsultationAcceptListFromDB(speciality: String) : LiveData<List<ConsultationRequestVO>>
 }

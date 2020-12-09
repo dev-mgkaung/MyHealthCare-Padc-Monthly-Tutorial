@@ -53,7 +53,7 @@ class LoginActivity : BaseActivity() , LoginView {
         SessionManager.doctor_device_id = doctorVO.device_id
         SessionManager.doctor_email = doctorVO.email
         SessionManager.doctor_photo = doctorVO.photo.toString()
-
+        SessionManager.doctor_speciality = doctorVO.speciality.toString()
 
         startActivity(MainActivity.newIntent(this))
         this.finish()

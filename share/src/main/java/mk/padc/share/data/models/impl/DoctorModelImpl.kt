@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.DoctorModel
+import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.networks.ColudFirebaseDatabaseApiImpl
 import mk.padc.share.networks.FirebaseApi
@@ -47,6 +48,22 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
 
     override fun getDoctorByEmailFromDB(email: String): LiveData<DoctorVO> {
         return mTheDB.doctorDao().getAllDoctorDataByEmail(email)
+    }
+
+    override fun getBrodcastConsultationRequests(speciality: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getBroadcasetConsultationRequestBySpeciality(speciality,
+                onSuccess = {
+                    mTheDB.consultationRequestDao().deleteAllConsultationRequestData()
+                    mTheDB.consultationRequestDao().insertConsultationRequestData(it)
+                }, onFailure = { onError(it) })
+    }
+
+    override fun getBrodcastConsultationRequestsFromDB(speciality: String): LiveData<List<ConsultationRequestVO>> {
+        return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality(speciality)
+    }
+
+    override fun getConsultationAcceptListFromDB(speciality: String): LiveData<List<ConsultationRequestVO>> {
+        return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality(speciality)
     }
 
 
