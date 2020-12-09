@@ -9,7 +9,6 @@ import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
-import mk.padc.share.data.vos.SpecialQuestionVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 import mk.padc.share.utils.DateUtils
 

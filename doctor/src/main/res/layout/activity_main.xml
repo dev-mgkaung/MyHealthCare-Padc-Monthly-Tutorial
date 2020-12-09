@@ -18,6 +18,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="8dp"
             android:scaleType="fitXY"
+            android:id="@+id/img_doctor"
             android:src="@drawable/doctor"/>
         <TextView
             android:layout_width="match_parent"

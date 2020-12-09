@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.activities.BaseActivity
+import mk.padc.share.utils.ImageUtils
 
 class MainActivity : BaseActivity() {
 
@@ -18,6 +19,17 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         drname.text= SessionManager.doctor_name
+        ImageUtils().showImage(img_doctor,SessionManager.doctor_photo.toString(),R.drawable.doctor)
+
+        setUpActionListeners()
+    }
+
+    private fun setUpActionListeners()
+    {
+        img_doctor.setOnClickListener {
+            startActivity(ProfileActivity.newIntent(this))
+        }
     }
 }

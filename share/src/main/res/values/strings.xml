@@ -58,7 +58,7 @@
     <string name="skip">ကျော်မည်</string>
     <string name="accept">လက်ခံမည်</string>
     <string name="next">နောက်မှ</string>
-    <string name="select_time">အချိန်ရွေးမည်</string>
+    <string name="postpone">အချိန်ရွေးမည်</string>
     <string name="medicine_history">ဆေးမှတ်တမ်း</string>
     <string name="cosultation_request_history">ရက်ချိန်းယူမှုမှတ်တမ်းများ</string>
     <string name="choose_discuss_time">ဆွေးနွေးမည့်အချိန်ရွေးမည်</string>
