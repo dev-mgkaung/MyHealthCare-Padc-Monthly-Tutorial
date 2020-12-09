@@ -21,7 +21,7 @@
                 android:textStyle="bold"
                 android:text="@string/consulation_request"
                 android:textColor="@color/black"
-                android:textSize="14sp"/>
+                android:textSize="12sp"/>
             <TextView
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
                 android:padding="6dp"
                 android:background="@drawable/btn_rounded_corner_orrange"
                 android:id="@+id/txt_patient_type"
-                android:textSize="10sp"/>
+                android:textSize="8sp"/>
 
         </RelativeLayout>
         <View
@@ -90,10 +90,11 @@
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:layout_margin="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_margin="3dp"
                 android:textColor="@color/white"
+                android:textSize="10sp"
                 android:background="@drawable/btn_rounded_corner_red"
                 android:id="@+id/btnSkip"
                 android:text="@string/skip"
@@ -101,36 +102,39 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:layout_margin="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_margin="3dp"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_rounded_corner_cyan"
                 android:id="@+id/btnNext"
                 android:visibility="gone"
                 android:text="@string/next"
+                android:textSize="10sp"
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:layout_margin="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_margin="3dp"
                 android:textColor="@color/white"
                 android:visibility="gone"
                 android:background="@drawable/btn_rounded_corner_yellow"
                 android:id="@+id/btnPostpone"
+                android:textSize="10sp"
                 android:text="@string/postpone"
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:layout_margin="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_margin="3dp"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_corner_btn_blue"
                 android:id="@+id/btnAccept"
+                android:textSize="10sp"
                 android:text="@string/accept"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

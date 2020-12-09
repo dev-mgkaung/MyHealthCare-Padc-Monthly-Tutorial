@@ -41,7 +41,7 @@
                      android:text="Patient Name"
                      android:textStyle="bold"
                      android:id="@+id/txt_patient_name"
-                     android:textSize="16sp"
+                     android:textSize="14sp"
                      android:textColor="@color/black"/>
                  <TextView
                      android:layout_width="match_parent"
@@ -50,8 +50,7 @@
                      android:id="@+id/txt_patient_dateofbirth"
                      android:text="Date Of Birth"
                      android:drawableLeft="@drawable/ic_baseline_date_range_24"
-                     android:textStyle="bold"
-                     android:textSize="14sp"
+                     android:textSize="13sp"
                      android:textColor="@color/black"/>
              </LinearLayout>
          </LinearLayout>
@@ -63,18 +62,18 @@
              android:gravity="left"
              android:text="@string/send"
              android:textStyle="bold"
-             android:padding="12dp"
-             android:layout_marginRight="5dp"
+             android:padding="10dp"
+             android:layout_marginRight="10dp"
              android:background="@drawable/rounded_corner_blue"
              android:id="@+id/txt_send_message"
-             android:textSize="12sp"
+             android:textSize="10sp"
              android:textColor="@color/white"/>
      </RelativeLayout>
 
      <View
          android:layout_width="match_parent"
          android:layout_height="1dp"
-         android:background="@color/grey_400"/>
+         android:background="@color/grey_200"/>
      <LinearLayout
          android:gravity="center"
          android:weightSum="3.02"
@@ -90,7 +89,7 @@
              android:layout_margin="5dp"
              android:layout_gravity="center"
              android:gravity="center"
-             android:textSize="14sp"
+             android:textSize="12sp"
              android:textColor="@color/blue_900"
              android:id="@+id/txt_consulated_history"
              android:text="@string/medicine_history"
@@ -99,7 +98,7 @@
              android:layout_width="0dp"
              android:layout_weight="0.01"
              android:layout_height="match_parent"
-             android:background="@color/grey_400"/>
+             android:background="@color/grey_200"/>
          <TextView
              android:layout_width="0dp"
              android:layout_weight="1"
@@ -109,20 +108,20 @@
              android:text="@string/prescription"
              android:layout_gravity="center"
              android:gravity="center"
-             android:textSize="14sp"
+             android:textSize="12sp"
              android:layout_height="wrap_content"/>
          <View
              android:layout_width="0dp"
              android:layout_weight="0.01"
              android:layout_height="match_parent"
-             android:background="@color/grey_400"/>
+             android:background="@color/grey_200"/>
          <TextView
              android:layout_width="0dp"
              android:layout_weight="1"
              android:layout_margin="5dp"
              android:textColor="@color/blue_900"
              android:id="@+id/txt_comment"
-             android:textSize="14sp"
+             android:textSize="12sp"
              android:layout_gravity="center"
              android:gravity="center"
              android:text="@string/comment"
