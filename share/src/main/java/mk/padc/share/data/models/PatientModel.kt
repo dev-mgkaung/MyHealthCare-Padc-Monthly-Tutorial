@@ -54,4 +54,6 @@ interface PatientModel
     fun  getConsultationAccepts(
             onSuccess: (List<ConsultationRequestVO>) -> Unit,
              onError: (String) -> Unit)
+
+    fun  getConsultationAcceptsFromDB() : LiveData<List<SpecialQuestionVO>>
 }

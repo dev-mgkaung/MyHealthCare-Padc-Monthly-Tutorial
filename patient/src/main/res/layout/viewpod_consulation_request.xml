@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mk.monthlytut.patient.views.ConsultationRequestViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
-    android:layout_width="match_parent"
+    android:layout_width="360dp"
     app:cardCornerRadius="@dimen/card_cornor_radius"
     app:cardBackgroundColor="@color/white"
     app:cardElevation="@dimen/card_evaluation"
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:id="@+id/txt_consulation"
             android:layout_margin="@dimen/margin_small"
             android:textSize="@dimen/text_regular"
             android:text="@string/consultation_request_message"/>
@@ -73,6 +74,7 @@
             android:maxLines="2"
             android:ellipsize="end"
             android:textStyle="bold"
+            android:id="@+id/txt_doctor_bigoraphy"
             android:layout_margin="@dimen/margin_small"
             android:textSize="12sp"
             android:text="@string/dummy_text_consulation_request"/>
@@ -81,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:id="@+id/btn_start"
             android:gravity="right"
             android:textColor="@color/blue_A700"
             android:layout_margin="@dimen/margin_card_medium"
@@ -88,4 +91,4 @@
             android:text="@string/start_consultation"/>
     </LinearLayout>
 
-</mk.monthlytut.patient.views.ConsultationRequestViewPod>
+</androidx.cardview.widget.CardView>

@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.speciality_confrim_dialog.view.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.activities.CaseSummaryActivity
+import mk.monthlytut.patient.adapters.ConsultationAdapter
 import mk.monthlytut.patient.adapters.RecentDoctorAdapter
 import mk.monthlytut.patient.adapters.SpecialityAdapter
 import mk.monthlytut.patient.mvp.presenters.HomePresenter
@@ -30,7 +31,7 @@ class HomeFragment : BaseFragment() , HomeView {
     // Adapters
     private lateinit var mRecentDoctorAdapter: RecentDoctorAdapter
     private lateinit var mSpecialityAdapter: SpecialityAdapter
-
+    private lateinit var consultationAdapter : ConsultationAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +65,9 @@ class HomeFragment : BaseFragment() , HomeView {
 
     private fun setUpRecyclerView()
     {
+      rc_consulation.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+      consultationAdapter = ConsultationAdapter (mPresenter)
+      rc_consulation.adapter = consultationAdapter
 
       rc_recent_doctor.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
       mRecentDoctorAdapter = RecentDoctorAdapter (mPresenter)
@@ -74,8 +78,8 @@ class HomeFragment : BaseFragment() , HomeView {
       rc_speciality.adapter = mSpecialityAdapter
 
     }
-    override fun displayConsultationRequest(consultationRequestVO: List<ConsultationRequestVO>) {
-
+    override fun displayConsultationRequest(list: List<ConsultationRequestVO>) {
+        consultationAdapter.setNewData(list.toMutableList())
     }
 
     override fun displayRecentDoctorList(list: List<RecentDoctorVO>) {

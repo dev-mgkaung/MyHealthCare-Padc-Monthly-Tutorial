@@ -110,4 +110,12 @@ object PatientModelImpl : PatientModel, BaseModel() {
             }, onFailure = { onFailure(it) })
     }
 
+    override fun getConsultationAccepts(onSuccess: (List<ConsultationRequestVO>) -> Unit, onError: (String) -> Unit) {
+
+    }
+
+    override fun getConsultationAcceptsFromDB(): LiveData<List<SpecialQuestionVO>> {
+        TODO("Not yet implemented")
+    }
+
 }
