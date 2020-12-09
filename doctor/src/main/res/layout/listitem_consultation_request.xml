@@ -66,16 +66,18 @@
                     android:text="Patient Name"
                     android:textStyle="bold"
                     android:id="@+id/txt_patient_name"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="@color/black"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
+                    android:layout_gravity="center"
                     android:id="@+id/txt_patient_dateofbirth"
                     android:text="Date Of Birth"
+                    android:drawableLeft="@drawable/ic_baseline_date_range_24"
                     android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"/>
             </LinearLayout>
         </LinearLayout>
