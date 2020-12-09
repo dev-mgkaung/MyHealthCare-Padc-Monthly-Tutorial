@@ -38,7 +38,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                         mView?.displayConsultationRequests(data) }
                 })
 
-        doctorModel.getConsultationAcceptListFromDB(SessionManager.doctor_speciality.toString())
+        doctorModel.getConsultationAcceptListFromDB(SessionManager.doctor_id.toString())
                 .observe(owner, Observer { data ->
                     data?.let {
                         mView?.displayConsultationAcceptList(data) }

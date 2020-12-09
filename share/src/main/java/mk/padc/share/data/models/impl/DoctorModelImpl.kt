@@ -64,8 +64,8 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality(speciality)
     }
 
-    override fun getConsultationAcceptListFromDB(speciality: String): LiveData<List<ConsultationRequestVO>> {
-        return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality(speciality)
+    override fun getConsultationAcceptListFromDB(doctorId: String): LiveData<List<ConsultationRequestVO>> {
+        return mTheDB.consultationRequestDao().getAllConsultationAcceptData(doctorId)
     }
 
     override fun deleteConsultationRequestById(consulationId: String): LiveData<List<ConsultationRequestVO>> {

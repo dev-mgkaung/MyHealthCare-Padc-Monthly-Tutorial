@@ -105,4 +105,5 @@ interface FirebaseApi {
     fun getGeneralQuestion(onSuccess: (List<GeneralQuestionTemplateVO>) -> Unit, onFailure: (String) -> Unit)
 
     fun getAllMedicine(speciality: String ,onSuccess: (List<MedicineVO>) -> Unit, onFailure: (String) -> Unit)
+
 }

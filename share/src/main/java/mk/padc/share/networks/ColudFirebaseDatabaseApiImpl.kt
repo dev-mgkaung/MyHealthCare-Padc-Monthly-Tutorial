@@ -182,6 +182,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "patient_info" to patientVO,
             "speciality" to speciality,
             "doctor_id" to "",
+            "status" to "none",
             "postpone" to  "")
 
         db.collection(consultation_request)
@@ -216,6 +217,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "id" to id,
             "finish_consultation_status" to false,
             "patient_info" to patientVO,
+            "doctor_id" to doctorVO.id,
             "doctor_info" to doctorVO)
 
         db.collection(consultation_chat)
@@ -241,7 +243,12 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
         val consultationRequestMap = hashMapOf(
                 "status" to status,
-                "postone" to postpone
+                "postone" to postpone,
+                "doctor_id" to doctorVO.id,
+                "speciality" to doctorVO.speciality,
+                "patient_info" to patientVO,
+                "doctor_info" to doctorVO,
+                "case_summary" to questionAnswerList
             )
         db.collection(consultation_request)
                 .document(consulationId)

@@ -20,6 +20,7 @@ class ConsultationRequestVO(
     var case_summary : ArrayList<QuestionAnswerVO> = arrayListOf(),
     var patient_type_status : String ?= "new",
     var status : String ? = "none",
-    var postpone : String ? = ""
+    var postpone : String ? = "",
+    var doctor_id : String ? =""
 )
 

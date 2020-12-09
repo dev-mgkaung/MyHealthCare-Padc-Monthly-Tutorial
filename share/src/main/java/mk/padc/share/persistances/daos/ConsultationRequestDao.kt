@@ -26,6 +26,9 @@ interface ConsultationRequestDao {
     @Query("select * from consultation_request WHERE speciality = :speciality")
     fun getAllConsultationRequestDataBySpeciality(speciality: String): LiveData<List<ConsultationRequestVO>>
 
+    @Query("select * from consultation_request WHERE doctor_id = :doctorId")
+    fun getAllConsultationAcceptData(doctorId: String): LiveData<List<ConsultationRequestVO>>
+
     @Query("DELETE FROM consultation_request")
     fun deleteAllConsultationRequestData()
 
