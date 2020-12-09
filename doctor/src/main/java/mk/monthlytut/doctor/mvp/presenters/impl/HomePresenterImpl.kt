@@ -18,5 +18,34 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     }
 
+    override fun onTapNext() {
+
+    }
+
+    override fun onTapSkip() {
+
+    }
+
+    override fun onTapPostpone() {
+
+    }
+
+    override fun onTapAccept() {
+
+    }
+
+    override fun onTapMedicalRecord() {
+
+    }
+
+    override fun onTapPrescription() {
+    }
+
+    override fun onTapSendMessage() {
+    }
+
+    override fun onTapDoctorComment() {
+    }
+
 
 }

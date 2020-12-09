@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import mk.monthlytut.doctor.R
+import mk.monthlytut.doctor.adapters.ConsultationAcceptAdapter
 import mk.monthlytut.doctor.adapters.ConsultationRequestAdapter
 import mk.monthlytut.doctor.mvp.presenters.HomePresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.HomePresenterImpl
@@ -20,6 +21,7 @@ class MainActivity : BaseActivity() ,HomeView {
     private lateinit var mPresenter: HomePresenter
 
     private lateinit var consultationRequestAdapter:  ConsultationRequestAdapter
+    private lateinit var consultationAcceptAdapter:  ConsultationAcceptAdapter
 
     companion object {
         fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
@@ -54,6 +56,10 @@ class MainActivity : BaseActivity() ,HomeView {
         rc_consulation_request.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         consultationRequestAdapter = ConsultationRequestAdapter (mPresenter)
         rc_consulation_request.adapter = consultationRequestAdapter
+
+        rc_consulation_accept.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        consultationAcceptAdapter = ConsultationAcceptAdapter (mPresenter)
+        rc_consulation_accept.adapter = consultationAcceptAdapter
     }
 
     override fun displayConsultationRequests(list: List<ConsultationRequestVO>) {
@@ -61,7 +67,7 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
 
-    override fun displayConsultationAcceptList() {
-
+    override fun displayConsultationAcceptList(list: List<ConsultationRequestVO>) {
+        consultationAcceptAdapter.setNewData(list.toMutableList())
     }
 }

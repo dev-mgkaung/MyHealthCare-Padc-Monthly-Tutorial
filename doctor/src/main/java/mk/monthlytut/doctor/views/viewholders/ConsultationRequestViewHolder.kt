@@ -2,8 +2,10 @@ package mk.monthlytut.doctor.views.viewholders
 
 import android.view.View
 import kotlinx.android.synthetic.main.listitem_consultation_request.view.*
+import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.delegates.ConsultationRequestDelegate
 import mk.padc.share.data.vos.ConsultationRequestVO
+import mk.padc.share.utils.ImageUtils
 import mk.padc.share.views.viewholders.BaseViewHolder
 
 class ConsultationRequestViewHolder(itemView: View, private val mDelegate: ConsultationRequestDelegate) :
@@ -13,7 +15,7 @@ class ConsultationRequestViewHolder(itemView: View, private val mDelegate: Consu
 
         data?.let {
           itemView.txt_patient_type.text = "New Patient"
-            // itemView.img_patient
+            ImageUtils().showImage(itemView.img_patient,data.patient_info?.photo.toString(), R.drawable.user)
             itemView.txt_patient_name.text = data.patient_info?.name
             itemView.txt_patient_dateofbirth.text = data.patient_info?.dateOfBirth
         }
