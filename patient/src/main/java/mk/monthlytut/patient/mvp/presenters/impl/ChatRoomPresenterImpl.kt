@@ -1,16 +1,17 @@
-package mk.monthlytut.doctor.mvp.presenters.impl
+package mk.monthlytut.patient.mvp.presenters.impl
+
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
-import mk.monthlytut.doctor.mvp.presenters.ChatRoomPresenter
-import mk.monthlytut.doctor.mvp.views.ChatView
-import mk.padc.share.data.models.DoctorModel
-import mk.padc.share.data.models.impl.DoctorModelImpl
+import mk.monthlytut.patient.mvp.presenters.ChatRoomPresenter
+import mk.monthlytut.patient.mvp.views.ChatView
+import mk.padc.share.data.models.PatientModel
+import mk.padc.share.data.models.impl.PatientModelImpl
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
 class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>() {
 
-    private val doctorModel: DoctorModel = DoctorModelImpl
+    private val patientModel: PatientModel = PatientModelImpl
 
     override fun onUiReadyConstulation(consultationChatId: String, owner: LifecycleOwner) {
 
