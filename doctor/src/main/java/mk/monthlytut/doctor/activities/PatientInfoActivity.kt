@@ -20,7 +20,10 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
 
     private lateinit var questionAnswerAdapter: QuestionAnswerAdapter
 
+    private lateinit var mConsultationRequestVO: ConsultationRequestVO
+
     private lateinit var consultation_chat_id: String
+
 
     override fun displayPatientInfo(consultationRequestVO: ConsultationRequestVO) {
         ImageUtils().showImage(uerimage,consultationRequestVO.patient_info.photo.toString(),R.drawable.user)
@@ -31,8 +34,12 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
         pweight.text =  " : " +consultationRequestVO.patient_info.weight
         pbloodpressure.text =  " : " +consultationRequestVO.patient_info.blood_pressure
         pcomment.text =  " : " + consultationRequestVO.patient_info.comment
-
+        mConsultationRequestVO= consultationRequestVO
         questionAnswerAdapter.setNewData(consultationRequestVO.case_summary)
+    }
+
+    override fun nextPageToChat() {
+       startActivity(ChatRoomActvity.newIntent(this,consultation_chat_id))
     }
 
     companion object {
@@ -68,7 +75,9 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
     private fun setUpActionListeners()
     {
         cs_btn_confirm.setOnClickListener {
-            mPresenter.onTapStartConsultation(consultation_chat_id)
+            if(mConsultationRequestVO != null) {
+                mPresenter.onTapStartConsultation(mConsultationRequestVO)
+            }
         }
 
         back_patientinfo.setOnClickListener {
@@ -81,6 +90,5 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
         questionAnswerAdapter = QuestionAnswerAdapter(mPresenter)
         rc_question_answer?.adapter = questionAnswerAdapter
         rc_question_answer?.setHasFixedSize(false)
-
     }
 }

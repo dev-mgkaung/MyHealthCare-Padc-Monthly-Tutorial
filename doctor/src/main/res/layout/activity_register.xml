@@ -46,6 +46,7 @@
                     android:hint="@string/username"
                     android:padding="10dp"
                     android:textSize="13sp"
+                    android:maxLines="1"
                     android:id="@+id/etUserName"
                     android:layout_margin="5dp"/>
                 </androidx.cardview.widget.CardView>
@@ -63,6 +64,7 @@
                     android:hint="@string/email_hint"
                     android:padding="10dp"
                     android:textSize="13sp"
+                    android:maxLines="1"
                     android:inputType="textEmailAddress"
                     android:id="@+id/etEmail"
                     android:layout_margin="5dp"/>
@@ -83,6 +85,7 @@
                     android:padding="10dp"
                     android:id="@+id/etPassword"
                     android:textSize="13sp"
+                    android:maxLines="1"
                     android:inputType="textPassword"
                     android:layout_margin="5dp"/>
                 </androidx.cardview.widget.CardView>

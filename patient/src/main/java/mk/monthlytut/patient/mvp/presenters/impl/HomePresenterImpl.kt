@@ -50,7 +50,10 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
         patientModel.getConsultationAcceptsFromDB()
                 .observe(owner, Observer {
-                    mView?.displayConsultationRequest(it)
+                   var data =it.filter{
+                       it.consultation_id.toString().isNotEmpty()
+                   }
+                    mView?.displayConsultationRequest(data)
                 })
     }
 

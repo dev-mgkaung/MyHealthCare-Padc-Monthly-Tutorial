@@ -39,6 +39,7 @@
             android:hint="@string/email_hint"
             android:padding="12dp"
             android:textSize="12sp"
+            android:maxLines="1"
             android:id="@+id/ed_email"
             android:layout_margin="10dp"/>
         <TextView
@@ -58,6 +59,7 @@
             android:hint="@string/password_hint"
             android:padding="12dp"
             android:textSize="12sp"
+            android:maxLines="1"
             android:id="@+id/ed_password"
             android:layout_margin="10dp"/>
         <androidx.appcompat.widget.AppCompatButton

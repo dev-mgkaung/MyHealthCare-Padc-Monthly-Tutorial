@@ -5,4 +5,5 @@ import mk.padc.share.mvp.views.BaseView
 
 interface PatientInfoView : BaseView {
     fun displayPatientInfo(consultationRequestVO: ConsultationRequestVO)
+    fun nextPageToChat()
 }

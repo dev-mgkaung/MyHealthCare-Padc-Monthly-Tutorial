@@ -74,11 +74,12 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
     override fun nextPage(data: ConsultationRequestVO) {
-        if(data.consultation_id.isEmpty()) {
-            startActivity(PatientInfoActivity.newIntent(this,data.consultation_id))
+        if(data.consultation_id.toString().length ==0) {
+            startActivity(data.consultation_id?.let { PatientInfoActivity.newIntent(this, it) })
         }else
         {
-       // chat activity
+            startActivity(data.consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
+
         }
     }
 

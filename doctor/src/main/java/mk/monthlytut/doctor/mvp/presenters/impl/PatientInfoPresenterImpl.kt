@@ -7,20 +7,29 @@ import mk.monthlytut.doctor.mvp.presenters.PatientInfoPresenter
 import mk.monthlytut.doctor.mvp.views.PatientInfoView
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
+import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
+import mk.padc.share.utils.DateUtils
 
 class PatientInfoPresenterImpl : PatientInfoPresenter, AbstractBasePresenter<PatientInfoView>() {
 
     private val doctorModel: DoctorModel = DoctorModelImpl
 
-    override fun onTapStartConsultation(consultation_chat_id: String) {
-
+    override fun onTapStartConsultation( consultationRequestVO: ConsultationRequestVO) {
+      doctorModel.startConsultation(consultationRequestVO.id,
+          DateUtils().getCurrentDate(), consultationRequestVO.case_summary,
+          consultationRequestVO.patient_info, consultationRequestVO.doctor_info,
+          onSuccess = {} , onFailure = {})
+        mView?.nextPageToChat()
     }
 
     override fun onUiReadyConstulation(consulationRequestId: String , owner: LifecycleOwner) {
         doctorModel.getConsultationByConsulationRequestIdFromDB(consulationRequestId)
             .observe(owner, Observer {
-                mView?.displayPatientInfo(it)
+                it?.let{
+                    mView?.displayPatientInfo(it)
+                }
+
             })
     }
 
