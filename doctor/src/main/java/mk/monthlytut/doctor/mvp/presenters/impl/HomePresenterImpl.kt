@@ -76,7 +76,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapSendMessage(consultationRequestVO: ConsultationRequestVO) {
-
+        mView?.nextPage(consultationRequestVO)
     }
 
     override fun onTapDoctorComment(consultationRequestVO: ConsultationRequestVO) {

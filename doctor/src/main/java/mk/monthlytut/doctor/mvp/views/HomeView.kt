@@ -6,4 +6,5 @@ import mk.padc.share.mvp.views.BaseView
 interface HomeView : BaseView {
   fun displayConsultationRequests(list: List<ConsultationRequestVO>)
   fun displayConsultationAcceptList(list: List<ConsultationRequestVO>)
+  fun nextPage(data : ConsultationRequestVO)
 }

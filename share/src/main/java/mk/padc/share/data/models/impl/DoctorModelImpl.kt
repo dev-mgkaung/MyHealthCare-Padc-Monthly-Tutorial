@@ -83,4 +83,8 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
                 onSuccess = {}, onFailure = { onFailure(it) })
     }
 
+    override fun getConsultationByConsulationRequestIdFromDB(consultation_request_id : String): LiveData<ConsultationRequestVO> {
+        return mTheDB.consultationRequestDao().getConsultationRequestByConsultationRequestId(consultation_request_id)
+    }
+
 }

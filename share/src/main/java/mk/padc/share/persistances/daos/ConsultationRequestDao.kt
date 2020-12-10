@@ -40,4 +40,7 @@ interface ConsultationRequestDao {
 
     @Query("select * from consultation_request where status = :accept")
     fun getConsultationAcceptData(accept : String): LiveData<List<ConsultationRequestVO>>
+
+    @Query("select * from consultation_request WHERE consultation_id = :consultation_request_id")
+    fun getConsultationRequestByConsultationRequestId(consultation_request_id: String): LiveData<ConsultationRequestVO>
 }

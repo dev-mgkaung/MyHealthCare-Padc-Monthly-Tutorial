@@ -24,6 +24,6 @@ class ConsultationRequestVO(
     var status : String ? = "none",
     var doctor_id : String ? ="",
     var patient_id : String ?= "",
-    var consultation_id : String ?= ""
+    var consultation_id : String = ""
 )
 

@@ -73,4 +73,13 @@ class MainActivity : BaseActivity() ,HomeView {
         consultationAcceptAdapter.setNewData(list.toMutableList())
     }
 
+    override fun nextPage(data: ConsultationRequestVO) {
+        if(data.consultation_id.isEmpty()) {
+            startActivity(PatientInfoActivity.newIntent(this,data.consultation_id))
+        }else
+        {
+       // chat activity
+        }
+    }
+
 }
