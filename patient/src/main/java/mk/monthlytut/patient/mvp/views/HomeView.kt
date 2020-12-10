@@ -11,4 +11,5 @@ interface HomeView : BaseView {
     fun displayRecentDoctorList (list : List<RecentDoctorVO>)
     fun displaySpecialityList(list: List<SpecialitiesVO>)
     fun nextPageToCaseSummary (specialitiesVO: SpecialitiesVO)
+    fun nextPageToChatRoom(consulation_chat_id : String,consultationRequestVO: ConsultationRequestVO)
 }

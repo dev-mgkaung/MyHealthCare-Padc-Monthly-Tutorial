@@ -124,4 +124,17 @@ object PatientModelImpl : PatientModel, BaseModel() {
         return mTheDB.consultationRequestDao().getConsultationAcceptData("accept")
     }
 
+    override fun joinedChatRoomPatient(
+        consultation_chat_id: String,
+        consultationRequestVO: ConsultationRequestVO,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mFirebaseApi.startConsultationChatPatient(
+            consultation_chat_id,
+            consultationRequestVO,
+            onSuccess = {}, onFailure =
+            { onError(it) })
+    }
+
 }

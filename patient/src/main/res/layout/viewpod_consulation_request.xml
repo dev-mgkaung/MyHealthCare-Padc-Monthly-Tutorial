@@ -86,7 +86,7 @@
             android:id="@+id/btn_start"
             android:gravity="right"
             android:textColor="@color/blue_A700"
-            android:layout_margin="@dimen/margin_card_medium"
+            android:layout_margin="12dp"
             android:textSize="14sp"
             android:text="@string/start_consultation"/>
     </LinearLayout>

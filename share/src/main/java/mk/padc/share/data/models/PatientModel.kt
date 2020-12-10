@@ -57,4 +57,9 @@ interface PatientModel
              onError: (String) -> Unit)
 
     fun  getConsultationAcceptsFromDB() : LiveData<List<ConsultationRequestVO>>
+
+    fun joinedChatRoomPatient(consultation_chat_id: String, consultationRequestVO: ConsultationRequestVO,
+                              onSuccess: () -> Unit,
+                              onError: (String) -> Unit)
+
 }

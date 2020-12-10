@@ -210,25 +210,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     ) {
         val id = UUID.randomUUID().toString()
 
-
-        val consultationRequestMap = hashMapOf(
-            "status" to "accept",
-            "doctor_id" to doctorVO.id,
-            "patient_id" to patientVO.id,
-            "doctor_info" to doctorVO,
-            "speciality" to doctorVO.speciality,
-            "patient_info" to patientVO,
-            "case_summary" to questionAnswerList,
-            "consultation_id" to  consulationId
-        )
-        db.collection(consultation_request)
-            .document(consulationId)
-            .set(consultationRequestMap)
-            .addOnSuccessListener { Log.d("Success", "Successfully ") }
-            .addOnFailureListener { Log.d("Failure", "Failed") }
-
-
-
         val consultationChatMap = hashMapOf(
             "case_summary" to questionAnswerList,
             "id" to id,
@@ -258,6 +239,22 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                .addOnSuccessListener { Log.d("Success", "Successfully ") }
                .addOnFailureListener { Log.d("Failure", "Failed") }
        }
+
+        val consultationRequestMap = hashMapOf(
+            "status" to "accept",
+            "doctor_id" to doctorVO.id,
+            "patient_id" to patientVO.id,
+            "doctor_info" to doctorVO,
+            "speciality" to doctorVO.speciality,
+            "patient_info" to patientVO,
+            "case_summary" to questionAnswerList,
+            "consultation_id" to  consulationId
+        )
+        db.collection(consultation_request)
+            .document(consulationId)
+            .set(consultationRequestMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
 
 
 
@@ -555,6 +552,29 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             }
     }
 
+    override fun startConsultationChatPatient(
+        consulationChatId: String,
+        consultationRequestVO: ConsultationRequestVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        val consultationRequestMap = hashMapOf(
+            "status" to "complete",
+            "doctor_id" to consultationRequestVO.doctor_info.id,
+            "patient_id" to consultationRequestVO.patient_info.id,
+            "doctor_info" to consultationRequestVO.doctor_info,
+            "speciality" to consultationRequestVO.doctor_info.speciality,
+            "patient_info" to consultationRequestVO.patient_info,
+            "case_summary" to consultationRequestVO.case_summary,
+            "consultation_id" to  consulationChatId
+        )
+        db.collection(consultation_request)
+            .document(consultationRequestVO.id)
+            .set(consultationRequestMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
+    }
+
 
     override fun acceptRequest(
         status : String,
@@ -591,7 +611,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        TODO("Not yet implemented")
+
     }
 
 }

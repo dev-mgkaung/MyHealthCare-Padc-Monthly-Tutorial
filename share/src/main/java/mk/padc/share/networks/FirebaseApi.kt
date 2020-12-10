@@ -115,4 +115,6 @@ interface FirebaseApi {
 
     fun getAllMedicine(speciality: String ,onSuccess: (List<MedicineVO>) -> Unit, onFailure: (String) -> Unit)
 
+
+    fun startConsultationChatPatient(consulationChatId: String, consultationRequestVO: ConsultationRequestVO ,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 }

@@ -8,6 +8,7 @@ import mk.monthlytut.patient.mvp.views.HomeView
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
+import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.SpecialitiesVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
@@ -27,6 +28,15 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     override fun navigateToNextScreen() {
 
+    }
+
+    override fun statusUpdateForCompleteType(
+        context: Context,
+        cosultation_chat_id: String,
+        consultationRequestVO: ConsultationRequestVO
+    ) {
+        patientModel.joinedChatRoomPatient(cosultation_chat_id,consultationRequestVO,
+            onSuccess = {}, onError = {})
     }
 
 
@@ -59,7 +69,9 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     override fun onTap() {}
 
-    override fun onTapStarted(consultationChatId: String) {}
+    override fun onTapStarted(consultationChatId: String, consultationRequestVO: ConsultationRequestVO) {
+     mView?.nextPageToChatRoom(consultationChatId , consultationRequestVO)
+    }
 
 
 }

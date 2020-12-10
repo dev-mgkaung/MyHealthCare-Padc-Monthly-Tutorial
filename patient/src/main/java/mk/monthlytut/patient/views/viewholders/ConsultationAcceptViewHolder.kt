@@ -23,7 +23,7 @@ class ConsultationAcceptViewHolder(itemView: View, private val mDelegate: Consul
         }
 
         itemView.btn_start.setOnClickListener {
-            mDelegate.onTapStarted(consultationChatId = data.consultation_id.toString())
+            mDelegate.onTapStarted(consultationChatId = data.consultation_id.toString(),data)
         }
 
     }
