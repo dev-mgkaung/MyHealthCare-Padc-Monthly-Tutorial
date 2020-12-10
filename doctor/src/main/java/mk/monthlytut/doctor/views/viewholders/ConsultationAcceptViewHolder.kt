@@ -16,6 +16,7 @@ class ConsultationAcceptViewHolder(itemView: View, private val mDelegate: Consul
         BaseViewHolder<ConsultationRequestVO>(itemView) {
 
     override fun bindData(data: ConsultationRequestVO) {
+
         data?.let {
             ImageUtils().showImage(itemView.img_patient,data.patient_info?.photo.toString(), R.drawable.user)
             itemView.txt_patient_name.text = data.patient_info?.name

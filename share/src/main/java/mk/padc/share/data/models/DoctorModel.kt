@@ -2,10 +2,7 @@ package mk.padc.share.data.models
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
-import mk.padc.share.data.vos.ConsultationRequestVO
-import mk.padc.share.data.vos.DoctorVO
-import mk.padc.share.data.vos.PatientVO
-import mk.padc.share.data.vos.QuestionAnswerVO
+import mk.padc.share.data.vos.*
 import mk.padc.share.networks.FirebaseApi
 
 interface DoctorModel
@@ -53,4 +50,13 @@ interface DoctorModel
     )
 
     fun  getConsultationByConsulationRequestIdFromDB(consultation_request_id : String) : LiveData<ConsultationRequestVO>
+
+
+    fun getConsultedPatient(doctorId: String ,
+                                        onSuccess: () -> Unit,
+                                        onError: (String) -> Unit)
+
+    fun  getConsultedPatientFromDB(doctorId : String) : LiveData<List<ConsultedPatientVO>>
+
+
 }

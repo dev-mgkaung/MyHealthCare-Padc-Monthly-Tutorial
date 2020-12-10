@@ -575,6 +575,50 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
+    override fun getConsulatedPatient(
+        doctorId: String,
+        onSuccess: (List<ConsultedPatientVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection("$doctors/$doctorId/$consulted_patient")
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.message ?: "Please check connection")
+                } ?: run {
+                    val list: MutableList<ConsultedPatientVO> = arrayListOf()
+
+                    val result = value?.documents ?: arrayListOf()
+
+                    for (document in result) {
+                        val hashmap = document.data
+                        hashmap?.put("id", document.id.toString())
+                        val Data = Gson().toJson(hashmap)
+                        val docsData = Gson().fromJson<ConsultedPatientVO>(Data, ConsultedPatientVO::class.java)
+                        list.add(docsData)
+                    }
+                    onSuccess(list)
+                }
+            }
+    }
+
+    override fun addConsuatedPatient(
+        doctorId: String,
+        patientId: String,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        val id = UUID.randomUUID().toString()
+        val consulatedPatientMap = hashMapOf(
+            "id" to id,
+            "patient_id" to patientId
+        )
+        db.collection("$doctors/$doctorId/$consulted_patient")
+            .document(id)
+            .set(consulatedPatientMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
+      }
+
 
     override fun acceptRequest(
         status : String,

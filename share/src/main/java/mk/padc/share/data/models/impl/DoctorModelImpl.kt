@@ -4,10 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.DoctorModel
-import mk.padc.share.data.vos.ConsultationRequestVO
-import mk.padc.share.data.vos.DoctorVO
-import mk.padc.share.data.vos.PatientVO
-import mk.padc.share.data.vos.QuestionAnswerVO
+import mk.padc.share.data.vos.*
 import mk.padc.share.networks.ColudFirebaseDatabaseApiImpl
 import mk.padc.share.networks.FirebaseApi
 
@@ -57,6 +54,7 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
                 onSuccess = {
                     mTheDB.consultationRequestDao().deleteAllConsultationRequestData()
                     mTheDB.consultationRequestDao().insertConsultationRequestData(it)
+
                 }, onFailure = { onError(it) })
     }
 
@@ -85,6 +83,21 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
 
     override fun getConsultationByConsulationRequestIdFromDB(consultation_request_id : String): LiveData<ConsultationRequestVO> {
         return mTheDB.consultationRequestDao().getConsultationRequestByConsultationRequestId(consultation_request_id)
+    }
+
+    override fun getConsultedPatient(
+        doctorId: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mFirebaseApi.getConsulatedPatient(doctorId,onSuccess = {
+            mTheDB.consultedPatientDao().deleteConsultedPatient()
+            mTheDB.consultedPatientDao().insertConsultedPatient(it)
+        }, onFailure= {})
+    }
+
+    override fun getConsultedPatientFromDB(doctorId: String): LiveData<List<ConsultedPatientVO>> {
+      return mTheDB.consultedPatientDao().getConsultedPatient()
     }
 
 }

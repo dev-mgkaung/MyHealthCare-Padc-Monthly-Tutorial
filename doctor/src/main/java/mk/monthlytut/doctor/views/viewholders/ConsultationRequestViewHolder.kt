@@ -5,10 +5,11 @@ import kotlinx.android.synthetic.main.listitem_consultation_request.view.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.delegates.ConsultationRequestDelegate
 import mk.padc.share.data.vos.ConsultationRequestVO
+import mk.padc.share.data.vos.ConsultedPatientVO
 import mk.padc.share.utils.ImageUtils
 import mk.padc.share.views.viewholders.BaseViewHolder
 
-class ConsultationRequestViewHolder(itemView: View, private val mDelegate: ConsultationRequestDelegate) :
+class ConsultationRequestViewHolder(itemView: View, var consulted_patient :List<ConsultedPatientVO>, private val mDelegate: ConsultationRequestDelegate) :
         BaseViewHolder<ConsultationRequestVO>(itemView) {
 
     override fun bindData(data: ConsultationRequestVO) {
@@ -19,24 +20,24 @@ class ConsultationRequestViewHolder(itemView: View, private val mDelegate: Consu
             itemView.txt_patient_name.text = data.patient_info?.name
             itemView.txt_patient_dateofbirth.text = data.patient_info?.dateOfBirth
 
-            itemView.txt_patient_type.text =  itemView.resources.getString(R.string.new_patient)
-            itemView.btnNext.visibility =View.GONE
-            itemView.btnPostpone.visibility = View.GONE
-            itemView.btnSkip.visibility = View.VISIBLE
-//            if(data.patient_type_status.equals("new"))
-//            {
-//                itemView.txt_patient_type.text =  itemView.resources.getString(R.string.new_patient)
-//                itemView.btnNext.visibility =View.GONE
-//                itemView.btnPostpone.visibility = View.GONE
-//                itemView.btnSkip.visibility = View.VISIBLE
-//            }
-//            else
-//            {
-//                itemView.txt_patient_type.text =  itemView.resources.getString(R.string.consulated_patient)
-//                itemView.btnNext.visibility =View.VISIBLE
-//                itemView.btnPostpone.visibility = View.VISIBLE
-//                itemView.btnSkip.visibility = View.GONE
-//            }
+            var data = consulted_patient.filter {
+                it.patient_id == data.patient_info.id
+            }
+
+            if(data.isEmpty())
+            {
+                itemView.txt_patient_type.text =  itemView.resources.getString(R.string.new_patient)
+                itemView.btnNext.visibility =View.GONE
+                itemView.btnPostpone.visibility = View.GONE
+                itemView.btnSkip.visibility = View.VISIBLE
+            }
+            else
+            {
+                itemView.txt_patient_type.text =  itemView.resources.getString(R.string.consulated_patient)
+                itemView.btnNext.visibility =View.VISIBLE
+                itemView.btnPostpone.visibility = View.VISIBLE
+                itemView.btnSkip.visibility = View.GONE
+            }
         }
 
         itemView.btnAccept.setOnClickListener {

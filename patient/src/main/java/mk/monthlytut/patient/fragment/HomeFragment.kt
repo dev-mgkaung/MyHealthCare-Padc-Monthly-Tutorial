@@ -51,8 +51,6 @@ class HomeFragment : BaseFragment() , HomeView {
         setUpRecyclerView()
     }
 
-
-
     private fun setUpPresenter() {
 
         activity?.let{

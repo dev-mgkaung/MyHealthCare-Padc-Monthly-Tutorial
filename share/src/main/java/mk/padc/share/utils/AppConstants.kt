@@ -20,6 +20,7 @@ const val question_answer = "question_answer"
 const val chat_message = "chat_message"
 const val prescription = "prescription"
 const val delivery_address = "delivery_address"
+const val consulted_patient ="consulted_patient"
 
 // type name
 const val oneTime ="oneTime"

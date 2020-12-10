@@ -3,7 +3,6 @@ package mk.monthlytut.doctor.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +15,7 @@ import mk.monthlytut.doctor.mvp.views.HomeView
 import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ConsultationRequestVO
+import mk.padc.share.data.vos.ConsultedPatientVO
 import mk.padc.share.utils.ImageUtils
 
 class MainActivity : BaseActivity() ,HomeView {
@@ -24,6 +24,7 @@ class MainActivity : BaseActivity() ,HomeView {
 
     private lateinit var consultationRequestAdapter:  ConsultationRequestAdapter
     private lateinit var consultationAcceptAdapter:  ConsultationAcceptAdapter
+
 
     companion object {
         fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
@@ -66,6 +67,8 @@ class MainActivity : BaseActivity() ,HomeView {
 
     override fun displayConsultationRequests(list: List<ConsultationRequestVO>) {
         consultationRequestAdapter.setNewData(list.toMutableList())
+
+
     }
 
     override fun displayConsultationAcceptList(list: List<ConsultationRequestVO>) {
@@ -73,13 +76,16 @@ class MainActivity : BaseActivity() ,HomeView {
         consultationAcceptAdapter.setNewData(list.toMutableList())
     }
 
+    override fun displayConsultedPatient(list: List<ConsultedPatientVO>) {
+        consultationRequestAdapter.setConsultedPatientList(list.toMutableList())
+    }
+
     override fun nextPage(data: ConsultationRequestVO) {
-        if(data.consultation_id.toString().length ==0) {
+        if(data.consultation_id.toString().isEmpty()) {
             startActivity(data.consultation_id?.let { PatientInfoActivity.newIntent(this, it) })
         }else
         {
             startActivity(data.consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
-
         }
     }
 
