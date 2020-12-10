@@ -15,11 +15,11 @@ class ConsultationAcceptViewHolder(itemView: View, private val mDelegate: Consul
     override fun bindData(data: ConsultationRequestVO) {
 
         data?.let {
-//        itemView.txt_consulation.text = data.doctor_info?.specialityname + itemView.resources.getString(R.string.consultation_request_message)
-//        ImageUtils().showImage(itemView.img_userprofile, data.doctor_info?.photo.toString(), R.drawable.doctor_thumbnail)
-//        itemView.txt_doctorname.text = data.doctor_info?.name
-//        itemView.txt_specialityname.text = data.doctor_info?.specialityname
-//        itemView.txt_doctor_bigoraphy.text = data.doctor_info?.biography
+        itemView.txt_consulation.text = data.doctor_info?.specialityname + itemView.resources.getString(R.string.consultation_request_message)
+        ImageUtils().showImage(itemView.img_userprofile, data.doctor_info?.photo.toString(), R.drawable.doctor_thumbnail)
+        itemView.txt_doctorname.text = data.doctor_info?.name
+        itemView.txt_specialityname.text = data.doctor_info?.specialityname
+        itemView.txt_doctor_bigoraphy.text = data.doctor_info?.biography
         }
 
         itemView.btn_start.setOnClickListener {

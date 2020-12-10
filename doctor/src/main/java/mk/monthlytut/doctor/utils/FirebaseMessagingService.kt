@@ -69,7 +69,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT)
 
-        val channelId = getString(R.string.default_notification_channel_id)
+        val channelId = "default_notification_channel_id"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
                 .setSmallIcon(R.drawable.ic_launcher)

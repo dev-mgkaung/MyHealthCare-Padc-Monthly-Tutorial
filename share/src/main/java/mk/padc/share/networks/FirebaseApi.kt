@@ -65,8 +65,6 @@ interface FirebaseApi {
     )
 
     fun startConsultation(
-        status : String,
-        postpone : String,
         consulationId: String,
         dateTime: String,
         questionAnswerList: List<QuestionAnswerVO>,
@@ -100,9 +98,14 @@ interface FirebaseApi {
     fun sendMessage(consulationChatId: String, messageVO: ChatMessageVO,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
 
-    fun acceptRequest(doctor:DoctorVO,
-                      onSuccess: () -> Unit,
-                      onFailure: (String) -> Unit)
+    fun acceptRequest(
+            status : String,
+            consulationId: String,
+            questionAnswerList: List<QuestionAnswerVO>,
+            patientVO: PatientVO,
+            doctorVO: DoctorVO,
+            onSuccess: () -> Unit,
+            onFailure: (String) -> Unit)
 
     fun finishConsultation(consulationChatId: String, onSuccess: () -> Unit,onFailure: (String) -> Unit)
 

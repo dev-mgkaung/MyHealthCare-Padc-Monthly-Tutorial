@@ -73,10 +73,14 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality("dentist")
     }
 
-    override fun startConsultation(status: String, postpone: String ,consulationId: String, dateTime: String, questionAnswerList: List<QuestionAnswerVO>, patientVO: PatientVO, doctorVO: DoctorVO, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
-        mFirebaseApi.startConsultation(status, postpone, consulationId, dateTime, questionAnswerList, patientVO, doctorVO,
+    override fun startConsultation(consulationId: String, dateTime: String, questionAnswerList: List<QuestionAnswerVO>, patientVO: PatientVO, doctorVO: DoctorVO, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        mFirebaseApi.startConsultation(consulationId, dateTime, questionAnswerList, patientVO, doctorVO,
                 onSuccess = {}, onFailure = { onFailure(it) })
     }
 
+    override fun acceptRequest(status: String, consulationId: String,  questionAnswerList: List<QuestionAnswerVO>, patientVO: PatientVO, doctorVO: DoctorVO, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        mFirebaseApi.acceptRequest(status,consulationId,  questionAnswerList, patientVO, doctorVO,
+                onSuccess = {}, onFailure = { onFailure(it) })
+    }
 
 }

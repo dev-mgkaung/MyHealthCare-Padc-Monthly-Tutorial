@@ -58,8 +58,9 @@ class LoginActivity : BaseActivity() , LoginView {
         SessionManager.doctor_phone = doctorVO.phone
         SessionManager.doctor_degree = doctorVO.degree
         SessionManager.doctor_bigraphy = doctorVO.biography
-        startActivity(MainActivity.newIntent(this))
         this.finish()
+        startActivity(MainActivity.newIntent(this))
+
     }
 
     override fun navigateToRegisterScreen() {

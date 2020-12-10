@@ -1,8 +1,6 @@
 package mk.monthlytut.doctor.mvp.presenters.impl
 
-
 import android.content.Context
-import android.se.omapi.Session
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.doctor.mvp.presenters.HomePresenter
@@ -13,7 +11,6 @@ import mk.padc.share.data.models.impl.DoctorModelImpl
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
-import mk.padc.share.utils.DateUtils
 
 
 class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
@@ -63,11 +60,11 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapPostpone(consultationRequestVO: ConsultationRequestVO) {
-        startConsulatationByDoctor("accept", "2 AM",consultationRequestVO)
+        acceptRequest("postpone", consultationRequestVO)
     }
 
     override fun onTapAccept(consultationRequestVO: ConsultationRequestVO) {
-        startConsulatationByDoctor("accept", "",consultationRequestVO)
+        acceptRequest("accept", consultationRequestVO)
     }
 
     override fun onTapMedicalRecord(consultationRequestVO: ConsultationRequestVO) {
@@ -86,7 +83,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     }
 
-    private fun startConsulatationByDoctor(status: String, postPone: String, consultationRequestVO: ConsultationRequestVO) {
+    private fun acceptRequest(status: String,  consultationRequestVO: ConsultationRequestVO) {
         var doctorVo = DoctorVO(
                 id = SessionManager.doctor_id.toString(),
                 device_id = SessionManager.doctor_device_id.toString(),
@@ -99,9 +96,12 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 specialityname = SessionManager.doctor_specialityname,
                 speciality = SessionManager.doctor_speciality
         )
-        doctorModel.startConsultation(status, postPone,consultationRequestVO.id, DateUtils().getCurrentDate(), consultationRequestVO.case_summary,
-                consultationRequestVO.patient_info, doctorVo, onSuccess = {
-        }, onFailure = {})
+        doctorModel.acceptRequest(
+                status,
+                consultationRequestVO.id,
+                consultationRequestVO.case_summary,
+                consultationRequestVO.patient_info,
+                doctorVo, onSuccess = {}, onFailure = {})
     }
 
 

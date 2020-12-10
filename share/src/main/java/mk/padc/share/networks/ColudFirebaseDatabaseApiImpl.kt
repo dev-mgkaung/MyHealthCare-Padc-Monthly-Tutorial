@@ -180,6 +180,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "case_summary" to questionAnswerList,
             "id" to id,
             "patient_info" to patientVO,
+            "doctor_info" to DoctorVO(),
             "speciality" to speciality,
             "doctor_id" to "",
             "status" to "none")
@@ -199,8 +200,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
 
     override fun startConsultation(
-        status: String,
-        postpone : String,
         consulationId: String,
         dateTime: String,
         questionAnswerList: List<QuestionAnswerVO>,
@@ -240,20 +239,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                .addOnFailureListener { Log.d("Failure", "Failed") }
        }
 
-        val consultationRequestMap = hashMapOf(
-                "status" to status,
-                "doctor_id" to doctorVO.id,
-                "patient_id" to patientVO.id,
-                "speciality" to doctorVO.speciality,
-                "patient_info" to patientVO,
-                "case_summary" to questionAnswerList,
-                "consultation_id" to id
-            )
-        db.collection(consultation_request)
-                .document(consulationId)
-                .set(consultationRequestMap)
-                .addOnSuccessListener { Log.d("Success", "Successfully ") }
-                .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
     override fun sendMessage(
@@ -497,9 +482,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     }
 
 
-
-
-
     override fun getGeneralQuestion(
         onSuccess: (List<GeneralQuestionTemplateVO>) -> Unit,
         onFailure: (String) -> Unit
@@ -553,11 +535,30 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
 
     override fun acceptRequest(
+        status : String,
+        consulationId: String,
+        questionAnswerList: List<QuestionAnswerVO>,
+        patient : PatientVO,
         doctor: DoctorVO,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        TODO("Not yet implemented")
+
+        val consultationRequestMap = hashMapOf(
+                "status" to "accept",
+                "doctor_id" to doctor.id,
+                "patient_id" to patient.id,
+                "doctor_info" to doctor,
+                "speciality" to doctor.speciality,
+                "patient_info" to patient,
+                "case_summary" to questionAnswerList,
+                "consultation_id" to  "",
+        )
+        db.collection(consultation_request)
+                .document(consulationId)
+                .set(consultationRequestMap)
+                .addOnSuccessListener { Log.d("Success", "Successfully ") }
+                .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
     override fun sendDirectRequest(

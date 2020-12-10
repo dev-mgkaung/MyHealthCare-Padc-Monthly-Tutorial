@@ -11,13 +11,14 @@ import mk.padc.share.utils.consultation_request
 
 @IgnoreExtraProperties
 @Entity(tableName = consultation_request)
-@TypeConverters(GeneralQuestionConverter::class,PatientConverter::class)
+@TypeConverters(GeneralQuestionConverter::class,PatientConverter::class,DoctorConverter::class)
 class ConsultationRequestVO(
     @PrimaryKey
     var id: String= "",
     var speciality : String ?= "",
     var date_time : String ?=null ,
     var patient_info : PatientVO ,
+    var doctor_info : DoctorVO ?=null,
     var case_summary : ArrayList<QuestionAnswerVO> = arrayListOf(),
     var patient_type_status : String ?= "new",
     var status : String ? = "none",

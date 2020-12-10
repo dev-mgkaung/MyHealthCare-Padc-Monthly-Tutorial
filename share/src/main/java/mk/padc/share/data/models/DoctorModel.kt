@@ -33,10 +33,18 @@ interface DoctorModel
     fun deleteConsultationRequestById(consulationId : String)  : LiveData<List<ConsultationRequestVO>>
 
     fun startConsultation(
-            status: String,
-            postpone: String,
             consulationId: String,
             dateTime: String,
+            questionAnswerList: List<QuestionAnswerVO>,
+            patientVO: PatientVO,
+            doctorVO: DoctorVO,
+            onSuccess: () -> Unit,
+            onFailure: (String) -> Unit
+    )
+
+    fun acceptRequest(
+            status: String,
+            consulationId: String,
             questionAnswerList: List<QuestionAnswerVO>,
             patientVO: PatientVO,
             doctorVO: DoctorVO,
