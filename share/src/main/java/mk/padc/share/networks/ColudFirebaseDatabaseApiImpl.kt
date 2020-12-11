@@ -232,6 +232,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnSuccessListener { Log.d("Success", "Successfully ") }
             .addOnFailureListener { Log.d("Failure", "Failed") }
 
+
        for(item in questionAnswerList) {
            db.collection("$patients/${patientVO.id}/$general_questions")
                .document(item.id)
@@ -239,6 +240,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                .addOnSuccessListener { Log.d("Success", "Successfully ") }
                .addOnFailureListener { Log.d("Failure", "Failed") }
        }
+
 
         val consultationRequestMap = hashMapOf(
             "status" to "accept",
@@ -257,6 +259,16 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
 
 
+        val consulted_patient_id = UUID.randomUUID().toString()
+        val consultedPatientMap = hashMapOf(
+                "id" to consulted_patient_id,
+                "patient_id" to patientVO.id
+        )
+        db.collection("$doctors/${doctorVO.id}/$consulted_patient")
+                .document(consulted_patient_id)
+                .set(consultedPatientMap)
+                .addOnSuccessListener { Log.d("Success", "Successfully ") }
+                .addOnFailureListener { Log.d("Failure", "Failed") }
 
     }
 
