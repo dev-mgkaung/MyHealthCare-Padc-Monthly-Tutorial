@@ -67,7 +67,11 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapPostpone(consultationRequestVO: ConsultationRequestVO) {
-        acceptRequest("postpone", consultationRequestVO)
+        mView?.displayPostPoneChooserDialog(consultationRequestVO)
+    }
+
+    override fun onTapPostponeTime(postponeTime : String, consultationRequestVO: ConsultationRequestVO) {
+        acceptRequest("postpone $postponeTime", consultationRequestVO)
     }
 
     override fun onTapAccept(consultationRequestVO: ConsultationRequestVO) {

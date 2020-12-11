@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_margin="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:src="@drawable/empty_view"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginTop="6dp"
+        android:layout_gravity="center"
+        android:text="@string/choose_discuss_time"
+        android:textColor="@color/black"/>
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"/>
+
+    <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/white"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_btn_blue"
+        android:id="@+id/confirm"
+        android:text="@string/choose"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>

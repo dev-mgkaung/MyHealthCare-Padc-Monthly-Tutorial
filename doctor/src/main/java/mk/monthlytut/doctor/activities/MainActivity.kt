@@ -1,11 +1,14 @@
 package mk.monthlytut.doctor.activities
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TimePicker
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.postpone_dialog.view.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.ConsultationAcceptAdapter
 import mk.monthlytut.doctor.adapters.ConsultationRequestAdapter
@@ -87,6 +90,43 @@ class MainActivity : BaseActivity() ,HomeView {
         {
             startActivity(data.consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
         }
+    }
+
+    override fun displayPostPoneChooserDialog(consultationRequestVO: ConsultationRequestVO) {
+        val view = layoutInflater.inflate(R.layout.postpone_dialog, null)
+        val dialog = this?.let { Dialog(it) }
+        val timePicker = view?.findViewById<TimePicker>(R.id.timePicker)
+        var msg : String =""
+        timePicker?.setOnTimeChangedListener { _, hour, minute -> var hour = hour
+            var am_pm = ""
+            // AM_PM decider logic
+            when {hour == 0 -> { hour += 12
+                am_pm = "AM"
+            }
+                hour == 12 -> am_pm = "PM"
+                hour > 12 -> { hour -= 12
+                    am_pm = "PM"
+                }
+                else -> am_pm = "AM"
+            }
+
+                val h = if (hour < 10) "0" + hour else hour
+                val min = if (minute < 10) "0" + minute else minute
+                // display format of time
+                 msg = " $h : $min $am_pm"
+
+        }
+        dialog?.apply {
+            setCancelable(false)
+            setContentView(view)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+        view.confirm.setOnClickListener {
+            msg?.let{mPresenter.onTapPostponeTime(it,consultationRequestVO)}
+            dialog?.dismiss()
+        }
+        dialog?.show()
     }
 
 }

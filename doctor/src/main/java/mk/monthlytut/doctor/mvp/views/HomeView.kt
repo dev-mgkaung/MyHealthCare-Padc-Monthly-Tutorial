@@ -9,4 +9,5 @@ interface HomeView : BaseView {
   fun displayConsultationAcceptList(list: List<ConsultationRequestVO>)
   fun displayConsultedPatient(list : List<ConsultedPatientVO>)
   fun nextPage(data : ConsultationRequestVO)
+  fun displayPostPoneChooserDialog(consultationRequestVO: ConsultationRequestVO)
 }
