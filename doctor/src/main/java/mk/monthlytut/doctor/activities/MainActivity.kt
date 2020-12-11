@@ -70,13 +70,18 @@ class MainActivity : BaseActivity() ,HomeView {
 
     override fun displayConsultationRequests(list: List<ConsultationRequestVO>) {
         consultationRequestAdapter.setNewData(list.toMutableList())
-
-
     }
 
     override fun displayConsultationAcceptList(list: List<ConsultationRequestVO>) {
-        consultationlabel.visibility = View.VISIBLE
-        consultationAcceptAdapter.setNewData(list.toMutableList())
+        if(list?.size >0) {
+            empty_view.visibility =View.GONE
+            consultationlabel.visibility = View.VISIBLE
+            consultationAcceptAdapter.setNewData(list.toMutableList())
+        }else
+        {
+            empty_view.visibility =View.VISIBLE
+            consultationlabel.visibility = View.GONE
+        }
     }
 
     override fun displayConsultedPatient(list: List<ConsultedPatientVO>) {
@@ -117,7 +122,7 @@ class MainActivity : BaseActivity() ,HomeView {
 
         }
         dialog?.apply {
-            setCancelable(false)
+            setCancelable(true)
             setContentView(view)
             window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
