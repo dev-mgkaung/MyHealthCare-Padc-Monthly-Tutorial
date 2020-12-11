@@ -90,7 +90,7 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
     override fun nextPage(consultation_id : String) {
-        if(consultation_id.toString().isEmpty()) {
+        if(consultation_id.isEmpty()) {
             startActivity(consultation_id?.let { PatientInfoActivity.newIntent(this, it) })
         }else
         {
