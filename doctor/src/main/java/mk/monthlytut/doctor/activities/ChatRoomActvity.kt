@@ -4,26 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_chat_room.*
-import kotlinx.android.synthetic.main.activity_chat_room.pbloodpressure
-import kotlinx.android.synthetic.main.activity_chat_room.pbloodtype
-import kotlinx.android.synthetic.main.activity_chat_room.pcomment
-import kotlinx.android.synthetic.main.activity_chat_room.pdateofBirth
-import kotlinx.android.synthetic.main.activity_chat_room.pheight
-import kotlinx.android.synthetic.main.activity_chat_room.pname
-import kotlinx.android.synthetic.main.activity_chat_room.pweight
-import kotlinx.android.synthetic.main.activity_chat_room.rc_question_answer
-import kotlinx.android.synthetic.main.activity_patient_info.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.ChattingAdapter
 import mk.monthlytut.doctor.adapters.QuestionAnswerAdapter
+import mk.monthlytut.doctor.dialogs.PatientInfoDialog
 import mk.monthlytut.doctor.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.ChatRoomPresenterImpl
 import mk.monthlytut.doctor.mvp.views.ChatView
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ConsultationChatVO
-import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.utils.ImageUtils
+
 
 class ChatRoomActvity : BaseActivity() ,ChatView
 {
@@ -39,8 +32,8 @@ class ChatRoomActvity : BaseActivity() ,ChatView
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
         fun newIntent(
-            context: Context,
-            consultation_chat_id : String
+                context: Context,
+                consultation_chat_id: String
         ) : Intent {
             val intent = Intent(context, ChatRoomActvity::class.java)
             intent.putExtra(PARM_CONSULTATION_CHAT_ID, consultation_chat_id)
@@ -52,7 +45,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {
         mConsultationChatVO= consultationChatVO
         patientname.text = consultationChatVO.patient_info?.name
-        ImageUtils().showImage(userprofile,consultationChatVO.patient_info?.photo.toString(),R.drawable.user)
+        ImageUtils().showImage(userprofile, consultationChatVO.patient_info?.photo.toString(), R.drawable.user)
         pname.text = " : " + consultationChatVO.patient_info?.name
         pdateofBirth.text =  " : " +consultationChatVO.patient_info?.dateOfBirth
         pheight.text =  " : " + consultationChatVO.patient_info?.height
@@ -80,7 +73,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
     private fun setUpPresenter()
     {
         mPresenter = getPresenter<ChatRoomPresenterImpl, ChatView>()
-        mPresenter.onUiReadyConstulation(consultation_chat_id,this)
+        mPresenter.onUiReadyConstulation(consultation_chat_id, this)
     }
 
     private fun setUpActionListeners()
@@ -89,6 +82,12 @@ class ChatRoomActvity : BaseActivity() ,ChatView
             onBackPressed()
         }
 
+        seemore.setOnClickListener {
+            var data=  Gson().toJson(mConsultationChatVO)
+            val dialog: PatientInfoDialog = PatientInfoDialog.newInstance(data)
+            dialog.show(supportFragmentManager, "")
+
+        }
     }
 
     override fun onBackPressed() {
@@ -105,7 +104,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
 
         rc_question_answer?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter ,"chat")
+        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter, "chat")
         rc_question_answer?.adapter = questionAnswerAdapter
         rc_question_answer?.setHasFixedSize(false)
     }
