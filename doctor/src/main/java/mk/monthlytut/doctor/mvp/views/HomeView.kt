@@ -9,6 +9,7 @@ interface HomeView : BaseView {
   fun displayConsultationRequests(list: List<ConsultationRequestVO>)
   fun displayConsultationList(list: List<ConsultationChatVO>)
   fun displayConsultedPatient(list : List<ConsultedPatientVO>)
-  fun nextPage(consultation_chat_id : String)
+  fun nextPageChatRoom(consultation_chat_id : String)
+  fun nextPagePatientInfo(consultation_request_id : String)
   fun displayPostPoneChooserDialog(consultationRequestVO: ConsultationRequestVO)
 }

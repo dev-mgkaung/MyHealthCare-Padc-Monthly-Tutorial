@@ -429,18 +429,24 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onFailure: (String) -> Unit
     ) {
         db.collection("$patients/$patientId/$recent_doctors")
-            .get()
-            .addOnSuccessListener { result ->
-                val list: MutableList<RecentDoctorVO> = arrayListOf()
-                for (document in result) {
-                    val hashmap = document.data
-                    hashmap?.put("id", document.id.toString())
-                    val Data = Gson().toJson(hashmap)
-                    val docsData = Gson().fromJson<RecentDoctorVO>(Data, RecentDoctorVO::class.java)
-                    list.add(docsData)
+                .addSnapshotListener { value, error ->
+                    error?.let {
+                        onFailure(it.message ?: "Please check connection")
+                    } ?: run {
+                        val list: MutableList<RecentDoctorVO> = arrayListOf()
+
+                        val result = value?.documents ?: arrayListOf()
+
+                        for (document in result) {
+                            val hashmap = document.data
+                            hashmap?.put("id", document.id.toString())
+                            val Data = Gson().toJson(hashmap)
+                            val docsData = Gson().fromJson<RecentDoctorVO>(Data, RecentDoctorVO::class.java)
+                            list.add(docsData)
+                        }
+                        onSuccess(list)
+                    }
                 }
-                onSuccess(list)
-            }
     }
 
 

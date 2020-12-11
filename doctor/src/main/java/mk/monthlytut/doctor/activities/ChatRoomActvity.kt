@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_chat_room.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.ChattingAdapter
-import mk.monthlytut.doctor.adapters.QuestionAnswerAdapter
 import mk.monthlytut.doctor.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.ChatRoomPresenterImpl
 import mk.monthlytut.doctor.mvp.views.ChatView
@@ -44,7 +43,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room)
 
-        consultation_chat_id = intent.getStringExtra(PatientInfoActivity.PARM_CONSULTATION_CHAT_ID).toString()
+        consultation_chat_id = intent.getStringExtra(PARM_CONSULTATION_CHAT_ID).toString()
 
         setUpPresenter()
         setUpRecyclerView()

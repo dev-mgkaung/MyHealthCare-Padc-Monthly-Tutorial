@@ -22,7 +22,7 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
 
     private lateinit var mConsultationRequestVO: ConsultationRequestVO
 
-    private lateinit var consultation_chat_id: String
+    private lateinit var consultation_request_id: String
 
 
     override fun displayPatientInfo(consultationRequestVO: ConsultationRequestVO) {
@@ -39,17 +39,17 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
     }
 
     override fun nextPageToChat() {
-       startActivity(ChatRoomActvity.newIntent(this,consultation_chat_id))
+       startActivity(ChatRoomActvity.newIntent(this,consultation_request_id))
     }
 
     companion object {
-        const val PARM_CONSULTATION_CHAT_ID = "consultation chat id"
+        const val PARM_CONSULTATION_Request_ID = "consultation_request_id"
         fun newIntent(
             context: Context,
             consultation_chat_id : String
         ) : Intent {
             val intent = Intent(context, PatientInfoActivity::class.java)
-            intent.putExtra(PARM_CONSULTATION_CHAT_ID, consultation_chat_id)
+            intent.putExtra(PARM_CONSULTATION_Request_ID, consultation_chat_id)
             return intent
         }
 
@@ -59,7 +59,7 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_info)
 
-        consultation_chat_id = intent.getStringExtra(PARM_CONSULTATION_CHAT_ID).toString()
+        consultation_request_id = intent.getStringExtra(PARM_CONSULTATION_Request_ID).toString()
 
         setUpPresenter()
         setUpRecyclerView()
@@ -69,7 +69,7 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
     private fun setUpPresenter()
     {
         mPresenter = getPresenter<PatientInfoPresenterImpl, PatientInfoView>()
-        mPresenter.onUiReadyConstulation(consultation_chat_id,this)
+        mPresenter.onUiReadyConstulation(consultation_request_id,this)
     }
 
     private fun setUpActionListeners()

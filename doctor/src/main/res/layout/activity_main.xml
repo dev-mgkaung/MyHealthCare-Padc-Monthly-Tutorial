@@ -79,6 +79,7 @@
                     android:layout_margin="10dp"
                     android:textSize="12sp"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     android:textColor="@color/grey_900"
                     android:text="@string/no_record_postponse"
                     android:textStyle="bold"/>

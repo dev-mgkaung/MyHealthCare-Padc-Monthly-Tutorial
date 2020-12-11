@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TimePicker
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -89,13 +90,13 @@ class MainActivity : BaseActivity() ,HomeView {
         consultationRequestAdapter.setConsultedPatientList(list.toMutableList())
     }
 
-    override fun nextPage(consultation_id : String) {
-        if(consultation_id.isEmpty()) {
-            startActivity(consultation_id?.let { PatientInfoActivity.newIntent(this, it) })
-        }else
-        {
-            startActivity(consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
-        }
+    override fun nextPageChatRoom(consultation_id : String) {
+        startActivity(consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
+    }
+
+    override fun nextPagePatientInfo(consultation_request_id: String) {
+        Log.d("consulation", "consultation_request_id ="+consultation_request_id.toString())
+        startActivity(consultation_request_id?.let { PatientInfoActivity.newIntent(this, it) })
     }
 
     override fun displayPostPoneChooserDialog(consultationRequestVO: ConsultationRequestVO) {

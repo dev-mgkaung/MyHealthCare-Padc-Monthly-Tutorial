@@ -1,6 +1,7 @@
 package mk.monthlytut.doctor.mvp.presenters.impl
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.doctor.mvp.presenters.HomePresenter
@@ -91,7 +92,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
 
     override fun onTapSendMessage(data: ConsultationChatVO) {
-        mView?.nextPage(data.id)
+        mView?.nextPageChatRoom(data.id)
     }
 
     override fun onTapDoctorComment(data: ConsultationChatVO) {
@@ -118,7 +119,8 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 consultationRequestVO.patient_info,
                 doctorVo, onSuccess = {}, onFailure = {})
 
-        mView?.nextPage(consultationRequestVO.consultation_id.toString())
+        Log.d("consulation",consultationRequestVO.id)
+        mView?.nextPagePatientInfo(consultationRequestVO.id)
     }
 
 
