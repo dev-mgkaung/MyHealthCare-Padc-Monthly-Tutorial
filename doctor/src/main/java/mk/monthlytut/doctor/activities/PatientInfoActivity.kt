@@ -39,7 +39,8 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
     }
 
     override fun nextPageToChat() {
-       startActivity(ChatRoomActvity.newIntent(this,consultation_request_id))
+        this.finish()
+        startActivity(ChatRoomActvity.newIntent(this,consultation_request_id))
     }
 
     companion object {
