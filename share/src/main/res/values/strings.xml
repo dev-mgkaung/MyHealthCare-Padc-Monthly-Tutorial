@@ -62,7 +62,7 @@
     <string name="accept">လက်ခံမည်</string>
     <string name="next">နောက် မှ</string>
     <string name="postpone">အချိန်ရွေးမည်</string>
-    <string name="no_record_postponse">လက်တလောရက်ချိန်းယူထားသော မှတ်တမ်းမရှိသေးပါ</string>
+    <string name="no_record_postponse">လက်တလောရက်ချိန်းယူထားသော \n မှတ်တမ်းမရှိသေးပါ</string>
     <string name="medicine_history">ဆေးမှတ်တမ်း</string>
     <string name="cosultation_request_history">ရက်ချိန်းယူမှုမှတ်တမ်းများ</string>
     <string name="choose_discuss_time">ဆွေးနွေးမည့်အချိန်ရွေးမည်</string>
