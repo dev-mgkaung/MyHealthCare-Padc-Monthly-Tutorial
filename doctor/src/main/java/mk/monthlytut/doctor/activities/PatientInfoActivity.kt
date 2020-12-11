@@ -3,6 +3,7 @@ package mk.monthlytut.doctor.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_patient_info.*
 import mk.monthlytut.doctor.R
@@ -45,6 +46,7 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
 
     companion object {
         const val PARM_CONSULTATION_Request_ID = "consultation_request_id"
+
         fun newIntent(
             context: Context,
             consultation_chat_id : String
@@ -88,7 +90,7 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
     private fun setUpRecyclerView()
     {
         rc_question_answer?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter)
+        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter,"")
         rc_question_answer?.adapter = questionAnswerAdapter
         rc_question_answer?.setHasFixedSize(false)
     }

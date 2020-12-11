@@ -18,7 +18,7 @@
     <string name="special_question">ရောဂါဆိုင်ရာမေးခွန်းများ</string>
     <string name="continue_btn">ဆက်ရန်</string>
     <string name="start_consultation_btn">ချိန်းဆိုမှုပြုလုပ်မည်</string>
-    <string name="patient_details">လူနာအချက်အလက်များ</string>
+    <string name="patient_details">လူနာအချက်အလက် များ</string>
     <string name="to_confirm_patient_info">အချက်အလက်များအားအတည်ပြုပါ</string>
     <string name="consultation_confirm_message_start">ဆွေးနွေးမှု ပြုလုပ်ရန် </string>
     <string name="consultation_confirm_message_end">မှ လက်ခံ ထားပါသည်</string>

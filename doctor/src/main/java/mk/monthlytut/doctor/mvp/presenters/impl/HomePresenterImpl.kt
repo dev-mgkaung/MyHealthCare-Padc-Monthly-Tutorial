@@ -37,9 +37,9 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                         mView?.displayConsultationRequests(data) }
                 })
 
-        doctorModel.getConsultationChat(SessionManager.doctor_id.toString(), onSuccess = {}, onError = {})
+        doctorModel.getConsultationByDoctorId(SessionManager.doctor_id.toString(), onSuccess = {}, onError = {})
 
-        doctorModel.getConsultationFromDB(SessionManager.doctor_id.toString())
+        doctorModel.getConsultationByDoctorIdFromDB(SessionManager.doctor_id.toString())
                 .observe(owner, Observer { data ->
                     data?.let {
                         mView?.displayConsultationList(data) }

@@ -25,9 +25,13 @@ interface DoctorModel
 
     fun getBrodcastConsultationRequestsFromDB(speciality: String) : LiveData<List<ConsultationRequestVO>>
 
-    fun getConsultationChat(doctorId: String,  onSuccess: () -> Unit, onError: (String) -> Unit)
+    fun getConsultationByDoctorId(doctorId: String, onSuccess: () -> Unit, onError: (String) -> Unit)
 
-    fun getConsultationFromDB(doctorId : String) : LiveData<List<ConsultationChatVO>>
+    fun getConsultationChat(consulationId:  String,  onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getConsultationByDoctorIdFromDB(doctorId : String) : LiveData<List<ConsultationChatVO>>
+
+    fun getConsultationChatFromDB(consulationId : String) : LiveData<ConsultationChatVO>
 
     fun deleteConsultationRequestById(consulationId : String)  : LiveData<List<ConsultationRequestVO>>
 

@@ -62,20 +62,30 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality(speciality)
     }
 
-    override fun getConsultationChat(doctorId: String ,onSuccess: () -> Unit,
-    onError: (String) -> Unit)
-    {
+    override fun getConsultationByDoctorId(doctorId: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
         mFirebaseApi.getConsulationChatForDoctor(doctorId,
                 onSuccess = {
                     mTheDB.consultationChatDao().deleteAllConsultationChatData()
                     mTheDB.consultationChatDao().insertConsultationChatData(it)
 
                 }, onFailure = { onError(it) })
-
     }
 
-    override fun getConsultationFromDB(doctorId: String): LiveData<List<ConsultationChatVO>> {
-        return mTheDB.consultationChatDao().getAllConsultationChatData()
+    override fun getConsultationChat(consulationId: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getConsulationChatById(consulationId,
+                onSuccess = {
+                    mTheDB.consultationChatDao().deleteAllConsultationChatData()
+                    mTheDB.consultationChatDao().insertConsultationChatData(it)
+                }, onFailure = { onError(it) })
+    }
+
+
+    override fun getConsultationByDoctorIdFromDB(doctorId: String): LiveData<List<ConsultationChatVO>> {
+        return mTheDB.consultationChatDao().getAllConsultationChatDataByDoctorId(doctorId)
+    }
+
+    override fun getConsultationChatFromDB(consulationId: String): LiveData<ConsultationChatVO> {
+        return mTheDB.consultationChatDao().getAllConsultationChatDataBy(consulationId)
     }
 
 

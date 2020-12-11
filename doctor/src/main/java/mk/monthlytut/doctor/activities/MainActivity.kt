@@ -75,14 +75,14 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
     override fun displayConsultationList(list: List<ConsultationChatVO>) {
-        if(list?.size >0) {
-            empty_view.visibility =View.GONE
-            consultationlabel.visibility = View.VISIBLE
-            consultationAcceptAdapter.setNewData(list.toMutableList())
-        }else
-        {
+        consultationAcceptAdapter.setNewData(list.toMutableList())
+        if(list?.size == 0) {
             empty_view.visibility =View.VISIBLE
             consultationlabel.visibility = View.GONE
+        }else
+        {
+            empty_view.visibility =View.GONE
+            consultationlabel.visibility = View.VISIBLE
         }
     }
 
@@ -92,11 +92,11 @@ class MainActivity : BaseActivity() ,HomeView {
 
     override fun nextPageChatRoom(consultation_id : String) {
         startActivity(consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
+        this.finish()
     }
 
     override fun nextPagePatientInfo(consultation_request_id: String) {
-        Log.d("consulation", "consultation_request_id ="+consultation_request_id.toString())
-        startActivity(consultation_request_id?.let { PatientInfoActivity.newIntent(this, it) })
+       startActivity(consultation_request_id?.let { PatientInfoActivity.newIntent(this, it) })
     }
 
     override fun displayPostPoneChooserDialog(consultationRequestVO: ConsultationRequestVO) {

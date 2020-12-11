@@ -2,6 +2,7 @@ package mk.monthlytut.doctor.mvp.presenters.impl
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import mk.monthlytut.doctor.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.doctor.mvp.views.ChatView
 import mk.padc.share.data.models.DoctorModel
@@ -14,6 +15,14 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
 
     override fun onUiReadyConstulation(consultationChatId: String, owner: LifecycleOwner) {
 
+        doctorModel.getConsultationChat(consultationChatId,onSuccess = {}, onError = {})
+
+        doctorModel.getConsultationChatFromDB(consultationChatId)
+                .observe(owner, Observer { data ->
+                    data?.let {
+                       mView?.displayPatientInfo(data)
+                            }
+                })
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}

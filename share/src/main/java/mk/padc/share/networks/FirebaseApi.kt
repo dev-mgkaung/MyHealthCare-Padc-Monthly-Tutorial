@@ -123,4 +123,7 @@ interface FirebaseApi {
     fun addConsultedPatient(doctorId: String ,patientId : String,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
     fun getConsulationChatForDoctor(doctorId: String ,onSuccess: (List<ConsultationChatVO>) -> Unit,onFailure: (String) -> Unit)
+
+    fun getConsulationChatById(consulationId : String ,onSuccess: (List<ConsultationChatVO>) -> Unit,onFailure: (String) -> Unit)
+
 }

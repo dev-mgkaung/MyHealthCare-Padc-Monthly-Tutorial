@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.doctor.mvp.presenters.PatientInfoPresenter
 import mk.monthlytut.doctor.mvp.views.PatientInfoView
+import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
 import mk.padc.share.data.vos.ConsultationRequestVO
@@ -23,14 +24,16 @@ class PatientInfoPresenterImpl : PatientInfoPresenter, AbstractBasePresenter<Pat
         mView?.nextPageToChat()
     }
 
-    override fun onUiReadyConstulation(consulationRequestId: String , owner: LifecycleOwner) {
-        doctorModel.getConsultationByConsulationRequestIdFromDB(consulationRequestId)
+    override fun onUiReadyConstulation(id: String , owner: LifecycleOwner) {
+
+        doctorModel.getConsultationByConsulationRequestIdFromDB(id)
             .observe(owner, Observer {
                 it?.let{
                     mView?.displayPatientInfo(it)
                 }
 
             })
+
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}

@@ -659,6 +659,29 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 }
     }
 
+    override fun getConsulationChatById(consulationId: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit)
+    {
+        db.collection("$consultation_chat")
+                .whereEqualTo("id",consulationId)
+                .addSnapshotListener { value, error ->
+                    error?.let {
+                        onFailure(it.message ?: "Please check connection")
+                    } ?: run {
+                        val list: MutableList<ConsultationChatVO> = arrayListOf()
+
+                        val result = value?.documents ?: arrayListOf()
+
+                        for (document in result) {
+                            val hashmap = document.data
+                            hashmap?.put("id", document.id.toString())
+                            val Data = Gson().toJson(hashmap)
+                            val docsData = Gson().fromJson<ConsultationChatVO>(Data, ConsultationChatVO::class.java)
+                            list.add(docsData)
+                        }
+                        onSuccess(list)
+                    }
+                }
+    }
 
     override fun acceptRequest(
         status : String,
