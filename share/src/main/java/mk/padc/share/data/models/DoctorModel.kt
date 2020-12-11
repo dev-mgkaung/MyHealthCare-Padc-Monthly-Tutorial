@@ -29,9 +29,11 @@ interface DoctorModel
 
     fun getConsultationChat(consulationId:  String,  onSuccess: () -> Unit, onError: (String) -> Unit)
 
+    fun getConsultationChatFromDB(consulationId : String) : LiveData<ConsultationChatVO>
+
+
     fun getConsultationByDoctorIdFromDB(doctorId : String) : LiveData<List<ConsultationChatVO>>
 
-    fun getConsultationChatFromDB(consulationId : String) : LiveData<ConsultationChatVO>
 
     fun deleteConsultationRequestById(consulationId : String)  : LiveData<List<ConsultationRequestVO>>
 

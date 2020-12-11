@@ -137,4 +137,20 @@ object PatientModelImpl : PatientModel, BaseModel() {
             { onError(it) })
     }
 
+    override fun getConsultationChat(
+        consulationId: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        DoctorModelImpl.mFirebaseApi.getConsulationChatById(consulationId,
+            onSuccess = {
+                mTheDB.consultationChatDao().deleteAllConsultationChatData()
+                mTheDB.consultationChatDao().insertConsultationChatData(it)
+            }, onFailure = { onError(it) })
+    }
+
+    override fun getConsultationChatFromDB(consulationId: String): LiveData<ConsultationChatVO> {
+        return mTheDB.consultationChatDao().getAllConsultationChatDataBy(consulationId)
+    }
+
 }

@@ -148,7 +148,7 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
         pcomment?.text  =patientVO.comment
 
         rc_question_answer?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter)
+        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter,"")
         rc_question_answer?.adapter = questionAnswerAdapter
 
         rc_question_answer?.setHasFixedSize(false)

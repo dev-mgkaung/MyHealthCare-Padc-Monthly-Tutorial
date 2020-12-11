@@ -4,14 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_chat_room.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.ChattingAdapter
+import mk.monthlytut.patient.adapters.QuestionAnswerAdapter
+import mk.monthlytut.patient.dialogs.PatientInfoDialog
 import mk.monthlytut.patient.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.ChatRoomPresenterImpl
 import mk.monthlytut.patient.mvp.views.ChatView
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ConsultationChatVO
+import mk.padc.share.utils.ImageUtils
 
 class ChatRoomActvity : BaseActivity() , ChatView
 {
@@ -19,14 +23,16 @@ class ChatRoomActvity : BaseActivity() , ChatView
     private lateinit var mPresenter: ChatRoomPresenter
 
     private lateinit var consultation_chat_id: String
+    private lateinit var questionAnswerAdapter: QuestionAnswerAdapter
+    private lateinit var mConsultationChatVO: ConsultationChatVO
 
     private lateinit var adapter: ChattingAdapter
 
     companion object {
-        const val PARM_CONSULTATION_CHAT_ID = " chat id"
+        const val PARM_CONSULTATION_CHAT_ID = "chat id"
         fun newIntent(
             context: Context,
-            consultation_chat_id : String
+            consultation_chat_id: String
         ) : Intent {
             val intent = Intent(context, ChatRoomActvity::class.java)
             intent.putExtra(PARM_CONSULTATION_CHAT_ID, consultation_chat_id)
@@ -36,7 +42,20 @@ class ChatRoomActvity : BaseActivity() , ChatView
     }
 
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {
-        TODO("Not yet implemented")
+        mConsultationChatVO= consultationChatVO
+        patientname.text = consultationChatVO.doctor_info?.name
+        ImageUtils().showImage(userprofile, consultationChatVO.doctor_info?.photo.toString(), R.drawable.user)
+        pname.text = " : " + consultationChatVO.patient_info?.name
+        pdateofBirth.text =  " : " +consultationChatVO.patient_info?.dateOfBirth
+        pheight.text =  " : " + consultationChatVO.patient_info?.height
+        pbloodtype.text = " : " + consultationChatVO.patient_info?.blood_type
+        pweight.text =  " : " +consultationChatVO.patient_info?.weight
+        pbloodpressure.text =  " : " +consultationChatVO.patient_info?.blood_pressure
+        pcomment.text =  " : " + consultationChatVO.patient_info?.comment
+        consultationChatVO.case_summary?.let{
+            questionAnswerAdapter.setNewData(it)
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,16 +72,27 @@ class ChatRoomActvity : BaseActivity() , ChatView
     private fun setUpPresenter()
     {
         mPresenter = getPresenter<ChatRoomPresenterImpl, ChatView>()
-        mPresenter.onUiReadyConstulation(consultation_chat_id,this)
+        mPresenter.onUiReadyConstulation(consultation_chat_id, this)
     }
 
     private fun setUpActionListeners()
     {
-
         patientname.setOnClickListener {
             onBackPressed()
         }
 
+        seemore.setOnClickListener {
+            var data=  Gson().toJson(mConsultationChatVO)
+            val dialog: PatientInfoDialog = PatientInfoDialog.newInstance(data)
+            dialog.show(supportFragmentManager, "")
+
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(HomeActivity.newIntent(this))
+        this.finish()
     }
     private fun setUpRecyclerView()
     {
@@ -70,5 +100,11 @@ class ChatRoomActvity : BaseActivity() , ChatView
         adapter = ChattingAdapter(mPresenter)
         rc_chating?.adapter = adapter
         rc_chating?.setHasFixedSize(false)
+
+
+        rc_question_answer?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        questionAnswerAdapter = QuestionAnswerAdapter(mPresenter, "chat")
+        rc_question_answer?.adapter = questionAnswerAdapter
+        rc_question_answer?.setHasFixedSize(false)
     }
 }

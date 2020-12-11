@@ -1,4 +1,4 @@
-package mk.monthlytut.doctor.dialogs
+package mk.monthlytut.patient.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,11 @@ import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.patient_info_dialog.view.*
-import mk.monthlytut.doctor.R
-import mk.monthlytut.doctor.adapters.QuestionAnswerAdapter
-import mk.monthlytut.doctor.mvp.presenters.ChatRoomPresenter
-import mk.monthlytut.doctor.mvp.presenters.impl.ChatRoomPresenterImpl
-import mk.monthlytut.doctor.mvp.views.ChatView
+import mk.monthlytut.patient.R
+import mk.monthlytut.patient.adapters.QuestionAnswerAdapter
+import mk.monthlytut.patient.mvp.presenters.ChatRoomPresenter
+import mk.monthlytut.patient.mvp.presenters.impl.ChatRoomPresenterImpl
+import mk.monthlytut.patient.mvp.views.ChatView
 import mk.padc.share.activities.BaseDialogFragment
 import mk.padc.share.data.vos.ConsultationChatVO
 
@@ -36,9 +36,9 @@ class PatientInfoDialog : BaseDialogFragment()  {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.patient_info_dialog, container, false)
     }
@@ -52,8 +52,8 @@ class PatientInfoDialog : BaseDialogFragment()  {
     override fun onStart() {
         super.onStart()
         dialog?.window?.setLayout(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.MATCH_PARENT
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.MATCH_PARENT
         )
         dialog?.apply {
             setCancelable(false)
