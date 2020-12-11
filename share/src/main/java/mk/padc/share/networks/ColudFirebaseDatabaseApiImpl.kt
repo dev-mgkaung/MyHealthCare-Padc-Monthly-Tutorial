@@ -182,7 +182,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "patient_info" to patientVO,
             "doctor_info" to DoctorVO(),
             "speciality" to speciality,
-            "doctor_id" to "",
             "status" to "none")
 
         db.collection(consultation_request)
@@ -214,8 +213,9 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "case_summary" to questionAnswerList,
             "id" to id,
             "finish_consultation_status" to false,
-            "patient_info" to patientVO,
+            "patient_id" to patientVO.id,
             "doctor_id" to doctorVO.id,
+            "patient_info" to patientVO,
             "doctor_info" to doctorVO)
 
         db.collection(consultation_chat)
@@ -244,7 +244,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
         val consultationRequestMap = hashMapOf(
             "status" to "accept",
-            "doctor_id" to doctorVO.id,
             "patient_id" to patientVO.id,
             "doctor_info" to doctorVO,
             "speciality" to doctorVO.speciality,
@@ -587,7 +586,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
-    override fun getConsulatedPatient(
+    override fun getConsultedPatient(
         doctorId: String,
         onSuccess: (List<ConsultedPatientVO>) -> Unit,
         onFailure: (String) -> Unit
@@ -613,7 +612,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             }
     }
 
-    override fun addConsuatedPatient(
+    override fun addConsultedPatient(
         doctorId: String,
         patientId: String,
         onSuccess: () -> Unit,
@@ -630,6 +629,29 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnSuccessListener { Log.d("Success", "Successfully ") }
             .addOnFailureListener { Log.d("Failure", "Failed") }
       }
+
+    override fun getConsulationChatForDoctor(doctorId: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit) {
+        db.collection("$consultation_chat")
+                .whereEqualTo("doctor_id",doctorId)
+                .addSnapshotListener { value, error ->
+                    error?.let {
+                        onFailure(it.message ?: "Please check connection")
+                    } ?: run {
+                        val list: MutableList<ConsultationChatVO> = arrayListOf()
+
+                        val result = value?.documents ?: arrayListOf()
+
+                        for (document in result) {
+                            val hashmap = document.data
+                            hashmap?.put("id", document.id.toString())
+                            val Data = Gson().toJson(hashmap)
+                            val docsData = Gson().fromJson<ConsultationChatVO>(Data, ConsultationChatVO::class.java)
+                            list.add(docsData)
+                        }
+                        onSuccess(list)
+                    }
+                }
+    }
 
 
     override fun acceptRequest(

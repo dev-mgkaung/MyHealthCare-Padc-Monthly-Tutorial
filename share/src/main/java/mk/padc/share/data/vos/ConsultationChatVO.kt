@@ -15,7 +15,8 @@ import mk.padc.share.utils.consultation_chat
 class ConsultationChatVO(
     @PrimaryKey
     var id: String= "",
-    var patient_id : String,
+    var doctor_id : String ? ="",
+    var patient_id : String ?= "",
     var finish_consultation_status : Boolean ?=false,
     var patient_info : PatientVO ? =null ,
     var doctor_info : DoctorVO ? = null,

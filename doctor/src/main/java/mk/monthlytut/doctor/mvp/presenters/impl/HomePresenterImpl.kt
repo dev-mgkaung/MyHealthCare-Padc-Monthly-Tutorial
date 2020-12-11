@@ -8,6 +8,7 @@ import mk.monthlytut.doctor.mvp.views.HomeView
 import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
+import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
@@ -35,15 +36,17 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                         mView?.displayConsultationRequests(data) }
                 })
 
-        doctorModel.getConsultationAcceptListFromDB(SessionManager.doctor_id.toString())
+        doctorModel.getConsultationChat(SessionManager.doctor_id.toString(), onSuccess = {}, onError = {})
+
+        doctorModel.getConsultationFromDB(SessionManager.doctor_id.toString())
                 .observe(owner, Observer { data ->
                     data?.let {
-                        mView?.displayConsultationAcceptList(data) }
+                        mView?.displayConsultationList(data) }
                 })
 
         doctorModel.getConsultedPatient(SessionManager.doctor_id.toString(),onSuccess = {}, onError = {})
 
-        doctorModel.getConsultedPatientFromDB(SessionManager.doctor_id.toString())
+        doctorModel.getConsultedPatientFromDB()
             .observe(owner, Observer { data ->
                 data?.let {
                     mView?.displayConsultedPatient(data) }
@@ -78,19 +81,20 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
         acceptRequest("accept", consultationRequestVO)
     }
 
-    override fun onTapMedicalRecord(consultationRequestVO: ConsultationRequestVO) {
+    override fun onTapMedicalRecord(data: ConsultationChatVO) {
 
     }
 
-    override fun onTapPrescription(consultationRequestVO: ConsultationRequestVO) {
+    override fun onTapPrescription(data: ConsultationChatVO) {
 
     }
 
-    override fun onTapSendMessage(consultationRequestVO: ConsultationRequestVO) {
-        mView?.nextPage(consultationRequestVO)
+
+    override fun onTapSendMessage(data: ConsultationChatVO) {
+        mView?.nextPage(data.id)
     }
 
-    override fun onTapDoctorComment(consultationRequestVO: ConsultationRequestVO) {
+    override fun onTapDoctorComment(data: ConsultationChatVO) {
 
     }
 
@@ -113,6 +117,8 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 consultationRequestVO.case_summary,
                 consultationRequestVO.patient_info,
                 doctorVo, onSuccess = {}, onFailure = {})
+
+        mView?.nextPage(consultationRequestVO.consultation_id.toString())
     }
 
 

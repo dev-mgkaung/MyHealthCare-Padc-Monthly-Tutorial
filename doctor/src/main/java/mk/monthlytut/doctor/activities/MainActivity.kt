@@ -10,13 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.postpone_dialog.view.*
 import mk.monthlytut.doctor.R
-import mk.monthlytut.doctor.adapters.ConsultationAcceptAdapter
+import mk.monthlytut.doctor.adapters.ConsultationAdapter
 import mk.monthlytut.doctor.adapters.ConsultationRequestAdapter
 import mk.monthlytut.doctor.mvp.presenters.HomePresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.HomePresenterImpl
 import mk.monthlytut.doctor.mvp.views.HomeView
 import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.activities.BaseActivity
+import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.ConsultedPatientVO
 import mk.padc.share.utils.ImageUtils
@@ -26,7 +27,7 @@ class MainActivity : BaseActivity() ,HomeView {
     private lateinit var mPresenter: HomePresenter
 
     private lateinit var consultationRequestAdapter:  ConsultationRequestAdapter
-    private lateinit var consultationAcceptAdapter:  ConsultationAcceptAdapter
+    private lateinit var consultationAcceptAdapter:  ConsultationAdapter
 
 
     companion object {
@@ -64,7 +65,7 @@ class MainActivity : BaseActivity() ,HomeView {
         rc_consulation_request.adapter = consultationRequestAdapter
 
         rc_consulation_accept.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        consultationAcceptAdapter = ConsultationAcceptAdapter (mPresenter)
+        consultationAcceptAdapter = ConsultationAdapter (mPresenter)
         rc_consulation_accept.adapter = consultationAcceptAdapter
     }
 
@@ -72,7 +73,7 @@ class MainActivity : BaseActivity() ,HomeView {
         consultationRequestAdapter.setNewData(list.toMutableList())
     }
 
-    override fun displayConsultationAcceptList(list: List<ConsultationRequestVO>) {
+    override fun displayConsultationList(list: List<ConsultationChatVO>) {
         if(list?.size >0) {
             empty_view.visibility =View.GONE
             consultationlabel.visibility = View.VISIBLE
@@ -88,12 +89,12 @@ class MainActivity : BaseActivity() ,HomeView {
         consultationRequestAdapter.setConsultedPatientList(list.toMutableList())
     }
 
-    override fun nextPage(data: ConsultationRequestVO) {
-        if(data.consultation_id.toString().isEmpty()) {
-            startActivity(data.consultation_id?.let { PatientInfoActivity.newIntent(this, it) })
+    override fun nextPage(consultation_id : String) {
+        if(consultation_id.toString().isEmpty()) {
+            startActivity(consultation_id?.let { PatientInfoActivity.newIntent(this, it) })
         }else
         {
-            startActivity(data.consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
+            startActivity(consultation_id?.let { ChatRoomActvity.newIntent(this, it) })
         }
     }
 

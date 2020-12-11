@@ -6,16 +6,16 @@ import kotlinx.android.synthetic.main.listitem_consultation_accept.view.img_pati
 import kotlinx.android.synthetic.main.listitem_consultation_accept.view.txt_patient_dateofbirth
 import kotlinx.android.synthetic.main.listitem_consultation_accept.view.txt_patient_name
 import mk.monthlytut.doctor.R
-import mk.monthlytut.doctor.delegates.ConsultationAcceptDelegate
-import mk.padc.share.data.vos.ConsultationRequestVO
+import mk.monthlytut.doctor.delegates.ConsultationDelegate
+import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.utils.ImageUtils
 import mk.padc.share.views.viewholders.BaseViewHolder
 
 
-class ConsultationAcceptViewHolder(itemView: View, private val mDelegate: ConsultationAcceptDelegate) :
-        BaseViewHolder<ConsultationRequestVO>(itemView) {
+class ConsultationViewHolder(itemView: View, private val mDelegate: ConsultationDelegate) :
+        BaseViewHolder<ConsultationChatVO>(itemView) {
 
-    override fun bindData(data: ConsultationRequestVO) {
+    override fun bindData(data: ConsultationChatVO) {
 
         data?.let {
             ImageUtils().showImage(itemView.img_patient,data.patient_info?.photo.toString(), R.drawable.user)

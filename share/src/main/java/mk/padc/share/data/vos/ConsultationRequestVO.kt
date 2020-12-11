@@ -20,9 +20,7 @@ class ConsultationRequestVO(
     var patient_info : PatientVO ,
     var doctor_info : DoctorVO ,
     var case_summary : ArrayList<QuestionAnswerVO> = arrayListOf(),
-    var patient_type_status : String ?= "new",
     var status : String ? = "none",
-    var doctor_id : String ? ="",
     var patient_id : String ?= "",
     var consultation_id : String ?= ""
 )

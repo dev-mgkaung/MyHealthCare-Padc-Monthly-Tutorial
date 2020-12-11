@@ -62,9 +62,22 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.consultationRequestDao().getAllConsultationRequestDataBySpeciality(speciality)
     }
 
-    override fun getConsultationAcceptListFromDB(doctorId: String): LiveData<List<ConsultationRequestVO>> {
-        return mTheDB.consultationRequestDao().getAllConsultationAcceptData(doctorId)
+    override fun getConsultationChat(doctorId: String ,onSuccess: () -> Unit,
+    onError: (String) -> Unit)
+    {
+        mFirebaseApi.getConsulationChatForDoctor(doctorId,
+                onSuccess = {
+                    mTheDB.consultationChatDao().deleteAllConsultationChatData()
+                    mTheDB.consultationChatDao().insertConsultationChatData(it)
+
+                }, onFailure = { onError(it) })
+
     }
+
+    override fun getConsultationFromDB(doctorId: String): LiveData<List<ConsultationChatVO>> {
+        return mTheDB.consultationChatDao().getAllConsultationChatData()
+    }
+
 
     override fun deleteConsultationRequestById(consulationId: String): LiveData<List<ConsultationRequestVO>> {
          mTheDB.consultationRequestDao().deleteAllConsultationRequestDataById(consulationId)
@@ -90,13 +103,13 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mFirebaseApi.getConsulatedPatient(doctorId,onSuccess = {
+        mFirebaseApi.getConsultedPatient(doctorId,onSuccess = {
             mTheDB.consultedPatientDao().deleteConsultedPatient()
             mTheDB.consultedPatientDao().insertConsultedPatient(it)
         }, onFailure= {})
     }
 
-    override fun getConsultedPatientFromDB(doctorId: String): LiveData<List<ConsultedPatientVO>> {
+    override fun getConsultedPatientFromDB(): LiveData<List<ConsultedPatientVO>> {
       return mTheDB.consultedPatientDao().getConsultedPatient()
     }
 
