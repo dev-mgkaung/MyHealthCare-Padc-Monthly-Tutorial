@@ -57,6 +57,8 @@ interface DoctorModel
 
     fun  getConsultationByConsulationRequestIdFromDB(consultation_request_id : String) : LiveData<ConsultationRequestVO>
 
+    fun  getConsultationByConsulationRequestId(consultation_request_id : String , onSuccess: (consultationRequestVO :ConsultationRequestVO) -> Unit, onError: (String) -> Unit)
+
 
     fun getConsultedPatient(doctorId: String ,
                                         onSuccess: () -> Unit,

@@ -108,6 +108,14 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.consultationRequestDao().getConsultationRequestByConsultationRequestId(consultation_request_id)
     }
 
+    override fun getConsultationByConsulationRequestId(consultation_request_id: String, onSuccess: (consultationRequestVO: ConsultationRequestVO) -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getBroadcastConsultationRequest(consultation_request_id,
+                onSuccess = {
+                    mTheDB.consultationRequestDao().deleteAllConsultationRequestData()
+                    mTheDB.consultationRequestDao().insertConsultationRequest(it)
+                }, onFailure = { onError(it) })
+    }
+
     override fun getConsultedPatient(
         doctorId: String,
         onSuccess: () -> Unit,

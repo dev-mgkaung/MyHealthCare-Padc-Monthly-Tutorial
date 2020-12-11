@@ -115,7 +115,11 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                         val docsData = Gson().fromJson<DoctorVO>(Data, DoctorVO::class.java)
                         list.add(docsData)
                     }
-                    onSuccess(list[0])
+                   list?.let{
+                       if(list.size >0) {
+                           onSuccess(list[0])
+                       }
+                   }
                 }
             }
     }
@@ -249,7 +253,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "speciality" to doctorVO.speciality,
             "patient_info" to patientVO,
             "case_summary" to questionAnswerList,
-            "consultation_id" to  consulationId
+            "consultation_id" to  id
         )
         db.collection(consultation_request)
             .document(consulationId)
@@ -325,7 +329,12 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                         val docsData = Gson().fromJson<ConsultationRequestVO>(Data, ConsultationRequestVO::class.java)
                         list.add(docsData)
                     }
-                    onSuccess(list[0])
+                    list?.let{
+                        if(list.size>0) {
+                            onSuccess(list[0])
+                        }
+                    }
+
                 }
             }
     }

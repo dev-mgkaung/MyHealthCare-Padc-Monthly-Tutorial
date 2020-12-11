@@ -15,17 +15,29 @@ import mk.padc.share.utils.DateUtils
 class PatientInfoPresenterImpl : PatientInfoPresenter, AbstractBasePresenter<PatientInfoView>() {
 
     private val doctorModel: DoctorModel = DoctorModelImpl
+    lateinit var mOwner: LifecycleOwner
 
     override fun onTapStartConsultation( consultationRequestVO: ConsultationRequestVO) {
+
       doctorModel.startConsultation(consultationRequestVO.id,
           DateUtils().getCurrentDate(), consultationRequestVO.case_summary,
           consultationRequestVO.patient_info, consultationRequestVO.doctor_info,
           onSuccess = {} , onFailure = {})
-        mView?.nextPageToChat()
+
+        doctorModel.getConsultationByConsulationRequestId(consultationRequestVO.id, onSuccess = {}, onError = {})
+
+        doctorModel.getConsultationByConsulationRequestIdFromDB(consultationRequestVO.id)
+                .observe(mOwner, Observer {
+                    it?.let{
+                        mView?.nextPageToChat(it.consultation_id.toString())
+                    }
+
+                })
+
     }
 
     override fun onUiReadyConstulation(id: String , owner: LifecycleOwner) {
-
+        mOwner =owner
         doctorModel.getConsultationByConsulationRequestIdFromDB(id)
             .observe(owner, Observer {
                 it?.let{

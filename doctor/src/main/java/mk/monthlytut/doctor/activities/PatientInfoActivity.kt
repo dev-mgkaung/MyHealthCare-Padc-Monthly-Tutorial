@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_patient_info.*
 import mk.monthlytut.doctor.R
@@ -39,9 +40,12 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
         questionAnswerAdapter.setNewData(consultationRequestVO.case_summary)
     }
 
-    override fun nextPageToChat() {
-        this.finish()
-        startActivity(ChatRoomActvity.newIntent(this,consultation_request_id))
+    override fun nextPageToChat(consultation_chat_id: String) {
+        if(consultation_chat_id.isNotEmpty()) {
+            this.finish()
+            Toast.makeText(this,consultation_chat_id+"",Toast.LENGTH_LONG).show()
+            startActivity(ChatRoomActvity.newIntent(this, consultation_chat_id))
+        }
     }
 
     companion object {
