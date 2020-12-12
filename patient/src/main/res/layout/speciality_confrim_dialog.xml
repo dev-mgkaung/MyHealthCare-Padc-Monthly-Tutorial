@@ -20,7 +20,7 @@
         android:layout_width="180dp"
         android:layout_height="140dp"
         android:scaleType="fitXY"
-        android:src="@drawable/confirm_infro_photo"/>
+        android:src="@drawable/appt_confirmation"/>
     <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -19,11 +19,11 @@
         android:layout_margin="5dp"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:id="@+id/img_speciality"
-            android:src="@drawable/ic_launcher"
-            android:scaleType="fitXY"
+            android:src="@drawable/cardiology"
+            android:scaleType="fitCenter"
             android:layout_margin="5dp"
             android:padding="@dimen/margin_card_medium"/>
         <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
@@ -32,10 +32,11 @@
             android:maxLines="2"
             android:layout_gravity="center"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="Dental Specialist"
             android:id="@+id/txt_specialityname"
             android:textColor="@color/black"
-            android:textSize="13sp"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

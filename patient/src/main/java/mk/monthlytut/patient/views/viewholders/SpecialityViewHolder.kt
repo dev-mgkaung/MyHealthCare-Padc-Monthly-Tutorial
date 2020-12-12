@@ -18,7 +18,7 @@ class SpecialityViewHolder(itemView: View, private val mDelegate: SpecialityView
         data?.let {
             itemView.txt_specialityname.text =data.name
             data?.photo?.let{
-                ImageUtils().showImage(itemView.img_speciality,it,  R.drawable.speciality_thumbnail)
+                ImageUtils().showImageWithoutCrop(itemView.img_speciality,it,  R.drawable.speciality_thumbnail)
             }
         }
 

@@ -19,6 +19,14 @@ class ImageUtils{
                 .into(imageView)
     }
 
+    fun showImageWithoutCrop( imageView: ImageView, imageUrl: String , thumbnail : Int)
+    {
+        Glide.with(imageView.context)
+            .load( imageUrl)
+            .placeholder(thumbnail)
+            .into(imageView)
+    }
+
     fun showImageProfile(context: Context, imageView: ImageView, imageUrl: String?, filePath: Uri?)
     {
         Glide.with(context)
