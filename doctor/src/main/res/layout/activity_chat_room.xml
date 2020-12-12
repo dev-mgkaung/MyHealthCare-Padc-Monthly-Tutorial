@@ -37,6 +37,7 @@
         android:layout_height="match_parent">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
+            android:id="@+id/scrollview"
             android:layout_marginBottom="120dp"
             android:layout_height="match_parent">
             <LinearLayout
@@ -69,7 +70,7 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="14sp"
+                                    android:textSize="13sp"
                                     android:textColor="@color/black"
                                     android:padding="8dp"
                                     android:textStyle="bold"
@@ -87,6 +88,7 @@
                                         android:textColor="@color/black"
                                         android:text="@string/patient_name"
                                         android:textStyle="bold"
+                                        android:textSize="10sp"
                                         android:padding="5dp"/>
                                     <TextView
                                         android:layout_width="0dp"
@@ -94,7 +96,7 @@
                                         android:layout_weight="1.4"
                                         android:text=": Mg Kaung"
                                         android:id="@+id/pname"
-                                        android:textSize="12sp"
+                                        android:textSize="10sp"
                                         android:textColor="@color/black"
                                         android:padding="5dp"/>
                                 </LinearLayout>
@@ -109,6 +111,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:textStyle="bold"
+                                        android:textSize="10sp"
                                         android:textColor="@color/black"
                                         android:text="@string/patient_dateOfbirth"
                                         android:padding="5dp"/>
@@ -118,7 +121,7 @@
                                         android:layout_weight="1.4"
                                         android:text=": Mg Kaung"
                                         android:textColor="@color/black"
-                                        android:textSize="12sp"
+                                        android:textSize="10sp"
                                         android:id="@+id/pdateofBirth"
                                         android:padding="5dp"/>
                                 </LinearLayout>
@@ -133,6 +136,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:text="@string/patient_height"
+                                        android:textSize="10sp"
                                         android:textStyle="bold"
                                         android:textColor="@color/black"
                                         android:padding="5dp"/>
@@ -142,7 +146,7 @@
                                         android:layout_weight="1.4"
                                         android:text=": Mg Kaung"
                                         android:textColor="@color/black"
-                                        android:textSize="12sp"
+                                        android:textSize="10sp"
                                         android:id="@+id/pheight"
                                         android:padding="5dp"/>
                                 </LinearLayout>
@@ -157,6 +161,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:textStyle="bold"
+                                        android:textSize="10sp"
                                         android:textColor="@color/black"
                                         android:text="@string/patient_blood_type"
                                         android:padding="5dp"/>
@@ -164,7 +169,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1.4"
-                                        android:textSize="12sp"
+                                        android:textSize="10sp"
                                         android:textColor="@color/black"
                                         android:text=": Mg Kaung"
                                         android:id="@+id/pbloodtype"
@@ -182,6 +187,7 @@
                                         android:layout_weight="1"
                                         android:text="@string/patient_weight"
                                         android:textStyle="bold"
+                                        android:textSize="10sp"
                                         android:textColor="@color/black"
                                         android:padding="5dp"/>
                                     <TextView
@@ -190,6 +196,7 @@
                                         android:layout_weight="1.4"
                                         android:text=": Mg Kaung"
                                         android:id="@+id/pweight"
+                                        android:textSize="10sp"
                                         android:textColor="@color/black"
                                         android:padding="5dp"/>
                                 </LinearLayout>
@@ -203,6 +210,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
+                                        android:textSize="10sp"
                                         android:textStyle="bold"
                                         android:textColor="@color/black"
                                         android:text="@string/patient_blood_pressure"
@@ -212,7 +220,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1.4"
                                         android:text=": Mg Kaung"
-                                        android:textSize="12sp"
+                                        android:textSize="10sp"
                                         android:id="@+id/pbloodpressure"
                                         android:textColor="@color/black"
                                         android:padding="5dp"/>
@@ -228,6 +236,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:textStyle="bold"
+                                        android:textSize="10sp"
                                         android:textColor="@color/black"
                                         android:text="@string/patient_reactionalert"
                                         android:padding="5dp"/>
@@ -237,7 +246,7 @@
                                         android:layout_weight="1.4"
                                         android:text=": Mg Kaung"
                                         android:textColor="@color/black"
-                                        android:textSize="12sp"
+                                        android:textSize="10sp"
                                         android:id="@+id/pcomment"
                                         android:padding="5dp"/>
                                 </LinearLayout>
@@ -245,7 +254,7 @@
                                     android:layout_marginTop="20dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="14sp"
+                                    android:textSize="13sp"
                                     android:textColor="@color/black"
                                     android:padding="8dp"
                                     android:textStyle="bold"
@@ -254,7 +263,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:nestedScrollingEnabled="false"
-                                    android:layout_margin="5dp"
+                                    android:layout_margin="2dp"
                                     android:id="@+id/rc_question_answer"/>
                             </LinearLayout>
                         </androidx.core.widget.NestedScrollView>
@@ -263,7 +272,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:textSize="12sp"
-                            android:layout_margin="20dp"
+                            android:layout_margin="10dp"
                             android:id="@+id/seemore"
                             android:textColor="@color/grey_800"
                             android:text="ထပ်ကြည့်မည်  >>>"/>

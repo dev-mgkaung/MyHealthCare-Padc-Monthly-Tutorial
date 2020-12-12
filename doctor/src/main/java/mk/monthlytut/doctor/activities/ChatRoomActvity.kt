@@ -46,6 +46,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
     }
 
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {
+        scrollview.scrollTo(0, scrollview.bottom)
         mConsultationChatVO= consultationChatVO
         patientname.text = consultationChatVO.patient_info?.name
         ImageUtils().showImage(userprofile, consultationChatVO.patient_info?.photo.toString(), R.drawable.user)

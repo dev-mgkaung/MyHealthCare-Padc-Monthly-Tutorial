@@ -494,18 +494,24 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onFailure: (String) -> Unit
     ) {
         db.collection("$consultation_chat/$consulationId/$chat_message")
-            .get()
-            .addOnSuccessListener { result ->
-                val list: MutableList<ChatMessageVO> = arrayListOf()
-                for (document in result) {
-                    val hashmap = document.data
-                    hashmap?.put("id", document.id.toString())
-                    val Data = Gson().toJson(hashmap)
-                    val docsData = Gson().fromJson<ChatMessageVO>(Data, ChatMessageVO::class.java)
-                    list.add(docsData)
+                .addSnapshotListener { value, error ->
+                    error?.let {
+                        onFailure(it.message ?: "Please check connection")
+                    } ?: run {
+                        val list: MutableList<ChatMessageVO> = arrayListOf()
+
+                        val result = value?.documents ?: arrayListOf()
+
+                        for (document in result) {
+                            val hashmap = document.data
+                            hashmap?.put("id", document.id.toString())
+                            val Data = Gson().toJson(hashmap)
+                            val docsData = Gson().fromJson<ChatMessageVO>(Data, ChatMessageVO::class.java)
+                            list.add(docsData)
+                        }
+                        onSuccess(list)
+                    }
                 }
-                onSuccess(list)
-            }
     }
 
     override fun getPrescription( consulationId: String,
