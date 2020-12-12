@@ -231,8 +231,8 @@
         <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
             android:layout_width="wrap_content"
             android:layout_margin="10dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
             android:paddingTop="5dp"
             android:textSize="12sp"
             android:paddingBottom="5dp"

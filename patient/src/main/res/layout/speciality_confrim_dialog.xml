@@ -24,7 +24,7 @@
     <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:gravity="center"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:textColor="@color/blue_A400"
+        android:textColor="#004247"
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="12sp"
