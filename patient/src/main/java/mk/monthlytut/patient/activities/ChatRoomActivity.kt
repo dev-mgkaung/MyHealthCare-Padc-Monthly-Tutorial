@@ -13,9 +13,13 @@ import mk.monthlytut.patient.dialogs.PatientInfoDialog
 import mk.monthlytut.patient.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.ChatRoomPresenterImpl
 import mk.monthlytut.patient.mvp.views.ChatView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
+import mk.padc.share.data.vos.ChatMessageVO
 import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.utils.ImageUtils
+import mk.padc.share.utils.doctors
+import mk.padc.share.utils.patients
 
 class ChatRoomActvity : BaseActivity() , ChatView
 {
@@ -58,6 +62,10 @@ class ChatRoomActvity : BaseActivity() , ChatView
 
     }
 
+    override fun displayChatMessageList(list: List<ChatMessageVO>) {
+        adapter.setNewData(list.toMutableList())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room)
@@ -86,6 +94,13 @@ class ChatRoomActvity : BaseActivity() , ChatView
             val dialog: PatientInfoDialog = PatientInfoDialog.newInstance(data)
             dialog.show(supportFragmentManager, "")
 
+        }
+
+
+        btn_attachfile.setOnClickListener {  }
+
+        btn_sendMessage.setOnClickListener {
+            mPresenter?.addTextMessage(ed_message.text.toString(),consultation_chat_id, patients, SessionManager.patient_photo.toString(),SessionManager.patient_name.toString(), this)
         }
     }
 

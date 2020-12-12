@@ -43,7 +43,6 @@ class PatientInfoActivity  : BaseActivity()  , PatientInfoView {
     override fun nextPageToChat(consultation_chat_id: String) {
         if(consultation_chat_id.isNotEmpty()) {
             this.finish()
-            Toast.makeText(this,consultation_chat_id+"",Toast.LENGTH_LONG).show()
             startActivity(ChatRoomActvity.newIntent(this, consultation_chat_id))
         }
     }

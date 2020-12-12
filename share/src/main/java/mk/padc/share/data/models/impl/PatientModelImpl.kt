@@ -153,4 +153,24 @@ object PatientModelImpl : PatientModel, BaseModel() {
         return mTheDB.consultationChatDao().getAllConsultationChatDataBy(consulationId)
     }
 
+    override fun sendChatMessage(
+        messageVO: ChatMessageVO,
+        consulationId: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mFirebaseApi.sendMessage(consulationId,messageVO, onSuccess = {}, onFailure= {})
+    }
+
+    override fun getChatMessage(consulationId: String ,onSuccess: () -> Unit,
+                                onError: (String) -> Unit ){
+        DoctorModelImpl.mFirebaseApi.getAllChatMessage(consulationId, onSuccess = {
+            mTheDB.chatMessageDao().deleteAllChatMessageData()
+            mTheDB.chatMessageDao().insertChatMessages(it)
+        }, onFailure = {})
+    }
+
+    override fun getAllChatMessageFromDB(): LiveData<List<ChatMessageVO>> {
+        return mTheDB.chatMessageDao().getAllChatMessage()
+    }
 }

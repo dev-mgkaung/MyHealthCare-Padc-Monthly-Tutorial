@@ -27,6 +27,7 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
             .observe(owner, Observer {
                 mView?.displaySpecialQuestions(it)
             })
+
     }
 
     override fun onUiReadyforGeneralQuestion(

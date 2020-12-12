@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="right"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginLeft="50dp"
+    android:gravity="right"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/blue_100"
+            android:elevation="5dp"
+            android:padding="2dp"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="2dp"
+                android:id="@+id/ptext_message_body"
+                android:text="MG Kaung Mg Kaung"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/user"
+            android:id="@+id/patient_photo"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="5dp"
+        android:padding="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12: 31 PM"
+        android:drawableLeft="@drawable/ic_baseline_done_all_24"
+        android:textColor="@color/grey_800"
+        android:textSize="12sp"
+        android:id="@+id/ptxt_time_stamp"
+        android:background="@drawable/rounded_corner_btn_white"/>
+</LinearLayout>

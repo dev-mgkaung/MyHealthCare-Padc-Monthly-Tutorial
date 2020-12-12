@@ -295,6 +295,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_height="wrap_content"
+                    android:id="@+id/btn_attachfile"
                     android:background="@drawable/circle_rounded_blue"
                     android:src="@drawable/ic_baseline_attach_file_24"/>
                 <androidx.cardview.widget.CardView
@@ -316,7 +317,7 @@
                         android:padding="12dp"
                         android:textSize="12sp"
                         android:inputType="textMultiLine"
-                        android:id="@+id/ed_password"/>
+                        android:id="@+id/ed_message"/>
                 </androidx.cardview.widget.CardView>
                 <ImageView
                     android:layout_width="wrap_content"
@@ -324,6 +325,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15dp"
                     android:layout_alignParentRight="true"
+                    android:id="@+id/btn_sendMessage"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_send_24"/>
             </RelativeLayout>

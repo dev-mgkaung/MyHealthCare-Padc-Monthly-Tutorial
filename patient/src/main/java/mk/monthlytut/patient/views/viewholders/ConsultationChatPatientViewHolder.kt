@@ -1,11 +1,12 @@
-package mk.monthlytut.doctor.views.viewholders
+package mk.monthlytut.patient.views.viewholders
 
 import android.view.View
 import kotlinx.android.synthetic.main.listitem_chat_patient.view.*
-import mk.monthlytut.doctor.R
-import mk.monthlytut.doctor.delegates.ChatRoomDelegate
+import mk.monthlytut.patient.R
+import mk.monthlytut.patient.delegates.ChatRoomDelegate
 import mk.padc.share.data.vos.ChatMessageVO
 import mk.padc.share.utils.ImageUtils
+
 
 class ConsultationChatPatientViewHolder(itemView: View, private val mDelegate: ChatRoomDelegate) :
         BaseChatViewHolder(itemView) {
@@ -13,8 +14,9 @@ class ConsultationChatPatientViewHolder(itemView: View, private val mDelegate: C
         data.sendBy?.photo?.let{
             ImageUtils().showImage(itemView.patient_photo, data.sendBy?.photo.toString(), R.drawable.user)
         }
-        itemView.patient_timestamp.text = data.sendAt + "Am"
-        itemView.pateint_text_body.text = data.messageText
+
+        itemView.ptxt_time_stamp.text = data.sendAt + "Am"
+        itemView.ptext_message_body.text = data.messageText
     }
 }
 

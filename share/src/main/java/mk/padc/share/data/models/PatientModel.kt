@@ -66,4 +66,12 @@ interface PatientModel
 
     fun getConsultationChatFromDB(consulationId : String) : LiveData<ConsultationChatVO>
 
+    fun sendChatMessage( messageVO: ChatMessageVO , consulationId: String ,
+                         onSuccess: () -> Unit,
+                         onError: (String) -> Unit)
+
+    fun getChatMessage(consulationId: String, onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getAllChatMessageFromDB () : LiveData<List<ChatMessageVO>>
+
 }
