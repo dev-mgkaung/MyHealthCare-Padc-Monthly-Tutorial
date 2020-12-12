@@ -3,6 +3,7 @@ package mk.monthlytut.doctor.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_chat_room.*
@@ -98,7 +99,9 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
         }
 
-        btn_attachfile.setOnClickListener {  }
+        btn_attachfile.setOnClickListener {
+            Toast.makeText(this, this.resources.getString(R.string.image_upload_service_not_available),Toast.LENGTH_LONG).show()
+        }
 
         btn_sendMessage.setOnClickListener {
             mPresenter?.addTextMessage(ed_message.text.toString(),consultation_chat_id, doctors,SessionManager.doctor_photo.toString(),SessionManager.doctor_name.toString(), this)
