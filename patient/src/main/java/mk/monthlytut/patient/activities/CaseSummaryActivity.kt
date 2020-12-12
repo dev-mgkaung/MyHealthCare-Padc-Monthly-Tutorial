@@ -16,7 +16,6 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
 
     companion object {
         const val PARM_SPECIALITYID = "SPECIALITY ID"
-        const val PARM_EMAIL = "EMAIL ID"
         fun newIntent(
             context: Context,
             specialityID: String

@@ -68,5 +68,11 @@ interface DoctorModel
 
     fun  getConsultedPatientFromDB() : LiveData<List<ConsultedPatientVO>>
 
+    fun sendChatMessage( messageVO: ChatMessageVO , consulationId: String ,
+                         onSuccess: () -> Unit,
+                         onError: (String) -> Unit)
 
+    fun getChatMessage(consulationId: String, onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getAllChatMessageFromDB () : LiveData<List<ChatMessageVO>>
 }

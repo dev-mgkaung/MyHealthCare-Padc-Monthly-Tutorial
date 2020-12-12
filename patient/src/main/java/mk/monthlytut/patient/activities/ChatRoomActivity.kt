@@ -94,6 +94,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
         startActivity(HomeActivity.newIntent(this))
         this.finish()
     }
+
     private fun setUpRecyclerView()
     {
         rc_chating?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

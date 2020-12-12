@@ -1,6 +1,7 @@
 package mk.padc.share.utils
 
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class DateUtils
@@ -13,6 +14,11 @@ class DateUtils
 
     fun getCurrentDate() : String{
         val simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
+        return simpleDateFormat.format(Date())
+    }
+
+    fun getCurrentHourMin() : String{
+        val simpleDateFormat = SimpleDateFormat("HH::mm")
         return simpleDateFormat.format(Date())
     }
 }

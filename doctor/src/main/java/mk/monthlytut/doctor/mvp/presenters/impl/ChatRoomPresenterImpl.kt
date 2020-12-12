@@ -7,7 +7,11 @@ import mk.monthlytut.doctor.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.doctor.mvp.views.ChatView
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
+import mk.padc.share.data.vos.ChatMessageVO
+import mk.padc.share.data.vos.SendBy
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
+import mk.padc.share.utils.DateUtils
+import java.util.*
 
 class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>() {
 
@@ -23,12 +27,39 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
                        mView?.displayPatientInfo(data)
                             }
                 })
+
+        doctorModel.getChatMessage(consultationChatId, onSuccess = {}, onError = {})
+
+        doctorModel.getAllChatMessageFromDB()
+            .observe(owner, Observer { data ->
+            data?.let {
+                mView?.displayChatMessageList(data)
+            }
+        })
+    }
+
+    override fun addTextMessage(
+        message: String,
+        consultationChatId: String,
+        type : String,
+        senderPhoto : String,
+        senderName: String,
+        owner: LifecycleOwner
+    ) {
+        val id = UUID.randomUUID().toString()
+        var sendBy = SendBy(
+            photo = senderPhoto,
+            name = senderName,
+        )
+        var chatMessage = ChatMessageVO(id =id, message, "", DateUtils().getCurrentHourMin(), sendBy, type
+        )
+       doctorModel.sendChatMessage(chatMessage,consultationChatId,onSuccess = {} , onError = {})
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 
-    override fun onTapSendTextMessage() {
-        TODO("Not yet implemented")
+    override fun onTapSendTextMessage(message: String) {
+
     }
 
     override fun onTapAttachImage() {

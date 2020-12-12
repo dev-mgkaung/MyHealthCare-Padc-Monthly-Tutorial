@@ -11,7 +11,8 @@ import mk.padc.share.utils.DATABASE_NAME
 @Database(
     entities = [SpecialitiesVO::class,PatientVO::class, DoctorVO::class,RecentDoctorVO::class,
         ConsultationRequestVO::class, ConsultationChatVO::class,GeneralQuestionTemplateVO::class,
-        CheckoutVO::class , SpecialQuestionVO::class, QuestionAnswerVO::class ,ConsultedPatientVO::class],
+        CheckoutVO::class , SpecialQuestionVO::class, QuestionAnswerVO::class ,ConsultedPatientVO::class,
+        ChatMessageVO::class],
     version = 2,
     exportSchema = false
 )
@@ -47,4 +48,5 @@ abstract class MyCareDatabase : RoomDatabase() {
     abstract fun questionAnswerDao (): QuestionAnswerDao
     abstract  fun recentDoctorDao () : RecentDoctorDao
     abstract fun consultedPatientDao () : ConsultedPatientDao
+    abstract fun chatMessageDao() : ChatMessageDao
 }
