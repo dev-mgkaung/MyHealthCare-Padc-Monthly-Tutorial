@@ -2,6 +2,7 @@ package mk.monthlytut.patient.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.utils.*
 
 object SessionManager {
@@ -43,6 +44,22 @@ object SessionManager {
 
         set(value) = preferences.edit {
             it.putString(sharePreferencePatientEmail, value)
+        }
+
+    var patient_phone : String?
+
+        get() = preferences.getString(sharePreferencePatientPhone, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientPhone, value)
+        }
+
+    var patient_address : String?
+
+        get() = preferences.getString(sharePreferencePatientPhone, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientPhone, value)
         }
 
     var patient_id: String?
@@ -116,4 +133,27 @@ object SessionManager {
         set(value) = preferences.edit {
             it.putString(sharePreferencePatientPhoto, value)
         }
+
+    fun addPatientInfo( patientVO: PatientVO)
+    {
+        patient_name = patientVO.name
+        patient_id = patientVO.id
+        patient_device_id = patientVO.device_id
+        patient_email = patientVO.email
+        patient_photo = patientVO.photo.toString()
+        patient_dateOfBirth =patientVO.dateOfBirth
+        patient_height = patientVO.height
+        patient_bloodType = patientVO.blood_type
+        patient_comment = patientVO.comment
+        patient_weight = patientVO.weight
+        patient_bloodPressure = patientVO.blood_pressure
+        patient_phone = patientVO.phone
+        if(patientVO.address.size>0) {
+            for(item in patientVO.address) {
+                if(item.default_address ==true) {
+                    patient_address = item.address
+                }
+            }
+        }
+    }
 }

@@ -364,14 +364,13 @@
                 android:layout_marginBottom="4dp"
                 android:orientation="horizontal">
                   <ImageView
-                      android:layout_width="wrap_content"
+                      android:layout_width="50dp"
                       android:scaleType="centerInside"
                       android:layout_centerVertical="true"
                       android:layout_marginLeft="10dp"
-                      android:layout_height="wrap_content"
+                      android:layout_height="50dp"
                       android:id="@+id/btn_attachfile"
-                      android:background="@drawable/circle_rounded_blue"
-                      android:src="@drawable/ic_baseline_attach_file_24"/>
+                      android:src="@drawable/attach_file"/>
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_marginLeft="70dp"
@@ -394,14 +393,15 @@
                         android:id="@+id/ed_message"/>
                 </androidx.cardview.widget.CardView>
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:scaleType="centerInside"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15dp"
                     android:layout_alignParentRight="true"
                     android:id="@+id/btn_sendMessage"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_send_24"/>
+                    android:layout_height="40dp"
+                    android:padding="4dp"
+                    android:src="@drawable/send"/>
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

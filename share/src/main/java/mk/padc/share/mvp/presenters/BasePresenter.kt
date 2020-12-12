@@ -7,4 +7,5 @@ import mk.padc.share.data.vos.PatientVO
 interface BasePresenter<T : BaseView> {
     fun initPresenter(view: T)
     fun onUiReady(context: Context,owner: LifecycleOwner)
+
 }

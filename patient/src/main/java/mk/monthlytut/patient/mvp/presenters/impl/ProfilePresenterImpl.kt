@@ -3,11 +3,14 @@ package mk.monthlytut.patient.mvp.presenters
 import android.content.Context
 import android.graphics.Bitmap
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.views.ProfileView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.AuthenticationModel
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.AuthenticationModelImpl
 import mk.padc.share.data.models.impl.PatientModelImpl
+import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
 class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView>() {
@@ -16,26 +19,54 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
 
     private val patientModel : PatientModel = PatientModelImpl
 
-    override fun updateUserProfile(bitmap: Bitmap) {
+    override fun onUiReadyForAccountFragment(context: Context, owner: LifecycleOwner) {
+        patientModel.getPatientByEmail(SessionManager.patient_email.toString(),onSuccess = {}, onError = {})
+        patientModel.getPatientByEmailFromDB(SessionManager.patient_email.toString())
+            .observe(owner, Observer { patient ->
+                patient?.let {
+                    mView?.displayPatientData(patient) }
+            })
+    }
+
+
+    override fun updateUserData(
+        bitmap: Bitmap,
+        blood_type: String,
+        dateofbirth: String,
+        height: String,
+        comment: String,
+        phone: String
+    ) {
+
         patientModel.uploadPhotoToFirebaseStorage(bitmap,
-        onSuccess = {
-            mView?.onTapSaveUserData()
-            mAuthenticationModel.updateProfile(it,onSuccess = {}, onFailure = {})
-        },
-        onFailure = {
-            mView?.showError("Profile Update Failed")
-        })
+            onSuccess = {
+                mAuthenticationModel.updateProfile(it,onSuccess = {}, onFailure = {})
 
+                mView?.hideProgressDialog()
+
+                var patientVo = PatientVO(
+                    id= SessionManager.patient_id.toString(),
+                    device_id = SessionManager.patient_device_id.toString(),
+                    name = SessionManager.patient_name.toString(),
+                    email = SessionManager.patient_email.toString(),
+                    photo = it,
+                    blood_type = blood_type,
+                    blood_pressure =SessionManager.patient_bloodPressure.toString(),
+                    dateOfBirth = dateofbirth,
+                    weight = SessionManager.patient_weight.toString(),
+                    height = height,
+                    comment = comment,
+                    phone = phone
+                )
+                patientModel.addPatientInfo(patientVo,onSuccess = {}, onError = {})
+            },
+            onFailure = {
+                mView?.showError("Profile Update Failed")
+            })
     }
 
-    override fun onTapCancelUserData() {
-        mView?.onTapCancelUserData()
-    }
+    override fun onUiReady(context: Context, owner: LifecycleOwner) {
 
-    override fun onTapEditProfileImage() {
-        mView?.onTapEditProfileImage()
     }
-
-    override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 }
 

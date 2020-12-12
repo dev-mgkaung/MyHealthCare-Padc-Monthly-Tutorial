@@ -48,17 +48,7 @@ class LoginActivity : BaseActivity() , LoginView {
     override fun navigateToHomeScreen(patientVO: PatientVO) {
 
         SessionManager.login_status =true
-        SessionManager.patient_name = patientVO.name
-        SessionManager.patient_id = patientVO.id
-        SessionManager.patient_device_id = patientVO.device_id
-        SessionManager.patient_email = patientVO.email
-        SessionManager.patient_photo = patientVO.photo.toString()
-        SessionManager.patient_dateOfBirth =patientVO.dateOfBirth
-        SessionManager.patient_height = patientVO.height
-        SessionManager.patient_bloodType = patientVO.blood_type
-        SessionManager.patient_comment = patientVO.comment
-        SessionManager.patient_weight = patientVO.weight
-        SessionManager.patient_bloodPressure = patientVO.blood_pressure
+        SessionManager.addPatientInfo(patientVO)
 
         startActivity(HomeActivity.newIntent(this))
         this.finish()

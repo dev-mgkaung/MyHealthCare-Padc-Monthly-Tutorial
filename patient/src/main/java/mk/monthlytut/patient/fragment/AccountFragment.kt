@@ -1,36 +1,30 @@
 package mk.monthlytut.patient.fragment
 
-import android.app.Activity
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.os.Build
+import android.app.Dialog
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
+import android.view.WindowManager
 import kotlinx.android.synthetic.main.fragment_account.*
+import kotlinx.android.synthetic.main.profile_data_dialog.view.*
 import mk.monthlytut.patient.R
+import mk.monthlytut.patient.activities.ProfileActivity
 import mk.monthlytut.patient.activities.SplashActivity
 import mk.monthlytut.patient.mvp.presenters.ProfilePresenter
 import mk.monthlytut.patient.mvp.presenters.ProfilePresenterImpl
 import mk.monthlytut.patient.mvp.views.ProfileView
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseFragment
-import mk.padc.share.utils.*
-import java.io.IOException
+import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.utils.ImageUtils
 
-class AccountFragment : BaseFragment() ,ProfileView {
+class AccountFragment : BaseFragment() ,ProfileView{
 
     private lateinit var mPresenter: ProfilePresenter
 
-    private  var bitmap : Bitmap? = null
-
     companion object {
-        const val PICK_IMAGE_REQUEST = 1111
         @JvmStatic
         fun newInstance() = AccountFragment().apply {}
     }
@@ -38,6 +32,7 @@ class AccountFragment : BaseFragment() ,ProfileView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -51,90 +46,84 @@ class AccountFragment : BaseFragment() ,ProfileView {
 
         super.onViewCreated(view, savedInstanceState)
 
-        setUpPresenter()
         setUpActionListener()
+        setUpPresenter()
 
-        etUserName.text = Editable.Factory.getInstance().newEditable( SessionManager.patient_name)
-        etEmail.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_email)
+
+
+        imgedit.setOnClickListener {
+            startActivity(activity?.let { it1 -> ProfileActivity.newIntent(it1) })
+        }
 
     }
 
+    private fun setUpPresenter() {
+        this?.let{
+            mPresenter = getPresenter<ProfilePresenterImpl, ProfileView>()
+            activity?.let { it1 -> mPresenter.onUiReadyForAccountFragment(it1,this) }
+        }
+    }
+
+ private fun checkPatientInfoDialog()
+ {
+
+     if(SessionManager.patient_bloodType.toString().isEmpty())
+     {
+         val view = layoutInflater.inflate(R.layout.profile_data_dialog, null)
+         val dialog = context?.let { Dialog(it) }
+         dialog?.window?.setLayout(
+             WindowManager.LayoutParams.MATCH_PARENT,
+             WindowManager.LayoutParams.MATCH_PARENT
+         )
+         dialog?.apply {
+             setCancelable(false)
+             setContentView(view)
+             window?.setBackgroundDrawableResource(android.R.color.transparent)
+         }
+
+         view.android_cancel.setOnClickListener {
+             dialog?.dismiss()
+         }
+
+         view.btn_fill_patient.setOnClickListener {
+                startActivity(  activity?.applicationContext?.let{ ProfileActivity.newIntent(it)})
+             dialog?.dismiss()
+         }
+         dialog?.show()
+     }
+ }
 
 
     private fun setUpActionListener()
     {
-        img_edit.setOnClickListener{
-            mPresenter?.onTapEditProfileImage()
-        }
-        tv_save.setOnClickListener{
-            bitmap?.let { }
-        }
-        tv_cancel.setOnClickListener{
-            bitmap?.let {
-                mPresenter.onTapCancelUserData()
-            }
-        }
         btnLogout.setOnClickListener {
             SessionManager.login_status=false
             startActivity(activity?.let { it -> SplashActivity.newIntent(it) })
             activity?.finish()
         }
     }
-    private fun setUpPresenter() {
-        activity?.let{
-            mPresenter = getPresenter<ProfilePresenterImpl, ProfileView>()
-            context?.let { it1 -> mPresenter.onUiReady(it1,this) }
+
+    override fun displayPatientData(patientVO: PatientVO) {
+
+        patientVO?.let {
+            SessionManager.addPatientInfo(patientVO)
+            checkPatientInfoDialog()
         }
+
+        ImageUtils().showImage(img_profile, patientVO.photo.toString(),R.drawable.user)
+
+        etUserName.text = Editable.Factory.getInstance().newEditable( SessionManager.patient_name)
+        etEmail.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_email)
+        etphone.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_phone)
+        et_dateofbirth.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_dateOfBirth)
+        et_bloodtype.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_bloodType)
+        et_height.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_height)
+        et_comment.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_comment)
+
     }
 
-
-    override fun onTapSaveUserData() {
-        account_btngroup.visibility = View.GONE
-      //  context?.let { it1 -> mPresenter.updatePatent(it1,this) }
+    override fun hideProgressDialog() {
     }
 
-    override fun onTapCancelUserData() {
-        account_btngroup.visibility = View.GONE
-    }
-
-    override fun onTapEditProfileImage() {
-        openGallery()
-    }
-
-    fun openGallery() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), AccountFragment.PICK_IMAGE_REQUEST)
-    }
-
-
-    @RequiresApi(Build.VERSION_CODES.P)
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == AccountFragment.PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
-            if (data == null || data.data == null) {
-                return
-            }
-            val filePath = data.data
-            try {
-                filePath?.let {
-                    if (Build.VERSION.SDK_INT >= 29) {
-                        val source: ImageDecoder.Source = ImageDecoder.createSource(context?.contentResolver!!, filePath)
-                        bitmap = ImageDecoder.decodeBitmap(source)
-                        account_btngroup.visibility = View.VISIBLE
-                        ImageUtils().showImageProfile(img_profile.context,img_profile,null,filePath)
-                    } else {
-                        val bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, filePath)
-                        ImageUtils().showImageProfile(img_profile.context,img_profile,null,filePath)
-                        account_btngroup.visibility = View.GONE
-                    }
-                }
-
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-    }
 
 }

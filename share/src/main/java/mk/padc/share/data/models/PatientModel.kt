@@ -74,4 +74,5 @@ interface PatientModel
 
     fun getAllChatMessageFromDB () : LiveData<List<ChatMessageVO>>
 
+    fun addPatientInfo(patientVO: PatientVO, onSuccess: () -> Unit, onError: (String) -> Unit)
 }

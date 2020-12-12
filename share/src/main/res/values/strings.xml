@@ -105,4 +105,8 @@
     <string name="phone">ဖုန်းနံပါတ်ထည့်ပါ</string>
     <string name="message">ရေးသားပါ</string>
     <string name="image_upload_service_not_available">လက်တလော အချိန်တွင် ဓာတ်ပုံ ပေးပို့ခြင်း မလုပ်ဆောင်နိုင်သေးပါ</string>
+    <string name="empty_profile_data">သင့်ပရိုဖိုင်တွင် အချက်အလက်များ မ ဖြည့်သွင်းရသေးပါ</string>
+    <string name="forget_password">လျို့ဝှက်နံပါတ်ပြောင်းလဲမည်</string>
+    <string name="upload_photo">ပုံတင်မည်</string>
+    <string name="profilelabel">ပရိုဖိုင်ဖြည့်သွင်းမည်</string>
 </resources>

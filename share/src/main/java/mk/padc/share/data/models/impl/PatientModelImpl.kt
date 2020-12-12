@@ -142,7 +142,7 @@ object PatientModelImpl : PatientModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        DoctorModelImpl.mFirebaseApi.getConsulationChatById(consulationId,
+        mFirebaseApi.getConsulationChatById(consulationId,
             onSuccess = {
                 mTheDB.consultationChatDao().deleteAllConsultationChatData()
                 mTheDB.consultationChatDao().insertConsultationChatData(it)
@@ -164,7 +164,7 @@ object PatientModelImpl : PatientModel, BaseModel() {
 
     override fun getChatMessage(consulationId: String ,onSuccess: () -> Unit,
                                 onError: (String) -> Unit ){
-        DoctorModelImpl.mFirebaseApi.getAllChatMessage(consulationId, onSuccess = {
+       mFirebaseApi.getAllChatMessage(consulationId, onSuccess = {
             mTheDB.chatMessageDao().deleteAllChatMessageData()
             mTheDB.chatMessageDao().insertChatMessages(it)
         }, onFailure = {})
@@ -172,5 +172,13 @@ object PatientModelImpl : PatientModel, BaseModel() {
 
     override fun getAllChatMessageFromDB(): LiveData<List<ChatMessageVO>> {
         return mTheDB.chatMessageDao().getAllChatMessage()
+    }
+
+    override fun addPatientInfo(
+        patientVO: PatientVO,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mFirebaseApi.updatePatientData(patientVO, onSuccess = {}, onFailure = { onError(it) })
     }
 }

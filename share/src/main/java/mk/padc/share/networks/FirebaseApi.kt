@@ -14,6 +14,10 @@ interface FirebaseApi {
     )
 
 
+    fun updatePatientData(patientVO: PatientVO ,onSuccess: () -> Unit,
+                          onFailure: (String) -> Unit
+    )
+
     fun registerNewPatient(patientVO: PatientVO,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit

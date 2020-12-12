@@ -58,6 +58,20 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 .addOnFailureListener { Log.d("Failure", "Failed ") }
     }
 
+    override fun updatePatientData(
+        patientVO: PatientVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection(patients)
+            .document(patientVO.id)
+            .set(patientVO)
+            .addOnSuccessListener {
+                Log.d("Success", "Successfully") }
+            .addOnFailureListener {
+                Log.d("Failure", "Failed ") }
+    }
+
     override fun registerNewPatient(
         patientVO: PatientVO,
         onSuccess: () -> Unit,
