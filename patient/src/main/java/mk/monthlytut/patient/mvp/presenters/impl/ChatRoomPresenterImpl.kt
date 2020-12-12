@@ -50,8 +50,9 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
         var sendBy = SendBy(
             photo = senderPhoto,
             name = senderName,
+            arrived_time = DateUtils().getCurrentHourMinAMPM()
         )
-        var chatMessage = ChatMessageVO(id =id, message, "", DateUtils().getCurrentHourMin(), sendBy, type
+        var chatMessage = ChatMessageVO(id =id, message, "", DateUtils().getCurrentDateTime(), sendBy, type
         )
         patientModel.sendChatMessage(chatMessage,consultationChatId,onSuccess = {} , onError = {})
     }

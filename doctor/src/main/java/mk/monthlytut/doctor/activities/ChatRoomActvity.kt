@@ -64,6 +64,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
+        scrollview.scrollTo(0, scrollview.getChildAt(0).height)
         adapter.setNewData(list.toMutableList())
     }
 

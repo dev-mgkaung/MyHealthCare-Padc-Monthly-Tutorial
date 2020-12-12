@@ -18,7 +18,6 @@ import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ChatMessageVO
 import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.utils.ImageUtils
-import mk.padc.share.utils.doctors
 import mk.padc.share.utils.patients
 
 class ChatRoomActvity : BaseActivity() , ChatView
@@ -46,6 +45,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
     }
 
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {
+        scrollview.scrollTo(0, scrollview.bottom)
         mConsultationChatVO= consultationChatVO
         patientname.text = consultationChatVO.doctor_info?.name
         ImageUtils().showImage(userprofile, consultationChatVO.doctor_info?.photo.toString(), R.drawable.user)
@@ -63,6 +63,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
+        scrollview.scrollTo(0, scrollview.bottom)
         adapter.setNewData(list.toMutableList())
     }
 

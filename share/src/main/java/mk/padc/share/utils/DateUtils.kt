@@ -17,8 +17,11 @@ class DateUtils
         return simpleDateFormat.format(Date())
     }
 
-    fun getCurrentHourMin() : String{
-        val simpleDateFormat = SimpleDateFormat("HH::mm")
-        return simpleDateFormat.format(Date())
+    fun getCurrentDateTime() : String{
+        return SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(Date())
+    }
+
+    fun getCurrentHourMinAMPM() : String{
+        return SimpleDateFormat("hh:mm a").format(Date())
     }
 }

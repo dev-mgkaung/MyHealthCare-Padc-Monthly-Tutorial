@@ -26,5 +26,6 @@ class ChatMessageVO(
 @IgnoreExtraProperties
 class SendBy(
     var photo: String ? = "",
-    var name: String ? = ""
+    var name: String ? = "",
+    var arrived_time : String ? = ""
 )

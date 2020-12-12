@@ -88,7 +88,9 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                         val docsData = Gson().fromJson<PatientVO>(Data, PatientVO::class.java)
                         list.add(docsData)
                     }
-                    onSuccess(list[0])
+                    if(list.size >0) {
+                        onSuccess(list[0])
+                    }
                 }
             }
     }
@@ -494,6 +496,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onFailure: (String) -> Unit
     ) {
         db.collection("$consultation_chat/$consulationId/$chat_message")
+            .orderBy("sendAt")
                 .addSnapshotListener { value, error ->
                     error?.let {
                         onFailure(it.message ?: "Please check connection")

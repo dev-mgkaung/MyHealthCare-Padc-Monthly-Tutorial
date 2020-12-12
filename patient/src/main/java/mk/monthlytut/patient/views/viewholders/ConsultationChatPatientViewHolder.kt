@@ -15,7 +15,7 @@ class ConsultationChatPatientViewHolder(itemView: View, private val mDelegate: C
             ImageUtils().showImage(itemView.patient_photo, data.sendBy?.photo.toString(), R.drawable.user)
         }
 
-        itemView.ptxt_time_stamp.text = data.sendAt + "Am"
+        itemView.ptxt_time_stamp.text = data.sendBy?.arrived_time
         itemView.ptext_message_body.text = data.messageText
     }
 }
