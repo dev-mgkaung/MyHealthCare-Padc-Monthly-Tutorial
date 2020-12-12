@@ -35,6 +35,9 @@
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.PatientInfoActivity" />
         <activity android:name=".activities.ChatRoomActvity" />
+        <activity android:name=".activities.MedicalCommentAcitivity" />
+        <activity android:name=".activities.QuestionTemplateActivity" />
+        <activity android:name=".activities.PrescriptionActivity" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"

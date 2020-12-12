@@ -4,24 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import mk.monthlytut.doctor.R
-import mk.monthlytut.doctor.mvp.presenters.ProfilePresenter
-import mk.monthlytut.doctor.mvp.presenters.impl.ProfilePresenterImpl
-import mk.monthlytut.doctor.mvp.views.ProfileView
 import mk.padc.share.activities.BaseActivity
 
-class ProfileActivity : BaseActivity() , ProfileView {
-
-    private lateinit var mPresenter: ProfilePresenter
-
+class PrescriptionActivity : BaseActivity()
+{
     companion object {
         fun newIntent(context: Context) : Intent {
-            return Intent(context, ProfileActivity::class.java)
+            return Intent(context, PrescriptionActivity::class.java)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.acitvity_profile)
+        setContentView(R.layout.activity_prescription)
         setUpPresenter()
         setUpActionListeners()
     }
@@ -30,9 +25,8 @@ class ProfileActivity : BaseActivity() , ProfileView {
 
     }
     private fun setUpPresenter() {
-        mPresenter = getPresenter<ProfilePresenterImpl, ProfileView>()
-        mPresenter.onUiReady(this,this)
+//        mPresenter = getPresenter<ProfilePresenterImpl, ProfileView>()
+//        mPresenter.onUiReady(this,this)
     }
-
 
 }

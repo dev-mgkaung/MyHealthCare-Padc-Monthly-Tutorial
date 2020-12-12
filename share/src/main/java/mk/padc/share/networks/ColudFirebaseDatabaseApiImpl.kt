@@ -245,14 +245,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
 
 
-
-        db.collection("$patients/${patientVO.id}/$recent_doctors")
-            .document(doctorVO.id)
-            .set(doctorVO)
-            .addOnSuccessListener { Log.d("Success", "Successfully ") }
-            .addOnFailureListener { Log.d("Failure", "Failed") }
-
-
        for(item in questionAnswerList) {
            db.collection("$patients/${patientVO.id}/$general_questions")
                .document(item.id)
@@ -401,20 +393,34 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 }
     }
 
-    override fun finishConsultation(consulationChatId: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)
+    override fun finishConsultation(consultationChatVO: ConsultationChatVO, onSuccess: () -> Unit, onFailure: (String) -> Unit)
     {
 
-        //update consultation status
+        consultationChatVO.doctor_info?.let {
 
-//        val consultationChatMap = hashMapOf(
-//            "finish_consultation_status" to true,
-//            "id" to consulationChatId)
-//
-//        db.collection("$consultation_chat")
-//            .document(consulationChatId)
-//            .set(consultationChatMap)
-//            .addOnSuccessListener { Log.d("Success", "Successfully ") }
-//            .addOnFailureListener { Log.d("Failure", "Failed") }
+            db.collection("$patients/${consultationChatVO.patient_id}/$recent_doctors")
+                .document(consultationChatVO.doctor_id.toString())
+                .set(it)
+                .addOnSuccessListener { Log.d("Success", "Successfully ") }
+                .addOnFailureListener { Log.d("Failure", "Failed") }
+        }
+
+
+        val consultationChatMap = hashMapOf(
+            "finish_consultation_status" to true,
+            "id" to consultationChatVO.id,
+            "patient_id" to consultationChatVO.patient_id,
+            "doctor_id" to consultationChatVO.doctor_id,
+            "case_summary" to consultationChatVO.case_summary,
+            "patient_info" to consultationChatVO.patient_info,
+             "doctor_info" to consultationChatVO.doctor_info)
+
+        db.collection("$consultation_chat")
+            .document(consultationChatVO.id)
+            .set(consultationChatMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
+
     }
 
 

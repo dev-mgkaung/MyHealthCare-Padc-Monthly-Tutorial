@@ -35,7 +35,6 @@ class ProfileActivity : BaseActivity()  ,ProfileView {
 
     private  var bitmap : Bitmap? = null
 
-    private var email: String? = null
     private var year: String? = null
     private var month: String? = null
     private var day: String? = null
@@ -122,7 +121,7 @@ class ProfileActivity : BaseActivity()  ,ProfileView {
         btn_save.setOnClickListener {
 
             mProgreessDialog.show()
-            var dateofbirth =day + month +year
+            var dateofbirth ="$day  $month $year"
             bitmap?.let { it1 -> mPresenter?.updateUserData(it1 ,
                 bloodType.toString()  ,dateofbirth,
                 pt_height.text.toString(),pt_comment.text.toString(),ptphone.text.toString()
