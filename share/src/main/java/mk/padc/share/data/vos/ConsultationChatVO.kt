@@ -20,5 +20,6 @@ class ConsultationChatVO(
     var finish_consultation_status : Boolean =false,
     var patient_info : PatientVO ? =null ,
     var doctor_info : DoctorVO ? = null,
+    var start_consultation_date : String ?= "",
     var case_summary : ArrayList<QuestionAnswerVO>? = arrayListOf()
 )

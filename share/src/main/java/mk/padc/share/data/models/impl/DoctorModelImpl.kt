@@ -152,4 +152,15 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.chatMessageDao().getAllChatMessage()
     }
 
+    override fun getGeneralQuestionTemplate(onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getGeneralQuestion( onSuccess = {
+            mTheDB.generalQuestionTemplateDao().deleteAllGeneralQuestionTemplate()
+            mTheDB.generalQuestionTemplateDao().insertGeneralQuestionTemplateList(it)
+        }, onFailure = {})
+    }
+
+    override fun getGeneralQuestionTemplateFromDB(): LiveData<List<GeneralQuestionTemplateVO>> {
+        return mTheDB.generalQuestionTemplateDao().getAllGeneralQuestionTemplateData()
+    }
+
 }

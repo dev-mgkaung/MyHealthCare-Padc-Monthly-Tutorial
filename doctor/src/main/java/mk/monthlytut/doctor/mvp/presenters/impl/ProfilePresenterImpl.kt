@@ -20,7 +20,7 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
     override fun updateUserProfile(bitmap: Bitmap) {
         mModel.uploadPhotoToFirebaseStorage(bitmap,
         onSuccess = {
-            mView?.onTapSaveUserData()
+
             mAuthenticationModel.updateProfile(it,onSuccess = {}, onFailure = {})
         },
         onFailure = {
@@ -30,11 +30,11 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
     }
 
     override fun onTapCancelUserData() {
-        mView?.onTapCancelUserData()
+
     }
 
     override fun onTapEditProfileImage() {
-        mView?.onTapEditProfileImage()
+
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}

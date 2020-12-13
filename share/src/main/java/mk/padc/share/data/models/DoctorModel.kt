@@ -75,4 +75,9 @@ interface DoctorModel
     fun getChatMessage(consulationId: String, onSuccess: () -> Unit, onError: (String) -> Unit)
 
     fun getAllChatMessageFromDB () : LiveData<List<ChatMessageVO>>
+
+    fun getGeneralQuestionTemplate( onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getGeneralQuestionTemplateFromDB () : LiveData<List<GeneralQuestionTemplateVO>>
+
 }

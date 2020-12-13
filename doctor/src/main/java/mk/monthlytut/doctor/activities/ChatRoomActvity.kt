@@ -1,8 +1,10 @@
 package mk.monthlytut.doctor.activities
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -32,6 +34,8 @@ class ChatRoomActvity : BaseActivity() ,ChatView
     private lateinit var mConsultationChatVO: ConsultationChatVO
 
     private lateinit var adapter: ChattingAdapter
+
+    private val QUESTION_TEMPLATE_ACTIVITY_REQUEST_CODE = 0
 
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
@@ -106,12 +110,37 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         btn_sendMessage.setOnClickListener {
             mPresenter?.addTextMessage(ed_message.text.toString(),consultation_chat_id, doctors,SessionManager.doctor_photo.toString(),SessionManager.doctor_name.toString(), this)
         }
+
+        question_btn.setOnClickListener {
+            val intent = Intent(this, QuestionTemplateActivity::class.java)
+            startActivityForResult( intent ,QUESTION_TEMPLATE_ACTIVITY_REQUEST_CODE)
+        }
+
+        prescription_btn.setOnClickListener {
+
+        }
+
+        medical_record_btn.setOnClickListener {
+
+        }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(MainActivity.newIntent(this))
         this.finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == QUESTION_TEMPLATE_ACTIVITY_REQUEST_CODE)
+        {
+            if( resultCode == Activity.RESULT_OK)
+            {
+                val returnString = data?.getStringExtra("questions")
+                ed_message.text = Editable.Factory.getInstance().newEditable(returnString)
+            }
+        }
     }
     private fun setUpRecyclerView()
     {
