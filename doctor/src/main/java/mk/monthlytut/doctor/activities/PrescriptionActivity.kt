@@ -3,6 +3,8 @@ package mk.monthlytut.doctor.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_prescription.*
 import kotlinx.android.synthetic.main.activity_question_template.*
@@ -16,6 +18,7 @@ import mk.monthlytut.doctor.mvp.presenters.impl.PrescriptionPresenterImpl
 import mk.monthlytut.doctor.mvp.views.PrescriptionView
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.MedicineVO
+import mk.padc.share.data.vos.QuestionAnswerVO
 
 class PrescriptionActivity : BaseActivity() ,PrescriptionView
 {
@@ -27,7 +30,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
         const val PARM_SPECIALITY = "speciality"
 
         fun newIntent(context: Context ,speciality : String) : Intent {
-            val intent = Intent(context, PatientInfoActivity::class.java)
+            val intent = Intent(context, PrescriptionActivity::class.java)
             intent.putExtra(PARM_SPECIALITY, speciality)
             return intent
         }
@@ -42,6 +45,16 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
     }
 
     private fun setUpActionListeners() {
+
+        search_medicine.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, start: Int, before: Int, count: Int) {
+            // to do
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
         tex_back.setOnClickListener {
             onBackPressed()
         }

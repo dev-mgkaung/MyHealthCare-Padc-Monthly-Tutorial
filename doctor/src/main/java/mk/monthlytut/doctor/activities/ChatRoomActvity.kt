@@ -118,7 +118,10 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         }
 
         prescription_btn.setOnClickListener {
-           startActivity(PrescriptionActivity.newIntent(this))
+            mConsultationChatVO?.let {
+                startActivity(PrescriptionActivity.newIntent(this,mConsultationChatVO.doctor_info?.speciality.toString()))
+            }
+
         }
 
         medical_record_btn.setOnClickListener {
