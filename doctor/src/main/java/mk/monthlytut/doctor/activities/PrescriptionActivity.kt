@@ -212,7 +212,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             view.before_eating.setTextColor(Color.WHITE)
             view.after_eating.setBackgroundResource(R.drawable.bg_rounded_border_grey)
             view.after_eating.setTextColor(Color.BLACK)
-            eatingtime= "before"
+            eatingtime= "အစားမစားမှီသောက်ရန်"
         }
 
         view.after_eating.setOnClickListener {
@@ -220,7 +220,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             view.after_eating.setTextColor(Color.WHITE)
             view.before_eating.setBackgroundResource(R.drawable.bg_rounded_border_grey)
             view.before_eating.setTextColor(Color.BLACK)
-            eatingtime = "after"
+            eatingtime = "အစားစားပြီးမှ သောက်ရန်"
         }
 
         view.day_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -234,10 +234,10 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                 if(day == "Days")
                 {
                     daycount =1
-                    daystemp= "Days"
+                    daystemp= " Days"
                 }else{
                     daycount = 7
-                    daystemp="Week"
+                    daystemp=" Week"
                 }
 
                     var result = number * daycount
@@ -273,15 +273,15 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             var days : String =""
             if(morningstatus)
             {
-                days += "#morning"
+                days += " မနက် ၊ "
             }
             if(afternoonstatus)
             {
-                days += "#afternoon"
+                days += "နေ့  ၊  "
             }
             if(nightstatus)
             {
-                days += "#night"
+                days += "ည"
             }
 
             var medicaltime : String =""
@@ -292,8 +292,8 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                     days = view.ed_day.text.toString() + daystemp,
                     comment = pt_comment?.text.toString(),
                     quantity = tabcount,
-                    times = eatingtime,
-                    repeat = days
+                    times = days,
+                    repeat = eatingtime
 
             )
 
@@ -306,8 +306,6 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             )
           if(pt_comment?.text.toString().isNotEmpty()) {
               prescriptionList.add(prescriptionVO)
-              Toast.makeText(this,prescriptionList.size.toString(),Toast.LENGTH_SHORT).show()
-
               dialog?.dismiss()
           }else{
               Toast.makeText(this,"အချက်အလက် အားလုံး ပြည့်စုံအောင် ဖြည့်စွက်ပေးရန် လိုနေပါသေး သည်",Toast.LENGTH_SHORT).show()

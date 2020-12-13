@@ -132,4 +132,6 @@ interface FirebaseApi {
 
 
     fun saveMedicalRecord(consultationChatVO: ConsultationChatVO ,onSuccess: () -> Unit,onFailure: (String) -> Unit)
-}
+
+
+   }

@@ -83,11 +83,11 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapMedicalRecord(data: ConsultationChatVO) {
-
+       mView?.displayPatientInfoDialog(data)
     }
 
     override fun onTapPrescription(data: ConsultationChatVO) {
-
+        mView?.displayPrescriptionDialog(data.id, data.patient_info?.name.toString(), data.start_consultation_date.toString())
     }
 
 

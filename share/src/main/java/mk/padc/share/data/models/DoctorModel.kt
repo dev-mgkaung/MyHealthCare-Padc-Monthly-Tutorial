@@ -88,4 +88,9 @@ interface DoctorModel
     fun getAllMedicineFromDB() : LiveData<List<MedicineVO>>
 
     fun finsishConsultation( consultationChatVO: ConsultationChatVO , prescriptionList : List<PrescriptionVO> ,onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getPrescription(consulationId : String ,onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getPrescriptionFromDB( ) : LiveData<List<PrescriptionVO>>
+
 }

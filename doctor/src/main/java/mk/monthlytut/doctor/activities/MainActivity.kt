@@ -8,11 +8,14 @@ import android.util.Log
 import android.view.View
 import android.widget.TimePicker
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.postpone_dialog.view.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.ConsultationAdapter
 import mk.monthlytut.doctor.adapters.ConsultationRequestAdapter
+import mk.monthlytut.doctor.dialogs.PatientInfoDialog
+import mk.monthlytut.doctor.dialogs.PrescriptionDialog
 import mk.monthlytut.doctor.mvp.presenters.HomePresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.HomePresenterImpl
 import mk.monthlytut.doctor.mvp.views.HomeView
@@ -21,6 +24,7 @@ import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.ConsultedPatientVO
+import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.utils.ImageUtils
 
 class MainActivity : BaseActivity() ,HomeView {
@@ -134,6 +138,26 @@ class MainActivity : BaseActivity() ,HomeView {
             dialog?.dismiss()
         }
         dialog?.show()
+    }
+
+    override fun displayPatientInfoDialog(consultationChatVO: ConsultationChatVO)
+    {
+        var data=  Gson().toJson(consultationChatVO)
+        consultationChatVO?.let {
+            val dialog: PatientInfoDialog = PatientInfoDialog.newInstance(data)
+            dialog.show(supportFragmentManager, "")
+        }
+    }
+
+    override fun displayPrescriptionDialog( consultation_id: String ,patient_name: String, start_conservation_date: String) {
+
+            val dialog: PrescriptionDialog = PrescriptionDialog.newInstance(consultation_id,patient_name,start_conservation_date)
+            dialog.show(supportFragmentManager, "")
+
+    }
+
+    override fun displayMedicalCommentDialog(consultationChatVO: ConsultationChatVO) {
+
     }
 
 }

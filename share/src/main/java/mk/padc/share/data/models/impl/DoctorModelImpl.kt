@@ -184,4 +184,15 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         }, onFailure = {})
     }
 
+    override fun getPrescription(consulationId: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getPrescription(consulationId,  onSuccess = {
+            mTheDB.prescriptionDao().deleteAllPrescriptionData()
+            mTheDB.prescriptionDao().insertPrescriptionList(it)
+        }, onFailure = {})
+    }
+
+    override fun getPrescriptionFromDB(): LiveData<List<PrescriptionVO>> {
+        return mTheDB.prescriptionDao().getAllPrescriptionData()
+    }
+
 }

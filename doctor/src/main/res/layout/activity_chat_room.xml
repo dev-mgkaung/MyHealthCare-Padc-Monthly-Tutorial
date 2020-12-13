@@ -292,6 +292,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:id="@+id/sendlayout"
             android:orientation="vertical">
          <LinearLayout
              android:layout_marginTop="2dp"
@@ -364,11 +365,11 @@
                 android:layout_marginBottom="4dp"
                 android:orientation="horizontal">
                   <ImageView
-                      android:layout_width="45dp"
+                      android:layout_width="40dp"
                       android:scaleType="centerInside"
                       android:layout_centerVertical="true"
                       android:layout_marginLeft="10dp"
-                      android:layout_height="45dp"
+                      android:layout_height="40dp"
                       android:id="@+id/btn_attachfile"
                       android:src="@drawable/attach_file"/>
                 <androidx.cardview.widget.CardView

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -66,11 +67,18 @@ class ChatRoomActvity : BaseActivity() ,ChatView
             questionAnswerAdapter.setNewData(it)
         }
 
+        if(consultationChatVO.finish_consultation_status)
+        {
+            sendlayout.visibility= View.GONE
+        }else{
+            sendlayout.visibility= View.VISIBLE
+        }
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
         scrollview.scrollTo(0, scrollview.getChildAt(0).height)
         adapter.setNewData(list.toMutableList())
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
