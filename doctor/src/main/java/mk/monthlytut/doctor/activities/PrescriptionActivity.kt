@@ -3,6 +3,7 @@ package mk.monthlytut.doctor.activities
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -103,18 +104,28 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
 
     private fun showMedicineDialog(medicineVO: MedicineVO)
     {
+
         val view = layoutInflater.inflate(R.layout.routine_dialog, null)
         val dialog = this?.let { Dialog(it) }
-        dialog?.window?.setLayout(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.MATCH_PARENT
-        )
+
         dialog?.apply {
             setCancelable(true)
             setContentView(view)
             window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
 
+        view.before_eating.setOnClickListener {
+            view.before_eating.setBackgroundResource(R.drawable.rounded_corner_btn_blue)
+            view.before_eating.setTextColor(Color.WHITE)
+            view.after_eating.setBackgroundResource(R.drawable.bg_rounded_border_grey)
+            view.after_eating.setTextColor(Color.BLACK)
+        }
+        view.after_eating.setOnClickListener {
+            view.after_eating.setBackgroundResource(R.drawable.rounded_corner_btn_blue)
+            view.after_eating.setTextColor(Color.WHITE)
+            view.before_eating.setBackgroundResource(R.drawable.bg_rounded_border_grey)
+            view.before_eating.setTextColor(Color.BLACK)
+        }
         view.confirm.setOnClickListener {
             // prescription list add
             dialog?.dismiss()
