@@ -7,6 +7,7 @@ import mk.monthlytut.doctor.mvp.presenters.PrescriptionPresenter
 import mk.monthlytut.doctor.mvp.views.PrescriptionView
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
+import mk.padc.share.data.vos.MedicineVO
 import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
@@ -23,6 +24,10 @@ class PrescriptionPresenterImpl : PrescriptionPresenter, AbstractBasePresenter<P
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
         mOwner =owner
+    }
+
+    override fun onTapSelectMedicine(medicineVO: MedicineVO) {
+
     }
 
     override fun onUiReadyForPrescription(speciality: String) {

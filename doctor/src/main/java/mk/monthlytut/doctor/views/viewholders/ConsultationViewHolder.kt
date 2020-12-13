@@ -20,7 +20,7 @@ class ConsultationViewHolder(itemView: View, private val mDelegate: Consultation
         data?.let {
             ImageUtils().showImage(itemView.img_patient,data.patient_info?.photo.toString(), R.drawable.user)
             itemView.txt_patient_name.text = data.patient_info?.name
-            itemView.txt_patient_dateofbirth.text = data.patient_info?.dateOfBirth
+            itemView.txt_patient_dateofbirth.text = data.start_consultation_date
         }
 
         itemView.txt_consulated_history.setOnClickListener {

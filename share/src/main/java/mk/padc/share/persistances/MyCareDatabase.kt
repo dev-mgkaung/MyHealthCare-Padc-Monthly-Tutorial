@@ -13,7 +13,7 @@ import mk.padc.share.utils.DATABASE_NAME
         ConsultationRequestVO::class, ConsultationChatVO::class,GeneralQuestionTemplateVO::class,
         CheckoutVO::class , SpecialQuestionVO::class, QuestionAnswerVO::class ,ConsultedPatientVO::class,
         ChatMessageVO::class , MedicineVO::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class MyCareDatabase : RoomDatabase() {

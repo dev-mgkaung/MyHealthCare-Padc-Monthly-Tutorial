@@ -34,7 +34,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                app:cardElevation="10dp"
+                app:cardElevation="5dp"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="10dp"
                 app:cardBackgroundColor="@color/white">
@@ -63,7 +63,7 @@
                         android:layout_marginRight="50dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/btn_rounded_corner_grey"
-                        android:hint="@string/medical_record_hint"
+                        android:hint="@string/search"
                         android:padding="10dp"
                         android:textSize="13sp"
                         android:singleLine="true"
