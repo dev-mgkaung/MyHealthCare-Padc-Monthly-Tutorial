@@ -118,8 +118,9 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         }
 
         prescription_btn.setOnClickListener {
+            var data=  Gson().toJson(mConsultationChatVO)
             mConsultationChatVO?.let {
-                startActivity(PrescriptionActivity.newIntent(this,mConsultationChatVO.doctor_info?.speciality.toString()))
+                startActivity(PrescriptionActivity.newIntent(this,mConsultationChatVO.doctor_info?.speciality.toString(),data))
             }
 
         }

@@ -9,17 +9,20 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_prescription.*
 import kotlinx.android.synthetic.main.activity_question_template.tex_back
-import kotlinx.android.synthetic.main.routine_dialog.*
 import kotlinx.android.synthetic.main.routine_dialog.view.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.MedicalAdapter
 import mk.monthlytut.doctor.mvp.presenters.impl.PrescriptionPresenterImpl
 import mk.monthlytut.doctor.mvp.views.PrescriptionView
 import mk.padc.share.activities.BaseActivity
+import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.MedicineVO
 import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.data.vos.RoutineVO
@@ -35,13 +38,16 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
     private  var filterlist : ArrayList<MedicineVO> = arrayListOf()
     private  var prescriptionList : ArrayList<PrescriptionVO> = arrayListOf()
 
+    private lateinit var mConsultationChatVO: ConsultationChatVO
 
     companion object {
         const val PARM_SPECIALITY = "speciality"
+        private const val ConsultationCHAT = "ConsultationCHAT"
 
-        fun newIntent(context: Context ,speciality : String) : Intent {
+        fun newIntent(context: Context ,speciality : String, consultationChatVO: String) : Intent {
             val intent = Intent(context, PrescriptionActivity::class.java)
             intent.putExtra(PARM_SPECIALITY, speciality)
+            intent.putExtra(ConsultationCHAT, consultationChatVO)
             return intent
         }
     }
@@ -52,6 +58,9 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
         setUpPresenter()
         setUpRecyclerView()
         setUpActionListeners()
+        var data = intent?.getStringExtra(ConsultationCHAT)
+        mConsultationChatVO = Gson().fromJson(data, ConsultationChatVO::class.java)
+
     }
 
     private fun setUpActionListeners() {
@@ -67,6 +76,12 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
 
         tex_back.setOnClickListener {
             onBackPressed()
+        }
+
+        btn_finish_consultation.setOnClickListener {
+            if(prescriptionList.size>0) {
+                mPresenter.onTapFinishConsulation(prescriptionList, mConsultationChatVO)
+            }
         }
     }
 
@@ -115,17 +130,18 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             }
             index++
         }
+
     }
 
     override fun finishConsulation() {
-
+     this.finish()
     }
 
     private fun showMedicineDialog(medicineVO: MedicineVO)
     {
-        var morningstatus =false
-        var afternoonstatus =false
-        var nightstatus =false
+        var morningstatus =true
+        var afternoonstatus =true
+        var nightstatus =true
 
         var number =1
         var daycount : Int = 0
@@ -135,11 +151,12 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
 
         val view = layoutInflater.inflate(R.layout.routine_dialog, null)
         val txt_tabcount = view?.findViewById<TextView>(R.id.txt_tabcount)
+        val pt_comment = view?.findViewById<EditText>(R.id.pt_comment)
 
         val dialog = this?.let { Dialog(it) }
 
         dialog?.apply {
-            setCancelable(true)
+            setCancelable(false)
             setContentView(view)
             window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
@@ -148,6 +165,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
         txt_tabcount?.text =  tabcount
 
         view.morning.setOnClickListener {
+
             morningstatus = if(morningstatus) {
                 view.morning.setBackgroundResource(R.drawable.rounded_corner_bluecolor)
                 view.morning.setTextColor(Color.WHITE)
@@ -165,10 +183,12 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             afternoonstatus = if(afternoonstatus) {
                 view.afternoon.setBackgroundResource(R.drawable.rounded_corner_bluecolor)
                 view.afternoon.setTextColor(Color.WHITE)
+
                 false
             }else{
                 view.afternoon.setBackgroundResource(R.drawable.bg_rounded_border_grey)
                 view.afternoon.setTextColor(Color.BLACK)
+
                 true
             }
         }
@@ -177,6 +197,8 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             nightstatus = if(nightstatus) {
                 view.night.setBackgroundResource(R.drawable.rounded_corner_bluecolor)
                 view.night.setTextColor(Color.WHITE)
+
+
                 false
             }else{
                 view.night.setBackgroundResource(R.drawable.bg_rounded_border_grey)
@@ -268,7 +290,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                     id= "0",
                     amount = medicineVO.price.toString(),
                     days = view.ed_day.text.toString() + daystemp,
-                    comment = view.pt_comment.text.toString(),
+                    comment = pt_comment?.text.toString(),
                     quantity = tabcount,
                     times = eatingtime,
                     repeat = days
@@ -282,8 +304,14 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                     price =  medicineVO.price.toString(),
                     routineVO= routineVO
             )
-            prescriptionList.add(prescriptionVO)
-            dialog?.dismiss()
+          if(pt_comment?.text.toString().isNotEmpty()) {
+              prescriptionList.add(prescriptionVO)
+              Toast.makeText(this,prescriptionList.size.toString(),Toast.LENGTH_SHORT).show()
+
+              dialog?.dismiss()
+          }else{
+              Toast.makeText(this,"အချက်အလက် အားလုံး ပြည့်စုံအောင် ဖြည့်စွက်ပေးရန် လိုနေပါသေး သည်",Toast.LENGTH_SHORT).show()
+          }
         }
 
         dialog?.show()

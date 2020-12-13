@@ -7,6 +7,7 @@ import mk.monthlytut.doctor.mvp.presenters.PrescriptionPresenter
 import mk.monthlytut.doctor.mvp.views.PrescriptionView
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
+import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.MedicineVO
 import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
@@ -18,8 +19,9 @@ class PrescriptionPresenterImpl : PrescriptionPresenter, AbstractBasePresenter<P
     lateinit var mOwner: LifecycleOwner
 
 
-    override fun onTapFinishConsulation(list: List<PrescriptionVO>) {
-
+    override fun onTapFinishConsulation(list: List<PrescriptionVO>, consultationChatVO: ConsultationChatVO) {
+     doctorModel.finsishConsultation(consultationChatVO,list, onSuccess = {} , onError = {})
+        mView.finishConsulation()
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
