@@ -306,7 +306,7 @@
                  android:elevation="10dp"
                  app:cardCornerRadius="18dp"
                  android:layout_margin="5dp"
-                 app:cardBackgroundColor="@color/cyan_50">
+                 app:cardBackgroundColor="#e6f1ff">
                  <TextView
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
@@ -315,7 +315,7 @@
                      android:gravity="center"
                      android:textSize="14sp"
                      android:text="@string/question"
-                     android:textColor="@color/blue_500"
+                     android:textColor="@color/blue_900"
                      android:id="@+id/question_btn"/>
              </androidx.cardview.widget.CardView>
              <androidx.cardview.widget.CardView
@@ -325,7 +325,7 @@
                  android:elevation="10dp"
                  app:cardCornerRadius="18dp"
                  android:layout_margin="5dp"
-                 app:cardBackgroundColor="@color/cyan_50">
+                 app:cardBackgroundColor="#e6f1ff">
                  <TextView
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
@@ -334,7 +334,7 @@
                      android:gravity="center"
                      android:textSize="14sp"
                      android:text="@string/prescription"
-                     android:textColor="@color/blue_500"
+                     android:textColor="@color/blue_900"
                      android:id="@+id/prescription_btn"/>
              </androidx.cardview.widget.CardView>
              <androidx.cardview.widget.CardView
@@ -344,7 +344,7 @@
                  android:elevation="10dp"
                  app:cardCornerRadius="18dp"
                  android:layout_margin="5dp"
-                 app:cardBackgroundColor="@color/cyan_50">
+                 app:cardBackgroundColor="#e6f1ff">
                  <TextView
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
@@ -353,7 +353,7 @@
                      android:gravity="center"
                      android:textSize="14sp"
                      android:text="@string/medicine_history"
-                     android:textColor="@color/blue_500"
+                     android:textColor="@color/blue_900"
                      android:id="@+id/medical_record_btn"/>
              </androidx.cardview.widget.CardView>
          </LinearLayout>
