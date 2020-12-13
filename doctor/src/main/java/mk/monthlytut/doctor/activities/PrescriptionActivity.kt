@@ -25,7 +25,8 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
     private lateinit var mPresenter: PrescriptionPresenterImpl
     private lateinit var adapter: MedicalAdapter
     private lateinit var speciality : String
-
+    private lateinit var list : List<MedicineVO>
+    private  var filterlist : ArrayList<MedicineVO> = arrayListOf()
     companion object {
         const val PARM_SPECIALITY = "speciality"
 
@@ -52,12 +53,32 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             // to do
             }
 
-            override fun afterTextChanged(s: Editable?) {}
+            override fun afterTextChanged(s: Editable?) {
+                filter(s.toString())
+            }
         })
 
         tex_back.setOnClickListener {
             onBackPressed()
         }
+    }
+
+    fun filter(text : String)
+    {
+        filterlist.clear()
+        list?.let{
+
+            for( item in list)
+            {
+                var st = item.name.toString().toLowerCase()
+                if(st.contains(text))
+                {
+                    filterlist.add(item)
+                }
+            }
+            adapter.setMedicineList(filterlist)
+        }
+
     }
     private fun setUpPresenter() {
         mPresenter = getPresenter<PrescriptionPresenterImpl, PrescriptionView>()
@@ -69,6 +90,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
     }
 
     override fun displayMedicineList(list: List<MedicineVO>) {
+        this.list = list
         adapter.setNewData(list.toMutableList())
     }
 

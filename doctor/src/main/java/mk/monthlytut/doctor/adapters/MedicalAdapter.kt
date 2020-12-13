@@ -11,6 +11,12 @@ import mk.padc.share.data.vos.MedicineVO
 class MedicalAdapter(private val mDelegate: MedicalDelegate) :
         BaseRecyclerAdapter<MedicalViewHolder, MedicineVO>() {
 
+    fun setMedicineList(list : ArrayList<MedicineVO>)
+    {
+        mData = list
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicalViewHolder {
 
         val view = LayoutInflater.from(parent.context)
