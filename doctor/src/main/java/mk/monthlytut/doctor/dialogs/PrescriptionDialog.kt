@@ -79,7 +79,7 @@ class PrescriptionDialog : BaseDialogFragment() , PrescriptionInfoView {
 
           mPresenter = getPresenter<PrescriptionInfoPresenterImpl, PrescriptionInfoView>()
           context?.let { mPresenter.onUiReady(it,this) }
-          mPresenter.onUiReadyForPrescription(consulation_chat_id = chat_id.toString())
+        //  mPresenter.onUiReadyForPrescription(consulation_chat_id = chat_id.toString())
           adapter = PrescriptionInfoAdapter(mPresenter)
           view.rc_medicinelist?.adapter = adapter
           view.rc_medicinelist?.setHasFixedSize(false)

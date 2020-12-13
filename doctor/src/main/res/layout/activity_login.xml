@@ -4,22 +4,41 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
+    android:background="#e1e1ff"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_marginTop="10dp"
+        android:background="#e1e1ff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="The CareMM"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Doctor App"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"/>
         <ImageView
             android:layout_margin="10dp"
             android:layout_marginBottom="20dp"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:padding="8dp"
             android:layout_gravity="center"
             android:textSize="25sp"
-            android:src="@drawable/doctor_icl_auncher"
+            android:src="@drawable/login_doctor"
             android:textStyle="bold"
             android:textColor="@color/blue_A400" />
 
@@ -32,6 +51,16 @@
             android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="@color/black" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            app:cardBackgroundColor="@color/white"
+            android:padding="2dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,11 +69,12 @@
             android:padding="12dp"
             android:textSize="12sp"
             android:singleLine="true"
+            android:inputType="textEmailAddress"
             android:id="@+id/ed_email"
-            android:layout_margin="10dp"/>
+            android:layout_margin="5dp"/>
+        </androidx.cardview.widget.CardView>
         <TextView
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -52,7 +82,16 @@
             android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="@color/black" />
-
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:padding="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,10 +99,12 @@
             android:hint="@string/password_hint"
             android:padding="12dp"
             android:textSize="12sp"
+            android:inputType="textPassword"
             android:singleLine="true"
             app:boxStrokeColor="@color/white"
             android:id="@+id/ed_password"
-            android:layout_margin="10dp"/>
+            android:layout_margin="5dp"/>
+        </androidx.cardview.widget.CardView>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:padding="6dp"
@@ -73,6 +114,14 @@
             android:background="@drawable/rounded_corner_btn_blue"
             android:text="@string/login"
             android:layout_height="wrap_content"/>
+<!--        <Button-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:padding="6dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:background="@drawable/rounded_corner_btn_blue"-->
+<!--            android:text="Sign In With Facebook"-->
+<!--            android:layout_height="wrap_content"/>-->
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
