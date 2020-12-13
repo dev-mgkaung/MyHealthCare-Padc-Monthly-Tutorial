@@ -62,6 +62,7 @@ dependencies {
 
     //Glide
     implementation rootProject.ext.libraries.glide
+
     annotationProcessor rootProject.ext.libraries.glideAnnotion
 
     //GSON

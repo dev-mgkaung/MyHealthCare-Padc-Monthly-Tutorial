@@ -193,4 +193,15 @@ object PatientModelImpl : PatientModel, BaseModel() {
     override fun getConsultationChatByPatientIdFromDB(patientId: String): LiveData<List<ConsultationChatVO>> {
         return mTheDB.consultationChatDao().getAllConsultationChatDataByPatientId(patientId)
     }
+
+    override fun getPrescription(consulationId: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        DoctorModelImpl.mFirebaseApi.getPrescription(consulationId,  onSuccess = {
+            mTheDB.prescriptionDao().deleteAllPrescriptionData()
+            mTheDB.prescriptionDao().insertPrescriptionList(it)
+        }, onFailure = {})
+    }
+
+    override fun getPrescriptionFromDB(): LiveData<List<PrescriptionVO>> {
+        return mTheDB.prescriptionDao().getAllPrescriptionData()
+    }
 }

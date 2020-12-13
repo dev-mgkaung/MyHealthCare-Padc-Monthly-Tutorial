@@ -8,6 +8,7 @@ import mk.monthlytut.patient.mvp.views.ChatHistoryView
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
+import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
 
@@ -26,5 +27,13 @@ class ChatPresenterImpl : ChatPresenter, AbstractBasePresenter<ChatHistoryView>(
                     }
                 })
 
+    }
+
+    override fun onTapSendMessage(consultationChatVO: ConsultationChatVO) {
+        mView?.nextPageToChatRoom(consultationChatVO.id)
+    }
+
+    override fun onTapPrescription(consultationChatVO: ConsultationChatVO) {
+        mView?.showPrescriptionDialog(consultationChatVO.id, consultationChatVO.patient_info?.name.toString(), consultationChatVO.start_consultation_date.toString())
     }
 }

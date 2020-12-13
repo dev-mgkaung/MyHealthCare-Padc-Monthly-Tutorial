@@ -23,11 +23,11 @@ class ChatHistoryViewHolder(itemView: View, private val mDelegate: ChatHistoryDe
         }
 
         itemView.sendtextlayout.setOnClickListener {
-
+          mDelegate.onTapSendMessage(data)
         }
 
         itemView.prescriptionlayout.setOnClickListener {
-
+            mDelegate.onTapPrescription(data)
         }
 
 

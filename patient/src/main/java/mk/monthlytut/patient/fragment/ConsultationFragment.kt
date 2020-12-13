@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_consultation.*
 import mk.monthlytut.patient.R
+import mk.monthlytut.patient.activities.ChatRoomActvity
 import mk.monthlytut.patient.adapters.ChatAdapter
+import mk.monthlytut.patient.dialogs.PrescriptionDialog
 import mk.monthlytut.patient.mvp.presenters.ChatPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.ChatPresenterImpl
 import mk.monthlytut.patient.mvp.views.ChatHistoryView
@@ -54,5 +56,14 @@ class ConsultationFragment : BaseFragment(), ChatHistoryView {
 
     override fun displayChatHistoryList(list: List<ConsultationChatVO>) {
         adapter.setNewData(list.toMutableList())
+    }
+
+    override fun nextPageToChatRoom(consulationchatId: String) {
+        startActivity(activity?.let { ChatRoomActvity.newIntent(it, consulationchatId) })
+    }
+
+    override fun showPrescriptionDialog(consulationchatId: String, patient_name: String,start_conservation_date : String ) {
+        val dialog: PrescriptionDialog = PrescriptionDialog.newInstance(consulationchatId,patient_name,start_conservation_date)
+        fragmentManager?.let { dialog.show(it, "") }
     }
 }

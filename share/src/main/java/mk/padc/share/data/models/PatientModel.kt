@@ -79,4 +79,8 @@ interface PatientModel
     fun getConsultationChatByPatientId(patientId:  String,  onSuccess: () -> Unit, onError: (String) -> Unit)
 
     fun getConsultationChatByPatientIdFromDB(patientId : String) : LiveData<List<ConsultationChatVO>>
+
+    fun getPrescription(consulationId : String ,onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getPrescriptionFromDB( ) : LiveData<List<PrescriptionVO>>
 }
