@@ -680,10 +680,34 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 }
     }
 
-    override fun getConsulationChatById(consulationId: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit)
+    override fun getConsulationChatById(id: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit)
     {
         db.collection("$consultation_chat")
-                .whereEqualTo("id",consulationId)
+                .whereEqualTo("id",id)
+                .addSnapshotListener { value, error ->
+                    error?.let {
+                        onFailure(it.message ?: "Please check connection")
+                    } ?: run {
+                        val list: MutableList<ConsultationChatVO> = arrayListOf()
+
+                        val result = value?.documents ?: arrayListOf()
+
+                        for (document in result) {
+                            val hashmap = document.data
+                            hashmap?.put("id", document.id.toString())
+                            val Data = Gson().toJson(hashmap)
+                            val docsData = Gson().fromJson<ConsultationChatVO>(Data, ConsultationChatVO::class.java)
+                            list.add(docsData)
+                        }
+                        onSuccess(list)
+                    }
+                }
+    }
+
+    override fun getConsulationChatByPatientId(patientid: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit)
+    {
+        db.collection("$consultation_chat")
+                .whereEqualTo("patient_id",patientid)
                 .addSnapshotListener { value, error ->
                     error?.let {
                         onFailure(it.message ?: "Please check connection")

@@ -1,0 +1,30 @@
+package mk.monthlytut.patient.mvp.presenters.impl
+
+import android.content.Context
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import mk.monthlytut.patient.mvp.presenters.ChatPresenter
+import mk.monthlytut.patient.mvp.views.ChatHistoryView
+import mk.monthlytut.patient.util.SessionManager
+import mk.padc.share.data.models.PatientModel
+import mk.padc.share.data.models.impl.PatientModelImpl
+import mk.padc.share.mvp.presenters.AbstractBasePresenter
+
+
+class ChatPresenterImpl : ChatPresenter, AbstractBasePresenter<ChatHistoryView>() {
+
+    private val patientModel: PatientModel = PatientModelImpl
+
+    override fun onUiReady(context: Context, owner: LifecycleOwner) {
+
+        patientModel.getConsultationChatByPatientId(SessionManager.patient_id.toString(),onSuccess = {}, onError = {})
+
+        patientModel.getConsultationChatByPatientIdFromDB(SessionManager.patient_id.toString())
+                .observe(owner, Observer { data ->
+                    data?.let {
+                        mView?.displayChatHistoryList(data)
+                    }
+                })
+
+    }
+}

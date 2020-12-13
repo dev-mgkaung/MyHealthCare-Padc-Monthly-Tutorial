@@ -25,6 +25,9 @@ interface ConsultationChatDao {
     @Query("select * from consultation_chat WHERE doctor_id = :id")
     fun getAllConsultationChatDataByDoctorId(id: String): LiveData<List<ConsultationChatVO>>
 
+    @Query("select * from consultation_chat WHERE patient_id = :id")
+    fun getAllConsultationChatDataByPatientId(id: String): LiveData<List<ConsultationChatVO>>
+
     @Query("DELETE FROM consultation_chat")
     fun deleteAllConsultationChatData()
 
