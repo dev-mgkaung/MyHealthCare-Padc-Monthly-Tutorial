@@ -113,4 +113,5 @@
     <string name="medical_record_hint">ဆေးကုသမှု မှတ်တမ်းရေးသားရန်</string>
     <string name="start_discuss_date">ဆွေးနွေးမှု ပြုလုပ်သည့် ရက်စွဲ</string>
     <string name="success_medical_record">ဆေးမှတ်တမ်း သိမ်းဆည်းပြီးပါပြီ</string>
+    <string name="fill_btn">ထည့်မည်</string>
 </resources>
