@@ -9,13 +9,21 @@ import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
+import android.widget.AdapterView
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.acitvity_profile.img_profile
 import kotlinx.android.synthetic.main.edit_profile_activity.*
+import kotlinx.android.synthetic.main.edit_profile_activity.day_spinner
+import kotlinx.android.synthetic.main.edit_profile_activity.month_spinner
+import kotlinx.android.synthetic.main.edit_profile_activity.year_spinner
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.mvp.presenters.ProfilePresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.ProfilePresenterImpl
 import mk.monthlytut.doctor.mvp.views.ProfileView
+import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.utils.ImageUtils
@@ -27,16 +35,35 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
     private lateinit var mPresenter: ProfilePresenter
 
     private  var bitmap : Bitmap? = null
+    private var speciality_type: String? = null
+    private var speciality_name: String? = null
 
     private var year: String? = null
     private var month: String? = null
     private var day: String? = null
+    private var gender: String? = null
+
+    val specialityTypeList = mutableListOf(
+            "cardiology",
+            "dentist",
+            "dermatology",
+            "ent",
+            "gastroenterology",
+            "hepatology",
+            "neurology",
+            "og",
+            "orthopedics",
+            "pediartics",
+            "radiology",
+            "surgery"
+    )
+
     private var bloodType: String? = null
     private lateinit var  mProgreessDialog : ProgressDialog
 
     companion object {
         const val PICK_IMAGE_REQUEST = 1111
-        fun newIntent(context: Context) = Intent(context, ProfileActivity::class.java)
+        fun newIntent(context: Context) = Intent(context, EditProfileActivity::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,12 +74,53 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
         setUpClickListener()
         setUpItemSelectedListener()
     }
-    private fun setUpItemSelectedListener() {
+    private fun setUpItemSelectedListener(){
 
+        year_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                year = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        month_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                month = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        day_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                day = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
     private  fun setUpClickListener()
     {
 
+        eradio_group.setOnCheckedChangeListener(
+                RadioGroup.OnCheckedChangeListener { group, checkedId ->
+                    val radio: RadioButton = findViewById(checkedId)
+                    gender = radio.text.toString()
+                })
 
         txt_upload.setOnClickListener {
             openGallery()
@@ -70,10 +138,19 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
 
             mProgreessDialog.show()
             var dateofbirth ="$day  $month $year"
-            bitmap?.let { it1 -> mPresenter?.updateUserData(it1 ,
-                    bloodType.toString()  ,dateofbirth,
-                    pt_height.text.toString(),pt_comment.text.toString(),ptphone.text.toString()
-            ) }
+            bitmap?.let { it1 ->
+                mPresenter?.updateUserData(it1 ,
+                        SessionManager.doctor_speciality.toString(),
+                        SessionManager.doctor_specialityname.toString(),
+                        ePphone?.text.toString(),
+                        e_degree.text.toString(),
+                        ebiography.text.toString(),
+                        eaddress.text.toString(),
+                        eexperience.text.toString(),
+                        day+ " "+month+" "+year,
+                        gender.toString()
+            )
+            }
 
         }
     }
@@ -121,9 +198,7 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
     }
 
 
-    override fun displayDocotrData(vo: DoctorVO) {
-        TODO("Not yet implemented")
-    }
+    override fun displayDocotrData(vo: DoctorVO) {}
 
     override fun hideProgressDialog() {
         mProgreessDialog.dismiss()

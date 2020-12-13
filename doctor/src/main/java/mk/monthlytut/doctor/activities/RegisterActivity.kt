@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_register.*
 import mk.monthlytut.doctor.R
@@ -20,6 +22,12 @@ class RegisterActivity : BaseActivity() , RegisterView {
     private lateinit var token : String
     private var speciality_type: String? = null
     private var speciality_name: String? = null
+
+    private var year: String? = null
+    private var month: String? = null
+    private var day: String? = null
+    private var gender: String? = null
+
     val specialityTypeList = mutableListOf(
         "cardiology",
         "dentist",
@@ -62,8 +70,44 @@ class RegisterActivity : BaseActivity() , RegisterView {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
-    }
 
+        year_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                year = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        month_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                month = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        day_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                day = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+    }
     private fun setUpActionListeners() {
 
         FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
@@ -71,6 +115,11 @@ class RegisterActivity : BaseActivity() , RegisterView {
             token =it.token
         }
 
+        radio_group.setOnCheckedChangeListener(
+                RadioGroup.OnCheckedChangeListener { group, checkedId ->
+                    val radio: RadioButton = findViewById(checkedId)
+                    gender = radio.text.toString()
+                })
 
         btnRegister.setOnClickListener {
             mPresenter.onTapRegister(this,
@@ -80,9 +129,13 @@ class RegisterActivity : BaseActivity() , RegisterView {
                 token,
                 speciality_name.toString(),
                 speciality_type.toString(),
-                ed_phone.text.toString(),
+                etPphone.text.toString(),
                 ed_degree.text.toString(),
-                ed_biography.text.toString()
+                ed_biography.text.toString(),
+                    ed_address.text.toString(),
+                    ed_experience.text.toString(),
+                    day+ " "+month+" "+year,
+                    gender.toString()
             )
         }
 

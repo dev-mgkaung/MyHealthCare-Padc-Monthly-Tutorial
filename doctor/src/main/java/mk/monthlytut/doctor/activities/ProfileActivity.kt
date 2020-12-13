@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import kotlinx.android.synthetic.main.acitvity_profile.*
+import kotlinx.android.synthetic.main.acitvity_profile.img_profile
+import kotlinx.android.synthetic.main.edit_profile_activity.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.mvp.presenters.ProfilePresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.ProfilePresenterImpl
@@ -34,6 +36,9 @@ class ProfileActivity : BaseActivity() , ProfileView {
     private fun setUpActionListeners() {
         imgedit.setOnClickListener {
             startActivity(this?.let { it1 -> EditProfileActivity.newIntent(it1) })
+        }
+        tex_back.setOnClickListener {
+            onBackPressed()
         }
 
         btnLogout.setOnClickListener {

@@ -30,28 +30,36 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
                 })
     }
 
-    override fun updateUserData(bitmap: Bitmap, blood_type: String, dateofbirth: String, height: String, comment: String, phone: String) {
+    override fun updateUserData(bitmap: Bitmap,
+                                specialitname : String,speciality : String,
+                                phone : String, degree : String,
+                                bigraphy : String, address : String,
+                                experience : String, dateofbirth : String,
+                                gender: String)
+    {
         mModel.uploadPhotoToFirebaseStorage(bitmap,
                 onSuccess = {
                     mAuthenticationModel.updateProfile(it,onSuccess = {}, onFailure = {})
 
                     mView?.hideProgressDialog()
 
-//                    var patientVo = DoctorVO(
-//                            id= SessionManager.patient_id.toString(),
-//                            device_id = SessionManager.patient_device_id.toString(),
-//                            name = SessionManager.patient_name.toString(),
-//                            email = SessionManager.patient_email.toString(),
-//                            photo = it,
-//                            blood_type = blood_type,
-//                            blood_pressure =SessionManager.patient_bloodPressure.toString(),
-//                            dateOfBirth = dateofbirth,
-//                            weight = SessionManager.patient_weight.toString(),
-//                            height = height,
-//                            comment = comment,
-//                            phone = phone
-//                    )
-//                    mModel.addPatientInfo(patientVo,onSuccess = {}, onError = {})
+                    var doctorVO = DoctorVO(
+                            id= SessionManager.doctor_id.toString(),
+                            device_id = SessionManager.doctor_device_id.toString(),
+                            name = SessionManager.doctor_name.toString(),
+                            email = SessionManager.doctor_email.toString(),
+                            photo = it,
+                            speciality = speciality,
+                            specialityname = specialitname,
+                            phone = phone,
+                            dateofBirth = dateofbirth,
+                             degree = degree,
+                            biography = bigraphy,
+                            address = address,
+                            experience = experience,
+                            gender = gender
+                    )
+                    mModel.addDoctorInfo(doctorVO,onSuccess = {}, onError = {})
                 },
                 onFailure = {
                     mView?.showError("Profile Update Failed")

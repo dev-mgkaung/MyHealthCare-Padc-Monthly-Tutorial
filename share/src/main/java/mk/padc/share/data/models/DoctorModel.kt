@@ -93,4 +93,5 @@ interface DoctorModel
 
     fun getPrescriptionFromDB( ) : LiveData<List<PrescriptionVO>>
 
+    fun addDoctorInfo(doctorVO: DoctorVO, onSuccess: () -> Unit, onError: (String) -> Unit)
 }

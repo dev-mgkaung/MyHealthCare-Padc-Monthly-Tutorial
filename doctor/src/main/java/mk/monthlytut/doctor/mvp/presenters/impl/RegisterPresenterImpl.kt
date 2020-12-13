@@ -30,7 +30,8 @@ class RegisterPresenterImpl : RegisterPresenter, AbstractBasePresenter<RegisterV
         speciality_type: String,
         phone: String,
         degree: String,
-        biography: String
+        biography: String,
+        address: String, experience: String, dateofBirth :String, gender : String
     ) {
 
         if(email.isEmpty() || password.isEmpty() || username.isEmpty() || speciality_name.isEmpty() || speciality_type.isEmpty() ||
@@ -47,7 +48,11 @@ class RegisterPresenterImpl : RegisterPresenter, AbstractBasePresenter<RegisterV
                 degree = degree,
                 phone = phone,
                 speciality = speciality_type,
-                specialityname = speciality_name
+                specialityname = speciality_name,
+                    experience = experience,
+                    dateofBirth = dateofBirth,
+                    gender = gender,
+                    address = address
             )
 
             mAuthenticationModel.register(username,  email, password, onSuccess = {

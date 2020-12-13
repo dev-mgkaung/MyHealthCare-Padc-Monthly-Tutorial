@@ -195,4 +195,8 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.prescriptionDao().getAllPrescriptionData()
     }
 
+    override fun addDoctorInfo(doctorVO: DoctorVO, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.updateDoctorData(doctorVO, onSuccess = {}, onFailure = { onError(it) })
+    }
+
 }
