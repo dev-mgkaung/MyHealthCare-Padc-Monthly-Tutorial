@@ -163,4 +163,9 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.generalQuestionTemplateDao().getAllGeneralQuestionTemplateData()
     }
 
+    override fun saveMedicalRecord(consultationChatVO: ConsultationChatVO, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.saveMedicalRecord(consultationChatVO, onSuccess = {
+        }, onFailure = {})
+    }
+
 }

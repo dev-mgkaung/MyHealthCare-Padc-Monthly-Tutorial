@@ -98,9 +98,10 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
         seemore.setOnClickListener {
             var data=  Gson().toJson(mConsultationChatVO)
-            val dialog: PatientInfoDialog = PatientInfoDialog.newInstance(data)
-            dialog.show(supportFragmentManager, "")
-
+            mConsultationChatVO?.let {
+                val dialog: PatientInfoDialog = PatientInfoDialog.newInstance(data)
+                dialog.show(supportFragmentManager, "")
+            }
         }
 
         btn_attachfile.setOnClickListener {
@@ -121,6 +122,10 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         }
 
         medical_record_btn.setOnClickListener {
+            var data=  Gson().toJson(mConsultationChatVO)
+            mConsultationChatVO?.let {
+                startActivity(MedicalCommentAcitivity.newIntent(this,data))
+            }
 
         }
     }

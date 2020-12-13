@@ -5,10 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_chat_room.*
 import kotlinx.android.synthetic.main.activity_question_template.*
 import mk.monthlytut.doctor.R
-import mk.monthlytut.doctor.adapters.ChattingAdapter
 import mk.monthlytut.doctor.adapters.QuestionTemplateAdapter
 import mk.monthlytut.doctor.mvp.presenters.GeneralQuestionTemplatePresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.GeneralQuestionTemplatePresenterImpl

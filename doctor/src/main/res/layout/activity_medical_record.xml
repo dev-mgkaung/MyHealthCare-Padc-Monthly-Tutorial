@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/medical_record_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
@@ -17,7 +19,135 @@
             android:textColor="@color/black"
             android:textSize="15sp"
             android:id="@+id/tex_back"
-            android:text="@string/question"/>
+            android:text="@string/medical_record"/>
     </androidx.cardview.widget.CardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.4">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:text="@string/patient_name"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.4"
+                    android:text=": Mg Kaung"
+                    android:id="@+id/pname"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:padding="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.4">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/patient_dateOfbirth"
+                    android:padding="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.4"
+                    android:text=": Mg Kaung"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:id="@+id/pdateofBirth"
+                    android:padding="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.4">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/start_discuss_date"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:padding="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.4"
+                    android:text=": Mg Kaung"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:id="@+id/p_start_date"
+                    android:padding="5dp"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_record"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                app:cardElevation="3dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/white">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_corner_btn_white"
+                    android:hint="@string/medical_record_hint"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:inputType="textMultiLine"
+                    android:gravity="left"
+                    android:scrollbars="vertical"
+                    android:id="@+id/medical_comment"
+                    android:layout_margin="5dp"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:textSize="12sp"
+            android:paddingBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_corner_btn_blue"
+            android:id="@+id/btn_save"
+            android:text="@string/save"/>
+    </RelativeLayout>
 
 </LinearLayout>

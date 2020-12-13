@@ -237,6 +237,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "doctor_id" to doctorVO.id,
             "start_consultation_date" to DateUtils().getCurrentDateTime(),
             "patient_info" to patientVO,
+            "medical_record" to "",
             "doctor_info" to doctorVO)
 
         db.collection(consultation_chat)
@@ -720,6 +721,14 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                         onSuccess(list)
                     }
                 }
+    }
+
+    override fun saveMedicalRecord(consultationChatVO: ConsultationChatVO, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        db.collection(consultation_chat)
+                .document(consultationChatVO.id)
+                .set(consultationChatVO)
+                .addOnSuccessListener { Log.d("Success", "Successfully ") }
+                .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
     override fun acceptRequest(
