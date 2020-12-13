@@ -5,5 +5,6 @@ import mk.padc.share.mvp.views.BaseView
 
 interface PrescriptionView : BaseView {
     fun displayMedicineList(list: List<MedicineVO>)
+    fun displayRoutinechooseDialog(medicineVO: MedicineVO)
     fun finishConsulation()
 }

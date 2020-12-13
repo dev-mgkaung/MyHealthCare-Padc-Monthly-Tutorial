@@ -93,6 +93,10 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
         adapter.setNewData(list.toMutableList())
     }
 
+    override fun displayRoutinechooseDialog(medicineVO: MedicineVO) {
+        showMedicineDialog(medicineVO)
+    }
+
     override fun finishConsulation() {
 
     }

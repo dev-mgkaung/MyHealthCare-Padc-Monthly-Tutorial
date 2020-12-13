@@ -27,7 +27,7 @@ class PrescriptionPresenterImpl : PrescriptionPresenter, AbstractBasePresenter<P
     }
 
     override fun onTapSelectMedicine(medicineVO: MedicineVO) {
-
+     mView?.displayRoutinechooseDialog(medicineVO)
     }
 
     override fun onUiReadyForPrescription(speciality: String) {

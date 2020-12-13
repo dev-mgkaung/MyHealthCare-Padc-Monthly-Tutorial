@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="400dp"
+    android:layout_width="360dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:cardBackgroundColor="@color/white"
@@ -82,11 +82,16 @@
                             android:singleLine="true"
                             android:inputType="number"
                             android:id="@+id/ed_day"/>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_margin="3dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/grey_600"/>
                         <Spinner
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:padding="5dp"
-                            android:spinnerMode="dialog"
+                            android:spinnerMode="dropdown"
                             android:entries="@array/medicine_date"
                             android:id="@+id/day_spinner"/>
                     </LinearLayout>
@@ -157,27 +162,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:textColor="@color/grey_700"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:background="@drawable/bg_rounded_border_grey"
                     android:id="@+id/before_eating"
                     android:layout_margin="5dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:text="@string/before_eating"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:textColor="@color/grey_700"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:gravity="center"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:layout_gravity="center"
                     android:background="@drawable/bg_rounded_border_grey"
                     android:id="@+id/after_eating"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginRight="5dp"
                     android:text="@string/after_eating"/>
 
