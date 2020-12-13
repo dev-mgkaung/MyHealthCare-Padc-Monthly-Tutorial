@@ -6,11 +6,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.TimePicker
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.medical_record_dialog.view.*
 import kotlinx.android.synthetic.main.postpone_dialog.view.*
+import kotlinx.android.synthetic.main.postpone_dialog.view.confirm
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.ConsultationAdapter
 import mk.monthlytut.doctor.adapters.ConsultationRequestAdapter
@@ -157,7 +160,28 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
     override fun displayMedicalCommentDialog(consultationChatVO: ConsultationChatVO) {
+        val view = layoutInflater.inflate(R.layout.medical_record_dialog, null)
+        val dialog = this?.let { Dialog(it) }
+        val pname = view?.findViewById<TextView>(R.id.pname)
+        val pdateofBirth = view?.findViewById<TextView>(R.id.pdateofBirth)
+        val medical_comment = view?.findViewById<TextView>(R.id.pmedical_comment)
+        val p_start_date = view?.findViewById<TextView>(R.id.p_start_date)
 
+        pname?.text = consultationChatVO.patient_info?.name.toString()
+        pdateofBirth?.text = consultationChatVO.patient_info?.dateOfBirth.toString()
+        p_start_date?.text = consultationChatVO.start_consultation_date
+        medical_comment?.text  = consultationChatVO.medical_record.toString()
+
+        dialog?.apply {
+            setCancelable(true)
+            setContentView(view)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+        view.btn_close.setOnClickListener {
+            dialog?.dismiss()
+        }
+        dialog?.show()
     }
 
 }

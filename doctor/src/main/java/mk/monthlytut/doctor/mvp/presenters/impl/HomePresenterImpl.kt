@@ -96,7 +96,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapDoctorComment(data: ConsultationChatVO) {
-
+      mView?.displayMedicalCommentDialog(data)
     }
 
     private fun acceptRequest(status: String,  consultationRequestVO: ConsultationRequestVO) {
