@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:layout_margin="10dp"
+    android:gravity="center"
     android:id="@+id/medical_record_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_margin="10dp"
-        android:elevation="10dp"
         app:cardCornerRadius="10dp"
         android:layout_width="380dp"
         android:layout_height="wrap_content">
