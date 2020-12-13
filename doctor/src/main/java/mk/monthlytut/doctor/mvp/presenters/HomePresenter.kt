@@ -8,5 +8,4 @@ import mk.padc.share.mvp.presenters.BasePresenter
 
 interface HomePresenter : BasePresenter<HomeView> , ConsultationRequestDelegate, ConsultationDelegate
     {
-
     }

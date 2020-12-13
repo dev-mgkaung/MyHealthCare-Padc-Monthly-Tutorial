@@ -20,6 +20,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     private val doctorModel : DoctorModel = DoctorModelImpl
     lateinit var mOwner: LifecycleOwner
 
+
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
         mOwner=  owner
 
@@ -96,7 +97,14 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapDoctorComment(data: ConsultationChatVO) {
-      mView?.displayMedicalCommentDialog(data)
+        doctorModel.getConsultationChat(data.id,onSuccess = {}, onError = {})
+
+        doctorModel.getConsultationChatFromDB(data.id)
+                .observe(mOwner, Observer { data ->
+                    data?.let {
+                        mView?.displayMedicalCommentDialog(it)
+                    }
+                })
     }
 
     private fun acceptRequest(status: String,  consultationRequestVO: ConsultationRequestVO) {
