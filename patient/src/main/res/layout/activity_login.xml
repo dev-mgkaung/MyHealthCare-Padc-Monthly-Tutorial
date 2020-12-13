@@ -4,22 +4,41 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
-    android:background="@color/grey_100"
+    android:background="#cee7f5"
     android:layout_height="match_parent">
 
-    <LinearLayout
+      <LinearLayout
         android:layout_marginTop="10dp"
+          android:background="#cee7f5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="The CareMM"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Patient App"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"/>
         <ImageView
             android:layout_margin="10dp"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:padding="8dp"
             android:layout_gravity="center"
             android:textSize="25sp"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/login_patient"
             android:textStyle="bold"
             android:textColor="@color/blue_A400" />
 
@@ -32,6 +51,16 @@
             android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="@color/black" />
+          <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:elevation="5dp"
+              app:cardBackgroundColor="@color/white"
+              android:padding="2dp"
+              android:layout_marginLeft="6dp"
+              android:layout_marginRight="6dp"
+              app:cardElevation="5dp"
+              app:cardCornerRadius="5dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,10 +71,10 @@
             android:singleLine="true"
             app:boxStrokeColor="@color/white"
             android:id="@+id/ed_email"
-            android:layout_margin="10dp"/>
+            android:layout_margin="5dp"/>
+          </androidx.cardview.widget.CardView>
         <TextView
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -53,7 +82,16 @@
             android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="@color/black" />
-
+          <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_marginLeft="6dp"
+              android:layout_marginRight="6dp"
+              android:layout_height="wrap_content"
+              android:elevation="5dp"
+              android:padding="2dp"
+              app:cardBackgroundColor="@color/white"
+              app:cardElevation="5dp"
+              app:cardCornerRadius="5dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +101,8 @@
             android:textSize="12sp"
             android:singleLine="true"
             android:id="@+id/ed_password"
-            android:layout_margin="10dp"/>
+            android:layout_margin="5dp"/>
+          </androidx.cardview.widget.CardView>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:padding="6dp"
