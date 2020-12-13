@@ -86,4 +86,6 @@ interface DoctorModel
     fun getAllMedicine(speciality: String ,onSuccess: () -> Unit, onError: (String) -> Unit)
 
     fun getAllMedicineFromDB() : LiveData<List<MedicineVO>>
+
+    fun finsishConsultation( consultationChatVO: ConsultationChatVO , prescriptionList : List<PrescriptionVO> ,onSuccess: () -> Unit, onError: (String) -> Unit)
 }

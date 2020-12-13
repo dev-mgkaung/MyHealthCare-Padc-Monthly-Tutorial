@@ -740,9 +740,10 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
     }
 
-    override fun finishConsultation(consultationChatVO: ConsultationChatVO,prescriptionVO: List<PrescriptionVO>, onSuccess: () -> Unit, onFailure: (String) -> Unit)
+    override fun finishConsultation(consultationChatVO: ConsultationChatVO,prescriptionlist: List<PrescriptionVO>, onSuccess: () -> Unit, onFailure: (String) -> Unit)
     {
 
+        //add recent doctor
         consultationChatVO.doctor_info?.let {
 
             db.collection("$patients/${consultationChatVO.patient_id}/$recent_doctors")
@@ -753,6 +754,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         }
 
 
+        // update finish conservation status
         val consultationChatMap = hashMapOf(
                 "finish_consultation_status" to true,
                 "id" to consultationChatVO.id,
@@ -770,6 +772,14 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
 
         // add prescription
+
+        for(item in prescriptionlist) {
+            db.collection("$consultation_chat/${consultationChatVO.id}/$prescription")
+                    .document(item.id)
+                    .set(item)
+                    .addOnSuccessListener { Log.d("Success", "Successfully ") }
+                    .addOnFailureListener { Log.d("Failure", "Failed") }
+        }
     }
 
 }

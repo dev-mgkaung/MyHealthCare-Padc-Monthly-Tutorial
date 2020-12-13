@@ -179,4 +179,9 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         return mTheDB.medicalDao().getAllMedicine()
     }
 
+    override fun finsishConsultation(consultationChatVO: ConsultationChatVO, prescriptionList: List<PrescriptionVO>, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.finishConsultation(consultationChatVO,prescriptionList, onSuccess = {
+        }, onFailure = {})
+    }
+
 }
