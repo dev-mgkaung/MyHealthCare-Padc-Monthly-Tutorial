@@ -115,7 +115,7 @@ class RegisterActivity : BaseActivity() , RegisterView {
             token =it.token
         }
 
-        radio_group.setOnCheckedChangeListener(
+        gradio_group.setOnCheckedChangeListener(
                 RadioGroup.OnCheckedChangeListener { group, checkedId ->
                     val radio: RadioButton = findViewById(checkedId)
                     gender = radio.text.toString()

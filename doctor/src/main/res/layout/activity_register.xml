@@ -319,26 +319,24 @@
                     app:cardCornerRadius="10dp"
                     app:cardBackgroundColor="@color/white">
                     <RadioGroup
-                        android:id="@+id/radio_group"
+                        android:id="@+id/gradio_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="5dp">
 
                     <RadioButton
                         android:id="@+id/male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="အမျိုးသား"
-                        android:onClick="gender_button_click"/>
+                        android:text="အမျိုးသား"/>
 
                     <RadioButton
                         android:layout_marginLeft="20dp"
                         android:id="@+id/female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="အမျိုးသမီး"
-                        android:onClick="female_button_click"/>
+                        android:text="အမျိုးသမီး"/>
                     </RadioGroup>
                 </androidx.cardview.widget.CardView>
                 <TextView
