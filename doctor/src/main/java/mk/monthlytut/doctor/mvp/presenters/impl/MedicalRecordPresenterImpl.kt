@@ -16,12 +16,10 @@ class MedicalRecordPresenterImpl : MedicalRecordPresenter, AbstractBasePresenter
     private val doctorModel: DoctorModel = DoctorModelImpl
 
     override fun onTapSaveMedicalRecord(consultationChatVO: ConsultationChatVO, owner: LifecycleOwner) {
-        doctorModel.saveMedicalRecord(consultationChatVO,onSuccess = {
-            mView?.showSnackBar("ဆေးမှတ်တမ်း သိမ်းဆည်းပြီးပါပြီ")
-        }, onError = {
+        doctorModel.saveMedicalRecord(consultationChatVO,onSuccess = {}, onError = {
             mView?.showSnackBar("ဆေးမှတ်တမ်း မသိမ်းဆည်းနိုင်ပါ")
         })
-
+        mView?.showSnackBar("ဆေးမှတ်တမ်း သိမ်းဆည်းပြီးပါပြီ")
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
