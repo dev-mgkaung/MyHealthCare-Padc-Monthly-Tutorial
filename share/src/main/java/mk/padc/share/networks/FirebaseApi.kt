@@ -111,7 +111,7 @@ interface FirebaseApi {
             onSuccess: () -> Unit,
             onFailure: (String) -> Unit)
 
-    fun finishConsultation(consultationChatVO: ConsultationChatVO, onSuccess: () -> Unit,onFailure: (String) -> Unit)
+    fun finishConsultation(consultationChatVO: ConsultationChatVO, prescriptionList : List<PrescriptionVO>, onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
     fun preScribeMedicine(consulationId : String, prescriptionVO: PrescriptionVO ,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 

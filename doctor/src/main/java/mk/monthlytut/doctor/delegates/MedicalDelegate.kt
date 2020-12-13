@@ -1,5 +1,4 @@
 package mk.monthlytut.doctor.delegates
 
 
-interface MedicalRecordDelegate {
-}
+interface MedicalDelegate {}

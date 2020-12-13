@@ -81,4 +81,9 @@ interface DoctorModel
     fun getGeneralQuestionTemplateFromDB () : LiveData<List<GeneralQuestionTemplateVO>>
 
     fun saveMedicalRecord( consultationChatVO: ConsultationChatVO, onSuccess: () -> Unit, onError: (String) -> Unit)
+
+
+    fun getAllMedicine(speciality: String ,onSuccess: () -> Unit, onError: (String) -> Unit)
+
+    fun getAllMedicineFromDB() : LiveData<List<MedicineVO>>
 }

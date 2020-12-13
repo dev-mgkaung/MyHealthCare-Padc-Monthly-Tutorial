@@ -12,6 +12,7 @@ import mk.monthlytut.doctor.mvp.views.LoginView
 import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.DoctorVO
+
 class LoginActivity : BaseActivity() , LoginView {
 
     private lateinit var mPresenter: LoginPresenter
@@ -48,16 +49,7 @@ class LoginActivity : BaseActivity() , LoginView {
     override fun navigateToMainScreen(doctorVO : DoctorVO) {
 
         SessionManager.login_status =true
-        SessionManager.doctor_name = doctorVO.name
-        SessionManager.doctor_id = doctorVO.id
-        SessionManager.doctor_device_id = doctorVO.device_id
-        SessionManager.doctor_email = doctorVO.email.toString()
-        SessionManager.doctor_photo = doctorVO.photo.toString()
-        SessionManager.doctor_speciality = doctorVO.speciality.toString()
-        SessionManager.doctor_specialityname = doctorVO.specialityname.toString()
-        SessionManager.doctor_phone = doctorVO.phone
-        SessionManager.doctor_degree = doctorVO.degree
-        SessionManager.doctor_bigraphy = doctorVO.biography
+        SessionManager.addDoctorInfo(doctorVO)
         this.finish()
         startActivity(MainActivity.newIntent(this))
 

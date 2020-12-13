@@ -168,4 +168,15 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         }, onFailure = {})
     }
 
+    override fun getAllMedicine(speciality: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mFirebaseApi.getAllMedicine(speciality,  onSuccess = {
+            mTheDB.medicalDao().deleteAllMedicine()
+            mTheDB.medicalDao().insertMedicalDataList(it)
+        }, onFailure = {})
+    }
+
+    override fun getAllMedicineFromDB(): LiveData<List<MedicineVO>> {
+        return mTheDB.medicalDao().getAllMedicine()
+    }
+
 }

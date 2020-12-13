@@ -2,6 +2,7 @@ package mk.monthlytut.doctor.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.utils.*
 
 object SessionManager {
@@ -108,4 +109,17 @@ object SessionManager {
         }
 
 
+    fun addDoctorInfo(doctorVO: DoctorVO)
+    {
+        doctor_name = doctorVO.name
+        doctor_id = doctorVO.id
+        doctor_device_id = doctorVO.device_id
+        doctor_email = doctorVO.email.toString()
+        doctor_photo = doctorVO.photo.toString()
+        doctor_speciality = doctorVO.speciality.toString()
+        doctor_specialityname = doctorVO.specialityname.toString()
+        doctor_phone = doctorVO.phone
+        doctor_degree = doctorVO.degree
+        doctor_bigraphy = doctorVO.biography
+    }
 }

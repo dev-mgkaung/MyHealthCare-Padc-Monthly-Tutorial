@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_margin="2dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="MgKaung"
+    android:id="@+id/medicine_name"
+    android:layout_marginRight="50dp"
+    android:textStyle="bold"
+    android:textSize="14sp"
+    android:textColor="@color/black"
+    android:layout_margin="6dp"/>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/add"/>
+</RelativeLayout>
