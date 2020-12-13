@@ -40,6 +40,13 @@ class MedicalCommentAcitivity : BaseActivity() , MedicalRecordView
 
         var data = intent?.getStringExtra(ConsultationCHAT)
         mConsultationChatVO = Gson().fromJson(data, ConsultationChatVO::class.java)
+
+        mConsultationChatVO?.let {
+            pname.text = mConsultationChatVO.patient_info?.name
+            pdateofBirth.text = mConsultationChatVO.patient_info?.dateOfBirth
+            p_start_date.text = mConsultationChatVO.start_consultation_date
+
+        }
     }
 
     private fun setUpActionListeners() {
