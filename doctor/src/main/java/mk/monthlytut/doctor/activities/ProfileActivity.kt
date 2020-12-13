@@ -37,7 +37,8 @@ class ProfileActivity : BaseActivity() , ProfileView {
         imgedit.setOnClickListener {
             startActivity(this?.let { it1 -> EditProfileActivity.newIntent(it1) })
         }
-        tex_back.setOnClickListener {
+
+        stxt_back.setOnClickListener {
             onBackPressed()
         }
 
