@@ -7,5 +7,5 @@ import mk.padc.share.mvp.presenters.BasePresenter
 
 interface PrescriptionPresenter : BasePresenter<PrescriptionView>, MedicalDelegate {
     fun onUiReadyForPrescription ( speciality : String)
-  fun onTapFinishConsulation(list : List<PrescriptionVO> )
+    fun onTapFinishConsulation(list : List<PrescriptionVO> )
 }

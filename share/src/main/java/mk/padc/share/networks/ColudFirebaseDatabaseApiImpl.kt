@@ -235,7 +235,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "finish_consultation_status" to false,
             "patient_id" to patientVO.id,
             "doctor_id" to doctorVO.id,
-            "start_consultation_date" to DateUtils().getCurrentDateTime(),
+            "start_consultation_date" to DateUtils().getCurrentDate(),
             "patient_info" to patientVO,
             "medical_record" to "",
             "doctor_info" to doctorVO)

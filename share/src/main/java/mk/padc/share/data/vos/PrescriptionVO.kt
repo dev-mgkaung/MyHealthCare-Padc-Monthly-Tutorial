@@ -9,9 +9,9 @@ import mk.padc.share.persistances.converters.RoutineConverter
 
 class PrescriptionVO(
     var id: String= "",
-    var count : Int =0,
+    var count : String ="",
     var medicine : String = "",
-    var price : Int =0,
+    var price : String ="",
     var routineVO: RoutineVO
 )
 

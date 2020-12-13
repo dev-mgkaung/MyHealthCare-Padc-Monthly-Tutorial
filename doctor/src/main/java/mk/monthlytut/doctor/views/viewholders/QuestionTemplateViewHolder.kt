@@ -1,6 +1,5 @@
 package mk.monthlytut.doctor.views.viewholders
 
-import android.text.Editable
 import android.view.View
 import kotlinx.android.synthetic.main.listitem_question_template.view.*
 import mk.monthlytut.doctor.delegates.QuestionTemplateDelegate

@@ -20,14 +20,21 @@ class MedicalViewHolder(itemView: View, private val mDelegate: MedicalDelegate) 
         }
 
         itemView.checkbtn.setOnClickListener {
-            data?.let {
-                if(data.isSelected ==false){
-                    itemView.checkbtn.setImageResource(R.drawable.add)
-                }else
-                {
-                    itemView.checkbtn.setImageResource(R.drawable.minussign)
+            if(data.isSelected ==false) {
+                data.isSelected = data.isSelected == false
+
+                data?.let {
+                    if (data.isSelected == false) {
+                        itemView.checkbtn.setImageResource(R.drawable.add)
+                    } else {
+                        itemView.checkbtn.setImageResource(R.drawable.minussign)
+                    }
+                    mDelegate.onTapSelectMedicine(data)
                 }
-                mDelegate.onTapSelectMedicine(data)
+            }
+            else{
+                itemView.checkbtn.setImageResource(R.drawable.minussign)
+                mDelegate.onTapRemoveMedicine(data)
             }
 
         }

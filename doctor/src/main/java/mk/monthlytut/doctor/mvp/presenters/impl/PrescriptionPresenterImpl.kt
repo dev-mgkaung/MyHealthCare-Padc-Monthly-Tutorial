@@ -30,6 +30,10 @@ class PrescriptionPresenterImpl : PrescriptionPresenter, AbstractBasePresenter<P
      mView?.displayRoutinechooseDialog(medicineVO)
     }
 
+    override fun onTapRemoveMedicine(medicineVO: MedicineVO) {
+        mView?.removeMedicine(medicineVO)
+    }
+
     override fun onUiReadyForPrescription(speciality: String) {
 
         doctorModel.getAllMedicine(speciality, onSuccess = {}, onError = {})
