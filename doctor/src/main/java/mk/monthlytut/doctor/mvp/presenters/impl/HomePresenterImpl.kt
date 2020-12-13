@@ -97,7 +97,6 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapDoctorComment(data: ConsultationChatVO) {
-        doctorModel.getConsultationChat(data.id,onSuccess = {}, onError = {})
 
         doctorModel.getConsultationChatFromDB(data.id)
                 .observe(mOwner, Observer { data ->
