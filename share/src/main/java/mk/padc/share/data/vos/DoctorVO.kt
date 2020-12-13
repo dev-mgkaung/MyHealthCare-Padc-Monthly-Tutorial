@@ -18,5 +18,9 @@ class DoctorVO(
     var speciality: String ?= "",
     var specialityname : String ?= "",
     var degree : String? = "",
-    var biography: String?= ""
+    var biography: String?= "",
+    var dateofBirth : String ?= "",
+    var gender : String ?="",
+    var experience : String ?="",
+    var address : String ?=""
 )

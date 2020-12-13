@@ -49,8 +49,6 @@ class AccountFragment : BaseFragment() ,ProfileView{
         setUpActionListener()
         setUpPresenter()
 
-
-
         imgedit.setOnClickListener {
             startActivity(activity?.let { it1 -> ProfileActivity.newIntent(it1) })
         }
@@ -122,8 +120,7 @@ class AccountFragment : BaseFragment() ,ProfileView{
 
     }
 
-    override fun hideProgressDialog() {
-    }
+    override fun hideProgressDialog() {}
 
 
 }
