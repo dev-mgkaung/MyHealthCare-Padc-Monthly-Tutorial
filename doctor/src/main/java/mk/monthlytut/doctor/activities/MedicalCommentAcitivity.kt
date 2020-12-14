@@ -30,6 +30,7 @@ class MedicalCommentAcitivity : BaseActivity() , MedicalRecordView
             intent.putExtra(ConsultationCHAT, consultationChatVO)
             return intent
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

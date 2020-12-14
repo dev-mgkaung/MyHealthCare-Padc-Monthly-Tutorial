@@ -739,7 +739,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
     override fun acceptRequest(
         status : String,
-        type: Int,
         consulationId: String,
         questionAnswerList: List<QuestionAnswerVO>,
         patient : PatientVO,
