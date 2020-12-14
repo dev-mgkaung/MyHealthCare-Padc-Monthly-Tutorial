@@ -1,5 +1,6 @@
 package mk.padc.share.utils
 
+const val APIKEY = "AIzaSyBE0oTlSueBDEutqrXp6PhePbMg4hNYNEM"
 const val DATABASE_NAME="MyCare.DB"
 
 // cloud firebase  Root node name
