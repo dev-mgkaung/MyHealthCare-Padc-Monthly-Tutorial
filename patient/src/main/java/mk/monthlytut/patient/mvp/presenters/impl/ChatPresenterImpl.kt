@@ -34,6 +34,6 @@ class ChatPresenterImpl : ChatPresenter, AbstractBasePresenter<ChatHistoryView>(
     }
 
     override fun onTapPrescription(consultationChatVO: ConsultationChatVO) {
-        mView?.showPrescriptionDialog(consultationChatVO.id, consultationChatVO.patient_info?.name.toString(), consultationChatVO.start_consultation_date.toString())
+        mView?.showPrescriptionDialog(consultationChatVO.finish_consultation_status,consultationChatVO.id, consultationChatVO.patient_info?.name.toString(), consultationChatVO.start_consultation_date.toString())
     }
 }

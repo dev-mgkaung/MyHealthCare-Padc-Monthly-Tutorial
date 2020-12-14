@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_consultation.*
 import mk.monthlytut.patient.R
@@ -70,8 +71,14 @@ class ConsultationFragment : BaseFragment(), ChatHistoryView {
         startActivity(activity?.let { ChatRoomActvity.newIntent(it, consulationchatId) })
     }
 
-    override fun showPrescriptionDialog(consulationchatId: String, patient_name: String,start_conservation_date : String ) {
-        val dialog: PrescriptionDialog = PrescriptionDialog.newInstance(consulationchatId,patient_name,start_conservation_date)
-        fragmentManager?.let { dialog.show(it, "") }
+    override fun showPrescriptionDialog(finishconsultation: Boolean,consulationchatId: String, patient_name: String,start_conservation_date : String ) {
+         if(finishconsultation)
+         {
+             val dialog: PrescriptionDialog = PrescriptionDialog.newInstance(consulationchatId, patient_name, start_conservation_date)
+             fragmentManager?.let { dialog.show(it, "") }
+
+         }else {
+             Toast.makeText(activity,"ဆေးညွန်းမရှိသေးပါ",Toast.LENGTH_SHORT).show()
+         }
     }
 }
