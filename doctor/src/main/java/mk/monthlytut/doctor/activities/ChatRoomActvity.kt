@@ -83,8 +83,10 @@ class ChatRoomActvity : BaseActivity() ,ChatView
             mprescritpionview.visibility = View.VISIBLE
             mPrescriptionViewPod = mprescritpionview as PrescriptionViewPod
             mPrescriptionViewPod.setDelegate(mPresenter)
-            mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString())
-        }
+
+            mPrescriptionViewPod.setPrescriptionData(prescription_list,SessionManager.doctor_photo.toString())
+
+          }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
