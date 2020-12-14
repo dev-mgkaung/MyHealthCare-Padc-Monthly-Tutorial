@@ -4,6 +4,10 @@ package mk.monthlytut.doctor.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import kotlinx.android.synthetic.main.activity_login.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.mvp.presenters.LoginPresenter
@@ -50,6 +54,15 @@ class LoginActivity : BaseActivity() , LoginView {
 
         SessionManager.login_status =true
         SessionManager.addDoctorInfo(doctorVO)
+        Firebase.messaging.subscribeToTopic(SessionManager.doctor_speciality.toString())
+                .addOnCompleteListener { task ->
+                    var msg = "Subscribed"
+                    if (!task.isSuccessful) {
+                        msg = "Failed"
+                    }
+                 //   Log.d(TAG, msg)
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                }
         this.finish()
         startActivity(MainActivity.newIntent(this))
 
