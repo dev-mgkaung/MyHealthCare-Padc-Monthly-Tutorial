@@ -22,7 +22,7 @@ class PrescriptionViewPod @JvmOverloads constructor(
     }
 
     fun setPrescriptionData(prescription : List<PrescriptionVO>, doctorPhoto: String) {
-        ImageUtils().showImage(pdoctor_photo,doctorPhoto, R.drawable.doctor)
+        ImageUtils().showImage(pdoctor_photo,doctorPhoto, R.drawable.user)
         var str : String = ""
         if(prescription.isNotEmpty())
         {
