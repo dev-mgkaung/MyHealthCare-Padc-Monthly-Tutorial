@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
@@ -182,6 +183,10 @@ class MainActivity : BaseActivity() ,HomeView {
             dialog?.dismiss()
         }
         dialog?.show()
+    }
+
+    override fun displayPostponseProcessSuccess() {
+        Toast.makeText(this,"ယခု လူနာနှင့် ရက်ချိန်းသတ်မှတ်မှု လုပ်ငန်းစဉ် အောင်မြင်ပါ သည်",Toast.LENGTH_SHORT).show()
     }
 
 }

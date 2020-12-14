@@ -76,11 +76,11 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapPostponeTime(postponeTime : String, consultationRequestVO: ConsultationRequestVO) {
-        acceptRequest("postpone $postponeTime", consultationRequestVO)
+        acceptRequest("postpone $postponeTime",1, consultationRequestVO)
     }
 
     override fun onTapAccept(consultationRequestVO: ConsultationRequestVO) {
-        acceptRequest("accept", consultationRequestVO)
+        acceptRequest("accept", 2,consultationRequestVO)
     }
 
     override fun onTapMedicalRecord(data: ConsultationChatVO) {
@@ -106,7 +106,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 })
     }
 
-    private fun acceptRequest(status: String,  consultationRequestVO: ConsultationRequestVO) {
+    private fun acceptRequest(status: String, type : Int,   consultationRequestVO: ConsultationRequestVO) {
         var doctorVo = DoctorVO(
                 id = SessionManager.doctor_id.toString(),
                 device_id = SessionManager.doctor_device_id.toString(),
@@ -119,6 +119,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 specialityname = SessionManager.doctor_specialityname,
                 speciality = SessionManager.doctor_speciality
         )
+
         doctorModel.acceptRequest(
                 status,
                 consultationRequestVO.id,
@@ -126,8 +127,12 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 consultationRequestVO.patient_info,
                 doctorVo, onSuccess = {}, onFailure = {})
 
-        Log.d("consulation",consultationRequestVO.id)
-        mView?.nextPagePatientInfo(consultationRequestVO.id)
+
+        if(type == 2) {
+            mView?.nextPagePatientInfo(consultationRequestVO.id)
+          }else{
+            mView?.displayPostponseProcessSuccess()
+        }
     }
 
 

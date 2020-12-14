@@ -99,8 +99,8 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
                 onSuccess = {}, onFailure = { onFailure(it) })
     }
 
-    override fun acceptRequest(status: String, consulationId: String,  questionAnswerList: List<QuestionAnswerVO>, patientVO: PatientVO, doctorVO: DoctorVO, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
-        mFirebaseApi.acceptRequest(status,consulationId,  questionAnswerList, patientVO, doctorVO,
+    override fun acceptRequest(status: String,  consulationId: String,  questionAnswerList: List<QuestionAnswerVO>, patientVO: PatientVO, doctorVO: DoctorVO, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        mFirebaseApi.acceptRequest(status, consulationId,  questionAnswerList, patientVO, doctorVO,
                 onSuccess = {}, onFailure = { onFailure(it) })
     }
 

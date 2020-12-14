@@ -35,13 +35,6 @@ class ConsultationViewHolder(itemView: View, private val mDelegate: Consultation
             mDelegate.onTapDoctorComment(data)
         }
 
-        if(data.finish_consultation_status)
-        {
-            itemView.txt_send_message.visibility = View.GONE
-        }else{
-            itemView.txt_send_message.visibility = View.VISIBLE
-        }
-
         itemView.txt_send_message.setOnClickListener {
             mDelegate.onTapSendMessage(data)
         }

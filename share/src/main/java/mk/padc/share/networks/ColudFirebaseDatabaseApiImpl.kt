@@ -739,6 +739,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
     override fun acceptRequest(
         status : String,
+        type: Int,
         consulationId: String,
         questionAnswerList: List<QuestionAnswerVO>,
         patient : PatientVO,
@@ -747,8 +748,9 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onFailure: (String) -> Unit
     ) {
 
+
         val consultationRequestMap = hashMapOf(
-                "status" to "accept",
+                "status" to status,
                 "doctor_id" to doctor.id,
                 "patient_id" to patient.id,
                 "doctor_info" to doctor,
@@ -762,6 +764,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 .set(consultationRequestMap)
                 .addOnSuccessListener { Log.d("Success", "Successfully ") }
                 .addOnFailureListener { Log.d("Failure", "Failed") }
+
     }
 
     override fun sendDirectRequest(

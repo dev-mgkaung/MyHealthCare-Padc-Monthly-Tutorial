@@ -112,10 +112,14 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         }
 
         btn_sendMessage.setOnClickListener {
-            if (ed_message.text.toString().isNotEmpty()) {
-                mPresenter?.addTextMessage(ed_message.text.toString(), consultation_chat_id, doctors, SessionManager.doctor_photo.toString(), SessionManager.doctor_name.toString(), this)
-            }else{
-                Toast.makeText(this,"Empty text",Toast.LENGTH_SHORT).show()
+            if (mConsultationChatVO.finish_consultation_status) {
+                Toast.makeText(this,"ဆွေးနွေးမှု ပြီးဆုံးပါပြီ စာပို့လို့မရနိုင်တော့ပါ",Toast.LENGTH_SHORT).show()
+            } else {
+                if (ed_message.text.toString().isNotEmpty()) {
+                    mPresenter?.addTextMessage(ed_message.text.toString(), consultation_chat_id, doctors, SessionManager.doctor_photo.toString(), SessionManager.doctor_name.toString(), this)
+                } else {
+                    Toast.makeText(this, "Empty text", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

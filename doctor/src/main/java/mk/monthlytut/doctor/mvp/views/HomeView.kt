@@ -16,4 +16,5 @@ interface HomeView : BaseView {
   fun displayPatientInfoDialog(consultationChatVO: ConsultationChatVO)
   fun displayPrescriptionDialog(consultation_chat_id: String, patient_name : String, start_conservation_date : String)
   fun displayMedicalCommentDialog(consultationChatVO: ConsultationChatVO)
+  fun displayPostponseProcessSuccess()
 }

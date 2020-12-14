@@ -123,7 +123,11 @@ class ChatRoomActvity : BaseActivity() , ChatView
                 if (mConsultationChatVO.finish_consultation_status) {
                     Toast.makeText(this,"ဆွေးနွေးမှု ပြီးဆုံးပါပြီ စာပို့လို့မရနိုင်တော့ပါ",Toast.LENGTH_SHORT).show()
                 } else {
+                    if (ed_message.text.toString().isNotEmpty()) {
                     mPresenter?.addTextMessage(ed_message.text.toString(), consultation_chat_id, patients, SessionManager.patient_photo.toString(), SessionManager.patient_name.toString(), this)
+                    } else {
+                        Toast.makeText(this, "Empty text", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
