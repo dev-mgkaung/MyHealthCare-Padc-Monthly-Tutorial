@@ -119,7 +119,13 @@ class ChatRoomActvity : BaseActivity() , ChatView
         }
 
         btn_sendMessage.setOnClickListener {
-            mPresenter?.addTextMessage(ed_message.text.toString(),consultation_chat_id, patients, SessionManager.patient_photo.toString(),SessionManager.patient_name.toString(), this)
+            mConsultationChatVO?.let {
+                if (mConsultationChatVO.finish_consultation_status) {
+                    Toast.makeText(this,"ဆွေးနွေးမှု ပြီးဆုံးပါပြီ စာပို့လို့မရနိုင်တော့ပါ",Toast.LENGTH_SHORT).show()
+                } else {
+                    mPresenter?.addTextMessage(ed_message.text.toString(), consultation_chat_id, patients, SessionManager.patient_photo.toString(), SessionManager.patient_name.toString(), this)
+                }
+            }
         }
     }
 

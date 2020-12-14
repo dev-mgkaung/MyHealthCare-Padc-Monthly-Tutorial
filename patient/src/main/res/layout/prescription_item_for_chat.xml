@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_gravity="left"
-    android:layout_marginTop="5dp"
-    android:layout_marginLeft="4dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="5dp"
     android:layout_marginRight="60dp"
     android:gravity="left"
     android:layout_height="wrap_content">
@@ -25,7 +25,7 @@
             android:id="@+id/pdoctor_photo"/>
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="8dp"
             android:padding="5dp"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/white"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="5dp"
                     android:padding="2dp"
@@ -73,6 +73,7 @@
     <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
         android:layout_width="match_parent"
         android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         android:paddingLeft="3dp"
         android:paddingRight="3dp"
         android:layout_marginTop="10dp"
