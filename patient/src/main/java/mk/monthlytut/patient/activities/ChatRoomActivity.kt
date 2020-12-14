@@ -3,6 +3,7 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -15,9 +16,11 @@ import mk.monthlytut.patient.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.ChatRoomPresenterImpl
 import mk.monthlytut.patient.mvp.views.ChatView
 import mk.monthlytut.patient.util.SessionManager
+import mk.monthlytut.patient.views.viewpods.PrescriptionViewPod
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ChatMessageVO
 import mk.padc.share.data.vos.ConsultationChatVO
+import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.utils.ImageUtils
 import mk.padc.share.utils.patients
 
@@ -31,6 +34,8 @@ class ChatRoomActvity : BaseActivity() , ChatView
     private lateinit var mConsultationChatVO: ConsultationChatVO
 
     private lateinit var adapter: ChattingAdapter
+
+    private lateinit var mPrescriptionViewPod : PrescriptionViewPod
 
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
@@ -66,6 +71,15 @@ class ChatRoomActvity : BaseActivity() , ChatView
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
         scrollview.scrollTo(0, scrollview.bottom)
         adapter.setNewData(list.toMutableList())
+    }
+
+    override fun displayPrescriptionViewPod(prescription_list: List<PrescriptionVO>) {
+       if(prescription_list.isNotEmpty()) {
+         prescritpionview.visibility = View.VISIBLE
+           mPrescriptionViewPod = prescritpionview as PrescriptionViewPod
+           mPrescriptionViewPod.setDelegate(mPresenter)
+           mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString())
+       }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

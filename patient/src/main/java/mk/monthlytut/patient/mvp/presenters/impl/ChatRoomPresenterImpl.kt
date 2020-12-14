@@ -36,6 +36,15 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
                         mView?.displayChatMessageList(data)
                     }
                 })
+
+        patientModel.getPrescription(consultationChatId, onSuccess = {}, onError = {})
+
+        patientModel.getPrescriptionFromDB()
+                .observe(owner, Observer {
+                    it?.let{
+                        mView?.displayPrescriptionViewPod(it)
+                    }
+                })
     }
 
     override fun addTextMessage(

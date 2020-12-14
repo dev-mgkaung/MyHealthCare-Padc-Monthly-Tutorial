@@ -275,6 +275,12 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/rc_chating"
                     android:nestedScrollingEnabled="true"/>
+                <include layout="@layout/prescription_item_for_chat"
+                    android:id="@+id/prescritpionview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:visibility="gone"/>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
