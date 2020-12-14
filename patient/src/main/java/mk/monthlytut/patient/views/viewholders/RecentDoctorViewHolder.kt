@@ -19,7 +19,9 @@ class RecentDoctorViewHolder(itemView: View, private val mDelegate: RecentDoctor
            data?.photo?.let{
                ImageUtils().showImage(itemView.img_doctor_profile,it, R.drawable.doctor_thumbnail)
            }
-
+            itemView.card_recentdoctor.setOnClickListener {
+                mDelegate.onTapRecentDoctor(data)
+            }
        }
     }
 }

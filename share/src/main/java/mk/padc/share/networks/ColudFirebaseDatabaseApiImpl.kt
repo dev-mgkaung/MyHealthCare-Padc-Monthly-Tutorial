@@ -201,6 +201,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         speciality: String,
         questionAnswerList: List<QuestionAnswerVO>,
         patientVO: PatientVO,
+        doctorVO: DoctorVO,
         dateTime: String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
@@ -210,7 +211,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "case_summary" to questionAnswerList,
             "id" to id,
             "patient_info" to patientVO,
-            "doctor_info" to DoctorVO(),
+            "doctor_info" to doctorVO,
             "speciality" to speciality,
             "status" to "none")
 

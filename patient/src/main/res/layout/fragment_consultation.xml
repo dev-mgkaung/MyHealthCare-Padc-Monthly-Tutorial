@@ -19,8 +19,36 @@
             android:id="@+id/cs_back"
             android:text="@string/chat_history"/>
     </androidx.cardview.widget.CardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:id="@+id/rc_chat_history"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="visible"
+            android:id="@+id/empty_view"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/no_record"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/grey_900"
+                android:text="@string/no_record_postponse"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

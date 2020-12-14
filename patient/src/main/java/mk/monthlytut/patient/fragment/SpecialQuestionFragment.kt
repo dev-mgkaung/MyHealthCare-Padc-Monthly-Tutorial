@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.case_summary_confirm_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_special_question.*
 import mk.monthlytut.patient.R
@@ -20,9 +21,7 @@ import mk.monthlytut.patient.mvp.presenters.impl.CaseSummaryPresenterImpl
 import mk.monthlytut.patient.mvp.views.CaseSummaryView
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseFragment
-import mk.padc.share.data.vos.PatientVO
-import mk.padc.share.data.vos.QuestionAnswerVO
-import mk.padc.share.data.vos.SpecialQuestionVO
+import mk.padc.share.data.vos.*
 import mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
 
 private const val ARG_PARAM = "speciality"
@@ -38,14 +37,16 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     private  var questionAnswerList : ArrayList<QuestionAnswerVO> = arrayListOf()
 
     private var speciality: String? = null
+    private var doctorVO: String? = null
 
     companion object {
 
         @JvmStatic
-        fun newInstance(mSpeciality : String, listener : CaseSummaryCallBackListener) =
+        fun newInstance(mSpeciality : String,doctorVO : String, listener : CaseSummaryCallBackListener) =
             SpecialQuestionFragment().apply {
                 this.listener =listener
                 this.speciality=mSpeciality
+                this.doctorVO =doctorVO
             }
     }
 
@@ -163,7 +164,10 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
 
 
         view.cs_btn_confirm.setOnClickListener {
-            activity?.let { it -> mPresenter.onTapSendBroadCast(it,speciality.toString(),questionAnswerList,patientVO) }
+
+             var mdoctorVO = Gson().fromJson(doctorVO, DoctorVO::class.java)
+
+            activity?.let { it -> mPresenter.onTapSendBroadCast(it,speciality.toString(),questionAnswerList,patientVO, mdoctorVO) }
             dialog?.dismiss()
             activity?.finish()
         }

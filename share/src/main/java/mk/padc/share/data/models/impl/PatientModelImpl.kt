@@ -93,10 +93,12 @@ object PatientModelImpl : PatientModel, BaseModel() {
         return mTheDB.patientDao().getAllPatientDataByEmail(email)
     }
 
+
     override fun sendBroadCastConsultationRequest(
         speciality: String,
         questionAnswerList: List<QuestionAnswerVO>,
         patientVO: PatientVO,
+        doctorVO: DoctorVO,
         dateTime: String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
@@ -104,10 +106,9 @@ object PatientModelImpl : PatientModel, BaseModel() {
         mFirebaseApi.sendBroadCastConsultationRequest(speciality,
             questionAnswerList,
             patientVO,
+            doctorVO,
             dateTime,
-            onSuccess = {
-
-            }, onFailure = { onFailure(it) })
+            onSuccess = {}, onFailure = { onFailure(it) })
     }
 
     override fun getConsultationAccepts(patientId : String , onSuccess: (List<ConsultationRequestVO>) -> Unit, onError: (String) -> Unit) {

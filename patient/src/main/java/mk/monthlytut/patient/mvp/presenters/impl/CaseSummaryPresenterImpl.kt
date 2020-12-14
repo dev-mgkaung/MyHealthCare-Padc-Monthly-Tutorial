@@ -7,6 +7,7 @@ import mk.monthlytut.patient.mvp.presenters.CaseSummaryPresenter
 import mk.monthlytut.patient.mvp.views.CaseSummaryView
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
+import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
@@ -51,11 +52,12 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
         context: Context,
         speciality: String,
         questionAnswerList: List<QuestionAnswerVO>,
-        patientVO: PatientVO
+        patientVO: PatientVO,
+        doctorVO: DoctorVO,
     ) {
 
        speciality?.let{
-           patientModel.sendBroadCastConsultationRequest(speciality,questionAnswerList,patientVO,DateUtils().getCurrentDate(),
+           patientModel.sendBroadCastConsultationRequest(speciality,questionAnswerList,patientVO,doctorVO,DateUtils().getCurrentDate(),
            onSuccess = {} , onFailure = {})
        }
       }

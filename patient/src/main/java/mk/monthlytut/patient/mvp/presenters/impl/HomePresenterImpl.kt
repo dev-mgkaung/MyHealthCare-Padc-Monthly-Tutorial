@@ -10,6 +10,7 @@ import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.data.vos.RecentDoctorVO
 import mk.padc.share.data.vos.SpecialitiesVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
@@ -67,7 +68,11 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                 })
     }
 
-    override fun onTap() {}
+    override fun onTapRecentDoctor(doctorVO: RecentDoctorVO) {
+        mView.nextPageToCaseSummaryFromRecentDoctor(doctorVO)
+    }
+
+
 
     override fun onTapStarted(consultationChatId: String, consultationRequestVO: ConsultationRequestVO) {
      mView?.nextPageToChatRoom(consultationChatId , consultationRequestVO)

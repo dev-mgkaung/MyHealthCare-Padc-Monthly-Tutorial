@@ -100,8 +100,8 @@ class ChatRoomActvity : BaseActivity() , ChatView
 
 
         btn_attachfile.setOnClickListener {
-//            Toast.makeText(this, this.resources.getString(R.string.image_upload_service_not_available),
-//                Toast.LENGTH_LONG).show()
+            Toast.makeText(this, this.resources.getString(R.string.image_upload_service_not_available),
+                Toast.LENGTH_LONG).show()
         }
 
         btn_sendMessage.setOnClickListener {

@@ -15,13 +15,16 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
 
 
     companion object {
-        const val PARM_SPECIALITYID = "SPECIALITY ID"
+        const val PARM_SPECIALITYName= "SPECIALITY name"
+        const val PARM_DOCTORVO = "PARM_DOCTORVO"
         fun newIntent(
             context: Context,
-            specialityID: String
+            specialityID: String,
+            doctorVO : String
         ) : Intent {
             val intent = Intent(context, CaseSummaryActivity::class.java)
-            intent.putExtra(PARM_SPECIALITYID, specialityID)
+            intent.putExtra(PARM_SPECIALITYName, specialityID)
+            intent.putExtra(PARM_DOCTORVO, doctorVO)
             return intent
         }
     }
@@ -40,10 +43,11 @@ class CaseSummaryActivity : BaseActivity() , CaseSummaryCallBackListener {
             onBackPressed()
         }
 
-        val speciality = intent.getStringExtra(PARM_SPECIALITYID)
+        val speciality = intent.getStringExtra(PARM_SPECIALITYName)
+        val doctorVO = intent.getStringExtra(PARM_DOCTORVO)
 
 
-        pager?.adapter =    PagerAdapter(supportFragmentManager, SessionManager.patient_email.toString(), speciality.toString(),this)
+        pager?.adapter =    PagerAdapter(supportFragmentManager, SessionManager.patient_email.toString(), speciality.toString(),doctorVO.toString(),this)
         stepper_indicator.setViewPager(pager)
 
 //        stepper_indicator.addOnStepClickListener {

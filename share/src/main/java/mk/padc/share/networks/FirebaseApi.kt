@@ -51,6 +51,7 @@ interface FirebaseApi {
         speciality:String,
         questionAnswerList: List<QuestionAnswerVO>,
         patientVO: PatientVO,
+        doctorVO: DoctorVO,
         dateTime : String,
         onSuccess: () -> Unit, onFailure: (String) -> Unit)
 

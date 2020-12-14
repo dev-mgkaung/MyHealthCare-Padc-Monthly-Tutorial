@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.speciality_confrim_dialog.view.*
 import mk.monthlytut.patient.R
@@ -21,6 +22,7 @@ import mk.monthlytut.patient.mvp.presenters.impl.HomePresenterImpl
 import mk.monthlytut.patient.mvp.views.HomeView
 import mk.padc.share.activities.BaseFragment
 import mk.padc.share.data.vos.ConsultationRequestVO
+import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.RecentDoctorVO
 import mk.padc.share.data.vos.SpecialitiesVO
 import mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
@@ -109,11 +111,35 @@ class HomeFragment : BaseFragment() , HomeView {
             }
 
             view.confirm_btn.setOnClickListener {
-                startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, specialitiesVO.id)})
+                var doctorVO = DoctorVO()
+                var mdoctorVO=  Gson().toJson(doctorVO)
+                startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, specialitiesVO.id.toString(),mdoctorVO.toString())})
                 dialog?.dismiss()
             }
             dialog?.show()
         }
+
+    override fun nextPageToCaseSummaryFromRecentDoctor(recentdoctor: RecentDoctorVO) {
+        var doctorVO = DoctorVO(
+             id = recentdoctor.id.toString(),
+             device_id = recentdoctor.device_id.toString(),
+            name = recentdoctor.name.toString(),
+            email = recentdoctor.email.toString(),
+            phone = recentdoctor.phone.toString(),
+            photo = recentdoctor.photo.toString(),
+            speciality = recentdoctor.speciality.toString(),
+            specialityname = recentdoctor.specialityname.toString(),
+            degree = recentdoctor.degree.toString(),
+            biography = recentdoctor.biography.toString(),
+            dateofBirth =  recentdoctor.dateofBirth.toString(),
+            gender = recentdoctor.gender.toString(),
+            experience = recentdoctor.experience.toString(),
+            address = recentdoctor.address.toString(),
+        )
+        var mdoctorVO=  Gson().toJson(doctorVO)
+        startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, recentdoctor.speciality.toString(),mdoctorVO.toString())})
+
+    }
 
     override fun nextPageToChatRoom(consulation_chat_id: String,consultationRequestVO: ConsultationRequestVO) {
 

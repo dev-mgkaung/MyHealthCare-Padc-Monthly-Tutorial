@@ -11,6 +11,6 @@ class SpecialitiesVO(
     @PrimaryKey
     var id: String= "",
     var name: String ? = "",
-    var photo: String ?= ""
+    var photo: String ?= "",
 )
 

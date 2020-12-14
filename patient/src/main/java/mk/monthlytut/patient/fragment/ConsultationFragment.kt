@@ -55,6 +55,14 @@ class ConsultationFragment : BaseFragment(), ChatHistoryView {
     }
 
     override fun displayChatHistoryList(list: List<ConsultationChatVO>) {
+       if(list.isNotEmpty()) {
+           rc_chat_history.visibility = View.VISIBLE
+           empty_view.visibility = View.GONE
+       }
+        else{
+           rc_chat_history.visibility = View.GONE
+           empty_view.visibility =View.VISIBLE
+       }
         adapter.setNewData(list.toMutableList())
     }
 
