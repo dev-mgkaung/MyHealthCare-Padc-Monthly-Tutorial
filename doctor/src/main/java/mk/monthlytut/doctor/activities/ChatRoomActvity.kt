@@ -18,9 +18,11 @@ import mk.monthlytut.doctor.mvp.presenters.ChatRoomPresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.ChatRoomPresenterImpl
 import mk.monthlytut.doctor.mvp.views.ChatView
 import mk.monthlytut.doctor.utils.SessionManager
+import mk.monthlytut.doctor.views.viewpods.PrescriptionViewPod
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ChatMessageVO
 import mk.padc.share.data.vos.ConsultationChatVO
+import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.utils.ImageUtils
 import mk.padc.share.utils.doctors
 
@@ -36,6 +38,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
     private lateinit var adapter: ChattingAdapter
 
+    private lateinit var mPrescriptionViewPod : PrescriptionViewPod
     private val QUESTION_TEMPLATE_ACTIVITY_REQUEST_CODE = 0
 
     companion object {
@@ -67,13 +70,21 @@ class ChatRoomActvity : BaseActivity() ,ChatView
             questionAnswerAdapter.setNewData(it)
         }
 
-        btn_sendMessage.isEnabled = !consultationChatVO.finish_consultation_status
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
         scrollview.scrollTo(0, scrollview.getChildAt(0).height)
         adapter.setNewData(list.toMutableList())
 
+    }
+
+    override fun displayPrescriptionViewPod(prescription_list: List<PrescriptionVO>) {
+        if(prescription_list.isNotEmpty()) {
+            mprescritpionview.visibility = View.VISIBLE
+            mPrescriptionViewPod = mprescritpionview as PrescriptionViewPod
+            mPrescriptionViewPod.setDelegate(mPresenter)
+            mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString())
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
