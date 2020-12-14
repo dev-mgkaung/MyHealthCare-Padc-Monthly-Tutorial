@@ -35,30 +35,12 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
     private lateinit var mPresenter: ProfilePresenter
 
     private  var bitmap : Bitmap? = null
-    private var speciality_type: String? = null
-    private var speciality_name: String? = null
-
     private var year: String? = null
     private var month: String? = null
     private var day: String? = null
     private var gender: String? = null
-
-    val specialityTypeList = mutableListOf(
-            "cardiology",
-            "dentist",
-            "dermatology",
-            "ent",
-            "gastroenterology",
-            "hepatology",
-            "neurology",
-            "og",
-            "orthopedics",
-            "pediartics",
-            "radiology",
-            "surgery"
-    )
-
     private var bloodType: String? = null
+
     private lateinit var  mProgreessDialog : ProgressDialog
 
     companion object {
@@ -69,7 +51,6 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.edit_profile_activity)
-
         setUpPresenter()
         setUpClickListener()
         setUpItemSelectedListener()
