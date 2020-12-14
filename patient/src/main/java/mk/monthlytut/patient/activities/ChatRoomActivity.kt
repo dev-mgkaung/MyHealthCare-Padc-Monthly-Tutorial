@@ -34,7 +34,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
     private lateinit var mConsultationChatVO: ConsultationChatVO
 
     private lateinit var adapter: ChattingAdapter
-
+    var prescription_show =false
     private lateinit var mPrescriptionViewPod : PrescriptionViewPod
 
     companion object {
@@ -52,6 +52,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
 
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {
         scrollview.scrollTo(0, scrollview.bottom)
+        prescription_show =true
         mConsultationChatVO= consultationChatVO
         patientname.text = consultationChatVO.doctor_info?.name
         ImageUtils().showImage(userprofile, consultationChatVO.doctor_info?.photo.toString(), R.drawable.user)
@@ -78,8 +79,14 @@ class ChatRoomActvity : BaseActivity() , ChatView
          prescritpionview.visibility = View.VISIBLE
            mPrescriptionViewPod = prescritpionview as PrescriptionViewPod
            mPrescriptionViewPod.setDelegate(mPresenter)
-           mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString())
-       }
+
+           if(prescription_show)
+           {
+               mConsultationChatVO?.let {
+                   mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString())
+               }
+           }
+          }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
