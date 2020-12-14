@@ -148,6 +148,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
         var tabcount : String = "1"
         var eatingtime : String =""
         var daystemp : String =""
+        var count =0
 
         val view = layoutInflater.inflate(R.layout.routine_dialog, null)
         val txt_tabcount = view?.findViewById<TextView>(R.id.txt_tabcount)
@@ -169,27 +170,40 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             morningstatus = if(morningstatus) {
                 view.morning.setBackgroundResource(R.drawable.rounded_corner_bluecolor)
                 view.morning.setTextColor(Color.WHITE)
+                count++
                 false
             }else{
                 view.morning.setBackgroundResource(R.drawable.bg_rounded_border_grey)
                 view.morning.setTextColor(Color.BLACK)
+                count--
                 true
             }
 
-
+            if(count > -1)
+            {
+                var result = number * daycount * count
+                txt_tabcount?.text = result.toString()
+                tabcount = result.toString()
+            }
         }
 
         view.afternoon.setOnClickListener {
             afternoonstatus = if(afternoonstatus) {
                 view.afternoon.setBackgroundResource(R.drawable.rounded_corner_bluecolor)
                 view.afternoon.setTextColor(Color.WHITE)
-
+                count++
                 false
             }else{
                 view.afternoon.setBackgroundResource(R.drawable.bg_rounded_border_grey)
                 view.afternoon.setTextColor(Color.BLACK)
-
+                count--
                 true
+            }
+            if(count > -1)
+            {
+                var result = number * daycount * count
+                txt_tabcount?.text = result.toString()
+                tabcount = result.toString()
             }
         }
 
@@ -197,13 +211,19 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             nightstatus = if(nightstatus) {
                 view.night.setBackgroundResource(R.drawable.rounded_corner_bluecolor)
                 view.night.setTextColor(Color.WHITE)
-
-
+                count++
                 false
             }else{
                 view.night.setBackgroundResource(R.drawable.bg_rounded_border_grey)
                 view.night.setTextColor(Color.BLACK)
+                count--
                 true
+            }
+            if(count > -1)
+            {
+                var result = number * daycount * count
+                txt_tabcount?.text = result.toString()
+                tabcount = result.toString()
             }
         }
 
@@ -240,7 +260,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                     daystemp=" Week"
                 }
 
-                    var result = number * daycount
+                    var result = number * daycount * count
                     txt_tabcount?.text = result.toString()
                     tabcount = result.toString()
 
@@ -260,7 +280,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                 if(data.isNotEmpty())
                 {
                      number = data.toInt()
-                    var result = number * daycount
+                    var result = number * daycount * count
                     view.txt_tabcount.text = result.toString()
                     tabcount = result.toString()
                 }
