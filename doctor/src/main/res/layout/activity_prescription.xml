@@ -94,6 +94,8 @@
             android:background="@drawable/rounded_corner_btn_blue"
             android:id="@+id/btn_finish_consultation"
             android:text="@string/finish_consultation"/>
+
+
     </RelativeLayout>
 
 </LinearLayout>

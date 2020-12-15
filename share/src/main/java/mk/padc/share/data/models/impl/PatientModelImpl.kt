@@ -2,8 +2,8 @@ package mk.padc.share.data.models.impl
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.vos.*
@@ -21,7 +21,7 @@ object PatientModelImpl : PatientModel, BaseModel() {
         mApi.sendFcm(notificationVO)
                 .map { it }
                 .subscribeOn(Schedulers.io())
-               // .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     it?.let { data ->
                         onSuccess(it)

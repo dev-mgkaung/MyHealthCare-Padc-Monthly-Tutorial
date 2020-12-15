@@ -85,18 +85,19 @@
         android:background="@drawable/rounded_corner_btn_blue"
         android:id="@+id/btn_prescription"
         android:text="@string/prescription_title"/>
-<!--    <TextView-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="6dp"-->
-<!--        android:layout_marginLeft="6dp"-->
-<!--        android:layout_marginRight="5dp"-->
-<!--        android:padding="2dp"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="12: 31 PM"-->
-<!--        android:drawableLeft="@drawable/ic_baseline_done_all_24"-->
-<!--        android:textColor="@color/grey_800"-->
-<!--        android:textSize="13sp"-->
-<!--        android:id="@+id/ptext_timestamp"-->
-<!--        android:background="@drawable/rounded_corner_btn_white"/>-->
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="5dp"
+        android:padding="2dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ဆွေးနွေးမှု ပြီးဆုံးပါပြီ "
+        android:drawableLeft="@drawable/ic_baseline_done_all_24"
+        android:textColor="@color/grey_800"
+        android:textSize="14sp"
+        android:id="@+id/ptext_timestamp"
+        android:background="@drawable/rounded_corner_btn_white"/>
 </mk.monthlytut.patient.views.viewpods.PrescriptionViewPod>

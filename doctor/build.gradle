@@ -75,8 +75,7 @@ dependencies {
 
     //RxKotlin
     implementation rootProject.ext.libraries.rxkotlin
-  //  implementation rootProject.ext.libraries.rxandroid
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation rootProject.ext.libraries.rxandroid
 
     //OKHttp
     implementation rootProject.ext.libraries.okhttp

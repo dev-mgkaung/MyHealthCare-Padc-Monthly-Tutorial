@@ -61,6 +61,10 @@ dependencies {
     implementation rootProject.ext.libraries.room
     kapt rootProject.ext.libraries.roomcompiler
 
+    //RxKotlin
+    implementation rootProject.ext.libraries.rxkotlin
+    implementation rootProject.ext.libraries.rxandroid
+
     // Architecture Components
     // LiveData
     implementation rootProject.ext.libraries.livedata

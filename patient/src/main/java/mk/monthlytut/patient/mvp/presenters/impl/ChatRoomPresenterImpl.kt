@@ -19,6 +19,7 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
     private val patientModel: PatientModel = PatientModelImpl
 
     override fun onUiReadyConstulation(consultationChatId: String, owner: LifecycleOwner) {
+
         patientModel.getConsultationChat(consultationChatId,onSuccess = {}, onError = {})
 
         patientModel.getConsultationChatFromDB(consultationChatId)

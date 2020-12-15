@@ -75,6 +75,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
     }
 
     override fun displayPrescriptionViewPod(prescription_list: List<PrescriptionVO>) {
+        prescritpionview.visibility = View.GONE
        if(prescription_list.isNotEmpty()) {
          prescritpionview.visibility = View.VISIBLE
            mPrescriptionViewPod = prescritpionview as PrescriptionViewPod

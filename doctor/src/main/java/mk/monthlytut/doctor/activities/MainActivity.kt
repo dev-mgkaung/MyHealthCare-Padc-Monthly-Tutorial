@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.iid.FirebaseInstanceId
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.medical_record_dialog.view.*
@@ -46,7 +47,9 @@ class MainActivity : BaseActivity() ,HomeView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
+            Log.d("fbToken", it.token)
+        }
         drname.text= SessionManager.doctor_name
         ImageUtils().showImage(img_doctor,SessionManager.doctor_photo.toString(),R.drawable.doctor_thumbnail)
 

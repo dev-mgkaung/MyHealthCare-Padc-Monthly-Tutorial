@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -15,93 +16,83 @@ import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.activities.MainActivity
 import mk.padc.share.networks.responses.NotificationVO
 
-class FirebaseMessagingService : FirebaseMessagingService() {
+class FirebaseMessagingService  : FirebaseMessagingService() {
+    companion object{
+        const val FCM_CHANNEL_ID = "FCM_CHANNEL_ID"
+        const val TAG = "FirebaseService"
 
+        const val NOTIFICATION_ID = 1000
+        const val SUMMARY_ID = 1001
+    }
 
+    val notificationVO = NotificationVO()
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        val notificationVO = NotificationVO()
+        super.onMessageReceived(remoteMessage)
 
-        Log.d(TAG, "From: ${remoteMessage.from}")
-
-        // Check if message contains a data payload.
-        if (remoteMessage.data.isNotEmpty()) {
-            Log.d(TAG, "Message data payload: ${remoteMessage.data}")
-
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use WorkManager.
-                scheduleJob()
-                val id = remoteMessage.data["id"]
-                val title = remoteMessage.data["name"]
-                val body = remoteMessage.data["dob"]
-                notificationVO.data?.name = title
-                notificationVO.data?.dob = body
-                sendNotification(title.toString(),body.toString())
-            } else {
-                // Handle message within 10 seconds
-                handleNow()
-            }
+        if(remoteMessage.data.isNotEmpty()){
+            val id = remoteMessage.data["id"]
+            val title = remoteMessage.data["name"]
+            val body = remoteMessage.data["dob"]
+            notificationVO.data?.name = title
+            notificationVO.data?.dob = body
+            createNotification(title,body)
         }
-
-        // Check if message contains a notification payload.
         remoteMessage.notification?.let {
-            Log.d(TAG, "Message Notification Body: ${it.body}")
+            Log.d(TAG,"${it.body} and ${it.title}")
         }
-
-
+    }
+    override fun onDeletedMessages() {
+        super.onDeletedMessages()
     }
 
     override fun onNewToken(token: String) {
-        Log.d(TAG, "Refreshed token: $token")
-
-        sendRegistrationToServer(token)
-    }
-
-    private fun scheduleJob() {
+        super.onNewToken(token)
+        Log.d("TAG","onNewToken Called")
+        Log.d("Token",token)
 
     }
 
+    private fun createNotification(messageTitle:String?,messageBody:String?){
+        val intent = Intent(applicationContext, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra("notification","yes")
+            val bundle = Bundle()
+            bundle.putString("dataOne", messageTitle)
+            bundle.putString("dataTwo", messageBody)
+            this.putExtras(bundle)
+        }
 
-    private fun handleNow() {
-        Log.d(TAG, "Short lived task is done.")
-    }
-
-
-    private fun sendRegistrationToServer(token: String?) {
-
-    }
-
-
-    private fun sendNotification(title: String, messageBody: String) {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT)
+            PendingIntent.FLAG_UPDATE_CURRENT)
 
-        val channelId = "default_notification_channel_id"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-        val notificationBuilder = NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("Message Title")
-                .setContentText(messageBody)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent)
+        val notificationBuilder = NotificationCompat.Builder(this, FCM_CHANNEL_ID)
+            .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+            .setContentTitle(messageTitle)
+            .setContentText(messageBody)
+            .setSound(defaultSoundUri)
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
+            .build()
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId,
-                    "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT)
+            val name = "PADC Myanmar"
+            val descriptionText = "PADC Learning Portal"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(FCM_CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build())
-    }
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-    companion object {
-        private const val TAG = "FirebaseMsgService"
+        notificationManager.apply {
+            notify(NOTIFICATION_ID,notificationBuilder)
+        }
     }
 }
