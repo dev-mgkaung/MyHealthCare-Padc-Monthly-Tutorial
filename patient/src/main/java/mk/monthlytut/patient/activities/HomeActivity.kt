@@ -3,10 +3,12 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import mk.monthlytut.patient.R
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
 
 class HomeActivity : BaseActivity() {
@@ -23,5 +25,7 @@ class HomeActivity : BaseActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
+
+        Log.d("device id", "bearer ${SessionManager.patient_device_id}")
     }
 }

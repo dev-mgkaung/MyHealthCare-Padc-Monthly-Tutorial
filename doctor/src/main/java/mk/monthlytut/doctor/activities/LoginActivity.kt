@@ -1,10 +1,8 @@
 package mk.monthlytut.doctor.activities
 
-
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
@@ -16,6 +14,7 @@ import mk.monthlytut.doctor.mvp.views.LoginView
 import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.DoctorVO
+
 
 class LoginActivity : BaseActivity() , LoginView {
 
@@ -60,7 +59,7 @@ class LoginActivity : BaseActivity() , LoginView {
                     if (!task.isSuccessful) {
                         msg = "Failed"
                     }
-                 //   Log.d(TAG, msg)
+                 //  Log.d(TAG, msg)
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                 }
         this.finish()

@@ -13,11 +13,14 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.activities.MainActivity
+import mk.padc.share.networks.responses.NotificationVO
 
 class FirebaseMessagingService : FirebaseMessagingService() {
 
 
+
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        val notificationVO = NotificationVO()
 
         Log.d(TAG, "From: ${remoteMessage.from}")
 
@@ -28,6 +31,12 @@ class FirebaseMessagingService : FirebaseMessagingService() {
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.
                 scheduleJob()
+                val id = remoteMessage.data["id"]
+                val title = remoteMessage.data["name"]
+                val body = remoteMessage.data["dob"]
+                notificationVO.data?.name = title
+                notificationVO.data?.dob = body
+                sendNotification(title.toString(),body.toString())
             } else {
                 // Handle message within 10 seconds
                 handleNow()
@@ -63,7 +72,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     }
 
 
-    private fun sendNotification(messageBody: String) {
+    private fun sendNotification(title: String, messageBody: String) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -93,7 +102,6 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     }
 
     companion object {
-
         private const val TAG = "FirebaseMsgService"
     }
 }
