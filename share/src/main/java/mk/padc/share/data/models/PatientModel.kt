@@ -4,10 +4,18 @@ import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import mk.padc.share.data.vos.*
 import mk.padc.share.networks.FirebaseApi
+import mk.padc.share.networks.responses.NotiResponse
+import mk.padc.share.networks.responses.NotificationVO
 
 interface PatientModel
 {
     var mFirebaseApi : FirebaseApi
+
+    fun sendBroadcastToDoctor(
+            notificationVO: NotificationVO,
+            onSuccess: (notiResponse: NotiResponse) -> Unit,
+            onFailure: (String) -> Unit
+    )
 
     fun uploadPhotoToFirebaseStorage(image : Bitmap, onSuccess: (photoUrl : String) -> Unit, onFailure: (String) -> Unit)
 

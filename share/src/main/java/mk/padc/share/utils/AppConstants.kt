@@ -1,6 +1,7 @@
 package mk.padc.share.utils
 
-const val APIKEY = "AIzaSyBE0oTlSueBDEutqrXp6PhePbMg4hNYNEM"
+const val BASE_URL ="https://fcm.googleapis.com/"
+const val APIKEY = "AAAAwY1etuk:APA91bFRZvX8dkhb2lZP0T_pwSekEmgvtM-Mh5yKriUMvh6tEmHpYb6XRLarLYHZyf-V6bCi5qN0yScR9p-qMARMnihpOlrwDDqURGEo5yhNqUg3rAn5GN3Wi6BvhvHiBvLs_mWKJB0H"
 const val DATABASE_NAME="MyCare.DB"
 
 // cloud firebase  Root node name

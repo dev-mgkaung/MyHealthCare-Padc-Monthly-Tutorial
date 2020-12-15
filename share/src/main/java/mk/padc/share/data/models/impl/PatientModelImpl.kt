@@ -2,16 +2,34 @@ package mk.padc.share.data.models.impl
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
+import io.reactivex.schedulers.Schedulers
+
 import mk.padc.share.data.models.BaseModel
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.vos.*
 import mk.padc.share.networks.ColudFirebaseDatabaseApiImpl
 import mk.padc.share.networks.FirebaseApi
+import mk.padc.share.networks.responses.NotiResponse
+import mk.padc.share.networks.responses.NotificationVO
 
 
 object PatientModelImpl : PatientModel, BaseModel() {
 
     override var mFirebaseApi: FirebaseApi = ColudFirebaseDatabaseApiImpl
+
+    override fun sendBroadcastToDoctor(notificationVO: NotificationVO, onSuccess: (notiResponse: NotiResponse) -> Unit, onFailure: (String) -> Unit) {
+        mApi.sendFcm(notificationVO)
+                .map { it }
+                .subscribeOn(Schedulers.io())
+               // .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    it?.let { data ->
+                        onSuccess(it)
+                    }
+                }, {
+                    onFailure(it.localizedMessage ?: "ERROR MESSAGE")
+                })
+    }
 
     override fun uploadPhotoToFirebaseStorage(image: Bitmap, onSuccess: (photoUrl : String) -> Unit, onFailure: (String) -> Unit) {
         mFirebaseApi.uploadPhotoToFirebaseStorage(image ,onSuccess,onFailure)
