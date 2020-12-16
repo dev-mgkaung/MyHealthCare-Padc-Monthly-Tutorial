@@ -7,6 +7,7 @@ import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.iid.FirebaseInstanceId
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
@@ -27,5 +28,9 @@ class HomeActivity : BaseActivity() {
         navView.setupWithNavController(navController)
 
         Log.d("device id", "bearer ${SessionManager.patient_device_id}")
+
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
+            Log.d("fbToken", it.token)
+        }
     }
 }

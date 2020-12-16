@@ -29,6 +29,7 @@ class PatientInfoPresenterImpl : PatientInfoPresenter, AbstractBasePresenter<Pat
         doctorModel.getConsultationByConsulationRequestIdFromDB(consultationRequestVO.id)
                 .observe(mOwner, Observer {
                     it?.let{
+                      //  doctorModel.sendNotificationToPatient()
                         mView?.nextPageToChat(it.consultation_id.toString())
                     }
 
