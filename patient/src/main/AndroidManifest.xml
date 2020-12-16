@@ -39,17 +39,6 @@
         <activity android:name=".activities.CaseSummaryActivity" android:parentActivityName=".activities.HomeActivity"
             android:screenOrientation="portrait"/>
 
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_launcher" />
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent" />
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/default_notification_channel_id" />
         <service
             android:name=".util.FirebaseMessagingService"
             android:exported="false">
@@ -58,6 +47,9 @@
             </intent-filter>
         </service>
 
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="" />
 
 
     </application>

@@ -57,6 +57,15 @@ class MedicalCommentAcitivity : BaseActivity() , MedicalRecordView
                 mPresenter.onTapSaveMedicalRecord(mConsultationChatVO ,this)
             }
         }
+
+        tuex_back.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
     }
 
     private fun setUpPresenter() {

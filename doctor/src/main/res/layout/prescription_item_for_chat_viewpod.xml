@@ -97,7 +97,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ဆွေးနွေးမှု ပြီးဆုံးပါပြီ "
-        android:drawableLeft="@drawable/ic_baseline_done_all_24"
         android:textColor="@color/grey_800"
         android:textSize="14sp"
         android:id="@+id/ptext_timestamp"

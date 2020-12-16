@@ -134,7 +134,15 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
     }
 
     override fun finishConsulation() {
-     this.finish()
+        onBackPressed()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        mConsultationChatVO?.let{
+            startActivity(ChatRoomActvity.newIntent(this,consultation_chat_id = mConsultationChatVO.id.toString()))
+        }
+        this.finish()
     }
 
     private fun showMedicineDialog(medicineVO: MedicineVO)
@@ -335,9 +343,6 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
         dialog?.show()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
 
     private fun setUpRecyclerView() {
         medical_recyclerview?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

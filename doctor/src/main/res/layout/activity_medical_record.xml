@@ -18,7 +18,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:id="@+id/tex_back"
+            android:id="@+id/tuex_back"
             android:text="@string/medical_record"/>
     </androidx.cardview.widget.CardView>
     <RelativeLayout

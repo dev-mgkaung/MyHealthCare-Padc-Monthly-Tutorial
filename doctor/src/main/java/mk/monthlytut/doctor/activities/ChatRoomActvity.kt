@@ -40,6 +40,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
     private lateinit var mPrescriptionViewPod : PrescriptionViewPod
     private val QUESTION_TEMPLATE_ACTIVITY_REQUEST_CODE = 0
+    private var finish_consultation_status =false
 
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
@@ -69,7 +70,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         consultationChatVO.case_summary?.let{
             questionAnswerAdapter.setNewData(it)
         }
-
+        finish_consultation_status = consultationChatVO.finish_consultation_status
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
@@ -80,11 +81,15 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
     override fun displayPrescriptionViewPod(prescription_list: List<PrescriptionVO>) {
         if(prescription_list.isNotEmpty()) {
-            mprescritpionview.visibility = View.VISIBLE
+
             mPrescriptionViewPod = mprescritpionview as PrescriptionViewPod
             mPrescriptionViewPod.setDelegate(mPresenter)
 
             mPrescriptionViewPod.setPrescriptionData(prescription_list,SessionManager.doctor_photo.toString())
+
+            if(finish_consultation_status) {
+                mprescritpionview.visibility = View.VISIBLE
+            }else{ mprescritpionview.visibility = View.GONE}
 
           }
     }
@@ -142,19 +147,26 @@ class ChatRoomActvity : BaseActivity() ,ChatView
         }
 
         prescription_btn.setOnClickListener {
-            var data=  Gson().toJson(mConsultationChatVO)
-            mConsultationChatVO?.let {
-                startActivity(PrescriptionActivity.newIntent(this,mConsultationChatVO.doctor_info?.speciality.toString(),data))
+            if(finish_consultation_status){
+                Toast.makeText(this,"ဆွေးနွေးမှု ပြီးဆုံးပါပြီ ",Toast.LENGTH_SHORT).show()
+            }else {
+                var data = Gson().toJson(mConsultationChatVO)
+                mConsultationChatVO?.let {
+                    startActivity(PrescriptionActivity.newIntent(this, mConsultationChatVO.doctor_info?.speciality.toString(), data))
+                }
             }
 
         }
 
         medical_record_btn.setOnClickListener {
-            var data=  Gson().toJson(mConsultationChatVO)
-            mConsultationChatVO?.let {
-                startActivity(MedicalCommentAcitivity.newIntent(this,data))
+            if(finish_consultation_status){
+                Toast.makeText(this,"ဆွေးနွေးမှု ပြီးဆုံးပါပြီ ",Toast.LENGTH_SHORT).show()
+            }else {
+                var data = Gson().toJson(mConsultationChatVO)
+                mConsultationChatVO?.let {
+                    startActivity(MedicalCommentAcitivity.newIntent(this, data))
+                }
             }
-
         }
     }
 
