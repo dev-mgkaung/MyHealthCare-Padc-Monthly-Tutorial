@@ -9,6 +9,7 @@ import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
 import android.widget.RadioButton
@@ -179,7 +180,13 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
     }
 
 
-    override fun displayDocotrData(vo: DoctorVO) {}
+    override fun displayDocotrData(doctorVO: DoctorVO) {
+        ePphone.text =    Editable.Factory.getInstance().newEditable(doctorVO.phone)
+        e_degree.text =    Editable.Factory.getInstance().newEditable(doctorVO.degree)
+        ebiography.text =    Editable.Factory.getInstance().newEditable(doctorVO.biography)
+        eaddress.text =    Editable.Factory.getInstance().newEditable(doctorVO.address)
+        eexperience.text =  Editable.Factory.getInstance().newEditable(doctorVO.experience)
+    }
 
     override fun hideProgressDialog() {
         mProgreessDialog.dismiss()

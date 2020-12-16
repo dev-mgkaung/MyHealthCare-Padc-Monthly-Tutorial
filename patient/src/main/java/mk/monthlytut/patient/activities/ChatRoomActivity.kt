@@ -36,6 +36,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
     private lateinit var adapter: ChattingAdapter
     var prescription_show =false
     private lateinit var mPrescriptionViewPod : PrescriptionViewPod
+    var finish_conservation_status =false
 
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
@@ -66,7 +67,12 @@ class ChatRoomActvity : BaseActivity() , ChatView
         consultationChatVO.case_summary?.let{
             questionAnswerAdapter.setNewData(it)
         }
-
+        finish_conservation_status = consultationChatVO.finish_consultation_status
+        if(finish_conservation_status) {
+            prescritpionview.visibility = View.VISIBLE
+        }else{
+            prescritpionview.visibility = View.GONE
+        }
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
@@ -75,9 +81,9 @@ class ChatRoomActvity : BaseActivity() , ChatView
     }
 
     override fun displayPrescriptionViewPod(prescription_list: List<PrescriptionVO>) {
-        prescritpionview.visibility = View.GONE
+
        if(prescription_list.isNotEmpty()) {
-         prescritpionview.visibility = View.VISIBLE
+
            mPrescriptionViewPod = prescritpionview as PrescriptionViewPod
            mPrescriptionViewPod.setDelegate(mPresenter)
 
@@ -87,6 +93,13 @@ class ChatRoomActvity : BaseActivity() , ChatView
                    mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString())
                }
            }
+
+           if(finish_conservation_status) {
+               prescritpionview.visibility = View.VISIBLE
+           }else{
+               prescritpionview.visibility = View.GONE
+           }
+
           }
     }
 

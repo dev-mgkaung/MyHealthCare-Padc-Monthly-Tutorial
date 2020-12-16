@@ -9,6 +9,7 @@ import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
@@ -115,8 +116,8 @@ class ProfileActivity : BaseActivity()  ,ProfileView {
         }
 
          mProgreessDialog = ProgressDialog(this@ProfileActivity)
-        mProgreessDialog.setTitle("လုပ်ဆောင်နေပါသည်")
-        mProgreessDialog.setMessage("ခဏစောင့်ဆိုင်းပေးပါ.....")
+         mProgreessDialog.setTitle("လုပ်ဆောင်နေပါသည်")
+         mProgreessDialog.setMessage("ခဏစောင့်ဆိုင်းပေးပါ.....")
 
         btn_save.setOnClickListener {
 
@@ -172,7 +173,10 @@ class ProfileActivity : BaseActivity()  ,ProfileView {
     }
 
     override fun displayPatientData(patientVO: PatientVO) {
-
+        ptphone.text =    Editable.Factory.getInstance().newEditable(patientVO.phone)
+        pt_height.text =    Editable.Factory.getInstance().newEditable(patientVO.height)
+        pt_comment.text =    Editable.Factory.getInstance().newEditable(patientVO.comment)
+      //  ptaddress.text =    Editable.Factory.getInstance().newEditable(patientVO.address)
     }
 
     override fun hideProgressDialog() {
