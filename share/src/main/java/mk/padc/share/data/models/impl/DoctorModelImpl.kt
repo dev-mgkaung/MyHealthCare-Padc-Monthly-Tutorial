@@ -28,8 +28,7 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    it?.let { data ->
-                        onSuccess(it)
+                    it?.let { data -> onSuccess(it)
                     }
                 }, {
                     onFailure(it.localizedMessage ?: "ERROR MESSAGE")

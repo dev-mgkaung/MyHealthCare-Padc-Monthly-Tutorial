@@ -20,7 +20,6 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     companion object{
         const val FCM_CHANNEL_ID = "FCM_CHANNEL_ID"
         const val TAG = "FirebaseService"
-
         const val NOTIFICATION_ID = 1000
         const val SUMMARY_ID = 1001
     }
@@ -30,9 +29,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-
         if(remoteMessage.data.isNotEmpty()){
-            val id = remoteMessage.data["id"]
             val title = remoteMessage.data["title"]
             val body = remoteMessage.data["body"]
             notificationVO.data?.title = title

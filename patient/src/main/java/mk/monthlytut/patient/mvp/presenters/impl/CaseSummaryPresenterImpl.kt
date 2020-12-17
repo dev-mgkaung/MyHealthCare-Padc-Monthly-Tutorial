@@ -66,10 +66,7 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
 
       }
 
-
-
     override fun navigateToNextScreen() {}
-
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 

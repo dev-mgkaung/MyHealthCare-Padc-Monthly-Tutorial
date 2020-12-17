@@ -1,6 +1,7 @@
 package mk.monthlytut.doctor.mvp.presenters.impl
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.doctor.mvp.presenters.HomePresenter
@@ -85,8 +86,10 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
         acceptRequest("accept", 2,consultationRequestVO)
         var notiObj=  prepareNotificationForDoctor(mContext,consultationRequestVO.patient_info.device_id, consultationRequestVO.doctor_info)
         doctorModel.sendNotificationToPatient(notiObj,onSuccess = {
-
-        }, onFailure ={})
+            Log.d("onsuccess", it.success.toString())
+        }, onFailure = {
+            Log.d("notionFailure", it)
+        })
     }
 
     override fun onTapMedicalRecord(data: ConsultationChatVO) {

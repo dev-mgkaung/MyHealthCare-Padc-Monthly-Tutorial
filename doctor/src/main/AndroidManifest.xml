@@ -7,7 +7,6 @@
 
     <application
         android:allowBackup="true"
-
         android:name=".DoctorApp"
         android:icon="@drawable/doctor_icl_auncher"
         android:label="@string/app_name"
