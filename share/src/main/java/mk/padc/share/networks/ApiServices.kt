@@ -10,9 +10,11 @@ import retrofit2.http.POST
 
 interface ApiService {
     @Headers(
-            "Content-Type:application/json",
-            "Authorization:$APIKEY"
+        "Content-Type:application/json",
+        "Authorization:$APIKEY"
     )
     @POST("fcm/send")
-    fun sendFcm(@Body notificationVO: NotificationVO): Observable<NotiResponse>
+    fun sendFcm(@Body notificationVO: NotificationVO) : Observable<NotiResponse>
+
+
 }

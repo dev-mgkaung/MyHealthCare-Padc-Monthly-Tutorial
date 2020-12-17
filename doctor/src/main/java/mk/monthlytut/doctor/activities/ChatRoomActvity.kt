@@ -26,7 +26,6 @@ import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.utils.ImageUtils
 import mk.padc.share.utils.doctors
 
-
 class ChatRoomActvity : BaseActivity() ,ChatView
 {
 
@@ -52,7 +51,6 @@ class ChatRoomActvity : BaseActivity() ,ChatView
             intent.putExtra(PARM_CONSULTATION_CHAT_ID, consultation_chat_id)
             return intent
         }
-
     }
 
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {

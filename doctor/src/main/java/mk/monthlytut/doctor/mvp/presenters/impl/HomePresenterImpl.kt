@@ -1,12 +1,12 @@
 package mk.monthlytut.doctor.mvp.presenters.impl
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.doctor.mvp.presenters.HomePresenter
 import mk.monthlytut.doctor.mvp.views.HomeView
 import mk.monthlytut.doctor.utils.SessionManager
+import mk.padc.share.utils.prepareNotificationForDoctor
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
 import mk.padc.share.data.vos.ConsultationChatVO
@@ -19,11 +19,11 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     private val doctorModel : DoctorModel = DoctorModelImpl
     lateinit var mOwner: LifecycleOwner
-
+    lateinit var mContext : Context
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
         mOwner=  owner
-
+        mContext= context
         doctorModel.getBrodcastConsultationRequests(
                 SessionManager.doctor_speciality.toString(),
                 onSuccess = {},
@@ -77,10 +77,16 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     override fun onTapPostponeTime(postponeTime : String, consultationRequestVO: ConsultationRequestVO) {
         acceptRequest("postpone $postponeTime",1, consultationRequestVO)
+        var notiObj=  prepareNotificationForDoctor(mContext,consultationRequestVO.patient_info.device_id, consultationRequestVO.doctor_info)
+        doctorModel.sendNotificationToPatient(notiObj,onSuccess = {}, onFailure ={})
     }
 
     override fun onTapAccept(consultationRequestVO: ConsultationRequestVO) {
         acceptRequest("accept", 2,consultationRequestVO)
+        var notiObj=  prepareNotificationForDoctor(mContext,consultationRequestVO.patient_info.device_id, consultationRequestVO.doctor_info)
+        doctorModel.sendNotificationToPatient(notiObj,onSuccess = {
+
+        }, onFailure ={})
     }
 
     override fun onTapMedicalRecord(data: ConsultationChatVO) {

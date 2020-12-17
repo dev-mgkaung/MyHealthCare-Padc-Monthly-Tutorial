@@ -136,5 +136,5 @@ dependencies {
     implementation rootProject.ext.libraries.firebaseMessageKtx
     implementation rootProject.ext.libraries.firebaseDeepLinkKtx
 
-    implementation 'com.google.firebase:firebase-messaging'
+ //   implementation 'com.google.firebase:firebase-messaging'
 }

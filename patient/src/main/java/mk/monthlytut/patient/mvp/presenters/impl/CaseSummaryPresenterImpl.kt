@@ -12,6 +12,7 @@ import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 import mk.padc.share.utils.DateUtils
+import mk.padc.share.utils.prepareNotificationForPatient
 
 class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<CaseSummaryView>() {
 
@@ -59,7 +60,10 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
        speciality?.let{
            patientModel.sendBroadCastConsultationRequest(speciality,questionAnswerList,patientVO,doctorVO,DateUtils().getCurrentDate(),
            onSuccess = {} , onFailure = {})
+            val notiData = prepareNotificationForPatient(context,"/topics/$speciality}",patientVO)
+            patientModel.sendBroadcastToDoctor( notiData ,onSuccess= {}, onFailure={})
        }
+
       }
 
 

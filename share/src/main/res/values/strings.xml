@@ -118,7 +118,9 @@
     <string name="gender">အမျိုးသား အမျိုးသမီး</string>
     <string name="specialitsname">အထူးကု</string>
 
-
+    <string name="noti_title">အကြောင်းကြားစာ</string>
+    <string name="noti_body_for_patient">မှသင့်ကို လက်ခံလိုက်ပါပီ</string>
+    <string name="noti_body_for_doctor">မှ ဆွေး‌နွေးပေးရန် request လုပ်ပါသည်</string>
 
 
     <string-array name="days">

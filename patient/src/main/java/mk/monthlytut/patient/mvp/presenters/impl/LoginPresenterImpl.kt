@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.presenters.LoginPresenter
 import mk.monthlytut.patient.mvp.views.LoginView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.AuthenticationModel
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.AuthenticationModelImpl
@@ -30,6 +31,11 @@ class LoginPresenterImpl : LoginPresenter, AbstractBasePresenter<LoginView>() {
                 mModel.getPatientByEmailFromDB(email)
                     .observe(owner, Observer { patient ->
                         patient?.let {
+
+                            var mPatient = patient
+                            mPatient.device_id = SessionManager.patient_device_id
+                            mModel.addPatientInfo(mPatient,onSuccess = {}, onError = {})
+
                             mView?.navigateToHomeScreen(patient) }
                     })
 

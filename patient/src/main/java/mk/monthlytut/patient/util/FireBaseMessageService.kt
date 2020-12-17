@@ -30,12 +30,13 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
+
         if(remoteMessage.data.isNotEmpty()){
             val id = remoteMessage.data["id"]
-            val title = remoteMessage.data["name"]
-            val body = remoteMessage.data["dob"]
-            notificationVO.data?.name = title
-            notificationVO.data?.dob = body
+            val title = remoteMessage.data["title"]
+            val body = remoteMessage.data["body"]
+            notificationVO.data?.title = title
+            notificationVO.data?.body = body
             createNotification(title,body)
         }
         remoteMessage.notification?.let {
@@ -50,7 +51,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(token)
         Log.d("TAG","onNewToken Called")
         Log.d("Token",token)
-
+        SessionManager.patient_device_id= token
     }
 
     private fun createNotification(messageTitle:String?,messageBody:String?){

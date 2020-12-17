@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class DataVO(
         @SerializedName("name")
-        var name: String? = "",
-        var dob: String? = "",
+        var title: String? = "",
+        var body: String? = "",
         var id : String? = ""
 )
