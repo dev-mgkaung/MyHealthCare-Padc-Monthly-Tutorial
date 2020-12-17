@@ -11,6 +11,7 @@ import mk.monthlytut.patient.mvp.views.LoginView
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.utils.setSafeOnClickListener
 
 class LoginActivity : BaseActivity() , LoginView {
 
@@ -27,11 +28,11 @@ class LoginActivity : BaseActivity() , LoginView {
         setContentView(R.layout.activity_login)
         setUpPresenter()
         setUpActionListeners()
-
     }
 
     private fun setUpActionListeners() {
-        btnLogin.setOnClickListener {
+
+        btnLogin.setSafeOnClickListener {
             mPresenter.onTapLogin(this,ed_email.text.toString(), ed_password.text.toString(),this)
         }
 
@@ -49,9 +50,8 @@ class LoginActivity : BaseActivity() , LoginView {
 
         SessionManager.login_status =true
         SessionManager.addPatientInfo(patientVO)
-
         startActivity(HomeActivity.newIntent(this))
-        this.finish()
+        finish()
     }
 
     override fun navigateToRegisterScreen() {

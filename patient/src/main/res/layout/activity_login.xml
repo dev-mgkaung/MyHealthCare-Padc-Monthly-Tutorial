@@ -107,7 +107,9 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:padding="6dp"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:id="@+id/btnLogin"
             android:background="@drawable/rounded_corner_btn_blue"
