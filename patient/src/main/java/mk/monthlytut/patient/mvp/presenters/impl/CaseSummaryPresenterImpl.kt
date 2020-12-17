@@ -1,6 +1,7 @@
 package mk.monthlytut.patient.mvp.presenters.impl
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.presenters.CaseSummaryPresenter
@@ -58,10 +59,16 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
     ) {
 
        speciality?.let{
+
            patientModel.sendBroadCastConsultationRequest(speciality,questionAnswerList,patientVO,doctorVO,DateUtils().getCurrentDate(),
            onSuccess = {} , onFailure = {})
-            val notiData = prepareNotificationForPatient(context,"/topics/$speciality}",patientVO)
-            patientModel.sendBroadcastToDoctor( notiData ,onSuccess= {}, onFailure={})
+
+            val notiData = prepareNotificationForPatient(context,"/topics/$speciality",patientVO)
+            patientModel.sendBroadcastToDoctor( notiData ,onSuccess= {
+                Log.d("onsuccess", it.success.toString())
+            }, onFailure = {
+                Log.d("notionFailure", it)
+            })
        }
 
       }

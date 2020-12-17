@@ -22,7 +22,7 @@ fun prepareNotificationForPatient(context: Context,to:String?, data: PatientVO):
 fun prepareNotificationForDoctor(context:Context, to:String?, data: DoctorVO):NotificationVO{
     val notificationVO = NotificationVO()
     val dataVO = DataVO()
-    notificationVO.to = to
+    notificationVO.to = to.toString()
     dataVO.title = context.getString(R.string.noti_title)
     dataVO.body = "${data.name}${context.getString(R.string.noti_body_for_doctor)}"
     dataVO.id = data.id
