@@ -3,6 +3,7 @@ package mk.monthlytut.patient.views.viewpods
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.activity_checkout.view.*
 import kotlinx.android.synthetic.main.prescription_item_for_chat.view.*
 import mk.monthlytut.patient.R
 import mk.padc.share.data.vos.PrescriptionVO
@@ -17,11 +18,10 @@ class PrescriptionViewPod @JvmOverloads constructor(
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        setUpListener()
 
     }
 
-    fun setPrescriptionData(prescription : List<PrescriptionVO>, doctorPhoto: String) {
+    fun setPrescriptionData(prescription : List<PrescriptionVO>, doctorPhoto: String, consulationChatId : String) {
         ImageUtils().showImage(pdoctor_photo,doctorPhoto, R.drawable.user)
         var str : String = ""
         if(prescription.isNotEmpty())
@@ -32,21 +32,20 @@ class PrescriptionViewPod @JvmOverloads constructor(
             }
         }
         txt_medicineList.text = str.toString()
+
+        btn_prescription.setOnClickListener {
+            mDelegate?.onTapPrescriptionViewPod(consulationChatId)
+        }
     }
 
     fun setDelegate(delegate: Delegate) {
         mDelegate = delegate
     }
 
-    private fun setUpListener() {
-        btn_prescription.setOnClickListener {
-            mDelegate?.onTapPrescription()
-        }
 
-    }
 
     interface Delegate {
-        fun onTapPrescription()
+        fun onTapPrescriptionViewPod(chatid: String)
     }
 
 }

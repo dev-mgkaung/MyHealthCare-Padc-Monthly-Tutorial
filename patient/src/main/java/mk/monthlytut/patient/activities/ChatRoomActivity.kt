@@ -90,7 +90,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
            if(prescription_show)
            {
                mConsultationChatVO?.let {
-                   mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString())
+                   mPrescriptionViewPod.setPrescriptionData(prescription_list,mConsultationChatVO.doctor_info?.photo.toString(), mConsultationChatVO.id.toString())
                }
            }
 
@@ -101,6 +101,10 @@ class ChatRoomActvity : BaseActivity() , ChatView
            }
 
           }
+    }
+
+    override fun nextPageToCheckout(chatId: String) {
+        startActivity(CheckoutActivity.newIntent(this,chatId))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

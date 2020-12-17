@@ -67,7 +67,7 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
             patientModel.sendBroadcastToDoctor( notiData ,onSuccess= {
                 Log.d("onsuccess", it.success.toString())
             }, onFailure = {
-                Log.d("notionFailure", it)
+                Log.d("Failure", it)
             })
        }
 

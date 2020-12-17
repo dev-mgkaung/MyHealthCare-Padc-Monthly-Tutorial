@@ -9,6 +9,7 @@ import mk.monthlytut.patient.mvp.views.ChatView
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
 import mk.padc.share.data.vos.ChatMessageVO
+import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.data.vos.SendBy
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 import mk.padc.share.utils.DateUtils
@@ -85,8 +86,13 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
 
     }
 
-    override fun onTapDoctorComment() {
-        TODO("Not yet implemented")
+
+
+    override fun onTapDoctorComment() {}
+
+
+    override fun onTapPrescriptionViewPod(chatid: String) {
+        mView?.nextPageToCheckout(chatid)
     }
 
 
