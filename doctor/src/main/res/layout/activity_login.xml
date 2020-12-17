@@ -108,20 +108,15 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:padding="6dp"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:id="@+id/btnLogin"
             android:background="@drawable/rounded_corner_btn_blue"
             android:text="@string/login"
             android:layout_height="wrap_content"/>
-<!--        <Button-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:padding="6dp"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:background="@drawable/rounded_corner_btn_blue"-->
-<!--            android:text="Sign In With Facebook"-->
-<!--            android:layout_height="wrap_content"/>-->
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

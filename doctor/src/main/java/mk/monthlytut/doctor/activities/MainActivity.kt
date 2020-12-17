@@ -41,7 +41,9 @@ class MainActivity : BaseActivity() ,HomeView {
 
 
     companion object {
-        fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
+        fun newIntent(context: Context) = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

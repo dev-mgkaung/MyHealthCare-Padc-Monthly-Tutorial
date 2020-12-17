@@ -14,6 +14,7 @@ import mk.monthlytut.doctor.mvp.views.LoginView
 import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.DoctorVO
+import mk.padc.share.utils.setSafeOnClickListener
 
 
 class LoginActivity : BaseActivity() , LoginView {
@@ -35,7 +36,7 @@ class LoginActivity : BaseActivity() , LoginView {
     }
 
     private fun setUpActionListeners() {
-        btnLogin.setOnClickListener {
+        btnLogin.setSafeOnClickListener {
             mPresenter.onTapLogin(this,ed_email.text.toString(), ed_password.text.toString(),this)
         }
 
