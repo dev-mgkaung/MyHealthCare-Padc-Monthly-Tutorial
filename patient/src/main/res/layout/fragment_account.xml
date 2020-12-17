@@ -71,7 +71,7 @@
                 android:textSize="14sp"
                 android:text="@string/username"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -90,7 +90,7 @@
                 android:textSize="14sp"
                 android:text="@string/email"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -109,7 +109,7 @@
                 android:textSize="14sp"
                 android:text="@string/phone"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -128,7 +128,7 @@
                 android:textSize="14sp"
                 android:text="@string/patient_dateOfbirth"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -147,7 +147,7 @@
                 android:textSize="14sp"
                 android:text="@string/patient_blood_type"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -166,7 +166,7 @@
                 android:textSize="14sp"
                 android:text="@string/patient_height"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -184,7 +184,7 @@
                 android:textSize="14sp"
                 android:text="@string/patient_reactionalert"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -202,7 +202,7 @@
                 android:textSize="14sp"
                 android:text="@string/address"
                 android:textStyle="bold"
-                android:textColor="@color/green_900"
+                android:textColor="@color/teal_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -221,7 +221,7 @@
                     android:layout_width="wrap_content"
                     android:padding="6dp"
                     android:layout_margin="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/teal_900"
                     android:id="@+id/btnLogout"
                     android:textStyle="bold"
                     android:textSize="13sp"
@@ -233,7 +233,7 @@
                     android:textStyle="bold"
                     android:textSize="13sp"
                     android:layout_margin="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/teal_900"
                     android:layout_alignParentRight="true"
                     android:id="@+id/forgetpassword"
                     android:text="@string/forget_password"
