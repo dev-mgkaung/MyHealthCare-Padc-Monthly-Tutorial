@@ -6,12 +6,15 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:elevation="5dp"
-        android:id="@+id/account_btngroup"
-        android:layout_height="wrap_content">
+        android:layout_height="?android:actionBarSize"
+        android:elevation="3dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:elevation="5dp"
+            android:id="@+id/account_btngroup"
+            android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,11 +34,9 @@
             android:id="@+id/imgedit"
             android:textStyle="bold"
             android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grey_400"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_marginBottom="100dp"
@@ -73,15 +74,14 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
+                android:background="@drawable/bg_rounded_border_grey"
                 android:hint="UserName"
-                android:padding="10dp"
+                android:padding="18dp"
                 android:textSize="12sp"
                 android:editable="false"
-                android:enabled="false"
                 android:id="@+id/etUserName"
                 android:layout_margin="10dp"/>
             <TextView
@@ -93,17 +93,13 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
+                android:background="@drawable/bg_rounded_border_grey"
                 android:hint="Email"
-                android:padding="10dp"
-                android:enabled="false"
-                android:editable="false"
-                android:cursorVisible="false"
+                android:padding="18dp"
                 android:textSize="12sp"
-                android:inputType="textEmailAddress"
                 android:id="@+id/etEmail"
                 android:layout_margin="10dp"/>
 
@@ -116,16 +112,14 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
-                android:hint="Phone number"
-                android:padding="10dp"
+                android:background="@drawable/bg_rounded_border_grey"
+                android:padding="18dp"
                 android:textSize="12sp"
-                android:editable="false"
-                android:enabled="false"
                 android:id="@+id/etphone"
+                android:text="@string/profile_data"
                 android:layout_margin="10dp"/>
 
             <TextView
@@ -137,14 +131,13 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
-                android:padding="10dp"
+                android:background="@drawable/bg_rounded_border_grey"
+                android:padding="18dp"
                 android:textSize="12sp"
-                android:editable="false"
-                android:enabled="false"
+                android:text="@string/profile_data"
                 android:id="@+id/et_dateofbirth"
                 android:layout_margin="10dp"/>
 
@@ -157,14 +150,13 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
-                android:padding="10dp"
+                android:background="@drawable/bg_rounded_border_grey"
+                android:padding="18dp"
+                android:text="@string/profile_data"
                 android:textSize="12sp"
-                android:editable="false"
-                android:enabled="false"
                 android:id="@+id/et_bloodtype"
                 android:layout_margin="10dp"/>
 
@@ -177,14 +169,13 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
-                android:padding="10dp"
+                android:background="@drawable/bg_rounded_border_grey"
+                android:padding="18dp"
+                android:text="@string/profile_data"
                 android:textSize="12sp"
-                android:editable="false"
-                android:enabled="false"
                 android:id="@+id/et_height"
                 android:layout_margin="10dp"/>
             <TextView
@@ -196,14 +187,13 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
-                android:padding="10dp"
+                android:background="@drawable/bg_rounded_border_grey"
                 android:textSize="12sp"
-                android:editable="false"
-                android:enabled="false"
+                android:text="@string/profile_data"
+                android:padding="18dp"
                 android:id="@+id/et_comment"
                 android:layout_margin="10dp"/>
             <TextView
@@ -212,17 +202,16 @@
                 android:textSize="14sp"
                 android:text="@string/address"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/green_900"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_btn_white"
-                android:padding="10dp"
+                android:background="@drawable/bg_rounded_border_grey"
                 android:textSize="12sp"
-                android:editable="false"
-                android:enabled="false"
+                android:text="@string/profile_data"
+                android:padding="18dp"
                 android:id="@+id/et_address"
                 android:layout_margin="10dp"/>
             <RelativeLayout
@@ -234,11 +223,15 @@
                     android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:id="@+id/btnLogout"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
                     android:text="@string/logout"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:padding="6dp"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
                     android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:layout_alignParentRight="true"

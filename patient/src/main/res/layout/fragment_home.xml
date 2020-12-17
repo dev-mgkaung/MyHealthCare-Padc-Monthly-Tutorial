@@ -40,13 +40,14 @@
 
 
     <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:textStyle="bold"
-       android:text="@string/speciality_label"
-        android:textSize="16sp"
-       android:textColor="@color/black"
-       android:layout_marginTop="20dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/speciality_label"
+        android:textSize="18sp"
+        android:layout_marginLeft="4dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
 
       <androidx.recyclerview.widget.RecyclerView
           android:layout_width="match_parent"

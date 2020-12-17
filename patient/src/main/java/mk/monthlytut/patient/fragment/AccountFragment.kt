@@ -84,8 +84,8 @@ class AccountFragment : BaseFragment() ,ProfileView{
          }
 
          view.btn_fill_patient.setOnClickListener {
+                dialog?.dismiss()
                 startActivity(  activity?.applicationContext?.let{ ProfileActivity.newIntent(it)})
-             dialog?.dismiss()
          }
          dialog?.show()
      }
@@ -110,13 +110,46 @@ class AccountFragment : BaseFragment() ,ProfileView{
 
         ImageUtils().showImage(img_profile, patientVO.photo.toString(),R.drawable.user)
 
-        etUserName.text = Editable.Factory.getInstance().newEditable( SessionManager.patient_name)
-        etEmail.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_email)
-        etphone.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_phone)
-        et_dateofbirth.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_dateOfBirth)
-        et_bloodtype.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_bloodType)
-        et_height.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_height)
-        et_comment.text = Editable.Factory.getInstance().newEditable(SessionManager.patient_comment)
+        etUserName.text = SessionManager.patient_name
+        etEmail.text = SessionManager.patient_email
+
+        if(SessionManager.patient_phone.toString().isNotEmpty()) {
+            etphone.text = SessionManager.patient_phone
+        }else
+        {
+            etphone.text = resources.getString(R.string.profile_data)
+        }
+
+
+        if(SessionManager.patient_dateOfBirth.toString().isNotEmpty()) {
+            et_dateofbirth.text = SessionManager.patient_dateOfBirth
+        }else
+        {
+            et_dateofbirth.text = resources.getString(R.string.profile_data)
+        }
+
+        if(SessionManager.patient_bloodType.toString().isNotEmpty()) {
+            et_bloodtype.text = SessionManager.patient_bloodType
+        }else
+        {
+            et_bloodtype.text = resources.getString(R.string.profile_data)
+        }
+
+        if(SessionManager.patient_height.toString().isNotEmpty()) {
+            et_height.text = SessionManager.patient_height
+        }else
+        {
+            et_height.text = resources.getString(R.string.profile_data)
+        }
+
+        if(SessionManager.patient_comment.toString().isNotEmpty()) {
+            et_comment.text = SessionManager.patient_comment
+        }else
+        {
+            et_comment.text = resources.getString(R.string.profile_data)
+        }
+
+
 
     }
 
