@@ -113,7 +113,7 @@
                         android:padding="10dp"
                         android:maxLines="1"
                         android:hint="0"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:textSize="13sp"
                         android:textColor="@color/black"
                         android:id="@+id/ed_height"

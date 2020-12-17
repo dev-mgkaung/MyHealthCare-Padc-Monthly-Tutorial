@@ -70,11 +70,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:text="@string/phone"
+                android:text="ဖုန်းနံပါတ်"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="12dp"/>
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner_btn_white"
-                android:hint="Phone number"
+                android:hint="@string/phone"
                 android:padding="10dp"
                 android:textSize="12sp"
                 android:singleLine="true"
@@ -103,7 +103,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="12dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -171,7 +171,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="12dp"/>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="12dp"/>
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -211,6 +211,7 @@
                 android:padding="10dp"
                 android:textSize="12sp"
                 android:singleLine="true"
+                android:hint="၅ ပေ ၂လက်မ"
                 android:id="@+id/pt_height"
                 android:layout_margin="5dp"/>
             </androidx.cardview.widget.CardView>
@@ -222,7 +223,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="12dp"/>
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -254,7 +255,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="12dp"/>
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -268,6 +269,7 @@
                 android:background="@drawable/rounded_corner_btn_white"
                 android:padding="10dp"
                 android:textSize="12sp"
+                android:hint="သင်၏ လိပ်စာ အပြည့်အစုံ ထည့်သွင်းပေးပါ"
                 android:lines="4"
                 android:inputType="textMultiLine"
                 android:id="@+id/et_address"

@@ -120,14 +120,19 @@ class ProfileActivity : BaseActivity()  ,ProfileView {
          mProgreessDialog.setMessage("ခဏစောင့်ဆိုင်းပေးပါ.....")
 
         btn_save.setOnClickListener {
-
-            mProgreessDialog.show()
-            var dateofbirth ="$day  $month $year"
-            bitmap?.let { it1 -> mPresenter?.updateUserData(it1 ,
-                bloodType.toString()  ,dateofbirth,
-                pt_height.text.toString(),pt_comment.text.toString(),ptphone.text.toString()
-              ) }
-
+         if(ptphone.text.toString().isNotEmpty() && pt_height.text.toString().isNotEmpty() && pt_comment.text.toString().isNotEmpty()) {
+             mProgreessDialog.show()
+             var dateofbirth = "$day  $month $year"
+             bitmap?.let { it1 ->
+                 mPresenter?.updateUserData(it1,
+                         bloodType.toString(), dateofbirth,
+                         pt_height.text.toString(), pt_comment.text.toString(), ptphone.text.toString()
+                 )
+             }
+         }else
+         {
+             Toast.makeText(this,"အချက်အလက် များ ပြည့်စုံစွာ ပြန်လည် ဖြည့်သွင်းပေးပါ",Toast.LENGTH_SHORT).show()
+         }
         }
     }
     fun openGallery() {
