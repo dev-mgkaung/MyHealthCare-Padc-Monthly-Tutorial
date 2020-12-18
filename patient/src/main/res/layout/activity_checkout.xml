@@ -116,12 +116,78 @@
                     android:background="@color/colorPrimary"
                     android:textColor="@color/white"
                     android:text="@string/address"
+                    android:layout_marginBottom="4dp"
                     />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:text="@string/state"
+                            android:textColor="@color/black"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            app:cardElevation="3dp"
+                            android:layout_margin="6dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardBackgroundColor="@color/white">
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:padding="5dp"
+                                android:spinnerMode="dialog"
+                                android:entries="@array/state"
+                                android:id="@+id/state_spinner"/>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:text="@string/township"
+                            android:textColor="@color/black"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            app:cardElevation="3dp"
+                            android:layout_margin="6dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardBackgroundColor="@color/white">
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:padding="5dp"
+                                android:spinnerMode="dialog"
+                                android:entries="@array/yangon"
+                                android:id="@+id/township_spinner"/>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </LinearLayout>
                 <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
-                    android:text="@string/choose_address"
+                    android:text="@string/full_address"
                     android:textSize="13sp"
                     android:layout_marginTop="3dp"
                     android:textColor="@color/black"/>
@@ -140,7 +206,10 @@
                     android:gravity="left"
                     android:textColor="@color/black"
                     android:id="@+id/ed_comment"
-                    android:layout_margin="6dp"/>
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="18dp"
+                    />
             </LinearLayout>
             </androidx.cardview.widget.CardView>
 
