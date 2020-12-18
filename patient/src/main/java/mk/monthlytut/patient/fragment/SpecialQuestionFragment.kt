@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -82,24 +83,7 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     private fun setUpActionListener() {
 
         btn_confirm.setOnClickListener {
-            val gson = Gson()
-            var addressList = gson.fromJson(SessionManager.patient_address, Array<String>::class.java).toMutableList()
-            listener.onSpecitalQuestionCallBack()
-            var patientVO = PatientVO(id = SessionManager.patient_id.toString(),
-                device_id = SessionManager.patient_device_id,
-                name = SessionManager.patient_name.toString(),
-                email = SessionManager.patient_email.toString(),
-                photo = SessionManager.patient_photo,
-                dateOfBirth = SessionManager.patient_dateOfBirth,
-                blood_type = SessionManager.patient_bloodType.toString(),
-                blood_pressure = SessionManager.patient_bloodPressure,
-                weight = SessionManager.patient_weight,
-                height = SessionManager.patient_height,
-                comment = SessionManager.patient_comment,
-                perment_address = SessionManager.patient_perment_address.toString(),
-                address = addressList as ArrayList<String>
-            )
-            showCaseSummaryConfirmDialog(patientVO)
+            showCaseSummaryConfirmDialog(SessionManager.getPatientInfo())
          }
     }
 
@@ -158,11 +142,14 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
 
         rc_specialquestion.adapter = adapter
         dialog?.apply {
-            setCancelable(false)
+            setCancelable(true)
             setContentView(view)
             window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
-
+        dialog?.window?.setLayout(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT
+        )
 
         view.cs_btn_confirm.setOnClickListener {
 

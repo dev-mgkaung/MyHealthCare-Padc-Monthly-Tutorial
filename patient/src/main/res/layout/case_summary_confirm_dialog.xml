@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView app:cardElevation="5dp"
-    android:layout_margin="15dp"
+    android:layout_margin="5dp"
     app:cardCornerRadius="20dp"
     android:orientation="vertical"
     android:padding="5dp"
@@ -8,15 +8,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical">
         <androidx.core.widget.NestedScrollView
             android:layout_marginTop="10dp"
-            android:layout_width="400dp"
+            android:layout_width="match_parent"
             android:fillViewport="true"
-            android:layout_height="700dp">
+            android:layout_marginBottom="60dp"
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -229,19 +231,18 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
         <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:paddingLeft="22dp"
-            android:paddingRight="22dp"
-            android:paddingTop="5dp"
+            android:layout_width="180dp"
+            android:layout_margin="3dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
             android:textSize="12sp"
-            android:paddingBottom="5dp"
             android:textColor="@color/white"
-            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@drawable/rounded_corner_btn_blue"
             android:id="@+id/cs_btn_confirm"
             android:text="@string/start_consultation_btn"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
