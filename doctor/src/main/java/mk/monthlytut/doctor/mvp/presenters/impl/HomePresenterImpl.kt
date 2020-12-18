@@ -26,6 +26,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
         mOwner=  owner
         mContext= context
+
         doctorModel.getBrodcastConsultationRequests(
                 SessionManager.doctor_speciality.toString(),
                 onSuccess = {},
@@ -59,18 +60,15 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     override fun onTapNext(consultationRequestVO: ConsultationRequestVO) {
         doctorModel.deleteConsultationRequestById(consultationRequestVO.id)
-                .observe(mOwner, Observer { consultationRequest ->
-                    consultationRequest?.let {
-                        mView?.displayConsultationRequests(consultationRequest) }
-                })
+                .observe(mOwner, Observer {})
+
     }
 
     override fun onTapSkip(consultationRequestVO: ConsultationRequestVO) {
         doctorModel.deleteConsultationRequestById(consultationRequestVO.id)
-                .observe(mOwner, Observer { consultationRequest ->
-                    consultationRequest?.let {
-                        mView?.displayConsultationRequests(consultationRequest) }
+                .observe(mOwner, Observer {
                 })
+
     }
 
     override fun onTapPostpone(consultationRequestVO: ConsultationRequestVO) {
