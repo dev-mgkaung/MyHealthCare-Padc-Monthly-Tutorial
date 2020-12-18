@@ -25,6 +25,7 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
         patientModel.getPatientByEmailFromDB(SessionManager.patient_email.toString())
             .observe(owner, Observer { patient ->
                 patient?.let {
+                    SessionManager.addPatientInfo(patient)
                     mView?.displayPatientData(patient) }
             })
     }
@@ -36,7 +37,8 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
         dateofbirth: String,
         height: String,
         comment: String,
-        phone: String
+        phone: String,
+        address: String
     ) {
 
         patientModel.uploadPhotoToFirebaseStorage(bitmap,
@@ -59,7 +61,7 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
                     height = height,
                     comment = comment,
                     phone = phone,
-                        perment_address = SessionManager.patient_perment_address.toString(),
+                        perment_address = address,
                         address = addressList as ArrayList<String>
                 )
                 patientModel.addPatientInfo(patientVo,onSuccess = {}, onError = {})

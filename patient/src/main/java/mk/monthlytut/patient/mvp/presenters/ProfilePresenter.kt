@@ -12,5 +12,5 @@ interface ProfilePresenter : BasePresenter<ProfileView> {
     fun onUiReadyForAccountFragment(context : Context, owner: LifecycleOwner)
 
     fun updateUserData(bitmap: Bitmap,
-    blood_type : String,dateofbirth : String, height : String, comment: String, phone: String)
+    blood_type : String,dateofbirth : String, height : String, comment: String, phone: String,address : String)
 }

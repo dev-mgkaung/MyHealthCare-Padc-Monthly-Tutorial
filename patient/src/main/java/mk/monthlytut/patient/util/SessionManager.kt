@@ -161,7 +161,7 @@ object SessionManager {
         patient_weight = patientVO.weight
         patient_bloodPressure = patientVO.blood_pressure
         patient_phone = patientVO.phone
-        patient_address =patientVO.perment_address
+        patient_perment_address =patientVO.perment_address
         patient_address =  Gson().toJson(patientVO.address)
 
     }

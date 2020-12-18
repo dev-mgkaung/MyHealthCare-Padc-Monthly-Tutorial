@@ -120,13 +120,14 @@ class ProfileActivity : BaseActivity()  ,ProfileView {
          mProgreessDialog.setMessage("ခဏစောင့်ဆိုင်းပေးပါ.....")
 
         btn_save.setOnClickListener {
-         if(ptphone.text.toString().isNotEmpty() && pt_height.text.toString().isNotEmpty() && pt_comment.text.toString().isNotEmpty()) {
+         if(ptphone.text.toString().isNotEmpty() && pt_height.text.toString().isNotEmpty() && pt_comment.text.toString().isNotEmpty()&& et_address.text.toString().isNotEmpty()) {
              mProgreessDialog.show()
              var dateofbirth = "$day  $month $year"
              bitmap?.let { it1 ->
                  mPresenter?.updateUserData(it1,
                          bloodType.toString(), dateofbirth,
-                         pt_height.text.toString(), pt_comment.text.toString(), ptphone.text.toString()
+                         pt_height.text.toString(), pt_comment.text.toString(), ptphone.text.toString(),
+                         et_address.text.toString()
                  )
              }
          }else

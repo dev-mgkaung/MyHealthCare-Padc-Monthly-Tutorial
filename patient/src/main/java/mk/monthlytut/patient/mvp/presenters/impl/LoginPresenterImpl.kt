@@ -35,7 +35,7 @@ class LoginPresenterImpl : LoginPresenter, AbstractBasePresenter<LoginView>() {
                             var mPatient = patient
                             mPatient.device_id = SessionManager.patient_device_id
                             mModel.addPatientInfo(mPatient,onSuccess = {}, onError = {})
-
+                            SessionManager.addPatientInfo(it)
                             mView?.navigateToHomeScreen(patient) }
                     })
 

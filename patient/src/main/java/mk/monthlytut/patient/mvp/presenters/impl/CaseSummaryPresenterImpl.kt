@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.presenters.CaseSummaryPresenter
 import mk.monthlytut.patient.mvp.views.CaseSummaryView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
 import mk.padc.share.data.vos.DoctorVO
@@ -40,6 +41,7 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
     ) {
        patientModel.getPatientByEmailFromDB(email)
            .observe(owner, Observer { patient ->
+               SessionManager.addPatientInfo(patient)
                if(patient.blood_type.isBlank())
                {
                    mView?.displayOnceGeneralQuestion()

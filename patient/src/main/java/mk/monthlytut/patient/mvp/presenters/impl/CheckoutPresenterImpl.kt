@@ -36,6 +36,7 @@ class CheckoutPresenterImpl : CheckoutPresenter, AbstractBasePresenter<CheckOutV
         patientModel.getPatientByEmailFromDB(SessionManager.patient_email.toString())
                 .observe(owner, Observer {
                     it?.let{
+                        SessionManager.addPatientInfo(it)
                         mView?.displayShippingAddress(it.address)
                     }
                 })
@@ -64,6 +65,7 @@ class CheckoutPresenterImpl : CheckoutPresenter, AbstractBasePresenter<CheckOutV
         patientModel.getPatientByEmailFromDB(SessionManager.patient_email.toString())
                 .observe(mOwner, Observer {
                     it?.let{
+                        SessionManager.addPatientInfo(it)
                         mView?.displayShippingAddress(it.address)
                     }
                 })
