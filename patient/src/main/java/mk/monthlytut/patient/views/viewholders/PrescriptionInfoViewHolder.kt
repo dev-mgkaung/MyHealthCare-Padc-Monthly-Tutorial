@@ -14,7 +14,7 @@ class PrescriptionInfoViewHolder(itemView: View, private val mDelegate: Prescrip
 
         data?.let {
             itemView.medicine_name.text = data.medicine
-            itemView.txt_amount.text  = data.routineVO.amount +" mg"
+            itemView.txt_amount.text  = data.routineVO.amount +" Kyats"
             itemView.txt_quality.text = data.routineVO.quantity + " Tablet"
             itemView.txt_time.text = data.routineVO.days
             var times = data.routineVO.times.toString()

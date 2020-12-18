@@ -240,7 +240,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             view.before_eating.setTextColor(Color.WHITE)
             view.after_eating.setBackgroundResource(R.drawable.bg_rounded_border_grey)
             view.after_eating.setTextColor(Color.BLACK)
-            eatingtime= "အစားမစားမှီသောက်ရန်"
+            eatingtime = "အစားမစားမှီသောက်ရန်"
         }
 
         view.after_eating.setOnClickListener {
