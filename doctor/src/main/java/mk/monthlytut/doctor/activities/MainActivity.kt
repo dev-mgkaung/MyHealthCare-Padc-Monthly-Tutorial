@@ -16,7 +16,6 @@ import com.google.firebase.messaging.ktx.messaging
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.medical_record_dialog.view.*
-import kotlinx.android.synthetic.main.postpone_dialog.view.*
 import kotlinx.android.synthetic.main.postpone_dialog.view.confirm
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.ConsultationAdapter
@@ -31,7 +30,6 @@ import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.ConsultedPatientVO
-import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.utils.ImageUtils
 
 class MainActivity : BaseActivity() ,HomeView {
@@ -172,7 +170,6 @@ class MainActivity : BaseActivity() ,HomeView {
 
             val dialog: PrescriptionDialog = PrescriptionDialog.newInstance(consultation_id,patient_name,start_conservation_date)
             dialog.show(supportFragmentManager, "")
-
     }
 
     override fun displayMedicalCommentDialog(consultationChatVO: ConsultationChatVO) {

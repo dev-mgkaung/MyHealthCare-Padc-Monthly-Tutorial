@@ -38,7 +38,20 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                       val data=  consultationRequest.filter {
                           it.status.toString() == "none"
                       }
-                        mView?.displayConsultationRequests(data) }
+                        val filterdata : ArrayList<ConsultationRequestVO> = arrayListOf()
+                       for(item in data)
+                       {
+                           if(item.doctor_info.id.isNotEmpty())
+                           {
+                               if(item.doctor_info.id == SessionManager.doctor_id)
+                               {
+                                   filterdata.add(item)
+                               }
+                           }else{
+                               filterdata.add(item)
+                           }
+                       }
+                        mView?.displayConsultationRequests(filterdata) }
                 })
 
         doctorModel.getConsultationByDoctorId(SessionManager.doctor_id.toString(), onSuccess = {}, onError = {})
