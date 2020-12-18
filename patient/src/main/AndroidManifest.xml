@@ -9,9 +9,9 @@
     <application
         android:name=".PatientApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/patient_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher"
+        android:roundIcon="@mipmap/patient_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCare.NoActionBar">
 

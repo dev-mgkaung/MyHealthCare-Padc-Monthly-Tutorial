@@ -8,9 +8,9 @@
     <application
         android:allowBackup="true"
         android:name=".DoctorApp"
-        android:icon="@drawable/doctor_icl_auncher"
+        android:icon="@mipmap/doctor_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/doctor_icl_auncher"
+        android:roundIcon="@mipmap/doctor_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCare.NoActionBar">
 
