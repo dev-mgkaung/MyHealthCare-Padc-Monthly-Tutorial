@@ -76,12 +76,12 @@ class CheckOutDialog : BaseDialogFragment()  {
         view.total_amounts.text =  arguments?.getString(KEY_TOTAL)
         view.subtotal.text =  arguments?.getString(KEY_TOTAL)
 
-        view.prescription_rct?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        view.prescription_rcy?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         mPresenter = getPresenter<CheckoutPresenterImpl, CheckOutView>()
         var adapter = CheckoutAdpater(mPresenter )
-        view.prescription_rct?.adapter = adapter
-        view.prescription_rct?.setHasFixedSize(false)
+        view.prescription_rcy?.adapter = adapter
+        view.prescription_rcy?.setHasFixedSize(false)
 
         var data = arguments?.getString(KEY_prescripitonList)
         val gson = Gson()
