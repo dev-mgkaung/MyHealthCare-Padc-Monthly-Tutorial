@@ -141,7 +141,7 @@
                             android:layout_width="match_parent"
                             app:cardElevation="3dp"
                             android:layout_margin="6dp"
-                            app:cardCornerRadius="10dp"
+                            app:cardCornerRadius="5dp"
                             app:cardBackgroundColor="@color/white">
                             <Spinner
                                 android:layout_width="match_parent"
@@ -206,6 +206,7 @@
                     android:gravity="left"
                     android:textColor="@color/black"
                     android:id="@+id/ed_comment"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="6dp"
                     android:layout_marginBottom="18dp"
