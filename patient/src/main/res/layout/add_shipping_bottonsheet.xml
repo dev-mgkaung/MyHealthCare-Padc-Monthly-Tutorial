@@ -2,13 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@null"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
-        android:layout_margin="10dp"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="15dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="1dp"
         android:id="@+id/new_addresscard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,19 +24,7 @@
                 android:layout_gravity="right"
                 android:layout_margin="8dp"
                 android:src="@drawable/android_cancel"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:gravity="left"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/white"
-                android:text="@string/address"
-                android:layout_marginBottom="4dp"
-                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +119,7 @@
                 android:layout_marginBottom="18dp"
                 />
             <mk.zawuni.zawgyiuni_detect.mmfont.components.MMButton
-                android:layout_width="100dp"
+                android:layout_width="200dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
                 android:textSize="12sp"

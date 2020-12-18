@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -127,6 +128,7 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         val view = layoutInflater.inflate(R.layout.add_shipping_bottonsheet, null)
         val dialog = BottomSheetDialog(this)
         dialog.setContentView(view)
+
         view.state_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                     parent: AdapterView<*>,
@@ -174,8 +176,7 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
 
 
     override fun selectedShippingAddress(mAddress: String,mpreviousPosition : Int) {
-        Toast.makeText(this, mAddress,Toast.LENGTH_SHORT).show()
-        Log.d("previous",previousPosition.toString())
+
         address= mAddress
         btn_order.visibility = View.VISIBLE
         previousPosition = mpreviousPosition

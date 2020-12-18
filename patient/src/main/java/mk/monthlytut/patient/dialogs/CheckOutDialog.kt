@@ -65,7 +65,7 @@ class CheckOutDialog : BaseDialogFragment()  {
                 WindowManager.LayoutParams.MATCH_PARENT
         )
         dialog?.apply {
-            setCancelable(false)
+            setCancelable(true)
             window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
     }
