@@ -59,7 +59,12 @@ class RegisterActivity : BaseActivity() , RegisterView {
     }
 
     override fun navigateToToLoginScreen() {
-        startActivity(LoginActivity.newIntent(this))
+        onBackPressed()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
         this.finish()
+        startActivity(LoginActivity.newIntent(this))
     }
 }

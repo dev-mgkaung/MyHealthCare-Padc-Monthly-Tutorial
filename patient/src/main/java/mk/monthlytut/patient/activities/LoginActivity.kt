@@ -50,11 +50,13 @@ class LoginActivity : BaseActivity() , LoginView {
 
         SessionManager.login_status =true
         SessionManager.addPatientInfo(patientVO)
+        this.finish()
         startActivity(HomeActivity.newIntent(this))
-        finish()
+
     }
 
     override fun navigateToRegisterScreen() {
+        this.finish()
         startActivity(RegisterActivity.newIntent(this))
     }
 

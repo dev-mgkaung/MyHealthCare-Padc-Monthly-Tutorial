@@ -150,7 +150,7 @@ class AccountFragment : BaseFragment() ,ProfileView{
         }
 
         if(SessionManager.patient_address.toString().isNotEmpty()) {
-            ets_address.text = SessionManager.patient_address
+            ets_address.text = SessionManager.patient_perment_address
         }else
         {
             ets_address.text = resources.getString(R.string.profile_data)

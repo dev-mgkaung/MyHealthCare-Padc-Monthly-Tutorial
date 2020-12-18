@@ -132,10 +132,10 @@ class RegisterActivity : BaseActivity() , RegisterView {
                 etPphone.text.toString(),
                 ed_degree.text.toString(),
                 ed_biography.text.toString(),
-                    ed_address.text.toString(),
-                    ed_experience.text.toString(),
-                    day+ " "+month+" "+year,
-                    gender.toString()
+                ed_address.text.toString(),
+                ed_experience.text.toString(),
+                 day+ " "+month+" "+year,
+                gender.toString()
             )
         }
 
@@ -150,7 +150,12 @@ class RegisterActivity : BaseActivity() , RegisterView {
     }
 
     override fun navigateToToLoginScreen() {
-        startActivity(LoginActivity.newIntent(this))
+        onBackPressed()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
         this.finish()
+        startActivity(LoginActivity.newIntent(this))
     }
 }
