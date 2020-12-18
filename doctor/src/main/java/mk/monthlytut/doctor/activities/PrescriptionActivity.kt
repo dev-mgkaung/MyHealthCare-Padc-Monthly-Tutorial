@@ -298,18 +298,18 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
 
         view.confirm.setOnClickListener {
             // prescription list add
-            var days : String =""
-            if(morningstatus)
+            var mdays : String =""
+            if(!morningstatus )
             {
-                days += " မနက် ၊ "
+                mdays += " မနက် ၊ "
             }
-            if(afternoonstatus)
+            if(!afternoonstatus)
             {
-                days += "နေ့  ၊  "
+                mdays += "နေ့  ၊  "
             }
-            if(nightstatus)
+            if(!nightstatus)
             {
-                days += "ည"
+                mdays += "ည"
             }
 
             var medicaltime : String =""
@@ -320,7 +320,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                     days = view.ed_day.text.toString() + daystemp,
                     comment = pt_comment?.text.toString(),
                     quantity = tabcount,
-                    times = days,
+                    times = mdays,
                     repeat = eatingtime
 
             )
