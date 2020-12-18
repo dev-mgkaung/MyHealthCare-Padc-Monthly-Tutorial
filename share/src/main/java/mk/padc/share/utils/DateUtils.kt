@@ -1,5 +1,6 @@
 package mk.padc.share.utils
 
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -13,8 +14,11 @@ class DateUtils
     }
 
     fun getCurrentDate() : String{
-        val simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
-        return simpleDateFormat.format(Date())
+//        val simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
+//        return simpleDateFormat.format(Date())
+        val calendar = Calendar.getInstance()
+        var currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.time)
+        return currentDate
     }
 
     fun getCurrentDateTime() : String{
