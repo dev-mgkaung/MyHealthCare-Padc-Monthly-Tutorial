@@ -661,6 +661,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     override fun getConsulationChatForDoctor(doctorId: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit) {
         db.collection("$consultation_chat")
                 .whereEqualTo("doctor_id",doctorId)
+                .orderBy("start_consultation_date")
                 .addSnapshotListener { value, error ->
                     error?.let {
                         onFailure(it.message ?: "Please check connection")
@@ -685,6 +686,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     {
         db.collection("$consultation_chat")
                 .whereEqualTo("id",id)
+                .orderBy("start_consultation_date")
                 .addSnapshotListener { value, error ->
                     error?.let {
                         onFailure(it.message ?: "Please check connection")

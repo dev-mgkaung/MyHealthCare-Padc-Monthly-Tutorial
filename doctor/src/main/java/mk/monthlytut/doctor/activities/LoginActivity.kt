@@ -54,14 +54,12 @@ class LoginActivity : BaseActivity() , LoginView {
 
         SessionManager.login_status =true
         SessionManager.addDoctorInfo(doctorVO)
-        Firebase.messaging.subscribeToTopic("cardiology")
+        Firebase.messaging.subscribeToTopic(SessionManager.doctor_speciality.toString())
                 .addOnCompleteListener { task ->
                     var msg = "Subscribed"
                     if (!task.isSuccessful) {
                         msg = "Failed"
                     }
-                 //  Log.d(TAG, msg)
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                 }
         this.finish()
         startActivity(MainActivity.newIntent(this))
