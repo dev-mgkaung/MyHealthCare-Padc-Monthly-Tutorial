@@ -79,13 +79,13 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     override fun onTapPostponeTime(postponeTime : String, consultationRequestVO: ConsultationRequestVO) {
         acceptRequest("postpone $postponeTime",1, consultationRequestVO)
-        var notiObj=  prepareNotification(mContext,consultationRequestVO.patient_info.device_id,consultationRequestVO.doctor_info.name.toString(),consultationRequestVO.doctor_info.id.toString(),postponeTime)
+        var notiObj=  prepareNotification(mContext,consultationRequestVO.patient_info.device_id,SessionManager.doctor_name.toString(),SessionManager.doctor_id.toString(),postponeTime)
         doctorModel.sendNotificationToPatient(notiObj,onSuccess = {}, onFailure ={})
     }
 
     override fun onTapAccept(consultationRequestVO: ConsultationRequestVO) {
         acceptRequest("accept", 2,consultationRequestVO)
-        var notiObj=  prepareNotificationForDoctor(mContext,consultationRequestVO.patient_info.device_id, consultationRequestVO.doctor_info)
+        var notiObj=  prepareNotificationForDoctor(mContext,consultationRequestVO.patient_info.device_id, SessionManager.doctor_name.toString(),SessionManager.doctor_id.toString())
         doctorModel.sendNotificationToPatient(notiObj,onSuccess = {
             Log.d("onsuccess", it.success.toString())
         }, onFailure = {

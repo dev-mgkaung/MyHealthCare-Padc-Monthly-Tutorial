@@ -19,13 +19,13 @@ fun prepareNotificationForPatient(context: Context,to:String?, data: PatientVO):
     return notificationVO
 }
 
-fun prepareNotificationForDoctor(context:Context, to:String?, data: DoctorVO):NotificationVO{
+fun prepareNotificationForDoctor(context:Context, to:String?, doctorName : String, doctorId : String):NotificationVO{
     val notificationVO = NotificationVO()
     val dataVO = DataVO()
     notificationVO.to = to.toString()
     dataVO.title = context.getString(R.string.noti_title)
-    dataVO.body = "${data.name} မှ သင့်အား လက်ခံလိုက်ပါ ပြီ ယခုပင်ဆွေးနွေးမှုစတင်နိုင်ပါပြီ"
-    dataVO.id = data.id
+    dataVO.body = "$doctorName မှ သင့်အား လက်ခံလိုက်ပါ ပြီ ယခုပင်ဆွေးနွေးမှုစတင်နိုင်ပါပြီ"
+    dataVO.id = doctorId
     notificationVO.data = dataVO
     return notificationVO
 }
