@@ -137,7 +137,14 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     }
 
     override fun displayShippingAddress(list: List<String>) {
-        TODO("Not yet implemented")
+        if(list.isNotEmpty())
+        {
+            new_addresscard.visibility= View.GONE
+            list_addresscard.visibility = View.VISIBLE
+        }else{
+            new_addresscard.visibility= View.VISIBLE
+            list_addresscard.visibility = View.GONE
+        }
     }
 
     override fun displayConfirmDialog(list: List<PrescriptionVO>, address: String, total_price: String) {

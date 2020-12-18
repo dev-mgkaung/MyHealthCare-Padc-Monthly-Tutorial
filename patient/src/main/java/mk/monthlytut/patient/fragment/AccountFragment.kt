@@ -149,6 +149,13 @@ class AccountFragment : BaseFragment() ,ProfileView{
             et_comment.text = resources.getString(R.string.profile_data)
         }
 
+        if(SessionManager.patient_address.toString().isNotEmpty()) {
+            ets_address.text = SessionManager.patient_address
+        }else
+        {
+            ets_address.text = resources.getString(R.string.profile_data)
+        }
+
 
 
     }

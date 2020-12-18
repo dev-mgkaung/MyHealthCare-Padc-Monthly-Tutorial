@@ -181,7 +181,7 @@ class ProfileActivity : BaseActivity()  ,ProfileView {
         ptphone.text =    Editable.Factory.getInstance().newEditable(patientVO.phone)
         pt_height.text =    Editable.Factory.getInstance().newEditable(patientVO.height)
         pt_comment.text =    Editable.Factory.getInstance().newEditable(patientVO.comment)
-      //  ptaddress.text =    Editable.Factory.getInstance().newEditable(patientVO.address)
+        et_address.text =    Editable.Factory.getInstance().newEditable(patientVO.perment_address)
     }
 
     override fun hideProgressDialog() {

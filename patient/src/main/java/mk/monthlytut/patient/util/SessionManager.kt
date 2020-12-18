@@ -56,10 +56,10 @@ object SessionManager {
 
     var patient_address : String?
 
-        get() = preferences.getString(sharePreferencePatientPhone, "")
+        get() = preferences.getString(sharePreferencePatientAddress, "")
 
         set(value) = preferences.edit {
-            it.putString(sharePreferencePatientPhone, value)
+            it.putString(sharePreferencePatientAddress, value)
         }
 
     var patient_id: String?
@@ -134,6 +134,8 @@ object SessionManager {
             it.putString(sharePreferencePatientPhoto, value)
         }
 
+
+
     fun addPatientInfo( patientVO: PatientVO)
     {
         patient_name = patientVO.name
@@ -148,12 +150,7 @@ object SessionManager {
         patient_weight = patientVO.weight
         patient_bloodPressure = patientVO.blood_pressure
         patient_phone = patientVO.phone
-        if(patientVO.address.size>0) {
-            for(item in patientVO.address) {
-                if(item.default_address ==true) {
-                    patient_address = item.address
-                }
-            }
-        }
+        patient_address =patientVO.perment_address
+
     }
 }

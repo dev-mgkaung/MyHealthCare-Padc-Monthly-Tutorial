@@ -212,7 +212,7 @@
                 android:textSize="12sp"
                 android:text="@string/profile_data"
                 android:padding="18dp"
-                android:id="@+id/et_address"
+                android:id="@+id/ets_address"
                 android:layout_margin="10dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"

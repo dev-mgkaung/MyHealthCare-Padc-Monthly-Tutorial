@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.patient.mvp.presenters.CheckoutPresenter
 import mk.monthlytut.patient.mvp.views.CheckOutView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
 import mk.padc.share.data.vos.DoctorVO
@@ -27,6 +28,15 @@ class CheckoutPresenterImpl : CheckoutPresenter, AbstractBasePresenter<CheckOutV
                 .observe(owner, Observer {
                     it?.let{
                         mView?.displayPrescription(it)
+                    }
+                })
+
+        patientModel.getPatientByEmail(SessionManager.patient_email.toString(), onSuccess = {}, onError = {})
+
+        patientModel.getPatientByEmailFromDB(SessionManager.patient_email.toString())
+                .observe(owner, Observer {
+                    it?.let{
+                        mView?.displayShippingAddress(it.address)
                     }
                 })
     }

@@ -96,6 +96,7 @@
                 app:cardBackgroundColor="@color/white"
                 app:cardElevation="10dp"
                 app:cardCornerRadius="15dp"
+                android:id="@+id/new_addresscard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="2dp">
@@ -213,6 +214,64 @@
                     />
             </LinearLayout>
             </androidx.cardview.widget.CardView>
+                 <androidx.cardview.widget.CardView
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="15dp"
+                android:id="@+id/list_addresscard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:gravity="left"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/white"
+                    android:text="@string/address"
+                    android:layout_marginBottom="4dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+                    <mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:text="@string/choose_address"
+                        android:textSize="13sp"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/black"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/address_rc"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_rounded_border_grey"
+                        android:drawableLeft="@drawable/ic_baseline_add_circle_outline_24"
+                        android:textColor="@color/black"
+                        android:text="@string/address"
+                        android:layout_margin="5dp"
+                        android:id="@+id/add_address"/>
+                </LinearLayout>
+            </LinearLayout>
+                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
