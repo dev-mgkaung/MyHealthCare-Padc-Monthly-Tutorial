@@ -78,7 +78,7 @@ class MainActivity : BaseActivity() ,HomeView {
         consultationRequestAdapter = ConsultationRequestAdapter (mPresenter)
         rc_consulation_request.adapter = consultationRequestAdapter
 
-        rc_consulation_accept.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rc_consulation_accept.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
         consultationAcceptAdapter = ConsultationAdapter (mPresenter)
         rc_consulation_accept.adapter = consultationAcceptAdapter
     }
