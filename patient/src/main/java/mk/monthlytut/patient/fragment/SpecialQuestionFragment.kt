@@ -21,7 +21,6 @@ import mk.monthlytut.patient.mvp.views.CaseSummaryView
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseFragment
 import mk.padc.share.data.vos.*
-import mk.zawuni.zawgyiuni_detect.mmfont.components.MMTextView
 
 private const val ARG_PARAM = "speciality"
 class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
@@ -83,9 +82,10 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
     private fun setUpActionListener() {
 
         btn_confirm.setOnClickListener {
-
+            val gson = Gson()
+            var addressList = gson.fromJson(SessionManager.patient_address, Array<String>::class.java).toMutableList()
             listener.onSpecitalQuestionCallBack()
-            var patientVO = PatientVO(id= SessionManager.patient_id.toString(),
+            var patientVO = PatientVO(id = SessionManager.patient_id.toString(),
                 device_id = SessionManager.patient_device_id,
                 name = SessionManager.patient_name.toString(),
                 email = SessionManager.patient_email.toString(),
@@ -95,7 +95,9 @@ class SpecialQuestionFragment : BaseFragment() ,CaseSummaryView{
                 blood_pressure = SessionManager.patient_bloodPressure,
                 weight = SessionManager.patient_weight,
                 height = SessionManager.patient_height,
-                comment = SessionManager.patient_comment
+                comment = SessionManager.patient_comment,
+                perment_address = SessionManager.patient_perment_address.toString(),
+                address = addressList as ArrayList<String>
             )
             showCaseSummaryConfirmDialog(patientVO)
          }

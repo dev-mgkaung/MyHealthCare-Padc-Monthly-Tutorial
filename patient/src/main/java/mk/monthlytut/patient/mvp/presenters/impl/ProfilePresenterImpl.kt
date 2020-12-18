@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.google.gson.Gson
 import mk.monthlytut.patient.mvp.views.ProfileView
 import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.data.models.AuthenticationModel
@@ -43,7 +44,8 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
                 mAuthenticationModel.updateProfile(it,onSuccess = {}, onFailure = {})
 
                 mView?.hideProgressDialog()
-
+                val gson = Gson()
+                var addressList = gson.fromJson(SessionManager.patient_address, Array<String>::class.java).toMutableList()
                 var patientVo = PatientVO(
                     id= SessionManager.patient_id.toString(),
                     device_id = SessionManager.patient_device_id.toString(),
@@ -56,7 +58,9 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
                     weight = SessionManager.patient_weight.toString(),
                     height = height,
                     comment = comment,
-                    phone = phone
+                    phone = phone,
+                        perment_address = SessionManager.patient_perment_address.toString(),
+                        address = addressList as ArrayList<String>
                 )
                 patientModel.addPatientInfo(patientVo,onSuccess = {}, onError = {})
             },

@@ -53,9 +53,29 @@ class CheckoutPresenterImpl : CheckoutPresenter, AbstractBasePresenter<CheckOutV
         }
     }
 
+    override fun onTapAddShipping(patientVO: PatientVO?) {
+
+        patientVO?.let {
+            patientModel.addPatientInfo(it,onSuccess = {}, onError = {})
+        }
+
+        patientModel.getPatientByEmail(SessionManager.patient_email.toString(), onSuccess = {}, onError = {})
+
+        patientModel.getPatientByEmailFromDB(SessionManager.patient_email.toString())
+                .observe(mOwner, Observer {
+                    it?.let{
+                        mView?.displayShippingAddress(it.address)
+                    }
+                })
+    }
+
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
         mOwner= owner
+    }
+
+    override fun onTapSelected(address: String) {
+
     }
 
 }

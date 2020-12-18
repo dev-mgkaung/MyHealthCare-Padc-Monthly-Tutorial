@@ -2,6 +2,7 @@ package mk.monthlytut.patient.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.gson.Gson
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.utils.*
 
@@ -61,6 +62,15 @@ object SessionManager {
         set(value) = preferences.edit {
             it.putString(sharePreferencePatientAddress, value)
         }
+
+    var patient_perment_address : String?
+
+        get() = preferences.getString(sharePreferencePatientPERMMENTAddress, "")
+
+        set(value) = preferences.edit {
+            it.putString(sharePreferencePatientPERMMENTAddress, value)
+        }
+
 
     var patient_id: String?
 
@@ -138,6 +148,7 @@ object SessionManager {
 
     fun addPatientInfo( patientVO: PatientVO)
     {
+
         patient_name = patientVO.name
         patient_id = patientVO.id
         patient_device_id = patientVO.device_id
@@ -151,6 +162,30 @@ object SessionManager {
         patient_bloodPressure = patientVO.blood_pressure
         patient_phone = patientVO.phone
         patient_address =patientVO.perment_address
+        patient_address =  Gson().toJson(patientVO.address)
 
+    }
+
+    fun getPatientInfo() : PatientVO
+    {
+        val gson = Gson()
+        var addressList = gson.fromJson(SessionManager.patient_address, Array<String>::class.java).toMutableList()
+
+        return  PatientVO(
+                 id = SessionManager.patient_id.toString(),
+                 device_id = SessionManager.patient_device_id.toString(),
+                 name =  SessionManager.patient_name.toString(),
+                 email  = SessionManager.patient_email.toString(),
+                 photo = SessionManager.patient_photo.toString(),
+                 blood_type =SessionManager.patient_bloodType.toString(),
+                 blood_pressure=  SessionManager.patient_bloodPressure.toString(),
+                 dateOfBirth =  SessionManager.patient_dateOfBirth.toString(),
+                 weight =  SessionManager.patient_weight.toString(),
+                 height =  SessionManager.patient_height.toString(),
+                 comment =  SessionManager.patient_comment.toString(),
+                 phone =  SessionManager.patient_phone.toString(),
+                 perment_address=  SessionManager.patient_perment_address.toString(),
+                 address = addressList as ArrayList<String>
+        )
     }
 }

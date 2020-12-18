@@ -6,14 +6,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_checkout.*
+import kotlinx.android.synthetic.main.add_shipping_bottonsheet.view.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.CheckoutAdpater
+import mk.monthlytut.patient.adapters.ShippingAddressAdapter
 import mk.monthlytut.patient.dialogs.CheckOutDialog
 import mk.monthlytut.patient.mvp.presenters.CheckoutPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.CheckoutPresenterImpl
 import mk.monthlytut.patient.mvp.views.CheckOutView
+import mk.monthlytut.patient.util.SessionManager
 import mk.padc.share.activities.BaseActivity
 import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.PrescriptionVO
@@ -23,13 +27,14 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
 
     private lateinit var mPresenter: CheckoutPresenter
     private lateinit var adapter: CheckoutAdpater
+    private lateinit var shippingAdapter: ShippingAddressAdapter
     private lateinit var consultation_chat_id: String
     private lateinit var mConsultationChatVO: ConsultationChatVO
     private lateinit var prescriptionList : List<PrescriptionVO>
     private lateinit var totalPrice : String
     private lateinit var state : String
     private lateinit var township : String
-
+    private lateinit var address: String
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
         private const val ConsultationCHAT = "ConsultationCHAT"
@@ -59,31 +64,7 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     }
     private fun setUpSelectedListner()
     {
-        state_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View,
-                    position: Int,
-                    id: Long
-            ) {
-                state = parent.getItemAtPosition(position).toString()
-            }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
-
-        township_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View,
-                    position: Int,
-                    id: Long
-            ) {
-                township = parent.getItemAtPosition(position).toString()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
     }
     override fun onBackPressed() {
         super.onBackPressed()
@@ -94,12 +75,14 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         checkoutback.setOnClickListener {
             onBackPressed()
         }
-
+        add_address.setOnClickListener {
+            showBottomSheetDialog()
+        }
         btn_order.setOnClickListener {
 
             mConsultationChatVO?.let {
                 mPresenter.onTapCheckout(prescriotionList = prescriptionList,
-                        "${ed_address.text }  ၊ ${township} ၊ ${state} ",
+                        address,
                         doctorVO = it?.doctor_info,
                         patientVO = it?.patient_info,
                         total_price = totalPrice
@@ -139,12 +122,52 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     override fun displayShippingAddress(list: List<String>) {
         if(list.isNotEmpty())
         {
-            new_addresscard.visibility= View.GONE
-            list_addresscard.visibility = View.VISIBLE
+              shippingAdapter.setNewData(list.toMutableList())
         }else{
-            new_addresscard.visibility= View.VISIBLE
-            list_addresscard.visibility = View.GONE
         }
+    }
+
+    private fun showBottomSheetDialog() {
+        val view = layoutInflater.inflate(R.layout.add_shipping_bottonsheet, null)
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(view)
+        view.state_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                state = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+        view.township_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                township = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        view.btn_add.setOnClickListener {
+            address= "${view.ed_address.text }  ၊ ${township} ၊ ${state} "
+            var patientVO = SessionManager.getPatientInfo()
+            patientVO.address.add(address)
+            mPresenter.onTapAddShipping(patientVO)
+            dialog.dismiss()
+        }
+        view.shipping_cancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     override fun displayConfirmDialog(list: List<PrescriptionVO>, address: String, total_price: String) {
@@ -159,6 +182,12 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         adapter = CheckoutAdpater(mPresenter)
         prescription_rct?.adapter = adapter
         prescription_rct?.setHasFixedSize(false)
+
+        address_rc?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        shippingAdapter = ShippingAddressAdapter(mPresenter)
+        address_rc?.adapter = shippingAdapter
+        address_rc?.setHasFixedSize(false)
+
     }
 
     }
