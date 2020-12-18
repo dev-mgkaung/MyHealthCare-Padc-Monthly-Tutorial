@@ -64,7 +64,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
         doctorModel.getConsultedPatient(SessionManager.doctor_id.toString(),onSuccess = {}, onError = {})
 
-        doctorModel.getConsultedPatientFromDB()
+        doctorModel.getConsultedPatientFromDB(SessionManager.doctor_id.toString())
             .observe(owner, Observer { data ->
                 data?.let {
                     mView?.displayConsultedPatient(data) }

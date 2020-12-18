@@ -283,17 +283,6 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             .addOnFailureListener { Log.d("Failure", "Failed") }
 
 
-        val consulted_patient_id = UUID.randomUUID().toString()
-        val consultedPatientMap = hashMapOf(
-                "id" to consulted_patient_id,
-                "patient_id" to patientVO.id
-        )
-        db.collection("$doctors/${doctorVO.id}/$consulted_patient")
-                .document(consulted_patient_id)
-                .set(consultedPatientMap)
-                .addOnSuccessListener { Log.d("Success", "Successfully ") }
-                .addOnFailureListener { Log.d("Failure", "Failed") }
-
     }
 
     override fun sendMessage(
@@ -646,16 +635,17 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        val id = UUID.randomUUID().toString()
-        val consulatedPatientMap = hashMapOf(
-            "id" to id,
-            "patient_id" to patientId
-        )
-        db.collection("$doctors/$doctorId/$consulted_patient")
-            .document(id)
-            .set(consulatedPatientMap)
-            .addOnSuccessListener { Log.d("Success", "Successfully ") }
-            .addOnFailureListener { Log.d("Failure", "Failed") }
+//        val id = UUID.randomUUID().toString()
+//        val consulatedPatientMap = hashMapOf(
+//            "id" to id,
+//            "patient_id" to patientId,
+//             "doctor_id" to doctorId
+//        )
+//        db.collection("$doctors/$doctorId/$consulted_patient")
+//            .document(id)
+//            .set(consulatedPatientMap)
+//            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+//            .addOnFailureListener { Log.d("Failure", "Failed") }
       }
 
     override fun getConsulationChatForDoctor(doctorId: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit) {
@@ -821,6 +811,18 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                     .addOnSuccessListener { Log.d("Success", "Successfully ") }
                     .addOnFailureListener { Log.d("Failure", "Failed") }
         }
+
+        val consultedid = UUID.randomUUID().toString()
+        val consulatedPatientMap = hashMapOf(
+                "id" to consultedid,
+                "patient_id" to consultationChatVO.patient_id,
+                "doctor_id" to consultationChatVO.doctor_id
+        )
+        db.collection("$doctors/${consultationChatVO.doctor_id}/$consulted_patient")
+                .document(consultedid)
+                .set(consulatedPatientMap)
+                .addOnSuccessListener { Log.d("Success", "Successfully ") }
+                .addOnFailureListener { Log.d("Failure", "Failed") }
     }
 
 }

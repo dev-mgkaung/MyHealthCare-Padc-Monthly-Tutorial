@@ -25,6 +25,10 @@ class ConsultationRequestAdapter(private val mDelegate: ConsultationRequestDeleg
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.listitem_consultation_request, parent, false)
         return ConsultationRequestViewHolder(view,consulted_patient, mDelegate)
-
     }
+
+    override fun onBindViewHolder(holder: ConsultationRequestViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+    }
+
 }

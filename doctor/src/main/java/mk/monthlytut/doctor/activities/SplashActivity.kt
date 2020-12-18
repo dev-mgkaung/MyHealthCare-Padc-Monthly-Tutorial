@@ -14,7 +14,10 @@ import mk.padc.share.activities.BaseActivity
 class SplashActivity : BaseActivity() {
 
     companion object {
-        fun newIntent(context: Context) = Intent(context, SplashActivity::class.java)
+        fun newIntent(context: Context) = Intent(context, SplashActivity::class.java).
+                apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

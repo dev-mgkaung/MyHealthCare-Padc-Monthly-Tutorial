@@ -17,8 +17,8 @@ interface ConsultedPatientDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertConsultedPatient(patient: List<ConsultedPatientVO>)
 
-    @Query("select * from consulted_patient")
-    fun getConsultedPatient(): LiveData<List<ConsultedPatientVO>>
+    @Query("select * from consulted_patient WHERE doctor_id = :doctorID")
+    fun getConsultedPatient(doctorID : String): LiveData<List<ConsultedPatientVO>>
 
     @Query("select * from consulted_patient WHERE id = :id")
     fun getConsultedPatientBy(id: String): LiveData<ConsultedPatientVO>

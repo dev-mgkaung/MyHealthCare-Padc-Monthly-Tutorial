@@ -10,5 +10,6 @@ import mk.padc.share.utils.consulted_patient
 class ConsultedPatientVO(
     @PrimaryKey
     var id: String= "",
-    var patient_id: String ?= ""
+    var patient_id: String ?= "",
+    var doctor_id: String ?= ""
 )

@@ -74,7 +74,7 @@ interface DoctorModel
                                         onSuccess: () -> Unit,
                                         onError: (String) -> Unit)
 
-    fun  getConsultedPatientFromDB() : LiveData<List<ConsultedPatientVO>>
+    fun  getConsultedPatientFromDB(doctorId: String) : LiveData<List<ConsultedPatientVO>>
 
     fun sendChatMessage( messageVO: ChatMessageVO , consulationId: String ,
                          onSuccess: () -> Unit,

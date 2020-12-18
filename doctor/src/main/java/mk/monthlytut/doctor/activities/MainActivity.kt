@@ -109,6 +109,7 @@ class MainActivity : BaseActivity() ,HomeView {
 
     override fun displayConsultedPatient(list: List<ConsultedPatientVO>) {
         consultationRequestAdapter.setConsultedPatientList(list.toMutableList())
+
     }
 
     override fun nextPageChatRoom(consultation_id : String) {
