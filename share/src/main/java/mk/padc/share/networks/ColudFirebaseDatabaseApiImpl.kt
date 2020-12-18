@@ -410,10 +410,10 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
 
     override fun checkoutMedicine(
         prescriptionList: List<PrescriptionVO>,
-        deliveryAddressVO: DeliveryAddressVO,
+        deliveryAddressVO: String,
         doctorVO: DoctorVO,
         patientVO: PatientVO,
-        total_price : Int,
+        total_price : String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {

@@ -104,7 +104,10 @@ class ChatRoomActvity : BaseActivity() , ChatView
     }
 
     override fun nextPageToCheckout(chatId: String) {
-        startActivity(CheckoutActivity.newIntent(this,chatId))
+        mConsultationChatVO?.let {
+            var data = Gson().toJson(mConsultationChatVO)
+            startActivity(CheckoutActivity.newIntent(this,chatId,data))
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -12,13 +12,12 @@ import mk.padc.share.utils.checkout
 @TypeConverters(DeliveryRoutineConverter::class,
     PatientConverter::class,
     DoctorConverter::class,
-    PrescriptionConverter::class,
-    DeliveryAddressConverter::class)
+    PrescriptionConverter::class)
 
 class CheckoutVO(
     @PrimaryKey
     var id: String= "",
-    var delivery_address: DeliveryAddressVO ?= null,
+    var delivery_address: String ?= null,
     var total_price : Int? =0,
     var patientVO: PatientVO ?=null,
     var doctorVO: DoctorVO ?=null,
@@ -33,9 +32,3 @@ class DeliveryRoutineVO(
     var delivery_date : String ?= ""
 )
 
-@IgnoreExtraProperties
-class DeliveryAddressVO(
-    var state: String= "",
-    var township : String ?= "",
-    var ful_address : String ?= "",
-)

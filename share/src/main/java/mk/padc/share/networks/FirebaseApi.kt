@@ -91,8 +91,8 @@ interface FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit)
 
-    fun checkoutMedicine(prescriptionList : List<PrescriptionVO>,deliveryAddressVO: DeliveryAddressVO,
-                         doctorVO: DoctorVO, patientVO: PatientVO , total_price : Int,
+    fun checkoutMedicine(prescriptionList : List<PrescriptionVO>,deliveryAddressVO: String,
+                         doctorVO: DoctorVO, patientVO: PatientVO , total_price : String,
                          onSuccess: () -> Unit,onFailure: (String) -> Unit)
 
     fun getRecentlyConsultatedDoctor(patientId : String, onSuccess: (doctorList : List<RecentDoctorVO>) -> Unit,onFailure: (String) -> Unit)

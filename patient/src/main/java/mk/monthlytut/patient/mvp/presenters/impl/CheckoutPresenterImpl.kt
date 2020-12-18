@@ -7,6 +7,9 @@ import mk.monthlytut.patient.mvp.presenters.CheckoutPresenter
 import mk.monthlytut.patient.mvp.views.CheckOutView
 import mk.padc.share.data.models.PatientModel
 import mk.padc.share.data.models.impl.PatientModelImpl
+import mk.padc.share.data.vos.DoctorVO
+import mk.padc.share.data.vos.PatientVO
+import mk.padc.share.data.vos.PrescriptionVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
 
@@ -28,9 +31,18 @@ class CheckoutPresenterImpl : CheckoutPresenter, AbstractBasePresenter<CheckOutV
                 })
     }
 
-    override fun onTapCheckout() {
-
+    override fun onTapCheckout(prescriotionList: List<PrescriptionVO>, deliveryAddressVO: String, doctorVO: DoctorVO?, patientVO: PatientVO?, total_price: String) {
+        if (doctorVO != null && patientVO != null) {
+                patientModel.checkout(prescriotionList,
+                        deliveryAddressVO,
+                        doctorVO,
+                        patientVO,
+                        total_price,
+                        onSuccess = {}, onFailure = {})
+              mView?.displayConfirmDialog(prescriotionList,deliveryAddressVO,total_price)
+        }
     }
+
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
         mOwner= owner

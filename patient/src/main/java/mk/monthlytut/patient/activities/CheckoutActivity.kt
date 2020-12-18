@@ -3,14 +3,19 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_checkout.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.adapters.CheckoutAdpater
+import mk.monthlytut.patient.dialogs.CheckOutDialog
 import mk.monthlytut.patient.mvp.presenters.CheckoutPresenter
 import mk.monthlytut.patient.mvp.presenters.impl.CheckoutPresenterImpl
 import mk.monthlytut.patient.mvp.views.CheckOutView
 import mk.padc.share.activities.BaseActivity
+import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.PrescriptionVO
 
 
@@ -19,12 +24,20 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     private lateinit var mPresenter: CheckoutPresenter
     private lateinit var adapter: CheckoutAdpater
     private lateinit var consultation_chat_id: String
+    private lateinit var mConsultationChatVO: ConsultationChatVO
+    private lateinit var prescriptionList : List<PrescriptionVO>
+    private lateinit var totalPrice : String
+    private lateinit var state : String
+    private lateinit var township : String
 
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
-        fun newIntent(context: Context, consultation_chat_id: String) : Intent {
+        private const val ConsultationCHAT = "ConsultationCHAT"
+
+        fun newIntent(context: Context, consultation_chat_id: String , consultationChatVO: String) : Intent {
             val intent = Intent(context, CheckoutActivity::class.java)
             intent.putExtra(PARM_CONSULTATION_CHAT_ID, consultation_chat_id)
+            intent.putExtra(ConsultationCHAT, consultationChatVO)
             return intent
         }
     }
@@ -32,21 +45,69 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
+
         consultation_chat_id = intent.getStringExtra(PARM_CONSULTATION_CHAT_ID).toString()
+        var data = intent?.getStringExtra(ConsultationCHAT)
+        mConsultationChatVO = Gson().fromJson(data, ConsultationChatVO::class.java)
+
         setUpPresenter()
+        setUpSelectedListner()
         setUpRecyclerView()
         setUpActionListeners()
 
 
+    }
+    private fun setUpSelectedListner()
+    {
+        state_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                state = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+        township_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                township = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
     override fun onBackPressed() {
         super.onBackPressed()
         this.finish()
     }
     private fun setUpActionListeners() {
+
         checkoutback.setOnClickListener {
             onBackPressed()
         }
+
+        btn_order.setOnClickListener {
+
+            mConsultationChatVO?.let {
+                mPresenter.onTapCheckout(prescriotionList = prescriptionList,
+                        "${ed_address.text }  ၊ ${township} ၊ ${state} ",
+                        doctorVO = it?.doctor_info,
+                        patientVO = it?.patient_info,
+                        total_price = totalPrice
+                )
+            }
+
+        }
+
     }
     private fun setUpPresenter()
     {
@@ -57,6 +118,9 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
 
     override fun displayPrescription(list: List<PrescriptionVO>) {
         if(list.isNotEmpty()) {
+            prescriptionList= list
+            btn_order.visibility = View.VISIBLE
+
             adapter.setNewData(list.toMutableList())
             var totalamount : Int =0
             for( item in list)
@@ -64,6 +128,11 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
                 totalamount += item.price.toInt()
             }
             total_amount.text = "${totalamount} ကျပ်"
+            totalPrice =  "${totalamount} ကျပ်"
+
+        }else
+        {
+            btn_order.visibility = View.GONE
         }
     }
 
@@ -71,11 +140,18 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         TODO("Not yet implemented")
     }
 
+    override fun displayConfirmDialog(list: List<PrescriptionVO>, address: String, total_price: String) {
+        var data=  Gson().toJson(prescriptionList)
+        val dialog: CheckOutDialog = CheckOutDialog.newInstance(data,address,total_price)
+        dialog.show(supportFragmentManager, "")
+    }
+
+
     private fun setUpRecyclerView() {
-        prescription_rc?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        prescription_rct?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         adapter = CheckoutAdpater(mPresenter)
-        prescription_rc?.adapter = adapter
-        prescription_rc?.setHasFixedSize(false)
+        prescription_rct?.adapter = adapter
+        prescription_rct?.setHasFixedSize(false)
     }
 
     }

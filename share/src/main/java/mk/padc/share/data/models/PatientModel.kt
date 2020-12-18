@@ -92,4 +92,12 @@ interface PatientModel
     fun getPrescription(consulationId : String ,onSuccess: () -> Unit, onError: (String) -> Unit)
 
     fun getPrescriptionFromDB( ) : LiveData<List<PrescriptionVO>>
+
+    fun checkout(   prescriptionList: List<PrescriptionVO>,
+                    delivery_address: String,
+                    doctorVO: DoctorVO,
+                    patientVO: PatientVO,
+                    total_price : String,
+                    onSuccess: () -> Unit,
+                    onFailure: (String) -> Unit)
 }
