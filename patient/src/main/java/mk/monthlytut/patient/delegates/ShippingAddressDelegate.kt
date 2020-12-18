@@ -2,5 +2,5 @@ package mk.monthlytut.patient.delegates
 
 
 interface ShippingAddressDelegate {
-    fun onTapSelected(address: String)
+    fun onTapSelected(address: String, previousPosition: Int)
 }

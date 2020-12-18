@@ -76,8 +76,8 @@ class CheckoutPresenterImpl : CheckoutPresenter, AbstractBasePresenter<CheckOutV
         mOwner= owner
     }
 
-    override fun onTapSelected(address: String) {
-
+    override fun onTapSelected(address: String, previousPositon: Int) {
+     mView?.selectedShippingAddress(address,previousPositon)
     }
 
 }

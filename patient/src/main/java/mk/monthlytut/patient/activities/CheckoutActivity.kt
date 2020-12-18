@@ -3,8 +3,10 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
@@ -35,6 +37,8 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     private lateinit var state : String
     private lateinit var township : String
     private lateinit var address: String
+    private var previousPosition : Int = -1
+    private lateinit var shippingList : List<String>
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
         private const val ConsultationCHAT = "ConsultationCHAT"
@@ -56,16 +60,12 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         mConsultationChatVO = Gson().fromJson(data, ConsultationChatVO::class.java)
 
         setUpPresenter()
-        setUpSelectedListner()
         setUpRecyclerView()
         setUpActionListeners()
 
 
     }
-    private fun setUpSelectedListner()
-    {
 
-    }
     override fun onBackPressed() {
         super.onBackPressed()
         this.finish()
@@ -102,8 +102,6 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     override fun displayPrescription(list: List<PrescriptionVO>) {
         if(list.isNotEmpty()) {
             prescriptionList= list
-            btn_order.visibility = View.VISIBLE
-
             adapter.setNewData(list.toMutableList())
             var totalamount : Int =0
             for( item in list)
@@ -113,15 +111,13 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
             total_amount.text = "${totalamount} ကျပ်"
             totalPrice =  "${totalamount} ကျပ်"
 
-        }else
-        {
-            btn_order.visibility = View.GONE
         }
     }
 
     override fun displayShippingAddress(list: List<String>) {
         if(list.isNotEmpty())
         {
+             shippingList= list
               shippingAdapter.setNewData(list.toMutableList())
         }else{
         }
@@ -177,6 +173,21 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     }
 
 
+    override fun selectedShippingAddress(mAddress: String,mpreviousPosition : Int) {
+        Toast.makeText(this, mAddress,Toast.LENGTH_SHORT).show()
+        Log.d("previous",previousPosition.toString())
+        address= mAddress
+        btn_order.visibility = View.VISIBLE
+        previousPosition = mpreviousPosition
+        shippingAdapter = ShippingAddressAdapter(mPresenter, previousPosition)
+        shippingList?.let {
+            shippingAdapter.setNewData(shippingList.toMutableList())
+            address_rc?.adapter = shippingAdapter
+        }
+
+    }
+
+
     private fun setUpRecyclerView() {
         prescription_rct?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         adapter = CheckoutAdpater(mPresenter)
@@ -184,7 +195,7 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         prescription_rct?.setHasFixedSize(false)
 
         address_rc?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        shippingAdapter = ShippingAddressAdapter(mPresenter)
+        shippingAdapter = ShippingAddressAdapter(mPresenter, previousPosition)
         address_rc?.adapter = shippingAdapter
         address_rc?.setHasFixedSize(false)
 
