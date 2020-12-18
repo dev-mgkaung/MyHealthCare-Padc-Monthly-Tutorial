@@ -13,6 +13,7 @@ import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.data.vos.PatientVO
 import mk.padc.share.data.vos.QuestionAnswerVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
+import mk.padc.share.networks.responses.NotificationVO
 import mk.padc.share.utils.DateUtils
 import mk.padc.share.utils.prepareNotificationForPatient
 
@@ -65,12 +66,20 @@ class CaseSummaryPresenterImpl : CaseSummaryPresenter, AbstractBasePresenter<Cas
            patientModel.sendBroadCastConsultationRequest(speciality,questionAnswerList,patientVO,doctorVO,DateUtils().getCurrentDate(),
            onSuccess = {} , onFailure = {})
 
-            val notiData = prepareNotificationForPatient(context,"/topics/$speciality",patientVO)
-            patientModel.sendBroadcastToDoctor( notiData ,onSuccess= {
-                Log.d("onsuccess", it.success.toString())
-            }, onFailure = {
-                Log.d("Failure", it)
-            })
+           val notiData : NotificationVO
+           if(doctorVO.id.isEmpty()) {
+               // Send Noti All Doctor
+                notiData = prepareNotificationForPatient(context, "/topics/$speciality", patientVO)
+           }else
+           {
+               // Send Noti To Recent Doctor
+                notiData = prepareNotificationForPatient(context, doctorVO.device_id, patientVO)
+           }
+           patientModel.sendBroadcastToDoctor(notiData, onSuccess = {
+               Log.d("onsuccess", it.success.toString())
+           }, onFailure = {
+               Log.d("Failure", it)
+           })
        }
 
       }
