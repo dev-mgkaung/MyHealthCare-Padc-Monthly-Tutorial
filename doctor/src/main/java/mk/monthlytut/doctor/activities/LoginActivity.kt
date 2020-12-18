@@ -54,13 +54,6 @@ class LoginActivity : BaseActivity() , LoginView {
 
         SessionManager.login_status =true
         SessionManager.addDoctorInfo(doctorVO)
-        Firebase.messaging.subscribeToTopic(SessionManager.doctor_speciality.toString())
-                .addOnCompleteListener { task ->
-                    var msg = "Subscribed"
-                    if (!task.isSuccessful) {
-                        msg = "Failed"
-                    }
-                }
         this.finish()
         startActivity(MainActivity.newIntent(this))
 

@@ -11,6 +11,8 @@ import android.widget.TimePicker
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.medical_record_dialog.view.*
@@ -58,6 +60,14 @@ class MainActivity : BaseActivity() ,HomeView {
         setUpPresenter()
         setUpActionListeners()
         setUpRecyclerView()
+
+        Firebase.messaging.subscribeToTopic(SessionManager.doctor_speciality.toString())
+                .addOnCompleteListener { task ->
+                    var msg = "Subscribed"
+                    if (!task.isSuccessful) {
+                        msg = "Failed"
+                    }
+                }
     }
 
     private fun setUpPresenter()
