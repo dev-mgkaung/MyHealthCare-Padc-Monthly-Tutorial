@@ -93,7 +93,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
             for( item in list)
             {
                 var st = item.name.toString().toLowerCase()
-                if(st.contains(text))
+                if(st.contains(text.toLowerCase()))
                 {
                     filterlist.add(item)
                 }

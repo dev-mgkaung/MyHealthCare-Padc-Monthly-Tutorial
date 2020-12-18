@@ -116,17 +116,18 @@
             <androidx.cardview.widget.CardView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                app:cardElevation="10dp"
+                app:cardElevation="4dp"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="10dp"
                 app:cardBackgroundColor="@color/white">
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corner_btn_white"
                     android:hint="@string/medical_record_hint"
                     android:padding="10dp"
                     android:textSize="12sp"
+                    android:lines="4"
                     android:inputType="textMultiLine"
                     android:gravity="left"
                     android:scrollbars="vertical"
