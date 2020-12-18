@@ -14,6 +14,7 @@ import mk.padc.share.data.vos.ConsultationChatVO
 import mk.padc.share.data.vos.ConsultationRequestVO
 import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
+import mk.padc.share.utils.prepareNotification
 
 
 class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
@@ -78,7 +79,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     override fun onTapPostponeTime(postponeTime : String, consultationRequestVO: ConsultationRequestVO) {
         acceptRequest("postpone $postponeTime",1, consultationRequestVO)
-        var notiObj=  prepareNotificationForDoctor(mContext,consultationRequestVO.patient_info.device_id, consultationRequestVO.doctor_info)
+        var notiObj=  prepareNotification(mContext,consultationRequestVO.patient_info.device_id,consultationRequestVO.doctor_info.name.toString(),consultationRequestVO.doctor_info.id.toString(),postponeTime)
         doctorModel.sendNotificationToPatient(notiObj,onSuccess = {}, onFailure ={})
     }
 
