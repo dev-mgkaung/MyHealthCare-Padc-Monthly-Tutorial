@@ -50,7 +50,7 @@ class ProfileActivity : BaseActivity() , ProfileView {
     }
     private fun setUpPresenter() {
         mPresenter = getPresenter<ProfilePresenterImpl, ProfileView>()
-        mPresenter.onUiReady(this,this)
+     //   mPresenter.onUiReady(this,this)
         mPresenter.onUiReadyForProfile(this,this)
     }
 

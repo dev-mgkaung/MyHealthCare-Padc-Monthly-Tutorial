@@ -66,6 +66,12 @@ class ProfilePresenterImpl : ProfilePresenter, AbstractBasePresenter<ProfileView
                 })
     }
 
-    override fun onUiReady(context: Context, owner: LifecycleOwner) {}
+    override fun onUiReady(context: Context, owner: LifecycleOwner) {
+        mModel.getDoctorByEmailFromDB(SessionManager.doctor_email.toString())
+                .observe(owner, Observer { data ->
+                    data?.let {
+                        mView?.displayDocotrData(data) }
+                })
+    }
 }
 

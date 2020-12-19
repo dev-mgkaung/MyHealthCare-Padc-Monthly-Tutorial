@@ -635,17 +635,17 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-//        val id = UUID.randomUUID().toString()
-//        val consulatedPatientMap = hashMapOf(
-//            "id" to id,
-//            "patient_id" to patientId,
-//             "doctor_id" to doctorId
-//        )
-//        db.collection("$doctors/$doctorId/$consulted_patient")
-//            .document(id)
-//            .set(consulatedPatientMap)
-//            .addOnSuccessListener { Log.d("Success", "Successfully ") }
-//            .addOnFailureListener { Log.d("Failure", "Failed") }
+        val id = UUID.randomUUID().toString()
+        val consulatedPatientMap = hashMapOf(
+            "id" to id,
+            "patient_id" to patientId,
+             "doctor_id" to doctorId
+        )
+        db.collection("$doctors/$doctorId/$consulted_patient")
+            .document(id)
+            .set(consulatedPatientMap)
+            .addOnSuccessListener { Log.d("Success", "Successfully ") }
+            .addOnFailureListener { Log.d("Failure", "Failed") }
       }
 
     override fun getConsulationChatForDoctor(doctorId: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit) {
