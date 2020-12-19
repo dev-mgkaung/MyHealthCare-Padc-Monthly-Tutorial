@@ -330,6 +330,7 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
                     count = tabcount,
                     medicine = medicineVO.name.toString(),
                     price =  medicineVO.price.toString(),
+                    chat_id = mConsultationChatVO?.id,
                     routineVO= routineVO
             )
           if(pt_comment?.text.toString().isNotEmpty()) {

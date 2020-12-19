@@ -24,7 +24,7 @@ class CheckoutPresenterImpl : CheckoutPresenter, AbstractBasePresenter<CheckOutV
 
         patientModel.getPrescription(consultationChatId, onSuccess = {}, onError = {})
 
-        patientModel.getPrescriptionFromDB()
+        patientModel.getPrescriptionFromDB(consultationChatId)
                 .observe(owner, Observer {
                     it?.let{
                         mView?.displayPrescription(it)

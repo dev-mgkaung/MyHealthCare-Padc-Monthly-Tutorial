@@ -213,8 +213,8 @@ object DoctorModelImpl : DoctorModel, BaseModel() {
         }, onFailure = {})
     }
 
-    override fun getPrescriptionFromDB(): LiveData<List<PrescriptionVO>> {
-        return mTheDB.prescriptionDao().getAllPrescriptionData()
+    override fun getPrescriptionFromDB(chat_id: String): LiveData<List<PrescriptionVO>> {
+        return mTheDB.prescriptionDao().getAllPrescriptionData(chat_id)
     }
 
     override fun addDoctorInfo(doctorVO: DoctorVO, onSuccess: () -> Unit, onError: (String) -> Unit) {

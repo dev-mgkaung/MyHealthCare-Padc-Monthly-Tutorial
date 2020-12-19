@@ -17,6 +17,7 @@ class PrescriptionVO(
     var count : String ="",
     var medicine : String = "",
     var price : String ="",
+    var chat_id : String ="",
     var routineVO: RoutineVO
 )
 

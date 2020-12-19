@@ -220,8 +220,8 @@ object PatientModelImpl : PatientModel, BaseModel() {
         }, onFailure = {})
     }
 
-    override fun getPrescriptionFromDB(): LiveData<List<PrescriptionVO>> {
-        return mTheDB.prescriptionDao().getAllPrescriptionData()
+    override fun getPrescriptionFromDB(consulationId: String): LiveData<List<PrescriptionVO>> {
+        return mTheDB.prescriptionDao().getAllPrescriptionData(consulationId)
     }
 
     override fun checkout(prescriptionList: List<PrescriptionVO>, deliveryAddressVO: String, doctorVO: DoctorVO, patientVO: PatientVO, total_price: String, onSuccess: () -> Unit, onFailure: (String) -> Unit) {

@@ -41,7 +41,7 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
 
         doctorModel.getPrescription(consultationChatId, onSuccess = {}, onError = {})
 
-        doctorModel.getPrescriptionFromDB()
+        doctorModel.getPrescriptionFromDB(consultationChatId)
                 .observe(owner, Observer {
                     it?.let{
                         mView?.displayPrescriptionViewPod(it)

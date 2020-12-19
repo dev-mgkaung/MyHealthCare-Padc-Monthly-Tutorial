@@ -99,7 +99,7 @@ interface DoctorModel
 
     fun getPrescription(consulationId : String ,onSuccess: () -> Unit, onError: (String) -> Unit)
 
-    fun getPrescriptionFromDB( ) : LiveData<List<PrescriptionVO>>
+    fun getPrescriptionFromDB( consulationId : String) : LiveData<List<PrescriptionVO>>
 
     fun addDoctorInfo(doctorVO: DoctorVO, onSuccess: () -> Unit, onError: (String) -> Unit)
 }

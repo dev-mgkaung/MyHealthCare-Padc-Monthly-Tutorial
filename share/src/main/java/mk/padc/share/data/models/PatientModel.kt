@@ -91,7 +91,7 @@ interface PatientModel
 
     fun getPrescription(consulationId : String ,onSuccess: () -> Unit, onError: (String) -> Unit)
 
-    fun getPrescriptionFromDB( ) : LiveData<List<PrescriptionVO>>
+    fun getPrescriptionFromDB(consulationId : String ) : LiveData<List<PrescriptionVO>>
 
     fun checkout(   prescriptionList: List<PrescriptionVO>,
                     delivery_address: String,

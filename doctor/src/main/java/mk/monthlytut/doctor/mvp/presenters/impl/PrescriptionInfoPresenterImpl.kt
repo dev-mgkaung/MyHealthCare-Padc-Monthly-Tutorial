@@ -19,7 +19,7 @@ class PrescriptionInfoPresenterImpl : PrescriptionInfoPresenter, AbstractBasePre
 
         doctorModel.getPrescription(consulation_chat_id, onSuccess = {}, onError = {})
 
-        doctorModel.getPrescriptionFromDB()
+        doctorModel.getPrescriptionFromDB(consulation_chat_id)
                 .observe(mOwner, Observer {
                     it?.let{
                         mView?.displayPrescriptionList(it)

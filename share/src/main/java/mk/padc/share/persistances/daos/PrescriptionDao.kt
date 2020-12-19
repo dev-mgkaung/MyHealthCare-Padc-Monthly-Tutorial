@@ -18,8 +18,8 @@ interface PrescriptionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPrescriptionList(list: List<PrescriptionVO>)
 
-    @Query("select * from prescription")
-    fun getAllPrescriptionData(): LiveData<List<PrescriptionVO>>
+    @Query("select * from prescription WHERE chat_id = :chatId")
+    fun getAllPrescriptionData(chatId: String): LiveData<List<PrescriptionVO>>
 
 
     @Query("DELETE FROM prescription")

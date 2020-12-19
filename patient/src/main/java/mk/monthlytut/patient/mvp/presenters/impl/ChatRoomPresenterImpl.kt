@@ -41,7 +41,7 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
 
         patientModel.getPrescription(consultationChatId, onSuccess = {}, onError = {})
 
-        patientModel.getPrescriptionFromDB()
+        patientModel.getPrescriptionFromDB(consultationChatId)
                 .observe(owner, Observer {
                     it?.let{
                         mView?.displayPrescriptionViewPod(it)
@@ -69,14 +69,7 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
     }
 
     override fun onCallPrescription(consultationChatId: String, owner: LifecycleOwner) {
-        patientModel.getPrescription(consultationChatId, onSuccess = {}, onError = {})
 
-        patientModel.getPrescriptionFromDB()
-                .observe(owner, Observer {
-                    it?.let{
-                        mView?.displayPrescriptionViewPod(it)
-                    }
-                })
     }
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
