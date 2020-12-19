@@ -53,6 +53,7 @@
             android:id="@+id/consultationlabel"
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/margin_medium_2"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_gravity="center"

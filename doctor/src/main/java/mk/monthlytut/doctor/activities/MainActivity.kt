@@ -96,6 +96,7 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
     override fun displayConsultationList(list: List<ConsultationChatVO>) {
+
         consultationAcceptAdapter.setNewData(list.toMutableList())
         if(list?.size == 0) {
             empty_view.visibility =View.VISIBLE

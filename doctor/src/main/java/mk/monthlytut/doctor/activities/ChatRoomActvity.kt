@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_chat_room.*
+import kotlinx.android.synthetic.main.activity_chat_room.scrollview
+import kotlinx.android.synthetic.main.activity_main.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.adapters.ChattingAdapter
 import mk.monthlytut.doctor.adapters.QuestionAnswerAdapter
@@ -72,6 +74,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
+
         scrollview.scrollTo(0, scrollview.getChildAt(0).height)
         adapter.setNewData(list.toMutableList())
 
