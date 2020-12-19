@@ -3,11 +3,10 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.widget.AdapterView
-import android.widget.Toast
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
@@ -40,6 +39,9 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
     private lateinit var address: String
     private var previousPosition : Int = -1
     private lateinit var shippingList : List<String>
+    private lateinit var townshiplist : List<String>
+
+
     companion object {
         const val PARM_CONSULTATION_CHAT_ID = "chat id"
         private const val ConsultationCHAT = "ConsultationCHAT"
@@ -64,13 +66,13 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         setUpRecyclerView()
         setUpActionListeners()
 
-
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         this.finish()
     }
+
     private fun setUpActionListeners() {
 
         checkoutback.setOnClickListener {
@@ -120,27 +122,14 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         {
              shippingList= list
               shippingAdapter.setNewData(list.toMutableList())
-        }else{
         }
     }
 
     private fun showBottomSheetDialog() {
-        val view = layoutInflater.inflate(R.layout.add_shipping_bottonsheet, null)
         val dialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.add_shipping_bottonsheet, null)
         dialog.setContentView(view)
-
-        view.state_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View,
-                    position: Int,
-                    id: Long
-            ) {
-                state = parent.getItemAtPosition(position).toString()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
+     //   var townshipSpinner = view.findViewById<Spinner>(R.id.township_spinner)
 
         view.township_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -154,6 +143,38 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+
+
+        view.state_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+                state = parent.getItemAtPosition(position).toString()
+
+                if(state == "ရန်ကုန်") {
+                    townshiplist = resources.getStringArray(R.array.yangon).toList()
+                }else if(state == "နေပြည်တော်")
+                {
+                    townshiplist = resources.getStringArray(R.array.naypyitaw).toList()
+                }else if(state == "ပဲခူး")
+                {
+                    townshiplist = resources.getStringArray(R.array.bago).toList()
+                }else if(state == "မန္တလေး")
+                {
+                    townshiplist = resources.getStringArray(R.array.mandalay).toList()
+                }
+//                 val mAdapter = ArrayAdapter(view.context,android.R.layout.simple_spinner_dropdown_item,townshiplist)
+//                townshipSpinner.adapter = mAdapter
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+
+
         view.btn_add.setOnClickListener {
             address= "${view.ed_address.text }  ၊ ${township} ၊ ${state} "
             var patientVO = SessionManager.getPatientInfo()

@@ -15,6 +15,4 @@ interface ApiService {
     )
     @POST("fcm/send")
     fun sendFcm(@Body notificationVO: NotificationVO) : Observable<NotiResponse>
-
-
 }

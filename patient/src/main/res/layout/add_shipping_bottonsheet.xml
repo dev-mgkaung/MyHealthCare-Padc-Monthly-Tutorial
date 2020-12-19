@@ -55,7 +55,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
                             android:padding="5dp"
-                            android:spinnerMode="dialog"
+                            android:spinnerMode="dropdown"
                             android:entries="@array/state"
                             android:id="@+id/state_spinner"/>
                     </androidx.cardview.widget.CardView>

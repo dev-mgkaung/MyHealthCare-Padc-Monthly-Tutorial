@@ -42,7 +42,7 @@ class ConsultationFragment : BaseFragment(), ChatHistoryView {
         setUpActionListener()
     }
     private fun setUpRecyclerView() {
-        rc_chat_history?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true)
+        rc_chat_history?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         adapter = ChatAdapter(mPresenter)
         rc_chat_history?.adapter = adapter
         rc_chat_history?.setHasFixedSize(false)

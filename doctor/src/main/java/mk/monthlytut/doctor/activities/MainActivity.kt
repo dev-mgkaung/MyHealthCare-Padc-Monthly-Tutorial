@@ -38,7 +38,8 @@ class MainActivity : BaseActivity() ,HomeView {
 
     private lateinit var consultationRequestAdapter:  ConsultationRequestAdapter
     private lateinit var consultationAcceptAdapter:  ConsultationAdapter
-
+    private  var requestDummyList : List<ConsultationRequestVO> = arrayListOf()
+    private  var acceptDummyList : List<ConsultationChatVO> = arrayListOf()
 
     companion object {
         fun newIntent(context: Context) = Intent(context, MainActivity::class.java).apply {
@@ -92,26 +93,30 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
     override fun displayConsultationRequests(list: List<ConsultationRequestVO>) {
-        if(list?.size == 0)
+        requestDummyList= list.toMutableList()
+        consultationRequestAdapter.setNewData(list.toMutableList())
+        showHideEmptyView()
+    }
+
+    fun showHideEmptyView()
+    {
+        if(acceptDummyList?.size == 0 && requestDummyList?.size== 0)
         {
             empty_view.visibility =View.VISIBLE
         }else{
             empty_view.visibility =View.GONE
         }
-        consultationRequestAdapter.setNewData(list.toMutableList())
     }
-
     override fun displayConsultationList(list: List<ConsultationChatVO>) {
-
+        acceptDummyList= list.toMutableList()
         consultationAcceptAdapter.setNewData(list.toMutableList())
         if(list?.size == 0) {
-        //    empty_view.visibility =View.VISIBLE
             consultationlabel.visibility = View.GONE
         }else
         {
-      //      empty_view.visibility =View.GONE
             consultationlabel.visibility = View.VISIBLE
         }
+        showHideEmptyView()
     }
 
     override fun displayConsultedPatient(list: List<ConsultedPatientVO>) {

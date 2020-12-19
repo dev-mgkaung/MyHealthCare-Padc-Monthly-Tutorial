@@ -127,18 +127,7 @@
         <item>ရန်ကုန်</item>
         <item>နေပြည်တော်</item>
         <item>ပဲခူး</item>
-        <item>ရှမ်း</item>
-        <item>ကချင်</item>
-        <item>ကယား</item>
-        <item>ကရင်</item>
-        <item>ချင်း</item>
-        <item>ရခိုင်</item>
-        <item>မွန်</item>
-        <item>စစ်ကိုင်</item>
-        <item>တနင်္သာရီ</item>
-        <item>မကွေး</item>
         <item>မန္တလေး</item>
-        <item>ဧရာဝတီ</item>
     </string-array>
 
     <string-array name="yangon">
@@ -324,4 +313,57 @@
         <item>2019</item>
         <item>2020</item>
     </string-array>
+
+
+
+    <string-array name="naypyitaw">
+        <item>ဇမ္ဗူသီရိမြို့</item>
+        <item> ဇေယျာသီရိမြို့</item>
+        <item>  တပ်ကုန်းမြို့</item>
+        <item>   ဒက္ခိဏသီရိမြို့</item>
+        <item>  နေပြည်တော်မြို့</item>
+        <item>  ပျဉ်းမနားမြို့</item>
+        <item> ပုဗ္ဗသီရိမြို့</item>
+        <item>   လယ်ဝေးမြို့</item>
+        <item>  ဥတ္တရသီရိမြို့</item>
+    </string-array>
+
+
+    <string-array name="mandalay">
+        <item>   ကျောက်ဆည်မြို့</item>
+        <item>   ကျောက်ပန်းတောင်းမြို့</item>
+        <item>  ချမ်းမြသာစည်မြို့ </item>
+        <item>  ချမ်းအေးသာဇံမြို့</item>
+        <item>  ငါ့သရောက်မြို့</item>
+        <item>   ငါန်းဇွန်မြို့</item>
+        <item>   စဉ့်ကိုင်မြို့</item>
+        <item>  စဉ့်ကူးမြို့</item>
+        <item>   ညောင်ဦးမြို့</item>
+        <item>  တံတားဦးမြို့</item>
+        <item>  တကောင်းမြို့</item>
+        <item>   တောင်သာမြို့</item>
+        <item>    နွားထိုးကြီးမြို့</item>
+        <item>   ပျော်ဘွယ်မြို့</item>
+        <item>   ပြင်ဦးလွင်မြို့</item>
+        <item>    ပြည်ကြီးတံခွန်မြို့</item>
+        <item>    ပုဂံမြို့</item>
+        <item>    ပုသိမ်ကြီးမြို့</item>
+        <item>   မတ္တရာမြို့</item>
+        <item>   မန္တလေးမြို့</item>
+        <item>   မြင်းခြံမြို့</item>
+        <item>   မြစ်ငယ်မြို့</item>
+        <item>   မြစ်သားမြို့</item>
+        <item>    မလှိုင်မြို့</item>
+        <item>    မဟာအောင်မြေမြို့</item>
+        <item>    မိတ္ထီလာမြို့</item>
+        <item>    မိုးကုတ်မြို့</item>
+        <item>   ရမည်းသင်းမြို့</item>
+        <item>  ဝမ်းတွင်းမြို့</item>
+        <item>   သပိတ်ကျင်းမြို့</item>
+        <item>  သာစည်မြို့</item>
+        <item>  အမရပူရမြို့</item>
+        <item>  အောင်မြေသာဇံမြို့</item>
+    </string-array>
+
+
 </resources>

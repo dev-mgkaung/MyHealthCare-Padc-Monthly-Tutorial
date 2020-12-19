@@ -24,7 +24,6 @@ class PatientInfoDialog : BaseDialogFragment()  {
 
         private const val KEY_CONSULATIONCHATVO = "cousulationChatVO"
 
-
         fun newInstance(cousulationChatVO: String): PatientInfoDialog {
             val args = Bundle()
             args.putString(KEY_CONSULATIONCHATVO, cousulationChatVO)
