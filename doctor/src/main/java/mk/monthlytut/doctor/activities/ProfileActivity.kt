@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.text.Editable
 import kotlinx.android.synthetic.main.acitvity_profile.*
 import kotlinx.android.synthetic.main.acitvity_profile.img_profile
-import kotlinx.android.synthetic.main.edit_profile_activity.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.mvp.presenters.ProfilePresenter
 import mk.monthlytut.doctor.mvp.presenters.impl.ProfilePresenterImpl
@@ -47,6 +46,12 @@ class ProfileActivity : BaseActivity() , ProfileView {
             startActivity(this?.let { it -> SplashActivity.newIntent(it) })
             this?.finish()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(MainActivity.newIntent(this))
+        this.finish()
     }
     private fun setUpPresenter() {
         mPresenter = getPresenter<ProfilePresenterImpl, ProfileView>()

@@ -78,6 +78,7 @@ class MainActivity : BaseActivity() ,HomeView {
     private fun setUpActionListeners()
     {
         img_doctor.setOnClickListener {
+            this.finish()
             startActivity(ProfileActivity.newIntent(this))
         }
     }
