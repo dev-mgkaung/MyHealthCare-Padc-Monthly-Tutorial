@@ -129,7 +129,6 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
         val dialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.add_shipping_bottonsheet, null)
         dialog.setContentView(view)
-     //   var townshipSpinner = view.findViewById<Spinner>(R.id.township_spinner)
 
         view.township_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -166,8 +165,8 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
                 {
                     townshiplist = resources.getStringArray(R.array.mandalay).toList()
                 }
-//                 val mAdapter = ArrayAdapter(view.context,android.R.layout.simple_spinner_dropdown_item,townshiplist)
-//                townshipSpinner.adapter = mAdapter
+                 val mAdapter = ArrayAdapter(view.context,android.R.layout.simple_spinner_dropdown_item,townshiplist)
+          //      townshipSpinner?.adapter = mAdapter
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -188,6 +187,7 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
 
         dialog.show()
     }
+
 
     override fun displayConfirmDialog(list: List<PrescriptionVO>, address: String, total_price: String) {
         var data=  Gson().toJson(prescriptionList)

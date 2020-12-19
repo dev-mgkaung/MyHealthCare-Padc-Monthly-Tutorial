@@ -10,6 +10,7 @@ import mk.padc.share.data.models.AuthenticationModel
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.AuthenticationModelImpl
 import mk.padc.share.data.models.impl.DoctorModelImpl
+import mk.padc.share.data.vos.DoctorVO
 import mk.padc.share.mvp.presenters.AbstractBasePresenter
 
 
@@ -27,6 +28,7 @@ class LoginPresenterImpl : LoginPresenter, AbstractBasePresenter<LoginView>() {
             mView.showError("Please enter all the fields")
         } else {
             mAuthenticatioModel.login(email, password, onSuccess = {
+
                 mModel.getDoctorByEmail(email,onSuccess = {}, onError = {})
                 mModel.getDoctorByEmailFromDB(email)
                     .observe(owner, Observer { doctor ->

@@ -96,8 +96,10 @@ class ChatRoomActvity : BaseActivity() , ChatView
 
            if(finish_conservation_status) {
                prescritpionview.visibility = View.VISIBLE
+               sendLayoutpatent.visibility =View.GONE
            }else{
                prescritpionview.visibility = View.GONE
+               sendLayoutpatent.visibility =View.VISIBLE
            }
 
           }
