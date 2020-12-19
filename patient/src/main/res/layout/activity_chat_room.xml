@@ -43,7 +43,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="80dp"
+                android:layout_marginBottom="100dp"
                 android:orientation="vertical">
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -255,7 +255,7 @@
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:nestedScrollingEnabled="false"
+                                    android:nestedScrollingEnabled="true"
                                     android:layout_margin="5dp"
                                     android:id="@+id/rc_question_answer"/>
                             </LinearLayout>
@@ -275,6 +275,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/rc_chating"
+                    android:layout_marginBottom="10dp"
                     android:nestedScrollingEnabled="true"/>
                 <include layout="@layout/prescription_item_for_chat"
                     android:id="@+id/prescritpionview"
@@ -283,7 +284,6 @@
                     android:layout_marginBottom="50dp"
                     android:visibility="gone"/>
             </LinearLayout>
-
         </androidx.core.widget.NestedScrollView>
         <LinearLayout
             android:layout_alignParentBottom="true"
