@@ -16,6 +16,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.acitvity_profile.img_profile
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.edit_profile_activity.*
 import kotlinx.android.synthetic.main.edit_profile_activity.day_spinner
 import kotlinx.android.synthetic.main.edit_profile_activity.month_spinner
@@ -122,8 +123,8 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
             var dateofbirth ="$day  $month $year"
             bitmap?.let { it1 ->
                 mPresenter?.updateUserData(it1 ,
-                        SessionManager.doctor_speciality.toString(),
                         SessionManager.doctor_specialityname.toString(),
+                        SessionManager.doctor_speciality.toString(),
                         ePphone?.text.toString(),
                         e_degree.text.toString(),
                         ebiography.text.toString(),
@@ -186,6 +187,13 @@ class EditProfileActivity : BaseActivity()  , ProfileView {
         ebiography.text =    Editable.Factory.getInstance().newEditable(doctorVO.biography)
         eaddress.text =    Editable.Factory.getInstance().newEditable(doctorVO.address)
         eexperience.text =  Editable.Factory.getInstance().newEditable(doctorVO.experience)
+        if(doctorVO.gender == "အမျိုးသား")
+        {
+            eradio_group.check(eradio_group.getChildAt(0).id)
+        }else{
+            eradio_group.check(eradio_group.getChildAt(1).id)
+        }
+
     }
 
     override fun hideProgressDialog() {

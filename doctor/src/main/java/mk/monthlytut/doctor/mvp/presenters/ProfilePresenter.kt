@@ -12,7 +12,8 @@ interface ProfilePresenter : BasePresenter<ProfileView> {
     fun onUiReadyForProfile(context : Context, owner: LifecycleOwner)
 
     fun updateUserData(bitmap: Bitmap,
-                       specialitname : String,speciality : String,
+                       specialitname : String,
+                       speciality : String,
                        phone : String, degree : String,
                        bigraphy : String, address : String,
                        experience : String, dateofbirth : String,
