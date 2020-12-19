@@ -12,4 +12,5 @@ interface ChatRoomPresenter : BasePresenter<ChatView>, ChatRoomDelegate, Questio
 {
     fun onUiReadyConstulation( consultationChatId : String ,  owner: LifecycleOwner)
     fun addTextMessage(message : String, consultationChatId: String ,senderId : String ,senderPhoto: String, senderName : String, owner: LifecycleOwner)
+    fun onCallPrescription(consultationChatId: String,owner: LifecycleOwner)
 }

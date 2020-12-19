@@ -68,7 +68,11 @@ class ConsultationFragment : BaseFragment(), ChatHistoryView {
     }
 
     override fun nextPageToChatRoom(consulationchatId: String) {
-        startActivity(activity?.let { ChatRoomActvity.newIntent(it, consulationchatId) })
+        activity?.let{
+            it.finish()
+            startActivity(activity?.let { ChatRoomActvity.newIntent(it, consulationchatId) })
+        }
+
     }
 
     override fun showPrescriptionDialog(finishconsultation: Boolean,consulationchatId: String, patient_name: String,start_conservation_date : String ) {

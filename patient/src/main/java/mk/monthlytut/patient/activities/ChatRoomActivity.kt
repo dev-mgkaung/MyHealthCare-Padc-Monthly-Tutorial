@@ -95,6 +95,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
            }
 
            if(finish_conservation_status) {
+               mPresenter.onCallPrescription(mConsultationChatVO.id,this)
                prescritpionview.visibility = View.VISIBLE
                sendLayoutpatent.visibility =View.GONE
            }else{
@@ -165,8 +166,9 @@ class ChatRoomActvity : BaseActivity() , ChatView
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(HomeActivity.newIntent(this))
         this.finish()
+        startActivity(HomeActivity.newIntent(this))
+
     }
 
     private fun setUpRecyclerView()

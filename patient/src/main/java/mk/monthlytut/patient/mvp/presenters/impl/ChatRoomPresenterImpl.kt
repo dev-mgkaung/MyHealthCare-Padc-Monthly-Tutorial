@@ -68,6 +68,17 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
         patientModel.sendChatMessage(chatMessage,consultationChatId,onSuccess = {} , onError = {})
     }
 
+    override fun onCallPrescription(consultationChatId: String, owner: LifecycleOwner) {
+        patientModel.getPrescription(consultationChatId, onSuccess = {}, onError = {})
+
+        patientModel.getPrescriptionFromDB()
+                .observe(owner, Observer {
+                    it?.let{
+                        mView?.displayPrescriptionViewPod(it)
+                    }
+                })
+    }
+
     override fun onUiReady(context: Context, owner: LifecycleOwner) {}
 
     override fun onTapSendTextMessage() {

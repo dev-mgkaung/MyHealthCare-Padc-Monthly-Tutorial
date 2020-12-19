@@ -112,8 +112,11 @@ class HomeFragment : BaseFragment() , HomeView {
             view.confirm_btn.setOnClickListener {
                 var doctorVO = DoctorVO()
                 var mdoctorVO=  Gson().toJson(doctorVO)
-                startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, specialitiesVO.id.toString(),mdoctorVO.toString())})
                 dialog?.dismiss()
+                activity?.let{
+                    startActivity(  activity?.applicationContext?.let{CaseSummaryActivity.newIntent(it, specialitiesVO.id.toString(),mdoctorVO.toString())})
+                }
+
             }
             dialog?.show()
         }
@@ -144,6 +147,7 @@ class HomeFragment : BaseFragment() , HomeView {
 
         activity?.let{
             mPresenter.statusUpdateForCompleteType(it,consulation_chat_id,consultationRequestVO)
+            it.finish()
             it.startActivity(ChatRoomActvity.newIntent(it, consulation_chat_id))
         }
     }
