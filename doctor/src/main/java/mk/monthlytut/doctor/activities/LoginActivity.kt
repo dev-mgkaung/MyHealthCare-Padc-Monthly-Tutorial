@@ -3,9 +3,6 @@ package mk.monthlytut.doctor.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.ktx.messaging
 import kotlinx.android.synthetic.main.activity_login.*
 import mk.monthlytut.doctor.R
 import mk.monthlytut.doctor.mvp.presenters.LoginPresenter

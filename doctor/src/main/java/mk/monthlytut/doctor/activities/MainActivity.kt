@@ -92,6 +92,12 @@ class MainActivity : BaseActivity() ,HomeView {
     }
 
     override fun displayConsultationRequests(list: List<ConsultationRequestVO>) {
+        if(list?.size == 0)
+        {
+            empty_view.visibility =View.VISIBLE
+        }else{
+            empty_view.visibility =View.GONE
+        }
         consultationRequestAdapter.setNewData(list.toMutableList())
     }
 
@@ -99,11 +105,11 @@ class MainActivity : BaseActivity() ,HomeView {
 
         consultationAcceptAdapter.setNewData(list.toMutableList())
         if(list?.size == 0) {
-            empty_view.visibility =View.VISIBLE
+        //    empty_view.visibility =View.VISIBLE
             consultationlabel.visibility = View.GONE
         }else
         {
-            empty_view.visibility =View.GONE
+      //      empty_view.visibility =View.GONE
             consultationlabel.visibility = View.VISIBLE
         }
     }
