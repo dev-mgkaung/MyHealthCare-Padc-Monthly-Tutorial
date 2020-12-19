@@ -172,8 +172,6 @@ class CheckoutActivity : BaseActivity(), CheckOutView {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
-
-
         view.btn_add.setOnClickListener {
             address= "${view.ed_address.text }  ၊ ${township} ၊ ${state} "
             var patientVO = SessionManager.getPatientInfo()
