@@ -23,12 +23,13 @@ class LoginPresenterImpl : LoginPresenter, AbstractBasePresenter<LoginView>() {
 
     override fun onTapLogin(context: Context,email: String, password: String,  owner: LifecycleOwner) {
 
-        mModel.getPatientByEmail(email,onSuccess = {}, onError = {})
+        mModel.getPatientByEmail(email, onSuccess = {}, onError = {})
 
         if(email.isEmpty() || password.isEmpty()){
             mView.showError("Please enter all the fields")
         } else {
             mAuthenticatioModel.login(email, password, onSuccess = {
+
 
                 mModel.getPatientByEmailFromDB(email)
                         .observe(owner, Observer { patient ->
