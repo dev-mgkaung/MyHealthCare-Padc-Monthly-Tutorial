@@ -22,10 +22,10 @@ interface ConsultationChatDao {
     @Query("select * from consultation_chat WHERE id = :id")
     fun getAllConsultationChatDataBy(id: String): LiveData<ConsultationChatVO>
 
-    @Query("select * from consultation_chat WHERE doctor_id = :id")
+    @Query("select * from consultation_chat WHERE doctor_id = :id ORDER BY timestamp ASC")
     fun getAllConsultationChatDataByDoctorId(id: String): LiveData<List<ConsultationChatVO>>
 
-    @Query("select * from consultation_chat WHERE patient_id = :id")
+    @Query("select * from consultation_chat WHERE patient_id = :id ORDER BY timestamp ASC")
     fun getAllConsultationChatDataByPatientId(id: String): LiveData<List<ConsultationChatVO>>
 
     @Query("DELETE FROM consultation_chat")

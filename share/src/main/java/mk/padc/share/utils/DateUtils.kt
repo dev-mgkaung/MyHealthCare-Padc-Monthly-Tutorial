@@ -14,8 +14,6 @@ class DateUtils
     }
 
     fun getCurrentDate() : String{
-//        val simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
-//        return simpleDateFormat.format(Date())
         val calendar = Calendar.getInstance()
         var currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.time)
         return currentDate

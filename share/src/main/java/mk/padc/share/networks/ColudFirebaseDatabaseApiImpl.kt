@@ -249,6 +249,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
             "start_consultation_date" to DateUtils().getCurrentDate(),
             "patient_info" to patientVO,
             "medical_record" to "",
+            "timestamp" to DateUtils().getCurrentDateTime(),
             "doctor_info" to doctorVO)
 
         db.collection(consultation_chat)
@@ -651,7 +652,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     override fun getConsulationChatForDoctor(doctorId: String, onSuccess: (List<ConsultationChatVO>) -> Unit, onFailure: (String) -> Unit) {
         db.collection("$consultation_chat")
                 .whereEqualTo("doctor_id",doctorId)
-                .orderBy("start_consultation_date")
+                .orderBy("timestamp")
                 .addSnapshotListener { value, error ->
                     error?.let {
                         onFailure(it.message ?: "Please check connection")
@@ -676,7 +677,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
     {
         db.collection("$consultation_chat")
                 .whereEqualTo("id",id)
-                .orderBy("start_consultation_date")
+                .orderBy("timestamp")
                 .addSnapshotListener { value, error ->
                     error?.let {
                         onFailure(it.message ?: "Please check connection")
@@ -793,6 +794,7 @@ object ColudFirebaseDatabaseApiImpl : FirebaseApi {
                 "patient_info" to consultationChatVO.patient_info,
                  "start_consultation_date" to consultationChatVO.start_consultation_date,
                 "medical_record" to consultationChatVO.medical_record,
+                "timestamp" to consultationChatVO.timestamp,
                 "doctor_info" to consultationChatVO.doctor_info)
 
         db.collection("$consultation_chat")
