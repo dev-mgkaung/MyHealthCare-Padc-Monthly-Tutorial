@@ -3,7 +3,6 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_login.*
 import mk.monthlytut.patient.R
 import mk.monthlytut.patient.mvp.presenters.LoginPresenter
