@@ -54,6 +54,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
 
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {
         scrollview.scrollTo(0, scrollview.bottom)
+        scrollview.scrollTo(0, scrollview.getChildAt(0).height)
         prescription_show =true
         mConsultationChatVO= consultationChatVO
         patientname.text = consultationChatVO.doctor_info?.name

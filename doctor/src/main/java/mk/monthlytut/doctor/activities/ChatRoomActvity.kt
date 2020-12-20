@@ -56,6 +56,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
     override fun displayPatientInfo(consultationChatVO: ConsultationChatVO) {
         scrollview.scrollTo(0, scrollview.bottom)
+        scrollview.scrollTo(0, scrollview.getChildAt(0).height)
         mConsultationChatVO= consultationChatVO
         patientname.text = consultationChatVO.patient_info?.name
         ImageUtils().showImage(userprofile, consultationChatVO.patient_info?.photo.toString(), R.drawable.user)
@@ -70,6 +71,11 @@ class ChatRoomActvity : BaseActivity() ,ChatView
             questionAnswerAdapter.setNewData(it)
         }
         finish_consultation_status = consultationChatVO.finish_consultation_status
+        if(finish_consultation_status) {
+            mprescritpionview.visibility = View.VISIBLE
+        }else{
+            mprescritpionview.visibility = View.GONE
+        }
     }
 
     override fun displayChatMessageList(list: List<ChatMessageVO>) {
@@ -87,14 +93,12 @@ class ChatRoomActvity : BaseActivity() ,ChatView
 
             mPrescriptionViewPod.setPrescriptionData(prescription_list,SessionManager.doctor_photo.toString())
 
-            if(finish_consultation_status) {
-                mprescritpionview.visibility = View.VISIBLE
-                sendlayout.visibility = View.GONE
-            }else{ mprescritpionview.visibility = View.GONE
-                sendlayout.visibility = View.VISIBLE
-            }
-
-          }
+            mprescritpionview.visibility = View.VISIBLE
+            sendlayout.visibility = View.GONE
+        }else{
+            mprescritpionview.visibility = View.GONE
+            sendlayout.visibility = View.VISIBLE
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -38,7 +38,6 @@ class ChatRoomPresenterImpl : ChatRoomPresenter, AbstractBasePresenter<ChatView>
         })
 
 
-
         doctorModel.getPrescription(consultationChatId, onSuccess = {}, onError = {})
 
         doctorModel.getPrescriptionFromDB(consultationChatId)
