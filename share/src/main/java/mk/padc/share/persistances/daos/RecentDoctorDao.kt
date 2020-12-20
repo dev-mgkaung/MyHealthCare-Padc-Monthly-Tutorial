@@ -22,7 +22,7 @@ interface RecentDoctorDao {
     @Query("select * from recent_doctors")
     fun getAllRecentDoctorData(): LiveData<List<RecentDoctorVO>>
 
-    @Query("select * from recent_doctors WHERE rd_id = :id")
+    @Query("select * from recent_doctors WHERE id = :id")
     fun getAllRecentDoctorDataBy(id: String): LiveData<RecentDoctorVO>
 
     @Query("DELETE FROM recent_doctors")

@@ -9,7 +9,6 @@ import mk.padc.share.utils.recent_doctors
 @Entity(tableName = recent_doctors)
 class RecentDoctorVO(
     @PrimaryKey
-    var rd_id: String= "",
     var id: String= "",
     var device_id: String ?= "",
     var name: String ? = "",
