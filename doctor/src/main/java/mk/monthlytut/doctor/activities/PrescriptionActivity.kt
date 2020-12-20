@@ -139,9 +139,6 @@ class PrescriptionActivity : BaseActivity() ,PrescriptionView
 
     override fun onBackPressed() {
         super.onBackPressed()
-//        mConsultationChatVO?.let{
-//            startActivity(ChatRoomActvity.newIntent(this,consultation_chat_id = mConsultationChatVO.id.toString()))
-//        }
         this.finish()
     }
 
