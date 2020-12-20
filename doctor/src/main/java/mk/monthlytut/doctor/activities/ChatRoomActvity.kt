@@ -138,6 +138,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
             } else {
                 if (ed_message.text.toString().isNotEmpty()) {
                     mPresenter?.addTextMessage(ed_message.text.toString(), consultation_chat_id, doctors, SessionManager.doctor_photo.toString(), SessionManager.doctor_name.toString(), this)
+                    ed_message.text =  Editable.Factory.getInstance().newEditable("")
                 } else {
                     Toast.makeText(this, "Empty text", Toast.LENGTH_SHORT).show()
                 }

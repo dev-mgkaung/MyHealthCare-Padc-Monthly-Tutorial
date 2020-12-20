@@ -3,6 +3,7 @@ package mk.monthlytut.patient.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -155,6 +156,7 @@ class ChatRoomActvity : BaseActivity() , ChatView
                 } else {
                     if (ed_message.text.toString().isNotEmpty()) {
                     mPresenter?.addTextMessage(ed_message.text.toString(), consultation_chat_id, patients, SessionManager.patient_photo.toString(), SessionManager.patient_name.toString(), this)
+                        ed_message.text =  Editable.Factory.getInstance().newEditable("")
                     } else {
                         Toast.makeText(this, "Empty text", Toast.LENGTH_SHORT).show()
                     }
