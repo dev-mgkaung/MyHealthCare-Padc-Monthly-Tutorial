@@ -55,7 +55,7 @@
             android:id="@+id/etPassword"
             android:textSize="13sp"
             android:maxLines="1"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:layout_margin="10dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
