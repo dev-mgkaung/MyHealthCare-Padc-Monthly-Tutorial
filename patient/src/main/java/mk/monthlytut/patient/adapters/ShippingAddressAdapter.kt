@@ -1,6 +1,5 @@
 package mk.monthlytut.patient.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import mk.monthlytut.patient.R
