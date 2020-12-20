@@ -27,6 +27,14 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
         mOwner=  owner
         mContext= context
 
+        doctorModel.getConsultedPatient(SessionManager.doctor_id.toString(),onSuccess = {}, onError = {})
+
+        doctorModel.getConsultedPatientFromDB(SessionManager.doctor_id.toString())
+                .observe(owner, Observer { data ->
+                    data?.let {
+                        mView?.displayConsultedPatient(data) }
+                })
+
         doctorModel.getBrodcastConsultationRequests(
                 SessionManager.doctor_speciality.toString(),
                 onSuccess = {},
@@ -62,13 +70,6 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
                         mView?.displayConsultationList(data) }
                 })
 
-        doctorModel.getConsultedPatient(SessionManager.doctor_id.toString(),onSuccess = {}, onError = {})
-
-        doctorModel.getConsultedPatientFromDB(SessionManager.doctor_id.toString())
-            .observe(owner, Observer { data ->
-                data?.let {
-                    mView?.displayConsultedPatient(data) }
-            })
     }
 
     override fun onTapNext(consultationRequestVO: ConsultationRequestVO) {

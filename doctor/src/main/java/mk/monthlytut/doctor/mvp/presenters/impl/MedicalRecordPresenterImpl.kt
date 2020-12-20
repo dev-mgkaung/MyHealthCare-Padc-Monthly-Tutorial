@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import mk.monthlytut.doctor.mvp.presenters.MedicalRecordPresenter
 import mk.monthlytut.doctor.mvp.views.MedicalRecordView
+import mk.monthlytut.doctor.utils.SessionManager
 import mk.padc.share.data.models.DoctorModel
 import mk.padc.share.data.models.impl.DoctorModelImpl
 import mk.padc.share.data.vos.ConsultationChatVO

@@ -141,6 +141,7 @@ object SessionManager {
             it.putString(sharePreferenceDoctorAdress, value)
         }
 
+
     fun addDoctorInfo(doctorVO: DoctorVO)
     {
         doctor_name = doctorVO.name

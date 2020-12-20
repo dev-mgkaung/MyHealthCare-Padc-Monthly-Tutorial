@@ -161,6 +161,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
                 var data = Gson().toJson(mConsultationChatVO)
                 mConsultationChatVO?.let {
                     startActivity(PrescriptionActivity.newIntent(this, mConsultationChatVO.doctor_info?.speciality.toString(), data))
+                    this.finish()
                 }
             }
 
@@ -173,6 +174,7 @@ class ChatRoomActvity : BaseActivity() ,ChatView
                 var data = Gson().toJson(mConsultationChatVO)
                 mConsultationChatVO?.let {
                     startActivity(MedicalCommentAcitivity.newIntent(this, data))
+                    this.finish()
                 }
             }
         }
